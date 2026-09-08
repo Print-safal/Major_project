@@ -1,4 +1,4 @@
-from vector_store.search import search
+from rag.vector_store.search import search
 
 
 def retrieve_security_context(query, top_k=5):

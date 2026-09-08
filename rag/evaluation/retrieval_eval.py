@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from vector_store.search import search
+from rag.vector_store.search import search
 
 
 

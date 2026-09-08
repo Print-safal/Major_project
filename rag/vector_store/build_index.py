@@ -3,8 +3,8 @@ from pathlib import Path
 import faiss
 import numpy as np
 
-from ingestion.loader import load_documents
-from ingestion.embedder import create_embeddings
+from rag.ingestion.loader import load_documents
+from rag.ingestion.embedder import create_embeddings
 
 
 # Project root

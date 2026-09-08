@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-from ingestion.chunker import chunk_text
+from rag.ingestion.chunker import chunk_text
 
 
 def load_documents(directory: str):
