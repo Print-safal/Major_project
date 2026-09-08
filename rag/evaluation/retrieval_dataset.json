@@ -1,0 +1,131 @@
+[
+  {
+    "id": 1,
+    "query": "SQL query constructed by concatenating username with a string",
+    "expected_cwe": "CWE-89"
+  },
+  {
+    "id": 2,
+    "query": "f-string used to insert user input into an SQL query",
+    "expected_cwe": "CWE-89"
+  },
+  {
+    "id": 3,
+    "query": "raw SQL query contains an externally supplied parameter",
+    "expected_cwe": "CWE-89"
+  },
+  {
+    "id": 4,
+    "query": "database query created dynamically using untrusted input",
+    "expected_cwe": "CWE-89"
+  },
+  {
+    "id": 5,
+    "query": "user input directly inserted into a SELECT statement",
+    "expected_cwe": "CWE-89"
+  },
+
+  {
+    "id": 6,
+    "query": "os.system executes a command containing user input",
+    "expected_cwe": "CWE-78"
+  },
+  {
+    "id": 7,
+    "query": "subprocess.run uses shell=True with untrusted input",
+    "expected_cwe": "CWE-78"
+  },
+  {
+    "id": 8,
+    "query": "user input is concatenated into an operating system command",
+    "expected_cwe": "CWE-78"
+  },
+  {
+    "id": 9,
+    "query": "subprocess.Popen executes a dynamically constructed shell command",
+    "expected_cwe": "CWE-78"
+  },
+  {
+    "id": 10,
+    "query": "external input reaches shell command execution",
+    "expected_cwe": "CWE-78"
+  },
+
+  {
+    "id": 11,
+    "query": "user input is directly rendered inside an HTML response",
+    "expected_cwe": "CWE-79"
+  },
+  {
+    "id": 12,
+    "query": "unescaped user data is inserted into a web page",
+    "expected_cwe": "CWE-79"
+  },
+  {
+    "id": 13,
+    "query": "Jinja template renders untrusted input as safe HTML",
+    "expected_cwe": "CWE-79"
+  },
+  {
+    "id": 14,
+    "query": "HTML response is constructed using unsanitized request parameters",
+    "expected_cwe": "CWE-79"
+  },
+  {
+    "id": 15,
+    "query": "user controlled content is returned without HTML escaping",
+    "expected_cwe": "CWE-79"
+  },
+
+  {
+    "id": 16,
+    "query": "user controlled filename is passed to open",
+    "expected_cwe": "CWE-22"
+  },
+  {
+    "id": 17,
+    "query": "application allows ../ in a file path",
+    "expected_cwe": "CWE-22"
+  },
+  {
+    "id": 18,
+    "query": "external input is used to construct a filesystem path",
+    "expected_cwe": "CWE-22"
+  },
+  {
+    "id": 19,
+    "query": "os.path.join combines a base directory with an untrusted filename",
+    "expected_cwe": "CWE-22"
+  },
+  {
+    "id": 20,
+    "query": "user supplied path is used to read a server file",
+    "expected_cwe": "CWE-22"
+  },
+
+  {
+    "id": 21,
+    "query": "password is directly stored as a string in Python source",
+    "expected_cwe": "CWE-798"
+  },
+  {
+    "id": 22,
+    "query": "API key is hard-coded in application code",
+    "expected_cwe": "CWE-798"
+  },
+  {
+    "id": 23,
+    "query": "database credentials are embedded directly in Python code",
+    "expected_cwe": "CWE-798"
+  },
+  {
+    "id": 24,
+    "query": "access token is stored as a literal in source code",
+    "expected_cwe": "CWE-798"
+  },
+  {
+    "id": 25,
+    "query": "secret credential is committed directly in application source",
+    "expected_cwe": "CWE-798"
+  }
+]

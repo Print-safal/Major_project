@@ -1,0 +1,103 @@
+{
+  "cwe_id": "CWE-22",
+  "name": "Path Traversal",
+  "severity": "High",
+  "language": "Python",
+
+  "description": "Path Traversal occurs when an application uses untrusted input to construct a file or directory path without adequately restricting the resulting location. An attacker may manipulate path components to access files or directories outside the intended directory.",
+
+  "common_causes": [
+    "Using user-controlled input directly in file paths",
+    "Concatenating a trusted directory with an untrusted filename",
+    "Failing to validate path components",
+    "Failing to canonicalize or resolve paths before access",
+    "Allowing traversal sequences such as ../ or ..\\\\",
+    "Using untrusted input with file access functions"
+  ],
+
+  "vulnerable_patterns": [
+    "open() called with a path containing user-controlled input",
+    "os.path.join() used without checking the resulting path",
+    "User input concatenated with a base directory",
+    "Path objects constructed directly from untrusted input",
+    "File download endpoints using user-controlled filenames",
+    "File read or write operations using unvalidated external paths"
+  ],
+
+  "vulnerable_examples": [
+    {
+      "code": "from flask import request\n\nfilename = request.args.get('file')\nwith open('/var/www/files/' + filename, 'r') as f:\n    content = f.read()",
+      "explanation": "The filename is controlled by the user and directly appended to a trusted directory, allowing path manipulation."
+    },
+    {
+      "code": "from pathlib import Path\n\nfilename = request.args.get('file')\npath = Path('/var/www/files') / filename\ncontent = path.read_text()",
+      "explanation": "The application uses an externally controlled filename to construct a filesystem path without verifying that the resolved path remains inside the intended directory."
+    }
+  ],
+
+  "secure_patterns": [
+    "Resolve and canonicalize paths before accessing files",
+    "Verify that the resolved path remains inside the intended base directory",
+    "Use an allowlist of permitted filenames where practical",
+    "Avoid allowing users to supply arbitrary filesystem paths",
+    "Use secure temporary-file APIs when temporary files are required",
+    "Validate filename components before filesystem operations"
+  ],
+
+  "secure_examples": [
+    {
+      "code": "from pathlib import Path\n\nbase = Path('/var/www/files').resolve()\ntarget = (base / filename).resolve()\n\nif base in target.parents:\n    content = target.read_text()",
+      "explanation": "The paths are resolved before access and the resulting target is checked to ensure it remains within the intended base directory."
+    },
+    {
+      "code": "allowed_files = {'report.pdf', 'manual.pdf'}\n\nif filename not in allowed_files:\n    raise ValueError('Invalid filename')",
+      "explanation": "An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths."
+    }
+  ],
+
+  "detection_indicators": [
+    "User-controlled input reaches open()",
+    "User-controlled input reaches Path.read_text() or Path.write_text()",
+    "User input is concatenated with a filesystem directory",
+    "os.path.join() is used with untrusted path components without validation",
+    "Path objects are constructed directly from external input",
+    "File paths contain externally controlled filename components",
+    "Application accepts ../ or ..\\\\ path components",
+    "File access occurs without verifying the canonical path"
+  ],
+
+  "remediation": "Avoid accepting arbitrary filesystem paths from users. Use an allowlist where possible. When user-controlled filenames are necessary, resolve the final path and verify that it remains inside the intended base directory before performing filesystem operations. Validate path components and reject unexpected traversal sequences as an additional defense.",
+
+  "references": [
+    {
+      "title": "MITRE CWE-22: Improper Limitation of a Pathname to a Restricted Directory",
+      "url": "https://cwe.mitre.org/data/definitions/22.html"
+    },
+    {
+      "title": "OWASP Path Traversal",
+      "url": "https://owasp.org/www-community/attacks/Path_Traversal"
+    },
+    {
+      "title": "Python pathlib documentation",
+      "url": "https://docs.python.org/3/library/pathlib.html"
+    }
+  ],
+
+  "keywords": [
+    "CWE-22",
+    "Path Traversal",
+    "Directory Traversal",
+    "path traversal",
+    "directory traversal",
+    "../",
+    "..\\\\",
+    "filesystem",
+    "file access",
+    "open",
+    "pathlib",
+    "os.path.join",
+    "user-controlled filename",
+    "canonical path",
+    "path validation"
+  ]
+}

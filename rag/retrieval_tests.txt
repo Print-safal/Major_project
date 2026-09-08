@@ -1,0 +1,78 @@
+RAG RETRIEVAL INITIAL TEST
+
+1. Query:
+Path Traversal
+
+Expected CWE:
+CWE-22
+
+Retrieved Top-1:
+CWE-22
+
+Result:
+PASS
+
+
+2. Query:
+SQL query constructed using username
+
+Expected CWE:
+CWE-89
+
+Retrieved Top-1:
+[fill after testing]
+
+Result:
+[PASS/FAIL]
+
+
+3. Query:
+subprocess.run(user_input, shell=True)
+
+Expected CWE:
+CWE-78
+
+Retrieved Top-1:
+[fill after testing]
+
+Result:
+[PASS/FAIL]
+
+
+4. Query:
+user input rendered directly into HTML
+
+Expected CWE:
+CWE-79
+
+Retrieved Top-1:
+[fill after testing]
+
+Result:
+[PASS/FAIL]
+
+
+5. Query:
+user controlled filename used with open
+
+Expected CWE:
+CWE-22
+
+Retrieved Top-1:
+[fill after testing]
+
+Result:
+[PASS/FAIL]
+
+
+6. Query:
+password stored directly in Python source code
+
+Expected CWE:
+CWE-798
+
+Retrieved Top-1:
+[fill after testing]
+
+Result:
+[PASS/FAIL]

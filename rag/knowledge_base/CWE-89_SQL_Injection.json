@@ -1,0 +1,81 @@
+{
+  "cwe_id": "CWE-89",
+  "name": "SQL Injection",
+  "severity": "High",
+  "language": "Python",
+
+  "description": "SQL Injection occurs when untrusted user input is incorporated into an SQL query without proper validation or parameterization, allowing an attacker to alter the intended SQL statement.",
+
+  "common_causes": [
+  "Concatenating user input directly into SQL queries",
+  "Using string formatting to construct SQL statements",
+  "Using f-strings with untrusted input in SQL queries",
+  "Failing to use parameterized queries",
+  "Using unsafe database APIs that execute dynamically constructed SQL"
+],
+
+  "vulnerable_patterns": [
+  "SQL query created using string concatenation with user-controlled input",
+  "SQL query created using Python format strings with user-controlled input",
+  "SQL query created using f-strings with user-controlled input",
+  "Raw SQL execution using unsanitized external input"
+],
+
+  "vulnerable_examples": [
+  {
+    "code": "query = \"SELECT * FROM users WHERE username='\" + username + \"'\"",
+    "explanation": "The username is directly concatenated into the SQL query."
+  },
+  {
+    "code": "query = f\"SELECT * FROM users WHERE id={user_id}\"",
+    "explanation": "User-controlled input is inserted directly into an SQL statement using an f-string."
+  }
+],
+
+  "secure_patterns": [
+  "Use parameterized SQL queries",
+  "Use prepared statements",
+  "Use database APIs that separate SQL code from user data"
+],
+
+  "secure_examples": [
+  {
+    "code": "cursor.execute(\"SELECT * FROM users WHERE id=%s\", (user_id,))",
+    "explanation": "The parameterized query keeps user data separate from the SQL statement."
+  }
+],
+
+  "detection_indicators": [
+  "User input flows into an SQL query",
+  "String concatenation used to construct SQL",
+  "f-string used to construct SQL",
+  "format() used to construct SQL",
+  "Raw SQL execution with external input",
+  "Database query contains unsanitized request parameters"
+],
+
+  "remediation": "Use parameterized queries or prepared statements instead of dynamically concatenating user-controlled input into SQL statements. Use safe database APIs and validate input where appropriate.",
+
+  "references": [
+  {
+    "title": "MITRE CWE-89",
+    "url": "..."
+  },
+  {
+    "title": "OWASP SQL Injection Prevention",
+    "url": "..."
+  }
+],
+
+  "keywords": [
+  "SQL injection",
+  "SQLi",
+  "CWE-89",
+  "database injection",
+  "parameterized query",
+  "prepared statement",
+  "raw SQL",
+  "SQL concatenation",
+  "f-string SQL"
+]
+}

@@ -1,0 +1,107 @@
+{
+  "cwe_id": "CWE-78",
+  "name": "OS Command Injection",
+  "severity": "High",
+  "language": "Python",
+
+  "description": "OS Command Injection occurs when untrusted user input is incorporated into an operating system command without adequate validation or safe command construction. An attacker may manipulate the input to execute unintended commands with the privileges of the vulnerable application.",
+
+  "common_causes": [
+    "Passing user-controlled input directly to operating system command execution functions",
+    "Using os.system() with untrusted input",
+    "Using subprocess functions with shell=True and untrusted input",
+    "Constructing shell commands through string concatenation",
+    "Constructing shell commands using f-strings or format()",
+    "Failing to separate command arguments from user-controlled data"
+  ],
+
+  "vulnerable_patterns": [
+    "os.system() called with user-controlled input",
+    "subprocess.run() used with shell=True and untrusted input",
+    "subprocess.Popen() used with shell=True and untrusted input",
+    "Shell commands constructed using string concatenation",
+    "Shell commands constructed using f-strings",
+    "Shell commands constructed using format()",
+    "User-controlled input passed directly to command execution"
+  ],
+
+  "vulnerable_examples": [
+    {
+      "code": "import os\nos.system(user_input)",
+      "explanation": "The user-controlled input is passed directly to os.system(), allowing the input to influence the operating system command."
+    },
+    {
+      "code": "import subprocess\nsubprocess.run(user_input, shell=True)",
+      "explanation": "The command is interpreted by a shell while containing user-controlled input, creating a command injection risk."
+    },
+    {
+      "code": "import os\ncommand = \"ping \" + hostname\nos.system(command)",
+      "explanation": "User-controlled hostname data is concatenated into a shell command before execution."
+    }
+  ],
+
+  "secure_patterns": [
+    "Avoid shell command execution when a library or Python API can perform the required operation",
+    "Use subprocess with shell=False",
+    "Pass command arguments as a list rather than constructing a shell command string",
+    "Use an allowlist for permitted commands or arguments",
+    "Validate externally supplied command arguments",
+    "Avoid passing untrusted input directly to shell interpreters"
+  ],
+
+  "secure_examples": [
+    {
+      "code": "import subprocess\nsubprocess.run([\"ping\", \"-c\", \"1\", hostname], shell=False)",
+      "explanation": "The command and its argument are supplied separately without invoking a shell."
+    },
+    {
+      "code": "import subprocess\nsubprocess.run([\"python\", \"script.py\"], shell=False)",
+      "explanation": "Command arguments are represented as separate list elements and shell interpretation is disabled."
+    }
+  ],
+
+  "detection_indicators": [
+    "User-controlled input reaches os.system()",
+    "User-controlled input reaches subprocess.run()",
+    "User-controlled input reaches subprocess.Popen()",
+    "shell=True is used with externally controlled data",
+    "Command strings are constructed using string concatenation",
+    "Command strings are constructed using f-strings",
+    "Command strings are constructed using format()",
+    "External input is passed to a shell command without strict validation"
+  ],
+
+  "remediation": "Avoid shell command execution when possible. When subprocess execution is necessary, prefer shell=False and pass commands and arguments as separate elements in a list. Validate or allowlist externally supplied arguments and avoid constructing shell command strings from untrusted input.",
+
+  "references": [
+    {
+      "title": "MITRE CWE-78: Improper Neutralization of Special Elements used in an OS Command",
+      "url": "https://cwe.mitre.org/data/definitions/78.html"
+    },
+    {
+      "title": "Python subprocess documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html"
+    },
+    {
+      "title": "OWASP OS Command Injection Defense Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html"
+    }
+  ],
+
+  "keywords": [
+    "CWE-78",
+    "OS Command Injection",
+    "Command Injection",
+    "command injection",
+    "shell injection",
+    "os.system",
+    "subprocess",
+    "subprocess.run",
+    "subprocess.Popen",
+    "shell=True",
+    "shell=False",
+    "user-controlled command",
+    "command execution",
+    "untrusted input"
+  ]
+}
