@@ -1,0 +1,240 @@
+[
+    {
+        "test_id": "TC01",
+        "code": "import os\n\ndef run_script():\n    script_path = input(\"Enter script path: \")\n    args = input(\"Enter arguments: \")\n    # Vulnerable: user input in spawn call\n    os.spawnlp(os.P_WAIT, script_path, script_path, args)\n\nrun_script()",
+        "ground_truth_cwe": "CWE-78",
+        "vulnerability_name": "COMMAND_INJECTION",
+        "language": "python"
+    },
+    {
+        "test_id": "TC02",
+        "code": "import os\ndef get_user_input():\n    user_input = input(\"Enter your command: \")\n    return user_input\n\ndef execute_command(command):\n    os.system(command)\n\ndef main():\n    command = get_user_input()\n    execute_command(command)\n\nif __name__ == \"__main__\":\n    main()",
+        "ground_truth_cwe": "CWE-78",
+        "vulnerability_name": null,
+        "language": "python"
+    },
+    {
+        "test_id": "TC03",
+        "code": "from django.http import HttpResponse\n\ndef search_results(request):\n    query = request.GET.get('q', '')\n    html = '<div>Search results for: ' + query + '</div>'\n    return HttpResponse(html)",
+        "ground_truth_cwe": "CWE-79",
+        "vulnerability_name": "XSS",
+        "language": "python"
+    },
+    {
+        "test_id": "TC04",
+        "code": "import os\n\ncommand_prefix = \"ls \"\nuser_suffix = input()\nos.system(command_prefix + user_suffix)",
+        "ground_truth_cwe": "CWE-78",
+        "vulnerability_name": "OS Command Injection",
+        "language": "python"
+    },
+    {
+        "test_id": "TC05",
+        "code": "import sqlite3\n\ndb_name = 'mydatabase.db'\nconn = sqlite3.connect(db_name)\ncursor = conn.cursor()\n\ntable_name = input()\ncursor.execute(f\"SELECT * FROM {table_name}\")\nresults = cursor.fetchall()\nprint(results)\n\nconn.close()",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": "SQL Injection",
+        "language": "python"
+    },
+    {
+        "test_id": "TC06",
+        "code": "import os\n\ndef serve_image(name):\n    return send_file(os.path.join('/var/www/img/', name))",
+        "ground_truth_cwe": "CWE-22",
+        "vulnerability_name": "PATH_TRAVERSAL",
+        "language": "python"
+    },
+    {
+        "test_id": "TC07",
+        "code": "import logging\n\nclass BrowserLogHandler(logging.Handler):\n    def emit(self, record):\n        msg = self.format(record)\n        print(f'<div class=\"log\">{msg}</div>')  # simulates sending to browser",
+        "ground_truth_cwe": "CWE-79",
+        "vulnerability_name": "XSS",
+        "language": "python"
+    },
+    {
+        "test_id": "TC08",
+        "code": "class VulnerableClass:\n    def __init__(self):\n        self.data = {}\n\n    def save_data(self, key, value):\n        self.data[key] = value\n\n    def get_data(self, key):\n        return self.data[key]\n\ndef main():\n    vc = VulnerableClass()\n    user_input = input(\"Enter data: \")\n    vc.save_data('key', user_input)\n    print(vc.get_data('key'))\n\nif __name__ == \"__main__\":\n    main()",
+        "ground_truth_cwe": "CWE-79",
+        "vulnerability_name": null,
+        "language": "python"
+    },
+    {
+        "test_id": "TC09",
+        "code": "CVE: CVE-2025-62613\n\nVDO.Ninja is a tool that brings remote video feeds into OBS or other studio software via WebRTC. From versions 28.0 to before 28.4, a reflected Cross-Site Scripting (XSS) vulnerability exists on examples/control.html through the room parameter, which is improperly sanitized before being rendered in the DOM. The application fails to validate and encode user input, allowing malicious scripts to be injected and executed. This issue has been patched in version 28.4.",
+        "ground_truth_cwe": "CWE-79",
+        "vulnerability_name": "Cross-Site Scripting",
+        "language": "general"
+    },
+    {
+        "test_id": "TC10",
+        "code": "import pathlib\n\ndef serve(path):\n    return open(pathlib.Path('/static') / path).read()",
+        "ground_truth_cwe": "CWE-22",
+        "vulnerability_name": "PATH_TRAVERSAL",
+        "language": "python"
+    },
+    {
+        "test_id": "TC11",
+        "code": "import subprocess\n\ndef backup_database():\n    db_name = input(\"Enter database name: \")\n    # Using subprocess with arguments list - no shell\n    subprocess.run(['mysqldump', db_name], check=True)\n\nbackup_database()",
+        "ground_truth_cwe": "CWE-78",
+        "vulnerability_name": "COMMAND_INJECTION",
+        "language": "python"
+    },
+    {
+        "test_id": "TC12",
+        "code": "def download_backup(api_key):\n    if api_key == \"valid_key\":\n        print(\"Backup downloaded.\")\n    elif api_key:\n        print(\"Backup download attempted.\")\n\ndownload_backup(\"invalid_key\")",
+        "ground_truth_cwe": "CWE-798",
+        "vulnerability_name": "Use of Hard-coded Credentials",
+        "language": "python"
+    },
+    {
+        "test_id": "TC13",
+        "code": "import sqlite3\n\ndef get_user_info(username):\n    conn = sqlite3.connect('mydatabase.db')\n    cursor = conn.cursor()\n    query = \"SELECT * FROM users WHERE username='%s'\" % username\n    cursor.execute(query)\n    user_info = cursor.fetchone()\n    return user_info\n\nusername = input(\"Enter your username: \")\nget_user_info(username)",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": null,
+        "language": "python"
+    },
+    {
+        "test_id": "TC14",
+        "code": "from flask import Flask, request\nimport os\n\napp = Flask(__name__)\n\n@app.route('/upload', methods=['POST'])\ndef upload_file():\n    file = request.files['file']\n    filename = file.filename\n    file.save(\"/var/www/uploads/\" + filename)\n    return 'File uploaded successfully!'\n\nif __name__ == \"__main__\":\n    app.run(host='0.0.0.0', port=80)",
+        "ground_truth_cwe": "CWE-22",
+        "vulnerability_name": null,
+        "language": "python"
+    },
+    {
+        "test_id": "TC15",
+        "code": "from cryptography.fernet import Fernet\n\nkey = b'YOUR_ENCRYPTION_KEY_VERY_SECRET'\ncipher = Fernet(key)\n\nmessage = b\"sensitive data to encrypt\"\nencrypted_message = cipher.encrypt(message)\nprint(encrypted_message)",
+        "ground_truth_cwe": "CWE-798",
+        "vulnerability_name": "Hardcoded Secret",
+        "language": "python"
+    },
+    {
+        "test_id": "TC16",
+        "code": "import zipfile\n\ndef extract(zip_name, member):\n    z = zipfile.ZipFile(zip_name)\n    z.extract(member, '/tmp/')",
+        "ground_truth_cwe": "CWE-22",
+        "vulnerability_name": "PATH_TRAVERSAL",
+        "language": "python"
+    },
+    {
+        "test_id": "TC17",
+        "code": "CVE: CVE-2019-18426\n\nA vulnerability in WhatsApp Desktop versions prior to 0.3.9309 when paired with WhatsApp for iPhone versions prior to 2.20.10 allows cross-site scripting and local file reading. Exploiting the vulnerability requires the victim to click a link preview from a specially crafted text message.\n\nSeverity: HIGH",
+        "ground_truth_cwe": "CWE-79",
+        "vulnerability_name": "Cross-Site Scripting",
+        "language": "general"
+    },
+    {
+        "test_id": "TC18",
+        "code": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')\n\nThe product constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component. Without sufficient removal or quoting of SQL syntax in user-controllable inputs, the generated SQL query can cause those inputs to be interpreted as SQL instead of ordinary user data.",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": "SQL Injection",
+        "language": "general"
+    },
+    {
+        "test_id": "TC19",
+        "code": "import sqlite3\n\ndb_path = \"mydatabase.db\"\ndb_username = \"db_user\"\ndb_password = \"db_password\"\n\nconn = sqlite3.connect(db_path)\ncursor = conn.cursor()\n\ncursor.execute(f\"SELECT * FROM users WHERE username = '{db_username}' AND password = '{db_password}'\")\nresults = cursor.fetchall()\nprint(results)\n\nconn.close()",
+        "ground_truth_cwe": "CWE-798",
+        "vulnerability_name": "Hardcoded Secret",
+        "language": "python"
+    },
+    {
+        "test_id": "TC20",
+        "code": "import subprocess\nfrom flask import request\n\ndef download_file():\n    url = request.args.get('url')\n    filename = request.args.get('filename')\n    # Vulnerable: direct use of URL parameters in command\n    subprocess.run(f\"wget {url} -O {filename}\", shell=True)\n\n# Flask route would call download_file()",
+        "ground_truth_cwe": "CWE-78",
+        "vulnerability_name": "COMMAND_INJECTION",
+        "language": "python"
+    },
+    {
+        "test_id": "TC21",
+        "code": "order = request.args.get('order')\ncursor.execute(\"SELECT * FROM sales ORDER BY \" + order)",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": "SQL_INJECTION",
+        "language": "python"
+    },
+    {
+        "test_id": "TC22",
+        "code": "import sqlite3\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['GET', 'POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    \n    conn = sqlite3.connect('database.db')\n    cursor = conn.cursor()\n    \n    query = \"SELECT * FROM users WHERE username='{}' AND password='{}'\".format(username, password)\n    cursor.execute(query)\n    \n    user = cursor.fetchone()\n    \n    if user:\n        return \"Logged in successfully\", 200\n    else:\n        return \"Invalid credentials\", 401\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": null,
+        "language": "python"
+    },
+    {
+        "test_id": "TC23",
+        "code": "import sqlite3\n\ndef get_limited_users(limit):\n    conn = sqlite3.connect('users.db')\n    cursor = conn.cursor()\n    query = \"SELECT * FROM users LIMIT \" + limit\n    cursor.execute(query)\n    results = cursor.fetchall()\n    conn.close()\n    return results\n\nlimit = input(\"Enter number of users to retrieve: \")\nusers = get_limited_users(limit)\nfor user in users:\n    print(user)",
+        "ground_truth_cwe": "CWE-89",
+        "vulnerability_name": "SQL Injection",
+        "language": "python"
+    },
+    {
+        "test_id": "TC24",
+        "code": "import os\n\ndef read_user_file(filename):\n    base = '/srv/app/data/'\n    return open(base + filename).read()",
+        "ground_truth_cwe": "CWE-22",
+        "vulnerability_name": "PATH_TRAVERSAL",
+        "language": "python"
+    },
+    {
+        "test_id": "SAFE01",
+        "code": "\nusername = input(\"Enter username\")\nquery = \"SELECT * FROM users WHERE name = %s\"\ncursor.execute(query, (username,))\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe Parameterized SQL Query",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE02",
+        "code": "\nimport subprocess\n\nfilename = input(\"Enter filename\")\nsubprocess.run([\"cat\", filename], shell=False)\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe Subprocess Usage",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE03",
+        "code": "\nfrom pathlib import Path\n\nbase = Path(\"/var/www/files\").resolve()\nfilename = Path(\"report.txt\").name\nfile_path = (base / filename).resolve()\n\nif file_path.is_relative_to(base):\n    data = file_path.read_text()\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe File Path Handling",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE04",
+        "code": "\nfrom html import escape\n\nname = input(\"Enter your name\")\nsafe_name = escape(name)\n\nhtml = \"<div>Hello \" + safe_name + \"</div>\"\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Escaped HTML Output",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE05",
+        "code": "\nimport os\n\nusername = os.getenv(\"DB_USERNAME\")\npassword = os.getenv(\"DB_PASSWORD\")\n\nconnect_to_database(username, password)\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Environment-Based Credentials",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE06",
+        "code": "\ndef calculate_total(price, quantity):\n    return price * quantity\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe Arithmetic",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE07",
+        "code": "\nimport subprocess\n\nurl = input(\"Enter URL\")\nsubprocess.run(\n    [\"wget\", url, \"-O\", \"output.txt\"],\n    shell=False,\n    check=True\n)\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe Command Execution",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE08",
+        "code": "\nimport sqlite3\n\nusername = input(\"Enter username\")\n\nconnection = sqlite3.connect(\"users.db\")\ncursor = connection.cursor()\n\ncursor.execute(\n    \"SELECT * FROM users WHERE username = ?\",\n    (username,)\n)\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Safe SQLite Query",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE09",
+        "code": "\nfrom pathlib import Path\n\nallowed_files = {\n    \"report.txt\",\n    \"summary.txt\",\n    \"data.txt\"\n}\n\nfilename = input(\"Enter filename\")\n\nif filename in allowed_files:\n    path = Path(\"/srv/app/data\") / filename\n    data = path.read_text()\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Whitelisted File Access",
+        "language": "Python"
+    },
+    {
+        "test_id": "SAFE10",
+        "code": "\nfrom flask import Flask, render_template, request\n\napp = Flask(__name__)\n\n@app.route(\"/search\")\ndef search():\n    query = request.args.get(\"q\", \"\")\n    return render_template(\"search.html\", query=query)\n",
+        "ground_truth_cwe": null,
+        "vulnerability_name": "Template-Based HTML Rendering",
+        "language": "Python"
+    }
+]

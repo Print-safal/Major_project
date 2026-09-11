@@ -1,0 +1,681 @@
+{
+  "experiment": {
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "V3",
+    "evaluation_set": "llm_evaluation_set_v2.json",
+    "total_cases": 34
+  },
+  "metrics": {
+    "TP": 20,
+    "TN": 9,
+    "FP": 1,
+    "FN": 4,
+    "precision": 0.9523809523809523,
+    "recall": 0.8333333333333334,
+    "f1": 0.888888888888889,
+    "exact_cwe_matches": 20,
+    "exact_cwe_accuracy": 0.8333333333333334
+  },
+  "results": [
+    {
+      "test_id": "TC01",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-78",
+            "vulnerability_name": "OS Command Injection",
+            "location": "run_script function, os.spawnlp call",
+            "explanation": "User-supplied values 'script_path' and 'args' are passed directly to os.spawnlp, which executes the specified program. Because the inputs are not validated or sanitized, an attacker can supply arbitrary executable paths or malicious arguments, leading to command execution on the host.",
+            "remediation": "Validate and whitelist allowed script names/paths, and avoid passing raw user input to os.spawnlp. Use a fixed set of permitted commands and construct argument lists without invoking a shell. Consider using subprocess.run with a list of arguments and shell=False, and enforce strict path checks."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC02",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-78",
+            "vulnerability_name": "OS Command Injection",
+            "location": "execute_command function (os.system(command))",
+            "explanation": "User-supplied input from input() is passed directly to os.system without validation or sanitization, allowing an attacker to execute arbitrary shell commands.",
+            "remediation": "Validate or whitelist allowed commands, or avoid os.system entirely. Use subprocess.run with a list of arguments and shell=False, and enforce strict input validation."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC03",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-79",
+            "vulnerability_name": "Cross-Site Scripting (XSS)",
+            "location": "search_results function, HTML construction line",
+            "explanation": "The 'query' parameter from request.GET is directly concatenated into the HTML response without any escaping or sanitization, enabling an attacker to inject malicious scripts that will be executed in the victim's browser.",
+            "remediation": "Escape or sanitize the user-supplied 'query' before embedding it in the response (e.g., use Django's template rendering with auto-escaping or django.utils.html.escape()), or avoid manual string concatenation for HTML output."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC04",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-78",
+            "vulnerability_name": "OS Command Injection",
+            "location": "os.system(command_prefix + user_suffix)",
+            "explanation": "User-controlled input from input() is concatenated with a command string and passed to os.system, which executes it via the shell. An attacker can inject additional commands or arguments, leading to arbitrary command execution.",
+            "remediation": "Avoid using os.system with concatenated strings. Use subprocess.run with a list of arguments and shell=False, or strictly validate/whitelist the user input before using it in any command."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC05",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "cursor.execute(f\"SELECT * FROM {table_name}\")",
+            "explanation": "User-supplied table_name is interpolated directly into the SQL statement, allowing an attacker to inject arbitrary SQL.",
+            "remediation": "Validate or whitelist the table name and use parameterized queries or construct the query safely without string interpolation."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC06",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "serve_image function: os.path.join('/var/www/img/', name)",
+            "explanation": "The 'name' parameter is used directly in os.path.join with a fixed base directory. An attacker can supply '../' sequences (e.g., '../../etc/passwd') to traverse outside '/var/www/img/' and access arbitrary files on the server.",
+            "remediation": "Validate and sanitize the 'name' input, reject path traversal patterns, enforce a whitelist of allowed filenames, or after joining verify that the resolved absolute path starts with the intended base directory before calling send_file."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC07",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-79",
+            "vulnerability_name": "Cross-Site Scripting (XSS)",
+            "location": "BrowserLogHandler.emit (print statement)",
+            "explanation": "The log message (msg) may contain untrusted data and is interpolated directly into an HTML <div> via an f-string without any escaping, allowing injection of malicious scripts when rendered in a browser.",
+            "remediation": "Escape or sanitize the msg before embedding it in HTML (e.g., use html.escape or a templating engine with auto‑escaping), or avoid inserting raw log data into browser‑rendered output."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC08",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "TC09",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-79",
+            "vulnerability_name": "Cross-Site Scripting (XSS)",
+            "location": "examples/control.html (room parameter)",
+            "explanation": "The 'room' parameter from the request is inserted into the DOM without proper sanitization or encoding, enabling an attacker to inject malicious scripts that are reflected back to the user.",
+            "remediation": "Validate and encode the 'room' parameter before rendering, use context‑appropriate escaping, implement a Content Security Policy, and consider using templating frameworks that auto‑escape output."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC10",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "serve function, open(pathlib.Path('/static') / path)",
+            "explanation": "The 'path' argument is taken from an external source and directly concatenated to the static directory path. By supplying path components such as '../' an attacker can traverse outside '/static' and cause the program to open arbitrary files on the filesystem.",
+            "remediation": "Validate and sanitize the supplied path. Resolve the combined path and ensure it remains within the intended '/static' directory (e.g., using pathlib.Path.resolve() and checking the prefix), reject absolute paths, or restrict to a whitelist of allowed filenames."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC11",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "TC12",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-798",
+            "vulnerability_name": "Use of Hard-coded Credentials",
+            "location": "download_backup function (hard-coded API key \"valid_key\")",
+            "explanation": "The function contains a hard-coded API key value \"valid_key\" directly in the source code, which constitutes a hard-coded credential that could be extracted by an attacker.",
+            "remediation": "Remove the hard-coded key and retrieve credentials from a secure source such as environment variables, a secrets manager, or a protected configuration file with appropriate access controls."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC13",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "get_user_info: query construction using string formatting",
+            "explanation": "The function builds the SQL statement by directly inserting the untrusted 'username' input via % formatting, allowing an attacker to inject arbitrary SQL.",
+            "remediation": "Use parameterized queries, e.g., cursor.execute('SELECT * FROM users WHERE username=?', (username,))."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC14",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "upload_file -> file.save(\"/var/www/uploads/\" + filename)",
+            "explanation": "The filename is taken from user-controlled input and concatenated directly to a filesystem path. An attacker can include '../' sequences to traverse directories and cause the file to be saved outside the intended upload directory.",
+            "remediation": "Validate and sanitize the filename using werkzeug.utils.secure_filename, reject path separators, or generate a server‑side filename. Use safe path joining (e.g., os.path.join) and enforce that the final path resides within the intended upload directory."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC15",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-798",
+            "vulnerability_name": "Use of Hard-coded Credentials",
+            "location": "line 4: key = b'YOUR_ENCRYPTION_KEY_VERY_SECRET'",
+            "explanation": "The encryption key is embedded directly in source code, exposing secret material and allowing attackers who can read the code to decrypt data.",
+            "remediation": "Store the key securely outside the code, e.g., in environment variables, a secrets manager, or a protected configuration file with restricted access, and load it at runtime."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC16",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "extract() -> z.extract(member, '/tmp/')",
+            "explanation": "The 'member' argument is taken from an untrusted source and passed directly to zipfile.extract, which concatenates it with the destination directory. If 'member' contains path traversal sequences like '../', files can be written outside the intended '/tmp/' directory, leading to unauthorized file writes.",
+            "remediation": "Validate and sanitize the 'member' path before extraction. Reject or clean any path components that traverse upward (e.g., '..'), or use a safe extraction routine that ensures the final resolved path is within the intended directory (e.g., compare the normalized absolute path against the target directory)."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC17",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "TC18",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "TC19",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-798",
+            "vulnerability_name": "Use of Hard-coded Credentials",
+            "location": "Lines 5-6 (db_username and db_password definitions)",
+            "explanation": "The database username and password are embedded directly in the source code, making them discoverable by anyone who can read the code and potentially allowing unauthorized database access.",
+            "remediation": "Remove hard‑coded credentials and retrieve them securely at runtime (e.g., from environment variables, a protected configuration file, or a secret‑management service)."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC20",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_cwes": [
+        "CWE-78",
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-78",
+            "vulnerability_name": "OS Command Injection",
+            "location": "download_file function - subprocess.run call",
+            "explanation": "User‑controlled 'url' and 'filename' parameters are interpolated into a shell command string passed to subprocess.run with shell=True, allowing an attacker to inject arbitrary shell commands.",
+            "remediation": "Do not use shell=True with untrusted input. Build the command as a list (e.g., ['wget', url, '-O', filename]) and validate/sanitize the parameters, or use a dedicated library for downloading files."
+          },
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "download_file function - filename parameter used as output path for wget",
+            "explanation": "The 'filename' query parameter is used directly as the destination path for the downloaded file, enabling an attacker to specify paths like '../../etc/passwd' to write outside the intended directory.",
+            "remediation": "Validate and sanitize the filename, enforce a fixed download directory, and strip path components (e.g., using os.path.basename) before using it as a file path."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC21",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "cursor.execute(\"SELECT * FROM sales ORDER BY \" + order)",
+            "explanation": "The 'order' parameter from request.args is concatenated directly into the SQL statement, allowing an attacker to inject arbitrary SQL code into the ORDER BY clause.",
+            "remediation": "Validate and whitelist allowed column names for ordering, or construct the query using safe methods. Since ORDER BY cannot be parameterized, enforce a strict whitelist of column names before including them in the query."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC22",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "login() - query = \"SELECT * FROM users WHERE username='{}' AND password='{}'\".format(username, password)",
+            "explanation": "User-supplied 'username' and 'password' are interpolated directly into the SQL statement via str.format, allowing an attacker to inject malicious SQL that can bypass authentication or manipulate the database.",
+            "remediation": "Use parameterized queries with placeholders, e.g., cursor.execute('SELECT * FROM users WHERE username=? AND password=?', (username, password)). Also store passwords hashed rather than in plain text."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC23",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "get_limited_users: query = \"SELECT * FROM users LIMIT \" + limit",
+            "explanation": "User-supplied input 'limit' is concatenated directly into the SQL statement, allowing an attacker to inject arbitrary SQL code.",
+            "remediation": "Validate and sanitize the 'limit' input as an integer and use a parameterized query, e.g., cursor.execute(\"SELECT * FROM users LIMIT ?\", (int(limit),))."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "TC24",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "read_user_file function: open(base + filename)",
+            "explanation": "The function concatenates an untrusted 'filename' argument directly to a fixed base directory and opens the resulting path. An attacker can supply path traversal sequences (e.g., \"../\") to access files outside '/srv/app/data/'.",
+            "remediation": "Validate and sanitize the filename. Use os.path.join/basepath and then verify the resolved path is within the intended directory (e.g., compare os.path.commonpath). Prefer using pathlib.Path.resolve() and enforce a whitelist of allowed filenames."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "SAFE01",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE02",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-22",
+            "vulnerability_name": "Path Traversal",
+            "location": "subprocess.run([\"cat\", filename], shell=False)",
+            "explanation": "The program takes a filename from untrusted user input and passes it directly to the cat command without any validation or sanitization, allowing an attacker to specify paths like \"../../etc/passwd\" to read arbitrary files outside the intended directory.",
+            "remediation": "Validate and sanitize the filename input. Restrict access to a specific directory by using a whitelist of allowed filenames or by checking that the resolved absolute path is within the intended base directory (e.g., using os.path.abspath and comparing prefixes)."
+          }
+        ]
+      }
+    },
+    {
+      "test_id": "SAFE03",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE04",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE05",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE06",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE07",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE08",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE09",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    },
+    {
+      "test_id": "SAFE10",
+      "ground_truth_cwe": null,
+      "predicted_cwes": [],
+      "predicted_vulnerable": false,
+      "exact_cwe_match": false,
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "V3",
+      "raw_response": {
+        "vulnerable": false,
+        "vulnerabilities": []
+      }
+    }
+  ]
+}
