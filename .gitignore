@@ -23,3 +23,11 @@ db.sqlite3-journal
 # OS
 .DS_Store
 Thumbs.db
+
+# Generated dynamic RAG knowledge base
+rag/knowledge_base/raw/
+rag/knowledge_base/enriched/
+
+# Generated dynamic vector store
+rag/vector_store/dynamic_index.faiss
+rag/vector_store/dynamic_metadata.json
