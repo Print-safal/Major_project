@@ -1,0 +1,902 @@
+[
+  {
+    "test_id": "TC89_01",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def search(conn, username):\n    query = \"SELECT * FROM users WHERE name = '\" + username + \"'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_02",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def get_user(conn, user_id):\n    query = f\"SELECT * FROM users WHERE id = {user_id}\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_03",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def find(conn, email):\n    query = \"SELECT * FROM users WHERE email = '%s'\" % email\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_04",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def find(conn, name):\n    query = \"SELECT * FROM users WHERE name = '{}'\".format(name)\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_05",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def lookup(conn, table):\n    query = \"SELECT * FROM \" + table\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_06",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def search(conn, term):\n    query = \"SELECT * FROM products WHERE name LIKE '%\" + term + \"%'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_07",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def delete(conn, user_id):\n    query = f\"DELETE FROM users WHERE id={user_id}\"\n    conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_08",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def update(conn, user_id, name):\n    query = f\"UPDATE users SET name='{name}' WHERE id={user_id}\"\n    conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_09",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def login(conn, username, password):\n    query = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_10",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def orders(conn, customer):\n    query = \"SELECT * FROM orders WHERE customer = '\" + customer + \"'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_11",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def count(conn, category):\n    query = \"SELECT COUNT(*) FROM items WHERE category='%s'\" % category\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_12",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def report(conn, year):\n    query = f\"SELECT * FROM reports WHERE year={year}\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_13",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def product(conn, product_id):\n    query = \"SELECT * FROM products WHERE id = \" + product_id\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_14",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def account(conn, account):\n    query = \"SELECT balance FROM accounts WHERE account='{}'\".format(account)\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_15",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def audit(conn, event):\n    query = \"INSERT INTO audit(message) VALUES ('\" + event + \"')\"\n    conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_16",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def employee(conn, dept):\n    query = f\"SELECT * FROM employees WHERE dept='{dept}'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_17",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def invoice(conn, number):\n    query = \"SELECT * FROM invoice WHERE number = '\" + number + \"'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_18",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def role(conn, role):\n    query = \"SELECT * FROM users WHERE role='%s'\" % role\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_19",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def city(conn, city):\n    query = f\"SELECT * FROM locations WHERE city='{city}'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_20",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def ticket(conn, ticket_id):\n    query = \"SELECT * FROM tickets WHERE id=\" + ticket_id\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_21",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def comment(conn, text):\n    query = f\"INSERT INTO comments(text) VALUES ('{text}')\"\n    conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_22",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def item(conn, sku):\n    query = \"SELECT * FROM items WHERE sku='{}'\".format(sku)\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_23",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def customer(conn, phone):\n    query = \"SELECT * FROM customers WHERE phone = '\" + phone + \"'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_24",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def filter_rows(conn, status):\n    query = f\"SELECT * FROM jobs WHERE status='{status}'\"\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC89_25",
+    "ground_truth_cwe": "CWE-89",
+    "code": "def page(conn, limit):\n    query = \"SELECT * FROM records LIMIT \" + limit\n    return conn.execute(query)",
+    "vulnerability_name": "SQL Injection"
+  },
+  {
+    "test_id": "TC78_01",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef run(cmd):\n    os.system(cmd)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_02",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef ping(host):\n    os.system(\"ping -c 1 \" + host)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_03",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef run(command):\n    subprocess.run(command, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_04",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef run(name):\n    subprocess.run(\"cat \" + name, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_05",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef backup(path):\n    os.system(\"tar -czf backup.tar.gz \" + path)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_06",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef convert(filename):\n    subprocess.run(f\"convert {filename} out.png\", shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_07",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef remove(filename):\n    os.system(\"rm \" + filename)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_08",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef execute(arg):\n    command = \"grep \" + arg + \" file.txt\"\n    subprocess.call(command, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_09",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef open_file(name):\n    os.popen(\"cat \" + name)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_10",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef curl(url):\n    subprocess.Popen(\"curl \" + url, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_11",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef compile(src):\n    os.system(\"gcc \" + src)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_12",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef git(repo):\n    subprocess.run(f\"git clone {repo}\", shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_13",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef archive(name):\n    command = \"zip out.zip \" + name\n    os.system(command)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_14",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef launch(program):\n    subprocess.run(program, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_15",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef query(value):\n    os.system(\"grep \" + value + \" data.txt\")",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_16",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef download(url):\n    subprocess.run(\"wget \" + url, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_17",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef execute(user_command):\n    command = user_command\n    os.system(command)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_18",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef find(pattern):\n    subprocess.run(\"find /tmp -name \" + pattern, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_19",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef start(arg):\n    os.system(\"python \" + arg)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_20",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef tool(option):\n    subprocess.call(\"tool \" + option, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_21",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef process(file):\n    os.system(\"process \" + file)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_22",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef unzip(name):\n    subprocess.run(f\"unzip {name}\", shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_23",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef check(host):\n    os.system(\"nslookup \" + host)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_24",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import subprocess\ndef execute(arg):\n    command = \"mytool --input \" + arg\n    subprocess.Popen(command, shell=True)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC78_25",
+    "ground_truth_cwe": "CWE-78",
+    "code": "import os\ndef script(path):\n    os.system(\"bash \" + path)",
+    "vulnerability_name": "OS Command Injection"
+  },
+  {
+    "test_id": "TC79_01",
+    "ground_truth_cwe": "CWE-79",
+    "code": "from flask import request, Response\ndef page():\n    name = request.args[\"name\"]\n    return Response(\"<h1>Hello \" + name + \"</h1>\")",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_02",
+    "ground_truth_cwe": "CWE-79",
+    "code": "from flask import request\ndef page():\n    q = request.args.get(\"q\")\n    return \"<div>Search: \" + q + \"</div>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_03",
+    "ground_truth_cwe": "CWE-79",
+    "code": "from django.http import HttpResponse\ndef view(request):\n    name = request.GET.get(\"name\")\n    return HttpResponse(\"<p>\" + name + \"</p>\")",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_04",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def render_comment(comment):\n    return \"<div class=\\\"comment\\\">\" + comment + \"</div>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_05",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def profile(username):\n    return \"<h1>\" + username + \"</h1>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_06",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def message(text):\n    html = \"<span>\" + text + \"</span>\"\n    return html",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_07",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def result(query):\n    html = \"<p>Results for \" + query + \"</p>\"\n    return html",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_08",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def welcome(name):\n    return \"<body>Welcome \" + name + \"</body>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_09",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def error(message):\n    return \"<div class=\\\"error\\\">\" + message + \"</div>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_10",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def title(title):\n    return \"<title>\" + title + \"</title>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_11",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def link(label, url):\n    return \"<a href=\\\"\" + url + \"\\\">\" + label + \"</a>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_12",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def table(value):\n    return \"<td>\" + value + \"</td>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_13",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def banner(text):\n    return \"<div class=\\\"banner\\\">\" + text + \"</div>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_14",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def search(term):\n    return \"<section>Query: \" + term + \"</section>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_15",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def comment(body):\n    html = \"<article>\" + body + \"</article>\"\n    return html",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_16",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def alert(msg):\n    return \"<script>var msg=\\\"\" + msg + \"\\\";</script>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_17",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def user_card(name):\n    return \"<div data-name=\\\"\" + name + \"\\\">User</div>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_18",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def header(value):\n    return \"<h2>\" + value + \"</h2>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_19",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def notification(text):\n    return \"<li>\" + text + \"</li>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_20",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def output(data):\n    html = \"<pre>\" + data + \"</pre>\"\n    return html",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_21",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def snippet(code):\n    return \"<code>\" + code + \"</code>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_22",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def description(desc):\n    return \"<p class=\\\"description\\\">\" + desc + \"</p>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_23",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def footer(text):\n    return \"<footer>\" + text + \"</footer>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_24",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def heading(value):\n    return \"<h3>\" + value + \"</h3>\"",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC79_25",
+    "ground_truth_cwe": "CWE-79",
+    "code": "def raw_html(content):\n    return content",
+    "vulnerability_name": "Cross-Site Scripting"
+  },
+  {
+    "test_id": "TC22_01",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def read_file(name):\n    with open(\"/var/www/files/\" + name, \"r\") as f:\n        return f.read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_02",
+    "ground_truth_cwe": "CWE-22",
+    "code": "from pathlib import Path\ndef read(name):\n    return Path(\"/var/data/\" + name).read_text()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_03",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def download(name):\n    path = \"/srv/downloads/\" + name\n    return open(path, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_04",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def load(filename):\n    return open(\"/opt/app/data/\" + filename).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_05",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def serve(name):\n    path = \"/var/www/static/\" + name\n    return open(path, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_06",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def get(name):\n    path = f\"/tmp/files/{name}\"\n    return open(path).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_07",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def read(name):\n    path = \"/home/app/uploads/\" + name\n    with open(path) as f:\n        return f.read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_08",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def file(name):\n    return open(f\"/data/{name}\", \"r\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_09",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def load(name):\n    path = \"/var/log/app/\" + name\n    return open(path).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_10",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def export(name):\n    path = \"/exports/\" + name\n    return open(path, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_11",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def image(name):\n    return open(\"/images/\" + name, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_12",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def config(name):\n    return open(\"/etc/app/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_13",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def upload(name):\n    path = \"/srv/uploads/\" + name\n    with open(path, \"rb\") as f:\n        return f.read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_14",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def cache(key):\n    return open(\"/var/cache/app/\" + key).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_15",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def document(name):\n    return open(\"/documents/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_16",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def asset(name):\n    path = \"/assets/\" + name\n    return open(path, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_17",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def report(name):\n    return open(\"/reports/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_18",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def template(name):\n    return open(\"/templates/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_19",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def backup(name):\n    return open(\"/backups/\" + name, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_20",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def log(name):\n    return open(\"/logs/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_21",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def media(name):\n    return open(\"/media/\" + name, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_22",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def data(name):\n    return open(\"/data/files/\" + name).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_23",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def attachment(name):\n    return open(\"/attachments/\" + name, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_24",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def text(name):\n    path = f\"/srv/text/{name}\"\n    return open(path).read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC22_25",
+    "ground_truth_cwe": "CWE-22",
+    "code": "def package(name):\n    return open(\"/packages/\" + name, \"rb\").read()",
+    "vulnerability_name": "Path Traversal"
+  },
+  {
+    "test_id": "TC798_01",
+    "ground_truth_cwe": "CWE-798",
+    "code": "API_KEY = \"TEST_API_KEY_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_02",
+    "ground_truth_cwe": "CWE-798",
+    "code": "PASSWORD = \"TestPassword001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_03",
+    "ground_truth_cwe": "CWE-798",
+    "code": "DB_PASSWORD = \"DummyDbPass001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_04",
+    "ground_truth_cwe": "CWE-798",
+    "code": "SECRET_KEY = \"dummy-secret-key-001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_05",
+    "ground_truth_cwe": "CWE-798",
+    "code": "TOKEN = \"TEST_TOKEN_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_06",
+    "ground_truth_cwe": "CWE-798",
+    "code": "AWS_ACCESS_KEY = \"TEST_ACCESS_KEY_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_07",
+    "ground_truth_cwe": "CWE-798",
+    "code": "API_TOKEN = \"DUMMY_TOKEN_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_08",
+    "ground_truth_cwe": "CWE-798",
+    "code": "DATABASE_PASSWORD = \"ExamplePassword001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_09",
+    "ground_truth_cwe": "CWE-798",
+    "code": "PRIVATE_KEY = \"TEST_PRIVATE_KEY_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_10",
+    "ground_truth_cwe": "CWE-798",
+    "code": "AUTH_SECRET = \"dummy-auth-secret-001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_11",
+    "ground_truth_cwe": "CWE-798",
+    "code": "CLIENT_SECRET = \"TEST_CLIENT_SECRET_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_12",
+    "ground_truth_cwe": "CWE-798",
+    "code": "ENCRYPTION_KEY = \"dummy-encryption-key-001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_13",
+    "ground_truth_cwe": "CWE-798",
+    "code": "PASSWORD = \"HardCodedPassword001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_14",
+    "ground_truth_cwe": "CWE-798",
+    "code": "JWT_SECRET = \"dummy-jwt-secret-001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_15",
+    "ground_truth_cwe": "CWE-798",
+    "code": "SERVICE_TOKEN = \"TEST_SERVICE_TOKEN_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_16",
+    "ground_truth_cwe": "CWE-798",
+    "code": "SMTP_PASSWORD = \"DummySmtpPass001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_17",
+    "ground_truth_cwe": "CWE-798",
+    "code": "REDIS_PASSWORD = \"DummyRedisPass001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_18",
+    "ground_truth_cwe": "CWE-798",
+    "code": "GITHUB_TOKEN = \"TEST_GITHUB_TOKEN_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_19",
+    "ground_truth_cwe": "CWE-798",
+    "code": "STRIPE_SECRET = \"TEST_STRIPE_SECRET_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_20",
+    "ground_truth_cwe": "CWE-798",
+    "code": "DATABASE_URL = \"postgres://user:password@example.com/db\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_21",
+    "ground_truth_cwe": "CWE-798",
+    "code": "SECRET = \"TEST_SECRET_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_22",
+    "ground_truth_cwe": "CWE-798",
+    "code": "ACCESS_TOKEN = \"DUMMY_ACCESS_TOKEN_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_23",
+    "ground_truth_cwe": "CWE-798",
+    "code": "ENCRYPTION_SECRET = \"dummy-encryption-secret-001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_24",
+    "ground_truth_cwe": "CWE-798",
+    "code": "OAUTH_CLIENT_SECRET = \"TEST_OAUTH_SECRET_001\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "TC798_25",
+    "ground_truth_cwe": "CWE-798",
+    "code": "ADMIN_PASSWORD = \"DummyAdminPassword001!\"",
+    "vulnerability_name": "Use of Hard-coded Credentials"
+  },
+  {
+    "test_id": "SAFE_01",
+    "ground_truth_cwe": null,
+    "code": "import html\ndef page(name):\n    return \"<h1>\" + html.escape(name) + \"</h1>\"",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_02",
+    "ground_truth_cwe": null,
+    "code": "import subprocess\ndef run(args):\n    subprocess.run(args, shell=False, check=True)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_03",
+    "ground_truth_cwe": null,
+    "code": "import sqlite3\ndef find(conn, user_id):\n    return conn.execute(\"SELECT * FROM users WHERE id = ?\", (user_id,))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_04",
+    "ground_truth_cwe": null,
+    "code": "import os\ndef read(name):\n    base = os.path.realpath(\"/var/data\")\n    path = os.path.realpath(os.path.join(base, name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"invalid path\")\n    return open(path).read()",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_05",
+    "ground_truth_cwe": null,
+    "code": "import os\ndef connect():\n    return os.getenv(\"DB_PASSWORD\")",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_06",
+    "ground_truth_cwe": null,
+    "code": "def add(a, b):\n    return a + b",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_07",
+    "ground_truth_cwe": null,
+    "code": "import subprocess\ndef download(url):\n    subprocess.run([\"wget\", url], shell=False, check=True)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_08",
+    "ground_truth_cwe": null,
+    "code": "import sqlite3\ndef search(conn, name):\n    return conn.execute(\"SELECT * FROM users WHERE name = ?\", (name,))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_09",
+    "ground_truth_cwe": null,
+    "code": "def filename(name):\n    allowed = {\"report.pdf\", \"summary.pdf\"}\n    if name not in allowed:\n        raise ValueError(\"invalid filename\")\n    return open(\"/reports/\" + name, \"rb\").read()",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_10",
+    "ground_truth_cwe": null,
+    "code": "from flask import render_template\ndef page(request):\n    return render_template(\"search.html\", query=request.args.get(\"q\"))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_11",
+    "ground_truth_cwe": null,
+    "code": "import html\ndef comment(text):\n    return html.escape(text)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_12",
+    "ground_truth_cwe": null,
+    "code": "import subprocess\ndef ping(host):\n    subprocess.run([\"ping\", \"-c\", \"1\", host], shell=False)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_13",
+    "ground_truth_cwe": null,
+    "code": "import sqlite3\ndef delete(conn, user_id):\n    conn.execute(\"DELETE FROM users WHERE id = ?\", (user_id,))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_14",
+    "ground_truth_cwe": null,
+    "code": "from pathlib import Path\ndef read(name):\n    base = Path(\"/srv/data\").resolve()\n    path = (base / name).resolve()\n    if base not in path.parents and path != base:\n        raise ValueError(\"invalid path\")\n    return path.read_text()",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_15",
+    "ground_truth_cwe": null,
+    "code": "import os\ndef secret():\n    return os.environ[\"APP_SECRET\"]",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_16",
+    "ground_truth_cwe": null,
+    "code": "def multiply(x, y):\n    return x * y",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_17",
+    "ground_truth_cwe": null,
+    "code": "import subprocess\ndef run_tool(name):\n    subprocess.run([\"tool\", \"--name\", name], shell=False)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_18",
+    "ground_truth_cwe": null,
+    "code": "import sqlite3\ndef lookup(conn, email):\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM users WHERE email = ?\", (email,))\n    return cur.fetchall()",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_19",
+    "ground_truth_cwe": null,
+    "code": "import html\ndef output(value):\n    safe = html.escape(value)\n    return \"<p>\" + safe + \"</p>\"",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_20",
+    "ground_truth_cwe": null,
+    "code": "def allowed_file(name):\n    return name in {\"a.txt\", \"b.txt\", \"c.txt\"}",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_21",
+    "ground_truth_cwe": null,
+    "code": "import os\ndef get_token():\n    return os.getenv(\"API_TOKEN\")",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_22",
+    "ground_truth_cwe": null,
+    "code": "import subprocess\ndef convert(filename):\n    subprocess.run([\"convert\", filename, \"out.png\"], shell=False)",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_23",
+    "ground_truth_cwe": null,
+    "code": "import sqlite3\ndef insert(conn, text):\n    conn.execute(\"INSERT INTO comments(text) VALUES (?)\", (text,))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_24",
+    "ground_truth_cwe": null,
+    "code": "from flask import render_template\ndef profile(request):\n    return render_template(\"profile.html\", name=request.args.get(\"name\"))",
+    "vulnerability_name": null
+  },
+  {
+    "test_id": "SAFE_25",
+    "ground_truth_cwe": null,
+    "code": "def square(x):\n    return x ** 2",
+    "vulnerability_name": null
+  }
+]
