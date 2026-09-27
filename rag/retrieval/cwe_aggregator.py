@@ -1,9 +1,11 @@
 from collections import defaultdict
 
 from rag.retrieval.hybrid_retriever import semantic_search
+
 from rag.retrieval.security_profiles import (
     SECURITY_PROFILES,
     calculate_security_signal,
+    calculate_secure_signal,
 )
 
 
@@ -29,11 +31,15 @@ EVIDENCE_WEIGHTS = {
 }
 
 
+# A secure signal of 1.0 means the code contains
+# a known mitigation for that CWE.
+SECURE_SIGNAL_THRESHOLD = 1.0
+
+
 def get_evidence_weight(section):
     """
     Return the importance assigned to a knowledge section.
     """
-
     return EVIDENCE_WEIGHTS.get(
         section,
         1.00
@@ -49,12 +55,14 @@ def aggregate_cwe_results(
     Retrieve knowledge chunks, combine semantic and
     security-pattern evidence, then aggregate results
     at the CWE level.
+
+    Secure-code patterns can suppress a CWE when a known
+    mitigation is explicitly detected.
     """
 
     # -----------------------------------------------------
     # 1. Semantic retrieval
     # -----------------------------------------------------
-
     candidates = semantic_search(
         query,
         top_k=candidate_k
@@ -63,8 +71,8 @@ def aggregate_cwe_results(
     # -----------------------------------------------------
     # 2. Security signals
     # -----------------------------------------------------
-
     security_scores = {}
+    secure_scores = {}
 
     for cwe_id in SECURITY_PROFILES:
 
@@ -75,10 +83,16 @@ def aggregate_cwe_results(
             )
         )
 
+        secure_scores[cwe_id] = (
+            calculate_secure_signal(
+                query,
+                cwe_id
+            )
+        )
+
     # -----------------------------------------------------
     # 3. Score every retrieved chunk
     # -----------------------------------------------------
-
     for result in candidates:
 
         cwe_id = result["cwe_id"]
@@ -92,15 +106,23 @@ def aggregate_cwe_results(
             0.0
         )
 
+        secure_score = secure_scores.get(
+            cwe_id,
+            0.0
+        )
+
         evidence_weight = get_evidence_weight(
             result["section"]
         )
 
+        # Combine semantic similarity with
+        # security-pattern evidence.
         base_score = (
             0.70 * semantic_score
             + 0.30 * security_score
         )
 
+        # Apply evidence-type weighting.
         evidence_score = (
             base_score
             * evidence_weight
@@ -108,6 +130,10 @@ def aggregate_cwe_results(
 
         result["security_score"] = (
             security_score
+        )
+
+        result["secure_score"] = (
+            secure_score
         )
 
         result["evidence_weight"] = (
@@ -121,7 +147,6 @@ def aggregate_cwe_results(
     # -----------------------------------------------------
     # 4. Group chunks by CWE
     # -----------------------------------------------------
-
     grouped = defaultdict(list)
 
     for result in candidates:
@@ -132,7 +157,6 @@ def aggregate_cwe_results(
     # -----------------------------------------------------
     # 5. Calculate CWE-level scores
     # -----------------------------------------------------
-
     cwe_results = []
 
     for cwe_id, results in grouped.items():
@@ -174,7 +198,21 @@ def aggregate_cwe_results(
             1.0
         )
 
+        # -------------------------------------------------
+        # Secure-code signal
+        # -------------------------------------------------
+        secure_score = secure_scores[
+            cwe_id
+        ]
+
+        is_suppressed = (
+            secure_score
+            >= SECURE_SIGNAL_THRESHOLD
+        )
+
+        # -------------------------------------------------
         # Final CWE score
+        # -------------------------------------------------
         cwe_score = (
             0.65 * max_score
             + 0.20 * average_score
@@ -183,26 +221,44 @@ def aggregate_cwe_results(
 
         cwe_results.append({
             "cwe_id": cwe_id,
+
             "cwe_name": SECURITY_PROFILES[
                 cwe_id
             ]["name"],
+
             "score": cwe_score,
+
             "security_score": security_scores[
                 cwe_id
             ],
+
+            "secure_score": secure_score,
+
+            "suppressed": is_suppressed,
+
             "supporting_chunks": top_chunks,
+
             "supporting_chunk_count": len(
                 results
             ),
+
             "vulnerable_evidence_count": len(
                 vulnerable_evidence
             ),
         })
 
     # -----------------------------------------------------
-    # 6. Rank CWEs
+    # 6. Remove CWEs with explicit secure mitigation
     # -----------------------------------------------------
+    cwe_results = [
+        result
+        for result in cwe_results
+        if not result["suppressed"]
+    ]
 
+    # -----------------------------------------------------
+    # 7. Rank remaining CWEs
+    # -----------------------------------------------------
     cwe_results.sort(
         key=lambda item: item["score"],
         reverse=True
@@ -211,6 +267,9 @@ def aggregate_cwe_results(
     return cwe_results[:top_k]
 
 
+# ---------------------------------------------------------
+# Standalone interactive test
+# ---------------------------------------------------------
 if __name__ == "__main__":
 
     print("=" * 70)
@@ -231,6 +290,11 @@ if __name__ == "__main__":
     print("RANKED CWEs")
     print("=" * 70)
 
+    if not results:
+        print(
+            "\nNo unsuppressed CWE candidates found."
+        )
+
     for rank, result in enumerate(
         results,
         start=1
@@ -250,6 +314,16 @@ if __name__ == "__main__":
         print(
             f"Security Signal: "
             f"{result['security_score']:.4f}"
+        )
+
+        print(
+            f"Secure Signal: "
+            f"{result['secure_score']:.4f}"
+        )
+
+        print(
+            f"Suppressed: "
+            f"{result['suppressed']}"
         )
 
         print(
