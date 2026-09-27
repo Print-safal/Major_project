@@ -1,8 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from rag.retrieval.rag_retriever import retrieve_security_context
-from rag_int.llm_service import review_code
+from rag_int.rag_llm_integration import review_code_with_rag
 
 
 class CodeUploadView(APIView):
@@ -33,17 +32,7 @@ class CodeUploadView(APIView):
                 status=400
             )
 
-        # 4. Retrieve relevant security knowledge using RAG
-        retrieved = retrieve_security_context(
-            code,
-            top_k=5
-        )
-
-        # 5. Analyze code using LLM + retrieved security context
-        review = review_code(
-            code=code,
-            security_context=retrieved["context"]
-        )
+        review = review_code_with_rag(code)
 
         # 6. Return structured response
         return Response({

@@ -1,5 +1,4 @@
-from rag.retrieval.rag_retriever import retrieve_security_context
-from rag_int.llm_service import review_code
+from rag_int.rag_llm_integration import review_code_with_rag
 
 
 TEST_CASES = [
@@ -20,6 +19,7 @@ cursor.execute(query)
 print(cursor.fetchall())
 """
     },
+
     {
         "name": "CWE-78 OS Command Injection",
         "expected": "CWE-78",
@@ -30,6 +30,7 @@ user_input = input("Enter command: ")
 os.system(user_input)
 """
     },
+
     {
         "name": "CWE-79 Cross-Site Scripting",
         "expected": "CWE-79",
@@ -44,6 +45,7 @@ def index():
     return "<h1>Hello " + name + "</h1>"
 """
     },
+
     {
         "name": "CWE-22 Path Traversal",
         "expected": "CWE-22",
@@ -59,6 +61,7 @@ def download():
         return f.read()
 """
     },
+
     {
         "name": "CWE-798 Hard-coded Credentials",
         "expected": "CWE-798",
@@ -68,6 +71,18 @@ import sqlite3
 DB_PASSWORD = "SuperSecret123"
 
 connection = sqlite3.connect("users.db")
+"""
+    },
+
+    {
+        "name": "Safe Python Code",
+        "expected": None,
+        "code": """
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(10, 20)
+print(result)
 """
     },
 ]
@@ -80,7 +95,7 @@ def main():
     print("=" * 70)
     print("RAG + LLM INTEGRATION TEST")
     print("=" * 70)
-    print("Testing all 5 CWE categories")
+    print("Testing 5 CWE categories + safe Python code")
     print()
 
     for number, case in enumerate(TEST_CASES, start=1):
@@ -91,16 +106,8 @@ def main():
         print("=" * 70)
 
         try:
-            # Step 1: Retrieve relevant CWE knowledge using RAG
-            retrieved = retrieve_security_context(
-                case["code"],
-                top_k=5
-            )
-
-            # Step 2: Send code + retrieved knowledge to LLM
-            review = review_code(
-                code=case["code"],
-                security_context=retrieved["context"]
+            review = review_code_with_rag(
+                case["code"]
             )
 
             predicted_cwes = [
@@ -111,12 +118,26 @@ def main():
             print(f"Predicted CWEs: {predicted_cwes}")
             print(f"Vulnerable: {review.vulnerable}")
 
-            if case["expected"] in predicted_cwes:
-                print("RESULT: PASS")
-                passed += 1
+            if case["expected"] is None:
+                # Safe-code test
+                if (
+                    review.vulnerable is False
+                    and review.vulnerabilities == []
+                ):
+                    print("RESULT: PASS")
+                    passed += 1
+                else:
+                    print("RESULT: FAIL")
+                    failed += 1
+
             else:
-                print("RESULT: FAIL")
-                failed += 1
+                # Vulnerable-code test
+                if case["expected"] in predicted_cwes:
+                    print("RESULT: PASS")
+                    passed += 1
+                else:
+                    print("RESULT: FAIL")
+                    failed += 1
 
             for vulnerability in review.vulnerabilities:
                 print(
@@ -134,13 +155,13 @@ def main():
     print("=" * 70)
     print("FINAL RESULTS")
     print("=" * 70)
-    print(f"Passed: {passed}/5")
-    print(f"Failed: {failed}/5")
+    print(f"Passed: {passed}/{len(TEST_CASES)}")
+    print(f"Failed: {failed}/{len(TEST_CASES)}")
 
-    if passed == 5:
-        print("ALL 5 CWE INTEGRATION TESTS PASSED")
+    if passed == len(TEST_CASES):
+        print("ALL RAG + LLM INTEGRATION TESTS PASSED")
     else:
-        print("Some CWE integration tests failed.")
+        print("Some RAG + LLM integration tests failed.")
 
     print("=" * 70)
 
