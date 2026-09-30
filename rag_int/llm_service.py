@@ -1,8 +1,14 @@
 import os
+from pathlib import Path
 from typing import List
 
+from dotenv import load_dotenv
 from groq import Groq
 from pydantic import BaseModel, ConfigDict
+
+
+# Load the project-root .env before any Groq client can be created.
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 
 class Vulnerability(BaseModel):
