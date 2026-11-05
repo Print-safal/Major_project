@@ -1,4 +1,5 @@
 import os
+import time
 from pathlib import Path
 from typing import List
 
@@ -7,7 +8,7 @@ from groq import Groq
 from pydantic import BaseModel, ConfigDict
 
 
-# Load the project-root .env before any Groq client can be created.
+# Load the project-root .env file.
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 
@@ -95,33 +96,35 @@ Return only the requested structured output.
 
 MODEL = "openai/gpt-oss-120b"
 
+# Statistics from the most recent API request.
+LAST_CALL_STATS = {}
+
 
 def get_groq_client():
-    """Create and return the Groq client using the environment API key."""
+    """Create the Groq client."""
 
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
         raise RuntimeError(
             "GROQ_API_KEY is not set. "
-            "Set it in PowerShell before running."
+            "Set it in the project-root .env file."
         )
 
     return Groq(api_key=api_key)
 
+
 def review_code(code: str, security_context: str = "") -> SecurityReview:
     """
-    Review Python code using the Groq LLM.
+    Review Python code using Groq.
 
-    code:
-        Python source code to analyze.
-
-    security_context:
-        Security knowledge retrieved by the RAG system.
-
-    Returns:
-        A structured SecurityReview object.
+    Token usage and API latency are recorded immediately after the API
+    response, before Pydantic validation. Therefore, usage is retained
+    even when structured response validation fails.
     """
+
+    # Clear previous request statistics to prevent stale values.
+    LAST_CALL_STATS.clear()
 
     client = get_groq_client()
 
@@ -138,6 +141,8 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         "Determine whether the code contains any of the five target CWE "
         "vulnerabilities defined in the system instructions."
     )
+
+    start_time = time.perf_counter()
 
     response = client.chat.completions.create(
         model=MODEL,
@@ -162,6 +167,24 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         },
     )
 
+    llm_latency = time.perf_counter() - start_time
+    usage = response.usage
+
+    # Record API usage BEFORE attempting response validation.
+    LAST_CALL_STATS.update({
+        "llm_latency_seconds": llm_latency,
+        "prompt_tokens": (
+            usage.prompt_tokens if usage else None
+        ),
+        "completion_tokens": (
+            usage.completion_tokens if usage else None
+        ),
+        "total_tokens": (
+            usage.total_tokens if usage else None
+        ),
+    })
+
+    # Validation happens only after usage has been recorded.
     parsed = SecurityReview.model_validate_json(
         response.choices[0].message.content
     )

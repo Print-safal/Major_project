@@ -31,3 +31,15 @@ rag/knowledge_base/enriched/
 # Generated dynamic vector store
 rag/vector_store/dynamic_index.faiss
 rag/vector_store/dynamic_metadata.json
+
+# Local Python environment
+.venv*/
+venv/
+
+# Frontend dependencies and builds
+node_modules/
+dist/
+
+# Local secrets
+.env.*
+!.env.example
