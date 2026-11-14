@@ -108,7 +108,6 @@ SECURITY_PROFILES = {
             # Generic HTML attribute construction.
             r"""[A-Za-z-]+\s*=\s*\\?["'].*\+\s*[A-Za-z_]\w*""",
         ],
-
         "secure_patterns": [
             r"\bhtml\.escape\s*\(",
             r"\bescape\s*\(",
@@ -340,6 +339,59 @@ def calculate_secure_signal(code, cwe_id):
 
     return 0.0
 
+def get_matched_vulnerability_indicators(code, cwe_id):
+    """
+    Return the vulnerable patterns that match the submitted code.
+    Does not modify or calculate the existing vulnerability score.
+    """
+    profile = SECURITY_PROFILES[cwe_id]
+
+    return [
+        pattern
+        for pattern in profile.get("patterns", [])
+        if re.search(pattern, code, re.IGNORECASE)
+    ]
+
+
+def get_matched_secure_indicators(code, cwe_id):
+    """
+    Return the secure patterns that match the submitted code.
+    Does not modify or calculate the existing secure score.
+    """
+    profile = SECURITY_PROFILES[cwe_id]
+
+    return [
+        pattern
+        for pattern in profile.get("secure_patterns", [])
+        if re.search(pattern, code, re.IGNORECASE)
+    ]
+def get_contextual_security_evidence(code, cwe_id):
+    """
+    Return contextual security evidence for diagnostics only.
+    Does not modify vulnerability or secure scores.
+    """
+    evidence = []
+
+    if cwe_id == "CWE-22":
+        allowlist_pattern = (
+            r"if\s+[A-Za-z_]\w*\s+not\s+in\s+[A-Za-z_]\w*"
+        )
+
+        if re.search(allowlist_pattern, code, re.IGNORECASE):
+            evidence.append(
+                "Possible filename allowlist validation"
+            )
+
+    elif cwe_id == "CWE-79":
+        template_pattern = r"\brender_template\s*\("
+
+        if re.search(template_pattern, code, re.IGNORECASE):
+            evidence.append(
+                "Server-side template rendering detected; "
+                "safety depends on template autoescaping and usage"
+            )
+
+    return evidence
 
 if __name__ == "__main__":
     print("=" * 70)
