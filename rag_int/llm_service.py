@@ -1,11 +1,11 @@
 import os
 import time
 from pathlib import Path
-from typing import List
+from typing import List, Literal
 
 from dotenv import load_dotenv
 from groq import Groq
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictBool, model_validator
 
 
 # Load the project-root .env file.
@@ -13,9 +13,9 @@ load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 
 class Vulnerability(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", strict=True)
 
-    cwe: str
+    cwe: Literal["CWE-89", "CWE-78", "CWE-79", "CWE-22", "CWE-798"]
     vulnerability_name: str
     location: str
     explanation: str
@@ -23,10 +23,19 @@ class Vulnerability(BaseModel):
 
 
 class SecurityReview(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", strict=True)
 
-    vulnerable: bool
+    vulnerable: StrictBool
     vulnerabilities: List[Vulnerability]
+
+    @model_validator(mode="after")
+    def validate_consistency(self):
+        if self.vulnerable != bool(self.vulnerabilities):
+            raise ValueError(
+                "vulnerable must be True when vulnerabilities exist "
+                "and False when the list is empty."
+            )
+        return self
 
 
 SYSTEM_PROMPT = """
@@ -132,6 +141,9 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         "Analyze the following Python code for security vulnerabilities.\n\n"
         "Use the retrieved security knowledge below as supporting context.\n"
         "The retrieved knowledge is provided by the project's RAG security knowledge base.\n\n"
+        "Important: Retrieved knowledge is supporting context, not proof "
+        "that the submitted code is vulnerable. Base every finding on "
+        "the actual submitted source code.\n\n"
         "Retrieved Security Knowledge:\n\n"
         f"{security_context}\n\n"
         "Python code:\n\n"
