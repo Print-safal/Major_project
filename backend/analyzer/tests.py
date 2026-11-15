@@ -2,6 +2,7 @@ from unittest.mock import patch
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from groq import GroqError
+from pydantic import ValidationError
 from rest_framework.test import APITestCase
 
 
@@ -79,6 +80,44 @@ class CodeUploadViewTests(APITestCase):
 
     @patch(
         "analyzer.views.review_code_with_rag",
+        side_effect=RuntimeError("private retrieval details"),
+    )
+    def test_retrieval_failure_returns_generic_500(self, review):
+        with self.assertLogs("analyzer.views", level="ERROR"):
+            response = self.post_file()
+
+        self.assertEqual(response.status_code, 500)
+        self.assertEqual(
+            response.json(),
+            {"error": "An internal error occurred while processing the file."},
+        )
+        self.assertNotIn("private retrieval details", response.content.decode("utf-8"))
+        review.assert_called_once_with("print('hello')\n")
+
+    @patch("analyzer.views.review_code_with_rag")
+    def test_malformed_llm_response_returns_generic_500(self, review):
+        from rag_int.llm_service import SecurityReview
+
+        with self.assertRaises(ValidationError) as validation_error:
+            SecurityReview.model_validate({
+                "vulnerable": "not-a-boolean",
+                "vulnerabilities": [],
+            })
+        review.side_effect = validation_error.exception
+
+        with self.assertLogs("analyzer.views", level="ERROR"):
+            response = self.post_file()
+
+        self.assertEqual(response.status_code, 500)
+        self.assertEqual(
+            response.json(),
+            {"error": "An internal error occurred while processing the file."},
+        )
+        self.assertNotIn("Input should be", response.content.decode("utf-8"))
+        review.assert_called_once_with("print('hello')\n")
+
+    @patch(
+        "analyzer.views.review_code_with_rag",
         side_effect=GroqError("provider details"),
     )
     def test_provider_failure_returns_generic_502(self, review):
@@ -96,8 +135,14 @@ class CodeUploadViewTests(APITestCase):
     @patch("analyzer.views.review_code_with_rag")
     def test_success_response_remains_unchanged(self, review):
         review.return_value.model_dump.return_value = {
-            "vulnerable": False,
-            "vulnerabilities": [],
+            "vulnerable": True,
+            "vulnerabilities": [{
+                "cwe": "CWE-89",
+                "vulnerability_name": "SQL Injection",
+                "location": "line 1",
+                "explanation": "User input is interpolated into SQL.",
+                "remediation": "Use a parameterized query.",
+            }],
         }
 
         source = "raise RuntimeError('do not execute')\n"
@@ -109,7 +154,16 @@ class CodeUploadViewTests(APITestCase):
             {
                 "filename": "sample.py",
                 "language": "python",
-                "review": {"vulnerable": False, "vulnerabilities": []},
+                "review": {
+                    "vulnerable": True,
+                    "vulnerabilities": [{
+                        "cwe": "CWE-89",
+                        "vulnerability_name": "SQL Injection",
+                        "location": "line 1",
+                        "explanation": "User input is interpolated into SQL.",
+                        "remediation": "Use a parameterized query.",
+                    }],
+                },
             },
         )
         review.assert_called_once_with(source)
