@@ -8,15 +8,17 @@ from groq import GroqError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from rag.analysis.ast_context import extract_code_context
+
 
 logger = logging.getLogger(__name__)
 
 
-def review_code_with_rag(code):
+def review_code_with_rag(code, context=None):
     """Load and call the existing RAG integration only when a review runs."""
     from rag_int.rag_llm_integration import review_code_with_rag as rag_review
 
-    return rag_review(code)
+    return rag_review(code, context=context)
 
 
 class SourceSizeLimitUploadHandler(FileUploadHandler):
@@ -107,7 +109,15 @@ class CodeUploadView(APIView):
             return Response(error, status=400)
 
         try:
-            review = review_code_with_rag(code)
+            code_context = extract_code_context(code)
+            if code_context.parse_error is not None:
+                # ast.parse above already checked syntax; keep this guard so an
+                # extractor diagnostic can never be interpreted as reviewed code.
+                return Response(
+                    {"error": "Uploaded file contains invalid Python syntax."},
+                    status=400,
+                )
+            review = review_code_with_rag(code, context=code_context)
         except (GroqError, httpx.HTTPError, TimeoutError, ConnectionError):
             logger.exception("Upstream provider failed during security review.")
             return Response(

@@ -5,19 +5,48 @@ from rag_int import llm_service
 from rag_int import rag_llm_integration
 
 
-SOURCE = "query = f\"SELECT * FROM users WHERE id = {user_id}\"\n"
+SOURCE = '''
+def lookup(conn, user):
+    query = f"SELECT * FROM users WHERE id = '{user}'"
+    conn.execute(query)
+'''
 
 
-def retrieved_result(cwe_id, cwe_name, chunk_text):
+def retrieved_result(cwe_id, cwe_name, score=.91, text="CWE guidance"):
     return {
         "cwe_id": cwe_id,
         "cwe_name": cwe_name,
-        "score": 0.91,
+        "score": score,
         "security_score": 0.83,
         "vulnerable_evidence_count": 2,
-        "supporting_chunks": [
-            {"section": "Mitigation", "text": chunk_text},
-        ],
+        "supporting_chunks": [{"section": "Mitigation", "text": text}],
+    }
+
+
+def candidate(cwe_id, score=.8, text="reference guidance"):
+    return {
+        "cwe_id": cwe_id,
+        "semantic_score": score,
+        "source": f"{cwe_id}.json",
+        "section": "description",
+        "text": text,
+    }
+
+
+def llm_review(vulnerabilities=()):
+    return llm_service.SecurityReview.model_validate({
+        "vulnerable": bool(vulnerabilities),
+        "vulnerabilities": list(vulnerabilities),
+    })
+
+
+def llm_vulnerability(cwe, location="line 3"):
+    return {
+        "cwe": cwe,
+        "vulnerability_name": f"Finding {cwe}",
+        "location": location,
+        "explanation": "Synthetic finding for integration test.",
+        "remediation": "Apply the appropriate safeguard.",
     }
 
 
@@ -27,82 +56,143 @@ class RagLlmIntegrationTests(unittest.TestCase):
 
     @patch("rag_int.rag_llm_integration.review_code")
     @patch("rag_int.rag_llm_integration.aggregate_cwe_results")
-    def test_retrieved_context_and_review_are_forwarded(self, aggregate, review):
-        result = retrieved_result("CWE-89", "SQL Injection", "Use parameters")
-        aggregate.return_value = [result]
-        expected_review = llm_service.SecurityReview.model_validate({
-            "vulnerable": False,
-            "vulnerabilities": [],
-        })
-        review.return_value = expected_review
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[candidate("CWE-89")])
+    def test_vulnerable_pipeline_attaches_confidence_and_context(
+        self, semantic, aggregate, review,
+    ):
+        aggregate.return_value = [retrieved_result("CWE-89", "SQL Injection", text="Use parameters")]
+        review.return_value = llm_review([llm_vulnerability("CWE-89")])
 
         returned = rag_llm_integration.review_code_with_rag(SOURCE)
 
-        aggregate.assert_called_once_with(SOURCE, candidate_k=30, top_k=5)
-        review.assert_called_once()
+        aggregate.assert_called_once_with(
+            SOURCE, candidate_k=30, top_k=5, semantic_candidates=semantic.return_value
+        )
         kwargs = review.call_args.kwargs
         self.assertEqual(kwargs["code"], SOURCE)
-        context = kwargs["security_context"]
-        self.assertIn("CWE: CWE-89 - SQL Injection", context)
-        self.assertIn("Evidence: Use parameters", context)
-        self.assertIs(returned, expected_review)
+        self.assertIn("CWE: CWE-89 - SQL Injection", kwargs["security_context"])
+        self.assertIn("AST and indicator evidence", kwargs["security_context"])
+        self.assertIn("candidate evidence only", kwargs["security_context"])
+        payload = returned.model_dump()
+        self.assertTrue(payload["vulnerable"])
+        finding = payload["vulnerabilities"][0]
+        self.assertEqual(finding["cwe"], "CWE-89")
+        self.assertEqual(finding["vulnerability_name"], "Finding CWE-89")
+        self.assertIsNotNone(finding["confidence"]["score"])
+        self.assertEqual(payload["assessment_confidence"]["level"], "High")
+        self.assertEqual(len(payload["assessment_confidence"]["finding_confidences"]), 1)
 
     @patch("rag_int.rag_llm_integration.review_code")
     @patch("rag_int.rag_llm_integration.aggregate_cwe_results", return_value=[])
-    def test_empty_retrieval_still_calls_llm_with_empty_context_message(
-        self, aggregate, review,
-    ):
-        expected_review = object()
-        review.return_value = expected_review
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[])
+    def test_safe_pipeline_has_coverage_based_assessment(self, semantic, aggregate, review):
+        review.return_value = llm_review()
+        returned = rag_llm_integration.review_code_with_rag("value = 1\n")
 
-        returned = rag_llm_integration.review_code_with_rag(SOURCE)
-
-        aggregate.assert_called_once_with(SOURCE, candidate_k=30, top_k=5)
-        review.assert_called_once_with(
-            code=SOURCE,
-            security_context="No relevant security evidence was retrieved.",
+        aggregate.assert_called_once_with(
+            "value = 1\n", candidate_k=30, top_k=5, semantic_candidates=[]
         )
-        self.assertIs(returned, expected_review)
+        self.assertFalse(returned.vulnerable)
+        self.assertEqual(returned.vulnerabilities, [])
+        self.assertEqual(returned.assessment_confidence.level, "Medium")
+        self.assertIsNotNone(returned.assessment_confidence.score)
+        self.assertIn("all five supported CWEs", returned.assessment_confidence.explanation)
+
+    @patch("rag_int.rag_llm_integration.review_code")
+    @patch("rag_int.rag_llm_integration.aggregate_cwe_results", return_value=[])
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[candidate("CWE-89")])
+    def test_multiple_findings_get_different_confidence(self, semantic, aggregate, review):
+        review.return_value = llm_review([
+            llm_vulnerability("CWE-89", "line 3"),
+            llm_vulnerability("CWE-78", "line 4"),
+        ])
+        returned = rag_llm_integration.review_code_with_rag(SOURCE)
+        first, second = returned.vulnerabilities
+        self.assertEqual(first.cwe, "CWE-89")
+        self.assertEqual(second.cwe, "CWE-78")
+        self.assertNotEqual(first.confidence.level, second.confidence.level)
+        self.assertEqual(returned.assessment_confidence.level, "Undetermined")
+
+    @patch("rag_int.rag_llm_integration.review_code")
+    @patch("rag_int.rag_llm_integration.aggregate_cwe_results", return_value=[])
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[
+        candidate(cwe) for cwe in ("CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89")
+    ])
+    def test_all_five_supported_cwes_serialize(self, semantic, aggregate, review):
+        cwes = ("CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89")
+        review.return_value = llm_review([llm_vulnerability(cwe) for cwe in cwes])
+        result = rag_llm_integration.review_code_with_rag(SOURCE)
+        self.assertEqual([item.cwe for item in result.vulnerabilities], list(cwes))
+        self.assertTrue(all(item.confidence.level in {"High", "Medium", "Low", "Undetermined"}
+                            for item in result.vulnerabilities))
 
     @patch("rag_int.rag_llm_integration.review_code")
     @patch("rag_int.rag_llm_integration.aggregate_cwe_results")
-    def test_context_uses_only_first_two_results_and_first_chunk(
-        self, aggregate, review,
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[
+        candidate("CWE-89", .4), candidate("CWE-78", .9),
+    ])
+    def test_legacy_ranking_is_default_and_shadow_ranking_is_flagged(
+        self, semantic, aggregate, review,
     ):
         aggregate.return_value = [
-            retrieved_result("CWE-89", "SQL Injection", "first chunk one") | {
-                "supporting_chunks": [
-                    {"section": "A", "text": "first chunk one"},
-                    {"section": "B", "text": "first result extra chunk"},
-                ],
-            },
-            retrieved_result("CWE-78", "OS Command Injection", "second chunk one") | {
-                "supporting_chunks": [
-                    {"section": "C", "text": "second chunk one"},
-                    {"section": "D", "text": "second result extra chunk"},
-                ],
-            },
-            retrieved_result("CWE-79", "Cross-Site Scripting", "third result") ,
+            retrieved_result("CWE-89", "SQL Injection"),
+            retrieved_result("CWE-78", "OS Command Injection"),
         ]
+        review.return_value = llm_review()
+        with patch.object(rag_llm_integration, "USE_SHADOW_RANKING", False):
+            rag_llm_integration.review_code_with_rag(SOURCE)
+            self.assertEqual(rag_llm_integration.LAST_RAG_STATS["selected_candidate_order"],
+                             ["CWE-89", "CWE-78"])
+            self.assertEqual(rag_llm_integration.LAST_RAG_STATS["legacy_candidate_order"],
+                             ["CWE-89", "CWE-78"])
 
-        rag_llm_integration.review_code_with_rag(SOURCE)
+        with patch.object(rag_llm_integration, "USE_SHADOW_RANKING", True):
+            rag_llm_integration.review_code_with_rag(SOURCE)
+            self.assertEqual(rag_llm_integration.LAST_RAG_STATS["shadow_candidate_order"][0],
+                             "CWE-78")
+            self.assertEqual(rag_llm_integration.LAST_RAG_STATS["selected_candidate_order"],
+                             ["CWE-78", "CWE-89"])
 
-        context = review.call_args.kwargs["security_context"]
-        self.assertIn("CWE: CWE-89 - SQL Injection", context)
-        self.assertIn("CWE: CWE-78 - OS Command Injection", context)
-        self.assertNotIn("CWE: CWE-79", context)
-        self.assertIn("first chunk one", context)
-        self.assertIn("second chunk one", context)
-        self.assertNotIn("first result extra chunk", context)
-        self.assertNotIn("second result extra chunk", context)
-
-    @patch("rag_int.rag_llm_integration.aggregate_cwe_results",
-           side_effect=RuntimeError("private retrieval details"))
-    def test_retrieval_failure_propagates_to_api_boundary(self, aggregate):
+    @patch("rag_int.rag_llm_integration.review_code")
+    @patch("rag_int.rag_llm_integration.aggregate_cwe_results", return_value=[])
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[candidate("CWE-89")])
+    def test_retrieval_failure_propagates_without_fabricating_confidence(
+        self, semantic, aggregate, review,
+    ):
+        aggregate.side_effect = RuntimeError("private retrieval details")
         with self.assertRaisesRegex(RuntimeError, "private retrieval details"):
             rag_llm_integration.review_code_with_rag(SOURCE)
+        review.assert_not_called()
 
-        aggregate.assert_called_once_with(SOURCE, candidate_k=30, top_k=5)
+    @patch("rag_int.rag_llm_integration.score_assessment_confidence",
+           side_effect=RuntimeError("confidence engine failed"))
+    @patch("rag_int.rag_llm_integration.review_code", return_value=llm_review())
+    @patch("rag_int.rag_llm_integration.aggregate_cwe_results", return_value=[])
+    @patch("rag_int.rag_llm_integration.semantic_search", return_value=[])
+    def test_confidence_failure_propagates(self, semantic, aggregate, review, scorer):
+        with self.assertRaisesRegex(RuntimeError, "confidence engine failed"):
+            rag_llm_integration.review_code_with_rag("value = 1")
+
+    def test_mismatched_context_is_rejected(self):
+        from rag.analysis.ast_context import extract_code_context
+        context = extract_code_context("value = 1")
+        with self.assertRaisesRegex(ValueError, "does not match"):
+            rag_llm_integration.review_code_with_rag("other = 2", context=context)
+
+    def test_formatter_keeps_two_legacy_results_and_adds_location_evidence(self):
+        context = rag_llm_integration.format_rag_context(
+            [retrieved_result("CWE-89", "SQL Injection"),
+             retrieved_result("CWE-78", "OS Command Injection"),
+             retrieved_result("CWE-79", "XSS")],
+            rag_llm_integration.match_context(
+                __import__("rag.analysis.ast_context", fromlist=["extract_code_context"])
+                .extract_code_context(SOURCE)
+            ),
+        )
+        self.assertIn("CWE: CWE-89 - SQL Injection", context)
+        self.assertIn("CWE: CWE-78 - OS Command Injection", context)
+        self.assertNotIn("CWE: CWE-79 - XSS", context)
+        self.assertIn("line 3", context)
 
 
 if __name__ == "__main__":

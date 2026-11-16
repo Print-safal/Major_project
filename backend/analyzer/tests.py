@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import ANY, patch
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from groq import GroqError
@@ -76,7 +76,7 @@ class CodeUploadViewTests(APITestCase):
             {"error": "An internal error occurred while processing the file."},
         )
         self.assertNotIn("private details", response.content.decode("utf-8"))
-        review.assert_called_once_with("print('hello')\n")
+        review.assert_called_once_with("print('hello')\n", context=ANY)
 
     @patch(
         "analyzer.views.review_code_with_rag",
@@ -92,7 +92,7 @@ class CodeUploadViewTests(APITestCase):
             {"error": "An internal error occurred while processing the file."},
         )
         self.assertNotIn("private retrieval details", response.content.decode("utf-8"))
-        review.assert_called_once_with("print('hello')\n")
+        review.assert_called_once_with("print('hello')\n", context=ANY)
 
     @patch("analyzer.views.review_code_with_rag")
     def test_malformed_llm_response_returns_generic_500(self, review):
@@ -114,7 +114,7 @@ class CodeUploadViewTests(APITestCase):
             {"error": "An internal error occurred while processing the file."},
         )
         self.assertNotIn("Input should be", response.content.decode("utf-8"))
-        review.assert_called_once_with("print('hello')\n")
+        review.assert_called_once_with("print('hello')\n", context=ANY)
 
     @patch(
         "analyzer.views.review_code_with_rag",
@@ -130,7 +130,7 @@ class CodeUploadViewTests(APITestCase):
             {"error": "The upstream security review provider failed."},
         )
         self.assertNotIn("provider details", response.content.decode("utf-8"))
-        review.assert_called_once_with("print('hello')\n")
+        review.assert_called_once_with("print('hello')\n", context=ANY)
 
     @patch("analyzer.views.review_code_with_rag")
     def test_success_response_remains_unchanged(self, review):
@@ -166,4 +166,34 @@ class CodeUploadViewTests(APITestCase):
                 },
             },
         )
-        review.assert_called_once_with(source)
+        review.assert_called_once_with(source, context=ANY)
+
+    @patch("analyzer.views.review_code_with_rag")
+    def test_success_response_preserves_fields_and_includes_confidence(self, review):
+        from rag_int.llm_service import EnrichedSecurityReview
+
+        review.return_value = EnrichedSecurityReview.model_validate({
+            "vulnerable": False,
+            "vulnerabilities": [],
+            "assessment_confidence": {
+                "vulnerable": False,
+                "score": None,
+                "level": "Undetermined",
+                "components": [],
+                "finding_confidences": [],
+                "supporting_evidence": [],
+                "conflicting_evidence": [],
+                "explanation": "Insufficient evidence.",
+            },
+        })
+        response = self.post_file(content=b"value = 1\n")
+
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data["filename"], "sample.py")
+        self.assertEqual(data["language"], "python")
+        self.assertIn("vulnerable", data["review"])
+        self.assertIn("vulnerabilities", data["review"])
+        self.assertEqual(data["review"]["assessment_confidence"]["level"], "Undetermined")
+        self.assertIsNone(data["review"]["assessment_confidence"]["score"])
+        review.assert_called_once_with("value = 1\n", context=ANY)

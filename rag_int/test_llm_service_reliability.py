@@ -57,6 +57,36 @@ class SecurityReviewSchemaTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             llm_service.SecurityReview.model_validate(payload)
 
+    def test_enriched_api_schema_rejects_invalid_confidence(self):
+        payload = {
+            "vulnerable": False,
+            "vulnerabilities": [],
+            "assessment_confidence": {
+                "vulnerable": False,
+                "score": None,
+                "level": "Undetermined",
+                "components": [],
+                "finding_confidences": [],
+                "supporting_evidence": [],
+                "conflicting_evidence": [],
+                "explanation": "insufficient",
+            },
+        }
+        valid = llm_service.EnrichedSecurityReview.model_validate(payload)
+        self.assertIsNone(valid.assessment_confidence.score)
+
+        bad_score = {**payload, "assessment_confidence": {
+            **payload["assessment_confidence"], "score": 101,
+        }}
+        with self.assertRaises(ValidationError):
+            llm_service.EnrichedSecurityReview.model_validate(bad_score)
+
+        bad_level = {**payload, "assessment_confidence": {
+            **payload["assessment_confidence"], "level": "High",
+        }}
+        with self.assertRaises(ValidationError):
+            llm_service.EnrichedSecurityReview.model_validate(bad_level)
+
 
 class ReviewCodeReliabilityTests(unittest.TestCase):
     def test_context_and_stats_are_preserved(self):

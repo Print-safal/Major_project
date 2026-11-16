@@ -1,7 +1,5 @@
 from collections import defaultdict
 
-from rag.retrieval.hybrid_retriever import semantic_search
-
 from rag.retrieval.security_profiles import (
     SECURITY_PROFILES,
     calculate_security_signal,
@@ -49,7 +47,8 @@ def get_evidence_weight(section):
 def aggregate_cwe_results(
     query,
     candidate_k=30,
-    top_k=5
+    top_k=5,
+    semantic_candidates=None,
 ):
     """
     Retrieve knowledge chunks, combine semantic and
@@ -63,10 +62,13 @@ def aggregate_cwe_results(
     # -----------------------------------------------------
     # 1. Semantic retrieval
     # -----------------------------------------------------
-    candidates = semantic_search(
-        query,
-        top_k=candidate_k
-    )
+    candidates = semantic_candidates
+    if candidates is None:
+        from rag.retrieval.hybrid_retriever import semantic_search
+        candidates = semantic_search(
+            query,
+            top_k=candidate_k
+        )
 
     # -----------------------------------------------------
     # 2. Security signals

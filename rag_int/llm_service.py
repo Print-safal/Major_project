@@ -1,11 +1,11 @@
 import os
 import time
 from pathlib import Path
-from typing import List, Literal
+from typing import List, Literal, Optional
 
 from dotenv import load_dotenv
 from groq import Groq
-from pydantic import BaseModel, ConfigDict, StrictBool, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, model_validator
 
 
 # Load the project-root .env file.
@@ -35,6 +35,128 @@ class SecurityReview(BaseModel):
                 "vulnerable must be True when vulnerabilities exist "
                 "and False when the list is empty."
             )
+        return self
+
+
+ConfidenceLevelName = Literal["High", "Medium", "Low", "Undetermined"]
+
+
+class SourceLocation(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    line_start: int = Field(ge=1)
+    column_start: int = Field(ge=0)
+    line_end: int = Field(ge=1)
+    column_end: int = Field(ge=0)
+
+
+class EvidenceReference(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe_id: Literal["CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89"]
+    kind: Literal["semantic", "vulnerable", "secure", "contextual"]
+    evidence: str
+    provenance: str
+    score: Optional[float] = Field(default=None, ge=-1, le=1)
+    location: Optional[SourceLocation] = None
+    explanation: str
+
+
+class ConfidenceComponentResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    name: str
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    weight: float = Field(ge=0)
+    explanation: str
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class FindingConfidenceResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe_id: Literal["CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89"]
+    location: str
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    components: List[ConfidenceComponentResponse]
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+    explanation: str
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class ReviewedVulnerability(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe: Literal["CWE-89", "CWE-78", "CWE-79", "CWE-22", "CWE-798"]
+    vulnerability_name: str
+    location: str
+    explanation: str
+    remediation: str
+    confidence: FindingConfidenceResponse
+
+    @model_validator(mode="after")
+    def validate_confidence_target(self):
+        if self.confidence.cwe_id != self.cwe or self.confidence.location != self.location:
+            raise ValueError("finding confidence must match its CWE and location")
+        return self
+
+
+class AssessmentConfidenceResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    vulnerable: StrictBool
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    components: List[ConfidenceComponentResponse]
+    finding_confidences: List[FindingConfidenceResponse]
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+    explanation: str
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class EnrichedSecurityReview(BaseModel):
+    """API review response; separate from the schema requested from the LLM."""
+
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    vulnerable: StrictBool
+    vulnerabilities: List[ReviewedVulnerability]
+    assessment_confidence: AssessmentConfidenceResponse
+
+    @model_validator(mode="after")
+    def validate_consistency(self):
+        if self.vulnerable != bool(self.vulnerabilities):
+            raise ValueError("vulnerable must agree with the vulnerability list")
+        if self.assessment_confidence.vulnerable != self.vulnerable:
+            raise ValueError("assessment confidence must match review status")
+        if len(self.assessment_confidence.finding_confidences) != len(self.vulnerabilities):
+            raise ValueError("assessment finding confidence count must match findings")
+        for finding, confidence in zip(
+            self.vulnerabilities, self.assessment_confidence.finding_confidences
+        ):
+            if finding.cwe != confidence.cwe_id or finding.location != confidence.location:
+                raise ValueError("assessment finding confidence must match each finding")
         return self
 
 
