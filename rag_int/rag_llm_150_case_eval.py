@@ -1,4 +1,5 @@
 import json
+import argparse
 import sys
 import time
 from pathlib import Path
@@ -21,6 +22,7 @@ OUTPUT_FILE = (
     / "rag_int"
     / "rag_llm_150_case_results.json"
 )
+EXPERIMENT_CONFIG = {}
 
 TARGET_CWES = {
     "CWE-22",
@@ -81,6 +83,12 @@ def load_existing_results():
             "Existing results file does not contain a valid results list."
         )
 
+    if data.get("evaluation", {}).get("experiment_config") != EXPERIMENT_CONFIG:
+        raise ValueError(
+            "Existing output belongs to a different experiment configuration; "
+            "choose a new output path or matching configuration."
+        )
+
     return results
 
 
@@ -91,6 +99,7 @@ def save_results(results, metrics):
             "total_cases": 150,
             "pipeline": "RAG + LLM",
             "target_cwes": sorted(TARGET_CWES),
+            "experiment_config": EXPERIMENT_CONFIG,
         },
         "metrics": metrics,
         "results": results,
@@ -211,6 +220,25 @@ def calculate_metrics(results):
             ),
         }
 
+    completed = [r for r in results if r.get("status") == "completed"]
+    tp = sum(r["ground_truth_cwe"] in TARGET_CWES and r["predicted_vulnerable"] is True for r in completed)
+    tn = sum(r["ground_truth_cwe"] is None and r["predicted_vulnerable"] is False for r in completed)
+    fp = sum(r["ground_truth_cwe"] is None and r["predicted_vulnerable"] is True for r in completed)
+    fn = sum(r["ground_truth_cwe"] in TARGET_CWES and r["predicted_vulnerable"] is False for r in completed)
+    precision = tp / (tp + fp) if tp + fp else 0.0
+    recall = tp / (tp + fn) if tp + fn else 0.0
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+    confidence_distribution = {level: 0 for level in ("High", "Medium", "Low", "Undetermined")}
+    for result in completed:
+        level = result.get("assessment_confidence", {}).get("level")
+        if level in confidence_distribution:
+            confidence_distribution[level] += 1
+    correct_scores = [r["assessment_confidence"]["score"] for r in completed
+                      if r.get("pass") and r.get("assessment_confidence", {}).get("score") is not None]
+    incorrect_scores = [r["assessment_confidence"]["score"] for r in completed
+                        if not r.get("pass") and r.get("assessment_confidence", {}).get("score") is not None]
+    latencies = [r["latency_seconds"] for r in completed if r.get("latency_seconds") is not None]
+
     return {
         "total_cases": total,
         "vulnerable_cases": vulnerable_count,
@@ -221,10 +249,19 @@ def calculate_metrics(results):
         "overall_case_accuracy": overall_accuracy,
         "overall_passed": overall_passed,
         "per_cwe": per_cwe,
+        "binary_confusion": {"tp": tp, "tn": tn, "fp": fp, "fn": fn},
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "assessment_confidence_distribution": confidence_distribution,
+        "mean_confidence_when_correct": sum(correct_scores) / len(correct_scores) if correct_scores else None,
+        "mean_confidence_when_incorrect": sum(incorrect_scores) / len(incorrect_scores) if incorrect_scores else None,
+        "average_latency_seconds": sum(latencies) / len(latencies) if latencies else None,
+        "token_usage_available": False,
     }
 
 
-def create_result(case, review):
+def create_result(case, review, stats, elapsed_seconds):
     ground_truth = case["ground_truth_cwe"]
 
     predicted_cwes = [
@@ -246,6 +283,7 @@ def create_result(case, review):
                 "location": vulnerability.location,
                 "explanation": vulnerability.explanation,
                 "remediation": vulnerability.remediation,
+                "confidence": vulnerability.confidence.model_dump(),
             }
             for vulnerability in review.vulnerabilities
         ],
@@ -261,6 +299,10 @@ def create_result(case, review):
         )
 
     case_result["pass"] = passed
+    case_result["assessment_confidence"] = review.assessment_confidence.model_dump()
+    case_result["retrieval_stats"] = dict(stats)
+    case_result["latency_seconds"] = elapsed_seconds
+    case_result["token_usage"] = None
 
     return case_result
 
@@ -279,6 +321,19 @@ def create_error_result(case, error):
 
 
 def main():
+    global OUTPUT_FILE, EXPERIMENT_CONFIG
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    OUTPUT_FILE = args.output.resolve()
+    from rag_int import rag_llm_integration
+    from rag_int.llm_service import MODEL
+    EXPERIMENT_CONFIG = {
+        "contextual_evidence_enabled": rag_llm_integration.USE_CONTEXTUAL_EVIDENCE,
+        "shadow_ranking_enabled": rag_llm_integration.USE_SHADOW_RANKING,
+        "model": MODEL,
+        "prompt": "unchanged production prompt",
+    }
     print("=" * 70)
     print("RAG + LLM 150-CASE RESUME EVALUATION")
     print("=" * 70)
@@ -386,11 +441,15 @@ def main():
         print("=" * 70)
 
         try:
+            started = time.perf_counter()
             review = review_code_with_rag(code)
+            elapsed_seconds = time.perf_counter() - started
 
             case_result = create_result(
                 case,
                 review,
+                rag_llm_integration.LAST_RAG_STATS,
+                elapsed_seconds,
             )
 
             results_by_id[test_id] = case_result

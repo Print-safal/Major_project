@@ -30,6 +30,7 @@ from rag_int.llm_service import (
 # Diagnostic shadow order can be selected for A/B inspection. The existing
 # aggregator remains the default and is always retained as the fallback.
 USE_SHADOW_RANKING = os.getenv("RAG_USE_SHADOW_RANKING", "false").lower() == "true"
+USE_CONTEXTUAL_EVIDENCE = os.getenv("RAG_USE_CONTEXTUAL_EVIDENCE", "true").lower() == "true"
 
 # Stores timing and ordering information for the most recent API request.
 LAST_RAG_STATS = {}
@@ -178,7 +179,7 @@ def review_code_with_rag(code: str, context: CodeContext | None = None):
     shadow_results = build_shadow_retrieval(
         code, semantic_candidates=semantic_candidates, context=context, top_k=5
     )
-    contextual_matches = match_context(context)
+    contextual_matches = match_context(context) if USE_CONTEXTUAL_EVIDENCE else []
     retrieval_latency = time.perf_counter() - retrieval_start
 
     legacy_order = [item["cwe_id"] for item in rag_results]
@@ -191,12 +192,16 @@ def review_code_with_rag(code: str, context: CodeContext | None = None):
         "shadow_candidate_order": shadow_order,
         "selected_candidate_order": chosen_order,
         "shadow_ranking_enabled": USE_SHADOW_RANKING,
+        "contextual_evidence_enabled": USE_CONTEXTUAL_EVIDENCE,
+        "contextual_match_count": len(contextual_matches),
+        "shadow_order_changed_candidates": shadow_order != legacy_order,
     })
 
     security_context = format_rag_context(chosen_results, contextual_matches)
     llm_review = review_code(code=code, security_context=security_context)
 
-    evidence = tuple(item for result in shadow_results for item in result.evidence)
+    evidence = tuple(item for result in shadow_results for item in result.evidence
+                     if USE_CONTEXTUAL_EVIDENCE or item.kind == "semantic")
     finding_confidences = tuple(
         score_finding_confidence(finding, evidence, all_evidence=evidence)
         for finding in llm_review.vulnerabilities
