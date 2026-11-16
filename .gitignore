@@ -31,3 +31,7 @@ rag/knowledge_base/enriched/
 # Generated dynamic vector store
 rag/vector_store/dynamic_index.faiss
 rag/vector_store/dynamic_metadata.json
+# Local datasets and nested repository
+Major_project-git/
+dataset/raw_downloads/
+

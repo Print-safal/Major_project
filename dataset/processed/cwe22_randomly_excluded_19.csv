@@ -1,0 +1,20 @@
+﻿cve,code_length,source_count,sources,source_record_count,exclusion_reason,exclusion_reason
+CVE-2025-53358,2533,1,CyberSet,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2022-23609,2236,1,Zenodo,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-23535,258,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2023-29159,819,1,CyberSet,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2020-25032,1000,1,CyberSet,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-29065,474,1,Patchwork,2,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2024-42474,248,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-34070,1099,1,Patchwork,2,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2025-55201,360,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2021-32674,1079,3,CEVuD;Patchwork;Zenodo,5,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2024-22232,2609,1,Patchwork,4,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-32274,207,1,Patchwork,3,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2022-24840,2743,3,CEVuD;Patchwork;Zenodo,8,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-5422,168,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2022-41547,451,1,Patchwork,3,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2024-6781,479,1,CyberSet,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-12568,276,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2023-5115,937,1,Patchwork,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
+CVE-2026-28795,1689,1,CyberSet,1,Random exclusion to meet the 200-case target; not a quality judgment.,Random exclusion to meet the 200-case target; not a quality judgment.
