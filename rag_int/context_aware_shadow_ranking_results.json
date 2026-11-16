@@ -1,0 +1,3184 @@
+{
+  "evaluation": {
+    "dataset": "final_150_cases.json",
+    "total_cases": 150,
+    "pipeline": "RAG + LLM",
+    "target_cwes": [
+      "CWE-22",
+      "CWE-78",
+      "CWE-79",
+      "CWE-798",
+      "CWE-89"
+    ],
+    "experiment_config": {
+      "contextual_evidence_enabled": true,
+      "shadow_ranking_enabled": true,
+      "model": "openai/gpt-oss-120b",
+      "prompt": "unchanged production prompt"
+    }
+  },
+  "metrics": {
+    "total_cases": 17,
+    "vulnerable_cases": 17,
+    "safe_cases": 0,
+    "vulnerable_cwe_accuracy": 0.058823529411764705,
+    "strict_exact_cwe_accuracy": 0.058823529411764705,
+    "safe_code_accuracy": 0.0,
+    "overall_case_accuracy": 0.058823529411764705,
+    "overall_passed": 1,
+    "per_cwe": {
+      "CWE-22": {
+        "total": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "CWE-78": {
+        "total": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "CWE-79": {
+        "total": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "CWE-798": {
+        "total": 0,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "CWE-89": {
+        "total": 17,
+        "correct": 1,
+        "accuracy": 0.058823529411764705
+      }
+    },
+    "binary_confusion": {
+      "tp": 1,
+      "tn": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "assessment_confidence_distribution": {
+      "High": 0,
+      "Medium": 1,
+      "Low": 0,
+      "Undetermined": 0
+    },
+    "mean_confidence_when_correct": 73.01811351495631,
+    "mean_confidence_when_incorrect": null,
+    "average_latency_seconds": 54.08197999998811,
+    "token_usage_available": false
+  },
+  "results": [
+    {
+      "test_id": "TC89_01",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198470, Requested 1972. Please try again in 3m10.944s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_02",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198455, Requested 1801. Please try again in 1m50.592s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_03",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198438, Requested 1865. Please try again in 2m10.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_04",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198422, Requested 1902. Please try again in 2m19.968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_05",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198407, Requested 1853. Please try again in 1m52.32s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_06",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198378, Requested 1955. Please try again in 2m23.856s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_07",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198363, Requested 1789. Please try again in 1m5.664s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_08",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198348, Requested 1962. Please try again in 2m13.919999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_09",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198333, Requested 2003. Please try again in 2m25.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_10",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198319, Requested 1898. Please try again in 1m33.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_11",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "query construction in count() function (line 2)",
+          "explanation": "The function builds a SQL statement by directly inserting the untrusted 'category' argument into the query string using the % operator, then executes it with conn.execute(). This allows an attacker to inject arbitrary SQL via the 'category' parameter.",
+          "remediation": "Use parameterized queries or prepared statements instead of string formatting, e.g., conn.execute(\"SELECT COUNT(*) FROM items WHERE category=?\", (category,)) or the appropriate placeholder syntax for the database driver.",
+          "confidence": {
+            "cwe_id": "CWE-89",
+            "location": "query construction in count() function (line 2)",
+            "score": 73.01811351495631,
+            "level": "Medium",
+            "components": [
+              {
+                "name": "semantic_relevance",
+                "score": 40.6539648771286,
+                "level": "Low",
+                "weight": 10.0,
+                "explanation": "Maximum target-CWE retrieval relevance; semantic relevance is supporting context only.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using Python format strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.406539648771286,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                    "provenance": "faiss:CWE-89.json#secure_examples",
+                    "score": 0.400501549243927,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using string concatenation with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.2928430140018463,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using f-strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.28472745418548584,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2803497016429901,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Concatenating user input directly into SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.28026264905929565,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.2746350169181824,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Use parameterized SQL queries",
+                    "provenance": "faiss:CWE-89.json#secure_patterns",
+                    "score": 0.26865023374557495,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "parameterized query",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.26387155055999756,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "User input flows into an SQL query",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2637178599834442,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "String concatenation used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2633751630783081,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Failing to use parameterized queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.2557770311832428,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "raw SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2553997039794922,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.25518038868904114,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2532666027545929,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL concatenation",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.24358150362968445,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using string formatting to construct SQL statements",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.21546122431755066,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Raw SQL execution with external input",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19886139035224915,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "format() used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19822800159454346,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Database query contains unsanitized request parameters",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.1860310286283493,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using f-strings with untrusted input in SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.18473681807518005,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "cwe_agreement",
+                "score": 20.0,
+                "level": "Low",
+                "weight": 10.0,
+                "explanation": "Share of distinct retrieved CWE labels agreeing with this finding; retrieval agreement is not proof.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using Python format strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.406539648771286,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                    "provenance": "faiss:CWE-89.json#secure_examples",
+                    "score": 0.400501549243927,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using string concatenation with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.2928430140018463,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using f-strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.28472745418548584,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2803497016429901,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Concatenating user input directly into SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.28026264905929565,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.2746350169181824,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Use parameterized SQL queries",
+                    "provenance": "faiss:CWE-89.json#secure_patterns",
+                    "score": 0.26865023374557495,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "parameterized query",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.26387155055999756,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "User input flows into an SQL query",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2637178599834442,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "String concatenation used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2633751630783081,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Failing to use parameterized queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.2557770311832428,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "raw SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2553997039794922,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.25518038868904114,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2532666027545929,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL concatenation",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.24358150362968445,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using string formatting to construct SQL statements",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.21546122431755066,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Raw SQL execution with external input",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19886139035224915,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "format() used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19822800159454346,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Database query contains unsanitized request parameters",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.1860310286283493,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using f-strings with untrusted input in SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.18473681807518005,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ],
+                "conflicting_evidence": [
+                  {
+                    "cwe_id": "CWE-79",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+                    "provenance": "faiss:CWE-79.json#vulnerable_examples",
+                    "score": 0.3406277596950531,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-79",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+                    "provenance": "faiss:CWE-79.json#secure_examples",
+                    "score": 0.1827448010444641,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-78",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+                    "provenance": "faiss:CWE-78.json#secure_examples",
+                    "score": 0.22275269031524658,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-78",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+                    "provenance": "faiss:CWE-78.json#vulnerable_examples",
+                    "score": 0.18772223591804504,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-798",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+                    "provenance": "faiss:CWE-798.json#secure_examples",
+                    "score": 0.21065637469291687,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-798",
+                    "kind": "semantic",
+                    "evidence": "Database username and password stored directly in Python code",
+                    "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+                    "score": 0.19894680380821228,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+                    "provenance": "faiss:CWE-22.json#secure_examples",
+                    "score": 0.19201654195785522,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "os.path.join",
+                    "provenance": "faiss:CWE-22.json#keywords",
+                    "score": 0.18783660233020782,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "os.path.join() used without checking the resulting path",
+                    "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+                    "score": 0.1832674741744995,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ]
+              },
+              {
+                "name": "contextual_indicators",
+                "score": 100.0,
+                "level": "High",
+                "weight": 20.0,
+                "explanation": "AST/profile indicator support, with safeguards retained as conflicting evidence.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bexecute\\s*\\(",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 16,
+                      "line_end": 3,
+                      "column_end": 24
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bSELECT\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 13,
+                      "line_end": 2,
+                      "column_end": 19
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bFROM\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 29,
+                      "line_end": 2,
+                      "column_end": 33
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bWHERE\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 40,
+                      "line_end": 2,
+                      "column_end": 45
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "conn.execute",
+                    "provenance": "ast.call",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "source_to_sink",
+                "score": 55.0,
+                "level": "Medium",
+                "weight": 20.0,
+                "explanation": "Potential AST source-to-sink candidates receive limited support and remain unconfirmed.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "safeguards",
+                "score": null,
+                "level": "Undetermined",
+                "weight": 15.0,
+                "explanation": "A matching safeguard is treated as evidence against the reported vulnerability, not as guaranteed protection.",
+                "supporting_evidence": [],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "llm_consistency",
+                "score": 100.0,
+                "level": "High",
+                "weight": 25.0,
+                "explanation": "Consistency of the reported LLM finding with independent collected code evidence.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bexecute\\s*\\(",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 16,
+                      "line_end": 3,
+                      "column_end": 24
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bSELECT\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 13,
+                      "line_end": 2,
+                      "column_end": 19
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bFROM\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 29,
+                      "line_end": 2,
+                      "column_end": 33
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bWHERE\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 40,
+                      "line_end": 2,
+                      "column_end": 45
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "conn.execute",
+                    "provenance": "ast.call",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              }
+            ],
+            "supporting_evidence": [
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using Python format strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.406539648771286,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                "provenance": "faiss:CWE-89.json#secure_examples",
+                "score": 0.400501549243927,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using string concatenation with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.2928430140018463,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using f-strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.28472745418548584,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2803497016429901,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Concatenating user input directly into SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.28026264905929565,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.2746350169181824,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Use parameterized SQL queries",
+                "provenance": "faiss:CWE-89.json#secure_patterns",
+                "score": 0.26865023374557495,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "parameterized query",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.26387155055999756,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "User input flows into an SQL query",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2637178599834442,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "String concatenation used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2633751630783081,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Failing to use parameterized queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.2557770311832428,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "raw SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2553997039794922,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.25518038868904114,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2532666027545929,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL concatenation",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.24358150362968445,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using string formatting to construct SQL statements",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.21546122431755066,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Raw SQL execution with external input",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19886139035224915,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "format() used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19822800159454346,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Database query contains unsanitized request parameters",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.1860310286283493,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using f-strings with untrusted input in SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.18473681807518005,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bexecute\\s*\\(",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 16,
+                  "line_end": 3,
+                  "column_end": 24
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bSELECT\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 13,
+                  "line_end": 2,
+                  "column_end": 19
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bFROM\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 29,
+                  "line_end": 2,
+                  "column_end": 33
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bWHERE\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 40,
+                  "line_end": 2,
+                  "column_end": 45
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "conn.execute",
+                "provenance": "ast.call",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "parameter:category@1 → conn.execute",
+                "provenance": "ast.source_to_sink_candidate",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+              }
+            ],
+            "conflicting_evidence": [
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+                "provenance": "faiss:CWE-79.json#vulnerable_examples",
+                "score": 0.3406277596950531,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+                "provenance": "faiss:CWE-79.json#secure_examples",
+                "score": 0.1827448010444641,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+                "provenance": "faiss:CWE-78.json#secure_examples",
+                "score": 0.22275269031524658,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+                "provenance": "faiss:CWE-78.json#vulnerable_examples",
+                "score": 0.18772223591804504,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+                "provenance": "faiss:CWE-798.json#secure_examples",
+                "score": 0.21065637469291687,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "Database username and password stored directly in Python code",
+                "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+                "score": 0.19894680380821228,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+                "provenance": "faiss:CWE-22.json#secure_examples",
+                "score": 0.19201654195785522,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join",
+                "provenance": "faiss:CWE-22.json#keywords",
+                "score": 0.18783660233020782,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join() used without checking the resulting path",
+                "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+                "score": 0.1832674741744995,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              }
+            ],
+            "explanation": "Score summarizes available evidence and agreement; it is not a probability. Potential source-to-sink evidence is syntactic and unverified. Vulnerability severity is assessed separately."
+          }
+        }
+      ],
+      "status": "completed",
+      "pass": true,
+      "assessment_confidence": {
+        "vulnerable": true,
+        "score": 73.01811351495631,
+        "level": "Medium",
+        "components": [
+          {
+            "name": "finding:CWE-89:query construction in count() function (line 2)",
+            "score": 73.01811351495631,
+            "level": "Medium",
+            "weight": 1.0,
+            "explanation": "Reported-finding confidence; overall aggregation emphasizes the weakest finding.",
+            "supporting_evidence": [
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using Python format strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.406539648771286,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                "provenance": "faiss:CWE-89.json#secure_examples",
+                "score": 0.400501549243927,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using string concatenation with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.2928430140018463,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using f-strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.28472745418548584,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2803497016429901,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Concatenating user input directly into SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.28026264905929565,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.2746350169181824,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Use parameterized SQL queries",
+                "provenance": "faiss:CWE-89.json#secure_patterns",
+                "score": 0.26865023374557495,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "parameterized query",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.26387155055999756,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "User input flows into an SQL query",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2637178599834442,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "String concatenation used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2633751630783081,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Failing to use parameterized queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.2557770311832428,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "raw SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2553997039794922,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.25518038868904114,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2532666027545929,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL concatenation",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.24358150362968445,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using string formatting to construct SQL statements",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.21546122431755066,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Raw SQL execution with external input",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19886139035224915,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "format() used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19822800159454346,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Database query contains unsanitized request parameters",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.1860310286283493,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using f-strings with untrusted input in SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.18473681807518005,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bexecute\\s*\\(",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 16,
+                  "line_end": 3,
+                  "column_end": 24
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bSELECT\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 13,
+                  "line_end": 2,
+                  "column_end": 19
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bFROM\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 29,
+                  "line_end": 2,
+                  "column_end": 33
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bWHERE\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 40,
+                  "line_end": 2,
+                  "column_end": 45
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "conn.execute",
+                "provenance": "ast.call",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "parameter:category@1 → conn.execute",
+                "provenance": "ast.source_to_sink_candidate",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+              }
+            ],
+            "conflicting_evidence": [
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+                "provenance": "faiss:CWE-79.json#vulnerable_examples",
+                "score": 0.3406277596950531,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+                "provenance": "faiss:CWE-79.json#secure_examples",
+                "score": 0.1827448010444641,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+                "provenance": "faiss:CWE-78.json#secure_examples",
+                "score": 0.22275269031524658,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+                "provenance": "faiss:CWE-78.json#vulnerable_examples",
+                "score": 0.18772223591804504,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+                "provenance": "faiss:CWE-798.json#secure_examples",
+                "score": 0.21065637469291687,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "Database username and password stored directly in Python code",
+                "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+                "score": 0.19894680380821228,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+                "provenance": "faiss:CWE-22.json#secure_examples",
+                "score": 0.19201654195785522,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join",
+                "provenance": "faiss:CWE-22.json#keywords",
+                "score": 0.18783660233020782,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join() used without checking the resulting path",
+                "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+                "score": 0.1832674741744995,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              }
+            ]
+          }
+        ],
+        "finding_confidences": [
+          {
+            "cwe_id": "CWE-89",
+            "location": "query construction in count() function (line 2)",
+            "score": 73.01811351495631,
+            "level": "Medium",
+            "components": [
+              {
+                "name": "semantic_relevance",
+                "score": 40.6539648771286,
+                "level": "Low",
+                "weight": 10.0,
+                "explanation": "Maximum target-CWE retrieval relevance; semantic relevance is supporting context only.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using Python format strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.406539648771286,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                    "provenance": "faiss:CWE-89.json#secure_examples",
+                    "score": 0.400501549243927,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using string concatenation with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.2928430140018463,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using f-strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.28472745418548584,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2803497016429901,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Concatenating user input directly into SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.28026264905929565,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.2746350169181824,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Use parameterized SQL queries",
+                    "provenance": "faiss:CWE-89.json#secure_patterns",
+                    "score": 0.26865023374557495,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "parameterized query",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.26387155055999756,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "User input flows into an SQL query",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2637178599834442,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "String concatenation used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2633751630783081,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Failing to use parameterized queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.2557770311832428,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "raw SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2553997039794922,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.25518038868904114,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2532666027545929,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL concatenation",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.24358150362968445,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using string formatting to construct SQL statements",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.21546122431755066,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Raw SQL execution with external input",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19886139035224915,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "format() used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19822800159454346,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Database query contains unsanitized request parameters",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.1860310286283493,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using f-strings with untrusted input in SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.18473681807518005,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "cwe_agreement",
+                "score": 20.0,
+                "level": "Low",
+                "weight": 10.0,
+                "explanation": "Share of distinct retrieved CWE labels agreeing with this finding; retrieval agreement is not proof.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using Python format strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.406539648771286,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                    "provenance": "faiss:CWE-89.json#secure_examples",
+                    "score": 0.400501549243927,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using string concatenation with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.2928430140018463,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL query created using f-strings with user-controlled input",
+                    "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                    "score": 0.28472745418548584,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2803497016429901,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Concatenating user input directly into SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.28026264905929565,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.2746350169181824,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Use parameterized SQL queries",
+                    "provenance": "faiss:CWE-89.json#secure_patterns",
+                    "score": 0.26865023374557495,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "parameterized query",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.26387155055999756,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "User input flows into an SQL query",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2637178599834442,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "String concatenation used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2633751630783081,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Failing to use parameterized queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.2557770311832428,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "raw SQL",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.2553997039794922,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                    "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                    "score": 0.25518038868904114,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "f-string used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.2532666027545929,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "SQL concatenation",
+                    "provenance": "faiss:CWE-89.json#keywords",
+                    "score": 0.24358150362968445,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using string formatting to construct SQL statements",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.21546122431755066,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Raw SQL execution with external input",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19886139035224915,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "format() used to construct SQL",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.19822800159454346,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Database query contains unsanitized request parameters",
+                    "provenance": "faiss:CWE-89.json#detection_indicators",
+                    "score": 0.1860310286283493,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "semantic",
+                    "evidence": "Using f-strings with untrusted input in SQL queries",
+                    "provenance": "faiss:CWE-89.json#common_causes",
+                    "score": 0.18473681807518005,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ],
+                "conflicting_evidence": [
+                  {
+                    "cwe_id": "CWE-79",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+                    "provenance": "faiss:CWE-79.json#vulnerable_examples",
+                    "score": 0.3406277596950531,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-79",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+                    "provenance": "faiss:CWE-79.json#secure_examples",
+                    "score": 0.1827448010444641,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-78",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+                    "provenance": "faiss:CWE-78.json#secure_examples",
+                    "score": 0.22275269031524658,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-78",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+                    "provenance": "faiss:CWE-78.json#vulnerable_examples",
+                    "score": 0.18772223591804504,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-798",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+                    "provenance": "faiss:CWE-798.json#secure_examples",
+                    "score": 0.21065637469291687,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-798",
+                    "kind": "semantic",
+                    "evidence": "Database username and password stored directly in Python code",
+                    "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+                    "score": 0.19894680380821228,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+                    "provenance": "faiss:CWE-22.json#secure_examples",
+                    "score": 0.19201654195785522,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "os.path.join",
+                    "provenance": "faiss:CWE-22.json#keywords",
+                    "score": 0.18783660233020782,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  },
+                  {
+                    "cwe_id": "CWE-22",
+                    "kind": "semantic",
+                    "evidence": "os.path.join() used without checking the resulting path",
+                    "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+                    "score": 0.1832674741744995,
+                    "location": null,
+                    "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+                  }
+                ]
+              },
+              {
+                "name": "contextual_indicators",
+                "score": 100.0,
+                "level": "High",
+                "weight": 20.0,
+                "explanation": "AST/profile indicator support, with safeguards retained as conflicting evidence.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bexecute\\s*\\(",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 16,
+                      "line_end": 3,
+                      "column_end": 24
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bSELECT\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 13,
+                      "line_end": 2,
+                      "column_end": 19
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bFROM\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 29,
+                      "line_end": 2,
+                      "column_end": 33
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bWHERE\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 40,
+                      "line_end": 2,
+                      "column_end": 45
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "conn.execute",
+                    "provenance": "ast.call",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "source_to_sink",
+                "score": 55.0,
+                "level": "Medium",
+                "weight": 20.0,
+                "explanation": "Potential AST source-to-sink candidates receive limited support and remain unconfirmed.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "safeguards",
+                "score": null,
+                "level": "Undetermined",
+                "weight": 15.0,
+                "explanation": "A matching safeguard is treated as evidence against the reported vulnerability, not as guaranteed protection.",
+                "supporting_evidence": [],
+                "conflicting_evidence": []
+              },
+              {
+                "name": "llm_consistency",
+                "score": 100.0,
+                "level": "High",
+                "weight": 25.0,
+                "explanation": "Consistency of the reported LLM finding with independent collected code evidence.",
+                "supporting_evidence": [
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bexecute\\s*\\(",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 16,
+                      "line_end": 3,
+                      "column_end": 24
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bSELECT\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 13,
+                      "line_end": 2,
+                      "column_end": 19
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bFROM\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 29,
+                      "line_end": 2,
+                      "column_end": 33
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "vulnerable",
+                    "evidence": "\\bWHERE\\b",
+                    "provenance": "security_profiles.patterns",
+                    "score": null,
+                    "location": {
+                      "line_start": 2,
+                      "column_start": 40,
+                      "line_end": 2,
+                      "column_end": 45
+                    },
+                    "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "conn.execute",
+                    "provenance": "ast.call",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  },
+                  {
+                    "cwe_id": "CWE-89",
+                    "kind": "contextual",
+                    "evidence": "parameter:category@1 → conn.execute",
+                    "provenance": "ast.source_to_sink_candidate",
+                    "score": null,
+                    "location": {
+                      "line_start": 3,
+                      "column_start": 11,
+                      "line_end": 3,
+                      "column_end": 30
+                    },
+                    "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+                  }
+                ],
+                "conflicting_evidence": []
+              }
+            ],
+            "supporting_evidence": [
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using Python format strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.406539648771286,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+                "provenance": "faiss:CWE-89.json#secure_examples",
+                "score": 0.400501549243927,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using string concatenation with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.2928430140018463,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL query created using f-strings with user-controlled input",
+                "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+                "score": 0.28472745418548584,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2803497016429901,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Concatenating user input directly into SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.28026264905929565,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.2746350169181824,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Use parameterized SQL queries",
+                "provenance": "faiss:CWE-89.json#secure_patterns",
+                "score": 0.26865023374557495,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "parameterized query",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.26387155055999756,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "User input flows into an SQL query",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2637178599834442,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "String concatenation used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2633751630783081,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Failing to use parameterized queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.2557770311832428,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "raw SQL",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.2553997039794922,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+                "provenance": "faiss:CWE-89.json#vulnerable_examples",
+                "score": 0.25518038868904114,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "f-string used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.2532666027545929,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "SQL concatenation",
+                "provenance": "faiss:CWE-89.json#keywords",
+                "score": 0.24358150362968445,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using string formatting to construct SQL statements",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.21546122431755066,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Raw SQL execution with external input",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19886139035224915,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "format() used to construct SQL",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.19822800159454346,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Database query contains unsanitized request parameters",
+                "provenance": "faiss:CWE-89.json#detection_indicators",
+                "score": 0.1860310286283493,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "semantic",
+                "evidence": "Using f-strings with untrusted input in SQL queries",
+                "provenance": "faiss:CWE-89.json#common_causes",
+                "score": 0.18473681807518005,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bexecute\\s*\\(",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 16,
+                  "line_end": 3,
+                  "column_end": 24
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bSELECT\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 13,
+                  "line_end": 2,
+                  "column_end": 19
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bFROM\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 29,
+                  "line_end": 2,
+                  "column_end": 33
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "vulnerable",
+                "evidence": "\\bWHERE\\b",
+                "provenance": "security_profiles.patterns",
+                "score": null,
+                "location": {
+                  "line_start": 2,
+                  "column_start": 40,
+                  "line_end": 2,
+                  "column_end": 45
+                },
+                "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "conn.execute",
+                "provenance": "ast.call",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+              },
+              {
+                "cwe_id": "CWE-89",
+                "kind": "contextual",
+                "evidence": "parameter:category@1 → conn.execute",
+                "provenance": "ast.source_to_sink_candidate",
+                "score": null,
+                "location": {
+                  "line_start": 3,
+                  "column_start": 11,
+                  "line_end": 3,
+                  "column_end": 30
+                },
+                "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+              }
+            ],
+            "conflicting_evidence": [
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+                "provenance": "faiss:CWE-79.json#vulnerable_examples",
+                "score": 0.3406277596950531,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-79",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+                "provenance": "faiss:CWE-79.json#secure_examples",
+                "score": 0.1827448010444641,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+                "provenance": "faiss:CWE-78.json#secure_examples",
+                "score": 0.22275269031524658,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-78",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+                "provenance": "faiss:CWE-78.json#vulnerable_examples",
+                "score": 0.18772223591804504,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+                "provenance": "faiss:CWE-798.json#secure_examples",
+                "score": 0.21065637469291687,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-798",
+                "kind": "semantic",
+                "evidence": "Database username and password stored directly in Python code",
+                "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+                "score": 0.19894680380821228,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+                "provenance": "faiss:CWE-22.json#secure_examples",
+                "score": 0.19201654195785522,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join",
+                "provenance": "faiss:CWE-22.json#keywords",
+                "score": 0.18783660233020782,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              },
+              {
+                "cwe_id": "CWE-22",
+                "kind": "semantic",
+                "evidence": "os.path.join() used without checking the resulting path",
+                "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+                "score": 0.1832674741744995,
+                "location": null,
+                "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+              }
+            ],
+            "explanation": "Score summarizes available evidence and agreement; it is not a probability. Potential source-to-sink evidence is syntactic and unverified. Vulnerability severity is assessed separately."
+          }
+        ],
+        "supporting_evidence": [
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "SQL query created using Python format strings with user-controlled input",
+            "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+            "score": 0.406539648771286,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"cursor.execute(\\\"SELECT * FROM users WHERE id=%s\\\", (user_id,))\",\n  \"explanation\": \"The parameterized query keeps user data separate from the SQL statement.\"\n}",
+            "provenance": "faiss:CWE-89.json#secure_examples",
+            "score": 0.400501549243927,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "SQL query created using string concatenation with user-controlled input",
+            "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+            "score": 0.2928430140018463,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "SQL query created using f-strings with user-controlled input",
+            "provenance": "faiss:CWE-89.json#vulnerable_patterns",
+            "score": 0.28472745418548584,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "f-string SQL",
+            "provenance": "faiss:CWE-89.json#keywords",
+            "score": 0.2803497016429901,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Concatenating user input directly into SQL queries",
+            "provenance": "faiss:CWE-89.json#common_causes",
+            "score": 0.28026264905929565,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"query = f\\\"SELECT * FROM users WHERE id={user_id}\\\"\",\n  \"explanation\": \"User-controlled input is inserted directly into an SQL statement using an f-string.\"\n}",
+            "provenance": "faiss:CWE-89.json#vulnerable_examples",
+            "score": 0.2746350169181824,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Use parameterized SQL queries",
+            "provenance": "faiss:CWE-89.json#secure_patterns",
+            "score": 0.26865023374557495,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "parameterized query",
+            "provenance": "faiss:CWE-89.json#keywords",
+            "score": 0.26387155055999756,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "User input flows into an SQL query",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.2637178599834442,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "String concatenation used to construct SQL",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.2633751630783081,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Failing to use parameterized queries",
+            "provenance": "faiss:CWE-89.json#common_causes",
+            "score": 0.2557770311832428,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "raw SQL",
+            "provenance": "faiss:CWE-89.json#keywords",
+            "score": 0.2553997039794922,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"query = \\\"SELECT * FROM users WHERE username='\\\" + username + \\\"'\\\"\",\n  \"explanation\": \"The username is directly concatenated into the SQL query.\"\n}",
+            "provenance": "faiss:CWE-89.json#vulnerable_examples",
+            "score": 0.25518038868904114,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "f-string used to construct SQL",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.2532666027545929,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "SQL concatenation",
+            "provenance": "faiss:CWE-89.json#keywords",
+            "score": 0.24358150362968445,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Using string formatting to construct SQL statements",
+            "provenance": "faiss:CWE-89.json#common_causes",
+            "score": 0.21546122431755066,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Raw SQL execution with external input",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.19886139035224915,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "format() used to construct SQL",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.19822800159454346,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Database query contains unsanitized request parameters",
+            "provenance": "faiss:CWE-89.json#detection_indicators",
+            "score": 0.1860310286283493,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "semantic",
+            "evidence": "Using f-strings with untrusted input in SQL queries",
+            "provenance": "faiss:CWE-89.json#common_causes",
+            "score": 0.18473681807518005,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "vulnerable",
+            "evidence": "\\bexecute\\s*\\(",
+            "provenance": "security_profiles.patterns",
+            "score": null,
+            "location": {
+              "line_start": 3,
+              "column_start": 16,
+              "line_end": 3,
+              "column_end": 24
+            },
+            "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "vulnerable",
+            "evidence": "\\bSELECT\\b",
+            "provenance": "security_profiles.patterns",
+            "score": null,
+            "location": {
+              "line_start": 2,
+              "column_start": 13,
+              "line_end": 2,
+              "column_end": 19
+            },
+            "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "vulnerable",
+            "evidence": "\\bFROM\\b",
+            "provenance": "security_profiles.patterns",
+            "score": null,
+            "location": {
+              "line_start": 2,
+              "column_start": 29,
+              "line_end": 2,
+              "column_end": 33
+            },
+            "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "vulnerable",
+            "evidence": "\\bWHERE\\b",
+            "provenance": "security_profiles.patterns",
+            "score": null,
+            "location": {
+              "line_start": 2,
+              "column_start": 40,
+              "line_end": 2,
+              "column_end": 45
+            },
+            "explanation": "An existing vulnerable-indicator pattern matched source text; this is not proof of exploitability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "contextual",
+            "evidence": "conn.execute",
+            "provenance": "ast.call",
+            "score": null,
+            "location": {
+              "line_start": 3,
+              "column_start": 11,
+              "line_end": 3,
+              "column_end": 30
+            },
+            "explanation": "Security-sensitive call detected; the call alone does not establish unsafe input or exploitability."
+          },
+          {
+            "cwe_id": "CWE-89",
+            "kind": "contextual",
+            "evidence": "parameter:category@1 → conn.execute",
+            "provenance": "ast.source_to_sink_candidate",
+            "score": null,
+            "location": {
+              "line_start": 3,
+              "column_start": 11,
+              "line_end": 3,
+              "column_end": 30
+            },
+            "explanation": "Syntactic candidate only; runtime value flow and exploitability are unverified."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "cwe_id": "CWE-79",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"from flask import request\\n\\n@app.route('/search')\\ndef search():\\n    query = request.args.get('q', '')\\n    return '<h1>Search results for: ' + query + '</h1>'\",\n  \"explanation\": \"The application directly concatenates user-controlled data into an HTML response without appropriate output encoding.\"\n}",
+            "provenance": "faiss:CWE-79.json#vulnerable_examples",
+            "score": 0.3406277596950531,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-79",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"from flask import render_template\\n\\nreturn render_template('hello.html', name=name)\",\n  \"explanation\": \"The user-controlled value is passed separately to the template so that the template engine can apply its normal escaping behavior.\"\n}",
+            "provenance": "faiss:CWE-79.json#secure_examples",
+            "score": 0.1827448010444641,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-78",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run([\\\"python\\\", \\\"script.py\\\"], shell=False)\",\n  \"explanation\": \"Command arguments are represented as separate list elements and shell interpretation is disabled.\"\n}",
+            "provenance": "faiss:CWE-78.json#secure_examples",
+            "score": 0.22275269031524658,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-78",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"import subprocess\\nsubprocess.run(user_input, shell=True)\",\n  \"explanation\": \"The command is interpreted by a shell while containing user-controlled input, creating a command injection risk.\"\n}",
+            "provenance": "faiss:CWE-78.json#vulnerable_examples",
+            "score": 0.18772223591804504,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-798",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"import os\\nDB_PASSWORD = os.environ.get('DB_PASSWORD')\",\n  \"explanation\": \"The database password is obtained from an environment variable instead of being embedded directly in source code.\"\n}",
+            "provenance": "faiss:CWE-798.json#secure_examples",
+            "score": 0.21065637469291687,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-798",
+            "kind": "semantic",
+            "evidence": "Database username and password stored directly in Python code",
+            "provenance": "faiss:CWE-798.json#vulnerable_patterns",
+            "score": 0.19894680380821228,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-22",
+            "kind": "semantic",
+            "evidence": "{\n  \"code\": \"allowed_files = {'report.pdf', 'manual.pdf'}\\n\\nif filename not in allowed_files:\\n    raise ValueError('Invalid filename')\",\n  \"explanation\": \"An allowlist restricts access to explicitly permitted files instead of accepting arbitrary filesystem paths.\"\n}",
+            "provenance": "faiss:CWE-22.json#secure_examples",
+            "score": 0.19201654195785522,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-22",
+            "kind": "semantic",
+            "evidence": "os.path.join",
+            "provenance": "faiss:CWE-22.json#keywords",
+            "score": 0.18783660233020782,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          },
+          {
+            "cwe_id": "CWE-22",
+            "kind": "semantic",
+            "evidence": "os.path.join() used without checking the resulting path",
+            "provenance": "faiss:CWE-22.json#vulnerable_patterns",
+            "score": 0.1832674741744995,
+            "location": null,
+            "explanation": "Retrieved CWE knowledge; supporting context only, not proof of a code vulnerability."
+          }
+        ],
+        "explanation": "Overall score is 70% the weakest finding and 30% the mean finding score; it is not a probability."
+      },
+      "retrieval_stats": {
+        "retrieval_latency_seconds": 0.04128159998799674,
+        "legacy_candidate_order": [
+          "CWE-89",
+          "CWE-79",
+          "CWE-78",
+          "CWE-798",
+          "CWE-22"
+        ],
+        "shadow_candidate_order": [
+          "CWE-89",
+          "CWE-79",
+          "CWE-78",
+          "CWE-798",
+          "CWE-22"
+        ],
+        "selected_candidate_order": [
+          "CWE-89",
+          "CWE-79",
+          "CWE-78",
+          "CWE-798",
+          "CWE-22"
+        ],
+        "shadow_ranking_enabled": true,
+        "contextual_evidence_enabled": true,
+        "contextual_match_count": 6,
+        "shadow_order_changed_candidates": false
+      },
+      "latency_seconds": 54.08197999998811,
+      "token_usage": null
+    },
+    {
+      "test_id": "TC89_12",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199071, Requested 1862. Please try again in 6m43.056s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_13",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199054, Requested 1932. Please try again in 7m5.952s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_14",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199040, Requested 1957. Please try again in 7m10.704s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_15",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199019, Requested 1831. Please try again in 6m7.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_16",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199004, Requested 1988. Please try again in 7m8.544s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "test_id": "TC89_17",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": null,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "error",
+      "pass": false,
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1sajp1eem38xz0r05r67s99` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198990, Requested 2064. Please try again in 7m35.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    }
+  ]
+}
