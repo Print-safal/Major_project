@@ -1,0 +1,201 @@
+CWE-89 benchmark source map. One distinct Python snippet per source CVE, extracted from existing Python-focused source records.
+TC89_EXT_0001 | CVE-2012-0805 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0002 | CVE-2013-10009 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0003 | CVE-2014-125065 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0004 | CVE-2014-125073 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0005 | CVE-2014-125082 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0006 | CVE-2015-10026 | CEVuD | dataset\raw_downloads\CEVuD\train.json | 
+TC89_EXT_0007 | CVE-2015-10056 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0008 | CVE-2015-10060 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0009 | CVE-2015-10069 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0010 | CVE-2016-8640 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0011 | CVE-2017-17713 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0012 | CVE-2017-20172 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0013 | CVE-2018-25088 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0014 | CVE-2019-10141 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0015 | CVE-2019-7164 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0016 | CVE-2020-11010 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0017 | CVE-2020-36768 | CEVuD | dataset\raw_downloads\CEVuD\train.json | 
+TC89_EXT_0018 | CVE-2020-7471 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0019 | CVE-2020-9402 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0020 | CVE-2021-30459 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0021 | CVE-2022-1531 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0022 | CVE-2022-41892 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0023 | CVE-2022-4860 | CEVuD | dataset\raw_downloads\CEVuD\train.json | 
+TC89_EXT_0024 | CVE-2023-34249 | Zenodo | dataset\raw_downloads\Zenodo_Python\data_Python.csv | 
+TC89_EXT_0025 | CVE-2023-39654 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0026 | CVE-2023-40954 | CEVuD | dataset\raw_downloads\CEVuD\train.json | 
+TC89_EXT_0027 | CVE-2023-49736 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0028 | CVE-2023-7333 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0029 | CVE-2024-11958 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0030 | CVE-2024-21272 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0031 | CVE-2024-25722 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0032 | CVE-2024-36039 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0033 | CVE-2024-39887 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0034 | CVE-2024-4215 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0035 | CVE-2024-5225 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0036 | CVE-2024-53908 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0037 | CVE-2024-7009 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0038 | CVE-2024-7099 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0039 | CVE-2025-10655 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0040 | CVE-2025-11461 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0041 | CVE-2025-1750 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0042 | CVE-2025-24793 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0043 | CVE-2025-30473 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0044 | CVE-2025-51458 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0045 | CVE-2025-52039 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0046 | CVE-2025-52040 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0047 | CVE-2025-52042 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0048 | CVE-2025-52043 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0049 | CVE-2025-52047 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0050 | CVE-2025-52049 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0051 | CVE-2025-52050 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0052 | CVE-2025-55156 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0053 | CVE-2025-59681 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0054 | CVE-2025-66205 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0055 | CVE-2025-67644 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0056 | CVE-2026-11529 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0057 | CVE-2026-1287 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0058 | CVE-2026-21892 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0059 | CVE-2026-30930 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0060 | CVE-2026-32611 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0061 | CVE-2026-32714 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0062 | CVE-2026-33545 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0063 | CVE-2026-34400 | CyberSet | dataset\processed\cyberset\cyberset_new_exact_baseline.csv | 
+TC89_EXT_0064 | CVE-2026-55509 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0065 | CVE-2026-7815 | Patchwork | dataset\patchwork_python_enriched.jsonl | None
+TC89_EXT_0066 | CVE-2025-30212 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/frappe/frappe
+TC89_EXT_0067 | CVE-2019-14234 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/django/django
+TC89_EXT_0068 | CVE-2021-35042 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/django/django
+TC89_EXT_0069 | CVE-2026-1312 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/django/django
+TC89_EXT_0070 | CVE-2009-2940 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/PyGreSQL/PyGreSQL
+TC89_EXT_0071 | CVE-2025-57833 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/django/django
+TC89_EXT_0072 | CVE-2024-42005 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/django/django
+TC89_EXT_0073 | CVE-2026-35588 | Patchwork | dataset\processed\patchwork_additions\patchwork_unique_additions.jsonl | https://github.com/nicolargo/glances
+TC89_EXT_0074 | CVE-2026-130082 | NVD-GitHub | https://github.com/django-tenants/django-tenants/commit/46d89c0fccc820f88657e6ec152ba855072571ff | https://github.com/django-tenants/django-tenants
+TC89_EXT_0075 | CVE-2026-124850 | NVD-GitHub | https://github.com/flowintel/flowintel/commit/061053689dc279a3c2c182f8dc15cd42dc24bd7d | https://github.com/flowintel/flowintel
+TC89_EXT_0076 | CVE-2025-71458 | NVD-GitHub | https://github.com/cern-fts/fts-monitoring/commit/96241f6e9911195aae8e9e07bce511da4e81fc08 | https://github.com/cern-fts/fts-monitoring
+TC89_EXT_0077 | CVE-2026-115324 | NVD-GitHub | https://github.com/mem0ai/mem0/commit/a2ffca32660537b7b304305f36774ae2a13452cb | https://github.com/mem0ai/mem0
+TC89_EXT_0078 | CVE-2026-114510 | NVD-GitHub | https://github.com/stevereiner/flexible-graphrag/commit/9ace8d47e198ce3f15dbf22853e396ab4e9884fa | https://github.com/stevereiner/flexible-graphrag
+TC89_EXT_0079 | CVE-2026-54524 | NVD-GitHub | https://github.com/frappe/hrms/commit/b16148531954531a448dafdff20dc61882430ee9 | https://github.com/frappe/hrms
+TC89_EXT_0080 | CVE-2026-19754 | NVD-GitHub | https://github.com/baserow/baserow/commit/e7abc14975124dfe4558ff47fb8b9a25c47d9fcc | https://github.com/baserow/baserow
+TC89_EXT_0081 | CVE-2026-55253 | NVD-GitHub | https://github.com/langchain-ai/langchain-mongodb/commit/14a6cc39e67d23fd409cd13a9caae2c329df0a09 | https://github.com/langchain-ai/langchain-mongodb
+TC89_EXT_0082 | CVE-2026-61667 | NVD-GitHub | https://github.com/DIRACGrid/DIRAC/commit/106f6efb40eb7318473fc09fc48083f1f864460a | https://github.com/DIRACGrid/DIRAC
+TC89_EXT_0083 | CVE-2026-53984 | NVD-GitHub | https://github.com/sgoudelis/ground-station/commit/2ecde82a8814cbea18883ce023bf45cbf06172eb | https://github.com/sgoudelis/ground-station
+TC89_EXT_0084 | CVE-2026-65321 | NVD-GitHub | https://github.com/pyathena-dev/PyAthena/commit/27901d12245ea722b3b4e211c60e2ade4e7c8efd | https://github.com/pyathena-dev/PyAthena
+TC89_EXT_0085 | CVE-2025-13168 | NVD-GitHub | https://github.com/ury-erp/ury/commit/063384e0dddfd191847cd2d6524c342cc380b058 | https://github.com/ury-erp/ury
+TC89_EXT_0086 | CVE-2024-35374 | GHSA-GitHub | GHSA:CVE-2024-35374 | https://github.com/laowantong/mocodo
+TC89_EXT_0087 | CVE-2024-24811 | GHSA-GitHub | GHSA:CVE-2024-24811 | https://github.com/zopefoundation/Products.SQLAlchemyDA
+TC89_EXT_0088 | CVE-2023-47128 | GHSA-GitHub | GHSA:CVE-2023-47128 | https://github.com/piccolo-orm/piccolo
+TC89_EXT_0089 | CVE-2022-28347 | GHSA-GitHub | GHSA:CVE-2022-28347 | https://github.com/django/django
+TC89_EXT_0090 | CVE-2022-34265 | GHSA-GitHub | GHSA:CVE-2022-34265 | https://github.com/django/django
+TC89_EXT_0091 | CVE-2022-28346 | GHSA-GitHub | GHSA:CVE-2022-28346 | https://github.com/django/django
+TC89_EXT_0092 | CVE-2014-0474 | GHSA-GitHub | GHSA:CVE-2014-0474 | https://github.com/django/django
+TC89_EXT_0093 | CVE-2024-53947 | GHSA-GitHub | GHSA:CVE-2024-53947 | https://github.com/apache/superset
+TC89_EXT_0094 | CVE-2024-4890 | GHSA-GitHub | GHSA:CVE-2024-4890 | https://github.com/BerriAI/litellm
+TC89_EXT_0095 | CVE-2019-1010259 | GHSA-GitHub | GHSA:CVE-2019-1010259 | https://github.com/saltstack/salt
+TC89_EXT_0096 | CVE-2024-12911 | GHSA-GitHub | GHSA:CVE-2024-12911 | https://github.com/run-llama/llama_index
+TC89_EXT_0097 | CVE-2025-64104 | GHSA-GitHub | GHSA:CVE-2025-64104 | https://github.com/langchain-ai/langgraph
+TC89_EXT_0098 | CVE-2024-10835 | GHSA-GitHub | GHSA:CVE-2024-10835 | https://github.com/eosphoros-ai/DB-GPT
+TC89_EXT_0099 | CVE-2024-10901 | GHSA-GitHub | GHSA:CVE-2024-10901 | https://github.com/eosphoros-ai/DB-GPT
+TC89_EXT_0100 | CVE-2025-1793 | GHSA-GitHub | GHSA:CVE-2025-1793 | https://github.com/run-llama/llama_index
+TC89_EXT_0101 | CVE-2023-36189 | GHSA-GitHub | GHSA:CVE-2023-36189 | https://github.com/hwchase17/langchain
+TC89_EXT_0102 | CVE-2026-1207 | GHSA-GitHub | GHSA:CVE-2026-1207 | https://github.com/django/django
+TC89_EXT_0103 | CVE-2025-27018 | GHSA-GitHub | GHSA:CVE-2025-27018 | https://github.com/apache/airflow
+TC89_EXT_0104 | CVE-2025-64459 | GHSA-GitHub | GHSA:CVE-2025-64459 | https://github.com/django/django
+TC89_EXT_0105 | CVE-2024-40637 | GHSA-GitHub | GHSA:CVE-2024-40637 | https://github.com/dbt-labs/dbt-core
+TC89_EXT_0106 | CVE-2025-13372 | GHSA-GitHub | GHSA:CVE-2025-13372 | https://github.com/django/django
+TC89_EXT_0107 | CVE-2026-40315 | GHSA-GitHub | GHSA:CVE-2026-40315 | https://github.com/MervinPraison/PraisonAI
+TC89_EXT_0108 | CVE-2026-7816 | GHSA-GitHub | GHSA:CVE-2026-7816 | https://github.com/pgadmin-org/pgadmin4
+TC89_EXT_0109 | CVE-2026-26198 | GHSA-GitHub | GHSA:CVE-2026-26198 | https://github.com/collerek/ormar
+TC89_EXT_0110 | CVE-2026-50180 | GHSA-GitHub | GHSA:CVE-2026-50180 | https://github.com/langroid/langroid
+TC89_EXT_0111 | CVE-2025-69662 | GHSA-GitHub | GHSA:CVE-2025-69662 | https://github.com/geopandas/geopandas
+TC89_EXT_0112 | CVE-2025-66336 | GHSA-GitHub | GHSA:CVE-2025-66336 | https://github.com/apache/doris-mcp-server
+TC89_EXT_0113 | GHSA-7xw9-549r-8jrc | GHSA-GitHub | GHSA:GHSA-7xw9-549r-8jrc | https://github.com/DIRACGrid/DIRAC
+TC89_EXT_0114 | CVE-2024-8309 | GHSA-GitHub | GHSA:CVE-2024-8309 | https://github.com/langchain-ai/langchain
+TC89_EXT_0115 | CVE-2026-10105 | GHSA-GitHub | GHSA:CVE-2026-10105 | https://github.com/agno-agi/agno
+TC89_EXT_0116 | CVE-2026-42087 | GHSA-GitHub | GHSA:CVE-2026-42087 | https://github.com/OpenC3/cosmos
+TC89_EXT_0117 | CVE-2019-14966 | GHSA-GitHub | GHSA:CVE-2019-14966 | https://github.com/frappe/frappe
+TC89_EXT_0118 | CVE-2020-36631 | GHSA-GitHub | GHSA:CVE-2020-36631 | https://github.com/barronwaffles/dwc_network_server_emulator
+TC89_EXT_0119 | CVE-2024-1601 | GHSA-GitHub | GHSA:CVE-2024-1601 | https://github.com/parisneo/lollms-webui
+TC89_EXT_0120 | CVE-2025-58375 | GHSA-GitHub | GHSA:CVE-2025-58375 | https://github.com/frappe/frappe
+TC89_EXT_0121 | CVE-2026-12050 | GHSA-GitHub | GHSA:CVE-2026-12050 | https://github.com/pgadmin-org/pgadmin4
+TC89_EXT_0122 | CVE-2026-12044 | GHSA-GitHub | GHSA:CVE-2026-12044 | https://github.com/pgadmin-org/pgadmin4
+TC89_EXT_0123 | CVE-2026-17351 | GHSA-GitHub | GHSA:CVE-2026-17351 | https://github.com/pgadmin-org/pgadmin4
+TC89_EXT_0124 | CVE-2026-17346 | GHSA-GitHub | GHSA:CVE-2026-17346 | https://github.com/pgadmin-org/pgadmin4
+TC89_EXT_0125 | CVE-2026-61461 | GHSA-GitHub | GHSA:CVE-2026-61461 | https://github.com/langgenius/dify
+TC89_EXT_0126 | GH-COMMIT-Cranot_roam-code-bc91c959c0 | GitHub-CommitSearch | https://github.com/Cranot/roam-code/commit/bc91c959c0b2e6f72e275398fa3620a44bc6aa7d.patch | https://github.com/Cranot/roam-code
+TC89_EXT_0127 | GH-COMMIT-razobill_razobill-9150973b51 | GitHub-CommitSearch | https://github.com/razobill/razobill/commit/9150973b518d484f8f518b4e522ef515f2a2dc22.patch | https://github.com/razobill/razobill
+TC89_EXT_0128 | GH-COMMIT-paukennick_arbiter-f766cecbb6 | GitHub-CommitSearch | https://github.com/paukennick/arbiter/commit/f766cecbb679009f069aebbec6ff56c61a4c0c1a.patch | https://github.com/paukennick/arbiter
+TC89_EXT_0129 | GH-COMMIT-lambdasec_frame-44609fcc7f | GitHub-CommitSearch | https://github.com/lambdasec/frame/commit/44609fcc7fa7c8917828c54d5fd9a08dc2e9898e.patch | https://github.com/lambdasec/frame
+TC89_EXT_0130 | GH-COMMIT-notzenco_labs-6784549b6e | GitHub-CommitSearch | https://github.com/notzenco/labs/commit/6784549b6eefe9e123dfd6558b70ff077db7b191.patch | https://github.com/notzenco/labs
+TC89_EXT_0131 | GH-COMMIT-MohdAlkafaween_devsecops-lab-d16c9aaa9f | GitHub-CommitSearch | https://github.com/MohdAlkafaween/devsecops-lab/commit/d16c9aaa9fbaa5718c70328db6771bda9324d573.patch | https://github.com/MohdAlkafaween/devsecops-lab
+TC89_EXT_0132 | GH-COMMIT-SECQUOIA_agent-skills-971811acab | GitHub-CommitSearch | https://github.com/SECQUOIA/agent-skills/commit/971811acabc1ae6af032cea85a5562bc1676e312.patch | https://github.com/SECQUOIA/agent-skills
+TC89_EXT_0133 | GH-COMMIT-X-McKay_infosec-harness-01986d3207 | GitHub-CommitSearch | https://github.com/X-McKay/infosec-harness/commit/01986d32072c036434ccf92d12ba03326a0cab89.patch | https://github.com/X-McKay/infosec-harness
+TC89_EXT_0134 | GH-COMMIT-ishanpanwar051_agentic-code-reviewer-c4efebd45c | GitHub-CommitSearch | https://github.com/ishanpanwar051/agentic-code-reviewer/commit/c4efebd45cba08e10af746f8e2dc37dbadfcf2d5.patch | https://github.com/ishanpanwar051/agentic-code-reviewer
+TC89_EXT_0135 | GH-COMMIT-GusSand_MATS-667efa17cc | GitHub-CommitSearch | https://github.com/GusSand/MATS/commit/667efa17cc2eb54c188ba58f405d9741eec68f9b.patch | https://github.com/GusSand/MATS
+TC89_EXT_0136 | GH-COMMIT-toprakahmetaydogmus_TZeroAlgorithm-3ac962b586 | GitHub-CommitSearch | https://github.com/toprakahmetaydogmus/TZeroAlgorithm/commit/3ac962b586999833b4e68ed227cc7e239432b802.patch | https://github.com/toprakahmetaydogmus/TZeroAlgorithm
+TC89_EXT_0137 | GH-COMMIT-lxcxjxhx_HOS-LS-43183f1888 | GitHub-CommitSearch | https://github.com/lxcxjxhx/HOS-LS/commit/43183f1888c5b78abf969e0815fb7bc60039a750.patch | https://github.com/lxcxjxhx/HOS-LS
+TC89_EXT_0138 | GH-COMMIT-hjnhjnhjn_multi-vuln-test-1ed85776f1 | GitHub-CommitSearch | https://github.com/hjnhjnhjn/multi-vuln-test/commit/1ed85776f1510cb9b7b1ecb33ee662248e284a78.patch | https://github.com/hjnhjnhjn/multi-vuln-test
+TC89_EXT_0139 | GH-COMMIT-actions-marketplace-validations_poliakarmai_gsc-014f1d20bc | GitHub-CommitSearch | https://github.com/actions-marketplace-validations/poliakarmai_gsc/commit/014f1d20bcbc774532ba06704d0633158dc270fb.patch | https://github.com/actions-marketplace-validations/poliakarmai_gsc
+TC89_EXT_0140 | GH-COMMIT-actions-marketplace-validations_toprakahmetaydogmus_TZeroAlgorithm-b51a505ee6 | GitHub-CommitSearch | https://github.com/actions-marketplace-validations/toprakahmetaydogmus_TZeroAlgorithm/commit/b51a505ee67dfd9a073dd97eee61c1eb457f836c.patch | https://github.com/actions-marketplace-validations/toprakahmetaydogmus_TZeroAlgorithm
+TC89_EXT_0141 | GH-COMMIT-syahnetwork_aegis-forge-devsecops-500692e069 | GitHub-CommitSearch | https://github.com/syahnetwork/aegis-forge-devsecops/commit/500692e0691517672739c98bbcecc445b7c7435f.patch | https://github.com/syahnetwork/aegis-forge-devsecops
+TC89_EXT_0142 | GH-COMMIT-sukengine_AI_Offensive-3b5109282a | GitHub-CommitSearch | https://github.com/sukengine/AI_Offensive/commit/3b5109282a804843414444150bfa6d46b1418349.patch | https://github.com/sukengine/AI_Offensive
+TC89_EXT_0143 | GH-COMMIT-MahdiHedhli_DeepThought-d9e4b16e1d | GitHub-CommitSearch | https://github.com/MahdiHedhli/DeepThought/commit/d9e4b16e1d8eab3f16465df432f658561e975719.patch | https://github.com/MahdiHedhli/DeepThought
+TC89_EXT_0144 | GH-COMMIT-argus-code-scanning_argus-codescan-mcp-b983ba2751 | GitHub-CommitSearch | https://github.com/argus-code-scanning/argus-codescan-mcp/commit/b983ba2751489a5797a0372a3cd7898a2022e254.patch | https://github.com/argus-code-scanning/argus-codescan-mcp
+TC89_EXT_0145 | GH-COMMIT-Blue-And-White_python_target_benchmark-47ea6bdc19 | GitHub-CommitSearch | https://github.com/Blue-And-White/python_target_benchmark/commit/47ea6bdc19d416e204ef9ccaca79255f52642683.patch | https://github.com/Blue-And-White/python_target_benchmark
+TC89_EXT_0146 | GH-COMMIT-artgaurav16420-oss_Complete-Codebase-Review-55b1afb119 | GitHub-CommitSearch | https://github.com/artgaurav16420-oss/Complete-Codebase-Review/commit/55b1afb1198a1eafc2585f9caf24874eb513e3e2.patch | https://github.com/artgaurav16420-oss/Complete-Codebase-Review
+TC89_EXT_0147 | GH-COMMIT-mathurninaad_sast-triage-agent-460ef5276f | GitHub-CommitSearch | https://github.com/mathurninaad/sast-triage-agent/commit/460ef5276f873808af7293b208cb07a88ca0c83a.patch | https://github.com/mathurninaad/sast-triage-agent
+TC89_EXT_0148 | GH-COMMIT-Wolfvin_CodeLens-4ca172e3d9 | GitHub-CommitSearch | https://github.com/Wolfvin/CodeLens/commit/4ca172e3d9888f4e7812415ccd04e94fb647d2f1.patch | https://github.com/Wolfvin/CodeLens
+TC89_EXT_0149 | GH-COMMIT-aicodesentry_mitig8it-49d56af4c2 | GitHub-CommitSearch | https://github.com/aicodesentry/mitig8it/commit/49d56af4c27e8ca0dc5a66a5c8083b9c3b87b056.patch | https://github.com/aicodesentry/mitig8it
+TC89_EXT_0150 | GH-COMMIT-Mananshah237_VEXIS-0de6464ea7 | GitHub-CommitSearch | https://github.com/Mananshah237/VEXIS/commit/0de6464ea71ce476a40375ff4104bdff19cd5ad5.patch | https://github.com/Mananshah237/VEXIS
+TC89_EXT_0151 | GH-COMMIT-embryo-zero_embryo-data-catalog-f10c8cbd0c | GitHub-CommitSearch | https://github.com/embryo-zero/embryo-data-catalog/commit/f10c8cbd0c635650578af2a09957e67003712033.patch | https://github.com/embryo-zero/embryo-data-catalog
+TC89_EXT_0152 | GH-COMMIT-TythanAI_TythanAIOpen-227e0b40d5 | GitHub-CommitSearch | https://github.com/TythanAI/TythanAIOpen/commit/227e0b40d5c11efd432429bd86c2511b54731bac.patch | https://github.com/TythanAI/TythanAIOpen
+TC89_EXT_0153 | GH-COMMIT-tndat-dev_eBPF-project-865db1d580 | GitHub-CommitSearch | https://github.com/tndat-dev/eBPF-project/commit/865db1d5800f97b11b82917d7a0b9799f2ff7362.patch | https://github.com/tndat-dev/eBPF-project
+TC89_EXT_0154 | GH-COMMIT-DevOpsMadDog_Fixops-bca96496c3 | GitHub-CommitSearch | https://github.com/DevOpsMadDog/Fixops/commit/bca96496c3ac9a911a2d1dfc653e0679cd274930.patch | https://github.com/DevOpsMadDog/Fixops
+TC89_EXT_0155 | GH-COMMIT-Hagave_engineering-playbook-14ed494a7c | GitHub-CommitSearch | https://github.com/Hagave/engineering-playbook/commit/14ed494a7c73e5e728bd55eeb45f4584a7d73681.patch | https://github.com/Hagave/engineering-playbook
+TC89_EXT_0156 | GH-COMMIT-dessertlab_FEAST-83b6f37a93 | GitHub-CommitSearch | https://github.com/dessertlab/FEAST/commit/83b6f37a93efb48301801185adeca34a21dcb7f4.patch | https://github.com/dessertlab/FEAST
+TC89_EXT_0157 | GH-COMMIT-b4its_cyense-5f10be95ca | GitHub-CommitSearch | https://github.com/b4its/cyense/commit/5f10be95caa3bb7c72f374b8b1ac1fdb2b722c39.patch | https://github.com/b4its/cyense
+TC89_EXT_0158 | GH-COMMIT-DelRoos_vulnchain-55549b2ad7 | GitHub-CommitSearch | https://github.com/DelRoos/vulnchain/commit/55549b2ad710ee1e88951a082557ee5641ff6926.patch | https://github.com/DelRoos/vulnchain
+TC89_EXT_0159 | GH-COMMIT-bugsyhewitt_blight-156e854570 | GitHub-CommitSearch | https://github.com/bugsyhewitt/blight/commit/156e8545708d3b7abec4be2db008460501faa43c.patch | https://github.com/bugsyhewitt/blight
+TC89_EXT_0160 | GH-COMMIT-wonjangcloud9_open-guardrail-82a8ecc051 | GitHub-CommitSearch | https://github.com/wonjangcloud9/open-guardrail/commit/82a8ecc05193762aa6477c5a0f05666b667340cb.patch | https://github.com/wonjangcloud9/open-guardrail
+TC89_EXT_0161 | GH-COMMIT-ahmed-145_ACR-QA-8729b6d43f | GitHub-CommitSearch | https://github.com/ahmed-145/ACR-QA/commit/8729b6d43fd1005563fa4e85ded3cec233c243b8.patch | https://github.com/ahmed-145/ACR-QA
+TC89_EXT_0162 | GH-COMMIT-46tsoh_skunkworks-86c95912f2 | GitHub-CommitSearch | https://github.com/46tsoh/skunkworks/commit/86c95912f2c8266700ba159703ed4c47bf1e956b.patch | https://github.com/46tsoh/skunkworks
+TC89_EXT_0163 | GH-COMMIT-venkatas_vikramaditya-59f30651c6 | GitHub-CommitSearch | https://github.com/venkatas/vikramaditya/commit/59f30651c63c08684cc8fd105b49f267822b8557.patch | https://github.com/venkatas/vikramaditya
+TC89_EXT_0164 | GH-COMMIT-christianescamilla15-cell_aios-framework-7063c90af4 | GitHub-CommitSearch | https://github.com/christianescamilla15-cell/aios-framework/commit/7063c90af40ed3783d33ecc5af1bb6406bcfe8ef.patch | https://github.com/christianescamilla15-cell/aios-framework
+TC89_EXT_0165 | GH-COMMIT-pwnpanda_ai-semantic-source-scanner-a5be6b58a2 | GitHub-CommitSearch | https://github.com/pwnpanda/ai-semantic-source-scanner/commit/a5be6b58a2dbbac608e5b1c6bdc9bb53585e4ec7.patch | https://github.com/pwnpanda/ai-semantic-source-scanner
+TC89_EXT_0166 | GH-COMMIT-koda-ai-studio_agent-bom-6211f8a342 | GitHub-CommitSearch | https://github.com/koda-ai-studio/agent-bom/commit/6211f8a342c2c81aa5bae6010edfb56e71b80586.patch | https://github.com/koda-ai-studio/agent-bom
+TC89_EXT_0167 | GH-COMMIT-ASAC-DE-bigkk_ASAC-DAG-9d5da10746 | GitHub-CommitSearch | https://github.com/ASAC-DE-bigkk/ASAC-DAG/commit/9d5da10746b861457572d68e39feb55d5697ab1f.patch | https://github.com/ASAC-DE-bigkk/ASAC-DAG
+TC89_EXT_0168 | GH-COMMIT-ViniciusCostaGrillo_OpenRaptor-9e84b7d589 | GitHub-CommitSearch | https://github.com/ViniciusCostaGrillo/OpenRaptor/commit/9e84b7d589e75390b9570e494154ca7835824520.patch | https://github.com/ViniciusCostaGrillo/OpenRaptor
+TC89_EXT_0169 | GH-COMMIT-christopherqueenconsulting_linkedin_engagement_manager-866e411f79 | GitHub-CommitSearch | https://github.com/christopherqueenconsulting/linkedin_engagement_manager/commit/866e411f79c875dbe31f77e476de27f52d203a11.patch | https://github.com/christopherqueenconsulting/linkedin_engagement_manager
+TC89_EXT_0170 | GH-COMMIT-thuram-nana_vigil-sovereign-c7837618fe | GitHub-CommitSearch | https://github.com/thuram-nana/vigil-sovereign/commit/c7837618fe7fccc1968b90bd10e148eef125c64e.patch | https://github.com/thuram-nana/vigil-sovereign
+TC89_EXT_0171 | GH-COMMIT-ideotion_Open-Omniscience-9d9c24a0eb | GitHub-CommitSearch | https://github.com/ideotion/Open-Omniscience/commit/9d9c24a0eb48d6253b4aa97bf404cd1a41c41740.patch | https://github.com/ideotion/Open-Omniscience
+TC89_EXT_0172 | GH-COMMIT-MohamedNamper333_swarm-agent-b90327c771 | GitHub-CommitSearch | https://github.com/MohamedNamper333/swarm-agent/commit/b90327c771b8e181fba0d1c86cd770aaa4aa66a2.patch | https://github.com/MohamedNamper333/swarm-agent
+TC89_EXT_0173 | GH-COMMIT-inventor1975_ZTL-51f0132fd7 | GitHub-CommitSearch | https://github.com/inventor1975/ZTL/commit/51f0132fd7e0ac9f735bcbc08d4d23397024ac29.patch | https://github.com/inventor1975/ZTL
+TC89_EXT_0174 | GH-COMMIT-ntbnaren7_breakin-5a8aa3facd | GitHub-CommitSearch | https://github.com/ntbnaren7/breakin/commit/5a8aa3facd4f6e45101ed5ee23146ab4b8292b3d.patch | https://github.com/ntbnaren7/breakin
+TC89_EXT_0175 | GH-COMMIT-lan611_Hawkeye-code-76bb79dfe3 | GitHub-CommitSearch | https://github.com/lan611/Hawkeye-code/commit/76bb79dfe32cc77687b597a3ee04a902d7780596.patch | https://github.com/lan611/Hawkeye-code
+TC89_EXT_0176 | GH-COMMIT-niyoshfelex_snips-add3b7ccc7 | GitHub-CommitSearch | https://github.com/niyoshfelex/snips/commit/add3b7ccc7cbf4c7f5bc60d3725d4ffc2d422cd7.patch | https://github.com/niyoshfelex/snips
+TC89_EXT_0177 | GH-COMMIT-Flamki_repo-sec-44bde8bd17 | GitHub-CommitSearch | https://github.com/Flamki/repo-sec/commit/44bde8bd17ee02771d028bad12cdc2951dc45ca9.patch | https://github.com/Flamki/repo-sec
+TC89_EXT_0178 | GH-COMMIT-shivasurya_code-pathfinder-fc0f0df05b | GitHub-CommitSearch | https://github.com/shivasurya/code-pathfinder/commit/fc0f0df05b983c9767e308a0d6b66b98f938182c.patch | https://github.com/shivasurya/code-pathfinder
+TC89_EXT_0179 | GH-COMMIT-Mavacchi_ghg-tool-b566f2c67c | GitHub-CommitSearch | https://github.com/Mavacchi/ghg-tool/commit/b566f2c67c83c158715718fa66a50b9db31c8259.patch | https://github.com/Mavacchi/ghg-tool
+TC89_EXT_0180 | GH-COMMIT-Athena-Pro_Trunkit-9bc4e30cdf | GitHub-CommitSearch | https://github.com/Athena-Pro/Trunkit/commit/9bc4e30cdf3555484b02c0c9908d1051fc55301a.patch | https://github.com/Athena-Pro/Trunkit
+TC89_EXT_0181 | GH-COMMIT-lxcxjxhx_HOS-ARES-9cbbec9a12 | GitHub-CommitSearch | https://github.com/lxcxjxhx/HOS-ARES/commit/9cbbec9a12eb1d1c256f9c0566064d0ea502f165.patch | https://github.com/lxcxjxhx/HOS-ARES
+TC89_EXT_0182 | GH-COMMIT-garux-sec_Multi-Agent-Pentesting-Framework-f5f9741885 | GitHub-CommitSearch | https://github.com/garux-sec/Multi-Agent-Pentesting-Framework/commit/f5f9741885411422e829b72f16b77c3ce5a24ef6.patch | https://github.com/garux-sec/Multi-Agent-Pentesting-Framework
+TC89_EXT_0183 | GH-COMMIT-wharekawa_kaitiaki-genomics-9b465a3210 | GitHub-CommitSearch | https://github.com/wharekawa/kaitiaki-genomics/commit/9b465a3210e0bb22d6099f0e6cbcff881a05c60d.patch | https://github.com/wharekawa/kaitiaki-genomics
+TC89_EXT_0184 | GH-COMMIT-ramuatnet_R-SecOpsX-P0-Independent-Audit-30278c75f1 | GitHub-CommitSearch | https://github.com/ramuatnet/R-SecOpsX-P0-Independent-Audit/commit/30278c75f16417010414b609048c26ebb584d9a2.patch | https://github.com/ramuatnet/R-SecOpsX-P0-Independent-Audit
+TC89_EXT_0185 | GH-COMMIT-Jdrexx_forgeguard-d5a629f931 | GitHub-CommitSearch | https://github.com/Jdrexx/forgeguard/commit/d5a629f93105d3945362c06a45694c11ad0fff2e.patch | https://github.com/Jdrexx/forgeguard
+TC89_EXT_0186 | GH-COMMIT-Tarmo-Technologies_fastrag-c17cad614c | GitHub-CommitSearch | https://github.com/Tarmo-Technologies/fastrag/commit/c17cad614c59a86c6d1901a2c50a20d581b69aaa.patch | https://github.com/Tarmo-Technologies/fastrag
+TC89_EXT_0187 | GH-COMMIT-Subhash-cyber_claudia-rag-ca6c2183e6 | GitHub-CommitSearch | https://github.com/Subhash-cyber/claudia-rag/commit/ca6c2183e6c82a71e882ec495badb511e12c7b6e.patch | https://github.com/Subhash-cyber/claudia-rag
+TC89_EXT_0188 | GH-COMMIT-lyonzin_knowledge-rag-76500a6f6a | GitHub-CommitSearch | https://github.com/lyonzin/knowledge-rag/commit/76500a6f6a7f7f5982c642a32688fb9575cf13d3.patch | https://github.com/lyonzin/knowledge-rag
+TC89_EXT_0189 | GH-COMMIT-ajagawa_ttb-label-verify-c99d182196 | GitHub-CommitSearch | https://github.com/ajagawa/ttb-label-verify/commit/c99d1821969bb25a5bb96b320ebd124a51dda4cb.patch | https://github.com/ajagawa/ttb-label-verify
+TC89_EXT_0190 | GH-COMMIT-actions-marketplace-validations_sattyamjjain_agent-audit-kit-ffaa9130d5 | GitHub-CommitSearch | https://github.com/actions-marketplace-validations/sattyamjjain_agent-audit-kit/commit/ffaa9130d5234c30021626bf000a5d0ee4dd7ee3.patch | https://github.com/actions-marketplace-validations/sattyamjjain_agent-audit-kit
+TC89_EXT_0191 | GH-COMMIT-Probably-Group_Dev-AID-ef94e3fc5c | GitHub-CommitSearch | https://github.com/Probably-Group/Dev-AID/commit/ef94e3fc5c0f257ca2ce237e409d07a31a20e8ea.patch | https://github.com/Probably-Group/Dev-AID
+TC89_EXT_0192 | GH-COMMIT-vhuy811_DevSecOps_VHNAT-e9c58a74d8 | GitHub-CommitSearch | https://github.com/vhuy811/DevSecOps_VHNAT/commit/e9c58a74d81bae4980bf52ded34034ee88cd7798.patch | https://github.com/vhuy811/DevSecOps_VHNAT
+TC89_EXT_0193 | GH-COMMIT-HisSUS77_vulcan-backend-58867e6dd6 | GitHub-CommitSearch | https://github.com/HisSUS77/vulcan-backend/commit/58867e6dd626ad8dda829445ad2106eb772c8731.patch | https://github.com/HisSUS77/vulcan-backend
+TC89_EXT_0194 | GH-COMMIT-sahil00000001_podshield-BACKEND-be94270d5b | GitHub-CommitSearch | https://github.com/sahil00000001/podshield-BACKEND/commit/be94270d5b346e40cbd34a63df966ffe45f549ff.patch | https://github.com/sahil00000001/podshield-BACKEND
+TC89_EXT_0195 | GH-COMMIT-TSchonleber_brainctl-a1985bf956 | GitHub-CommitSearch | https://github.com/TSchonleber/brainctl/commit/a1985bf956d3667f6b9f3946e4243d653c59bc20.patch | https://github.com/TSchonleber/brainctl
+TC89_EXT_0196 | GH-COMMIT-GarryWhite109909_ZaoZao-101a277d8a | GitHub-CommitSearch | https://github.com/GarryWhite109909/ZaoZao/commit/101a277d8ab6cd730db6463e6102fe2d0755110e.patch | https://github.com/GarryWhite109909/ZaoZao
+TC89_EXT_0197 | GH-COMMIT-actions-marketplace-validations_adudley78_mcp-audit-2303951280 | GitHub-CommitSearch | https://github.com/actions-marketplace-validations/adudley78_mcp-audit/commit/2303951280607957df09755d3f40b273241f9188.patch | https://github.com/actions-marketplace-validations/adudley78_mcp-audit
+TC89_EXT_0198 | GH-COMMIT-Ashveil1_Elengenix-c0491b675d | GitHub-CommitSearch | https://github.com/Ashveil1/Elengenix/commit/c0491b675d412ede057b5f895dd1b2bd44538c54.patch | https://github.com/Ashveil1/Elengenix
+TC89_EXT_0199 | GH-COMMIT-gitboyabhayt_nyxproxy-9ad53b8cfe | GitHub-CommitSearch | https://github.com/gitboyabhayt/nyxproxy/commit/9ad53b8cfe1c50c4cdcf1601dc4ae4f7c3e8f110.patch | https://github.com/gitboyabhayt/nyxproxy
+TC89_EXT_0200 | GH-COMMIT-madcow4242_gaia_sd_issue-c2c68064c5 | GitHub-CommitSearch | https://github.com/madcow4242/gaia_sd_issue/commit/c2c68064c54b8837749178741f7dffc0624d2a48.patch | https://github.com/madcow4242/gaia_sd_issue

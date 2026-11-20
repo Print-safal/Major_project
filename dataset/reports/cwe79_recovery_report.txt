@@ -1,0 +1,27 @@
+CWE-79 PATCH-BACKED RECOVERY REPORT ? PHASE 3
+Date: 2026-11-20
+Scope: All 15 local CVE-named directories, 33 Python source files and 13 fix.patch files. Original collection files were not changed; no external source was fetched.
+
+RESULT
+9 independently usable CWE-79 candidates recovered from local Python vulnerable/fixed code and matching patches. All 9 have paired fixed code. Historical evaluation exclusion hashes: no exact or whitespace-normalized matches for these recovered vulnerable snippets. Repository URLs were not present in the local source tree/patch metadata and are left null; patch commit IDs and local source/patch paths are preserved as provenance.
+
+CASE REVIEW
+CVE-2012-6131 ? VERIFIED. roundup/cgi/templating.py inserts username into an HTML row; the patch explicitly identifies XSS from HTML in usernames and changes `user` to `cgi.escape(user)`. Commit 38193cc7d93567e04dae71cf526427473685d35e.
+CVE-2014-3473 ? VERIFIED. Horizon user email column passes unvalidated email data to urlize without escaping; patch adds escape before urlize. Commit c844bd692894353c60b320005b804970605e910f.
+CVE-2014-3474 ? DUPLICATE. Same Change-Id and materially identical multi-XSS patch/source lineage as CVE-2014-3473; not independently counted. Its patch is a branch/backport variant.
+CVE-2014-3594 ? VERIFIED. Horizon aggregate table uses unordered_list without autoescape; patch wraps it with autoescape=True. Commit ba2c98aea0db0d03200c811b86b3efe8367f3905.
+CVE-2015-2241 ? PENDING_REVIEW. helpers.py exists but no local patch or case-specific fix evidence; the file alone does not establish vulnerable/fixed flow.
+CVE-2016-4428 ? PENDING_REVIEW. Patch adds an AngularJS-aware escape monkeypatch and describes unsafe HTML/XSS, but local vulnerable sink/data flow is absent; local settings files show fix integration, not a sufficient vulnerable Python sample.
+CVE-2017-12794 ? PENDING_REVIEW. debug.py exists but no local patch or case-specific fix evidence; no supported vulnerable/fixed flow reconstructed.
+CVE-2018-20244 ? VERIFIED. Airflow dag_run_link inserts raw run_id into Markup anchor text; patch escapes it and includes security regression coverage. Commit 27a4a888e946728d9bb33b78ec604e08d4a93f89.
+CVE-2019-12308 ? PENDING_REVIEW. Patch confirms an XSS-prone clickable URL, but its vulnerable sink is a Django HTML template, not available as a Python source sample in the local directory. The Python widget code alone lacks sufficient sink context for this Python-only evaluation case.
+CVE-2020-13596 ? VERIFIED. Django ForeignKeyRawIdWidget constructs query parameters by string interpolation and marks the resulting URL safe; patch uses urlencode and removes mark_safe. Commit 1f2dd37f6fcefdd10ed44cb233b2e62b520afb38.
+CVE-2022-22818 ? VERIFIED. Django DebugNode emits pformat(context) and pformat(sys.modules) into rendered output unescaped; patch escapes both and disables output when DEBUG is false. Commit 01422046065d2b51f8f613409cad2c81b39487e5.
+CVE-2023-36809 ? VERIFIED. Kiwi TCMS tree_view_html interpolates test_plan.name into HTML; patch applies bleach_input before insertion. Commit 195ea53eaaf360c19227c864cc0fe58910032c3c.
+CVE-2024-45399 ? INCORRECT_CLASSIFICATION. Patch validates URL schemes for a next URL and rejects javascript:, which is redirect handling (CWE-601 class), not CWE-79 or another target CWE. Excluded from target cases.
+CVE-2026-44896 ? VERIFIED. Mistune HTMLRenderer.block_error inserts text into a pre element without escaping; patch wraps text with escape_text. Commit a3cb6e5655308797e8be021d6c7b5bab13cbace2.
+CVE-2026-59923 ? VERIFIED. Mistune checks only lowercased encoded URL schemes; patch percent-decodes before the harmful-scheme check and provides encoded javascript/data URL tests. Commit c7101fcbb6e8790e8e39157c5ca2238fc6dd6cbc.
+
+The 176-row cwe79_original_with_code.jsonl remains grouped-source inventory, not an additional verified set. Its 356 fragments were not case-adjudicated in this phase. None of the 15 directory CVE IDs overlaps those 176 IDs. The two Horizon 2014 patches are related backports; only one is counted. Multiple files in each directory were consolidated to at most one case per CVE.
+
+All nine recovered records are in verified_recovered_cases.jsonl with vulnerable_code, fixed_code, CWE, filename, commit, local patch/source references and evidence. repo_url is null where absent in source artifacts; no repository URL was inferred or fabricated.

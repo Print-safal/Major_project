@@ -1,0 +1,11 @@
+PHASE 4 SOURCE PROVENANCE REPORT - UPDATED THROUGH CWE-22 BATCH 2
+Collection date: 2026-11-20
+
+Four new CWE-22 cases are sourced from four upstream Python repositories. Provenance is recorded per case in dataset/external_sources/CWE-22/cases.jsonl and the candidate validation ledger. Each record includes upstream repository URL, advisory, fix/commit reference, source file/location, collection date, license, redistribution note, vulnerable/fixed excerpts, and content hashes.
+
+- aio-libs/aiohttp - CVE-2024-23334; GHSA-5h86-8mv2-jq9f; PR #8079 and fix references 1c33594 / 7a8cac9; aiohttp/web_urldispatcher.py; Apache-2.0.
+- gitpython-developers/GitPython - CVE-2026-44243; GHSA-7545-fcxq-7j24; commits 25ba54dd3fb374b8fade7de4be1ac2ac84722190 and 4af8463cca31c2369312fcaa5309dfc30756c7b6; git/refs/symbolic.py; BSD-3-Clause.
+- posit-dev/py-shiny - CVE-2026-108258; GHSA-47c3-hpmg-7j6p; merge 1d8ecb4 and underlying fix 423aae3e; shiny/bookmark/_bookmark_state.py; MIT.
+- python-poetry/poetry - CVE-2026-41140; GHSA-73h3-mf4w-8647; commit 47e97340cae50d3698aac858732788861ba8dd1f; src/poetry/utils/helpers.py; MIT.
+
+The cases are short attributed excerpts, not full upstream files. License notices and links are recorded in dataset/external_sources/CWE-22/NOTICE.txt. Public redistribution of the final benchmark should retain required license notices and attribution.

@@ -1,0 +1,62 @@
+CWE-78 benchmark sources
+
+Final benchmark: 200 vulnerable Python snippets. The original 145 snippets come from Python-focused source records in cases.jsonl (Patchwork, Zenodo Python, CEVuD/CVEfixes-derived, and CyberSet Python files). Additions comprise 13 OWASP BenchmarkPython positives, 22 distinct PyVul functions, and 20 Python-file snippets from GitHub advisory/NVD-linked fixes.
+
+Added 55 Python snippets to bring this benchmark to 200. Each snippet is extracted from a vulnerable pre-fix Python function/file.
+TC78_SUPP_0001 | PyVul |  | https://github.com/tabatkins/bikeshed/commit/b2f668fca204260b1cad28d5078e93471cb6b2dd
+TC78_SUPP_0002 | PyVul |  | https://github.com/tensorflow/tensorflow/commit/8b202f08d52e8206af2bdb2112a62fafbc546ec7
+TC78_SUPP_0003 | PyVul |  | https://github.com/google/slo-generator/commit/36318beab1b85d14bb860e45bea186b184690d5d
+TC78_SUPP_0004 | PyVul |  | https://github.com/PaddlePaddle/Paddle/commit/5ed9478fdef96a06eeec9093f9e768c97b094af3
+TC78_SUPP_0005 | PyVul |  | https://github.com/yt-dlp/yt-dlp/commit/de015e930747165dbb8fcd360f8775fd973b7d6e
+TC78_SUPP_0006 | PyVul |  | https://github.com/abilian/abilian-devtools/commit/9d71b0d3b6b467589d58aacc932ca3dc7e524ce2
+TC78_SUPP_0007 | PyVul |  | https://github.com/cyanomiko/dcnnt-py/commit/b4021d784a97e25151a5353aa763a741e9a148f5
+TC78_SUPP_0008 | PyVul |  | https://github.com/ansible/ansible/commit/03aff644cc1c00e1f7551195c68fbd0d13a39e6e
+TC78_SUPP_0009 | PyVul |  | https://github.com/ansible/ansible/commit/8aa850e3573e48c9a2f12aef84e8a3a6f5ba4847
+TC78_SUPP_0010 | PyVul |  | https://github.com/ansible/ansible/commit/8b17e5b9229ffaecfe10a4881bc3f87dd2c184e1
+TC78_SUPP_0011 | PyVul |  | https://github.com/pgadmin-org/pgadmin4/commit/35f05e49b3632a0a674b9b36535a7fe2d93dd0c2
+TC78_SUPP_0012 | PyVul |  | https://github.com/mlflow/mlflow/commit/6dde93758d42455cb90ef324407919ed67668b9b
+TC78_SUPP_0013 | PyVul |  | https://github.com/ray-project/ray/commit/193ff8c80067aed4037755cc10f15eb6986dfe95
+TC78_SUPP_0014 | PyVul |  | https://github.com/huggingface/transformers/commit/2272ab57a99bcac972b5252b87c31e24d0b25538
+TC78_SUPP_0015 | PyVul |  | https://github.com/autogluon/autogluon/commit/23a37e74e58d03055c84a1b89c5af6c3db296b5e
+TC78_SUPP_0016 | PyVul |  | https://github.com/stamparm/maltrail/commit/a299967318cc226c18a6a07d1be708e3f21edd39
+TC78_SUPP_0017 | PyVul |  | https://github.com/PaddlePaddle/Paddle/commit/49bec176053595975c1941cff9749c55f7203ea9
+TC78_SUPP_0018 | PyVul |  | https://github.com/dgilland/pydash/commit/6ff0831ad285fff937cafd2a853f20cc9ae92021
+TC78_SUPP_0019 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00165.py
+TC78_SUPP_0020 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00166.py
+TC78_SUPP_0021 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00167.py
+TC78_SUPP_0022 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00168.py
+TC78_SUPP_0023 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00267.py
+TC78_SUPP_0024 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00268.py
+TC78_SUPP_0025 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00431.py
+TC78_SUPP_0026 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00432.py
+TC78_SUPP_0027 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00511.py
+TC78_SUPP_0028 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00606.py
+TC78_SUPP_0029 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00607.py
+TC78_SUPP_0030 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest00899.py
+TC78_SUPP_0031 | OWASP BenchmarkPython |  | https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/testcode/BenchmarkTest01191.py
+TC78_SUPP_0032 | GitHub Security Advisory/NVD inventory | CVE-2025-15379 | https://github.com/mlflow/mlflow/commit/361b6f620adf98385c6721e384fb5ef9a30bb05e
+TC78_SUPP_0033 | GitHub Security Advisory/NVD inventory | CVE-2026-55798 | https://github.com/python-pillow/Pillow/commit/8404ea5fe5df40fc34aa1e51403dd6fce0778b8a
+TC78_SUPP_0034 | GitHub Security Advisory/NVD inventory | CVE-2019-14904 | https://github.com/ansible/ansible/commit/589a415f887b6f2bb65cd07fe6b2e9d0a8156b69
+TC78_SUPP_0035 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0036 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0037 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0038 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0039 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0040 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0041 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0042 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0043 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0044 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0045 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0046 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0047 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0048 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0049 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0050 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0051 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0052 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0053 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0054 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_SUPP_0055 | GitHub Security Advisory/NVD inventory | CVE-2024-21649 | https://github.com/vantage6/vantage6/commit/eac19db737145d3ca987adf037a454fae0790ddd
+TC78_PYVUL_EXTRA_001 | PyVul additional function | https://github.com/tabatkins/bikeshed/commit/b2f668fca204260b1cad28d5078e93471cb6b2dd | https://github.com/advisories/GHSA-87cj-px37-rc3x
+TC78_PYVUL_EXTRA_002 | PyVul additional function | https://github.com/tabatkins/bikeshed/commit/b2f668fca204260b1cad28d5078e93471cb6b2dd | https://github.com/advisories/GHSA-87cj-px37-rc3x

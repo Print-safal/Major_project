@@ -1,0 +1,33 @@
+CROSS-CATEGORY CLASSIFICATION REVIEW ? PHASE 3
+Date: 2026-11-20
+Scope: The nine identifiers that appeared in more than one CWE catalog. Review uses local snippets and metadata only; no external validation was performed. No same input is counted twice in verified_recovered_cases.jsonl.
+
+1) CVE-2026-7816 ? present as CWE-78 and CWE-89.
+The CWE-78 fragment only replaces newline characters in `data['query']`; it contains no OS command execution sink. This CWE-78 assignment is INCORRECT_CLASSIFICATION. CWE-89 snippets are from pgAdmin import/export code and show a `query` value being normalized and used in SQL import/export. This is consistent with SQL handling but the complete taint-to-execution flow and fixing hunk are not available as a paired case here, so CWE-89 remains PENDING_REVIEW. Treat as one CVE candidate, not two cases.
+
+2) GH-COMMIT-MohdAlkafaween_devsecops-lab-d16c9aaa9f ? present as CWE-89 and CWE-798.
+The shared Python fragment includes a literal INTERNAL_API_TOKEN assignment and request.args reaching sqlite `execute()` via concatenation. Within the fragment, the two CWE labels can be legitimate distinct issues in one source example. It also includes command injection and reflected HTML output. The code is a multi-flaw lab-style file, the commit key is an inventory identifier rather than a CVE, and no corresponding patch/code lineage was locally confirmed. PENDING_REVIEW; do not split or count once under each CWE.
+
+3) GH-COMMIT-syahnetwork_aegis-forge-devsecops-500692e069 ? CWE-89/CWE-798.
+Available fragment shows GitHub Models API calls and environment-based GITHUB_TOKEN use, not SQL construction or a hardcoded credential. Because the record is a fragment and may omit the affected function, neither label is accepted or rejected solely from this excerpt. PENDING_REVIEW for both labels; likely label mismatch requires source/commit review.
+
+4) GH-COMMIT-DelRoos_vulnchain-55549b2ad7 ? CWE-89/CWE-798.
+Shown snippet is a notebook/CTF stub with subprocess import; the excerpt does not demonstrate SQL injection or an embedded credential. PENDING_REVIEW; source lineage and relevant code context are needed.
+
+5) GH-COMMIT-wonjangcloud9_open-guardrail-82a8ecc051 ? CWE-89/CWE-798.
+Shown excerpt is a module export list for guard functions; it demonstrates neither SQL query construction nor a hardcoded secret. PENDING_REVIEW; current snippet is insufficient to substantiate either category.
+
+6) GH-COMMIT-ahmed-145_ACR-QA-8729b6d43f ? CWE-89/CWE-798.
+Shown excerpt runs Semgrep and maps findings; it contains no evident SQL sink or credential literal. PENDING_REVIEW; need the exact commit file/function tied to the candidate label.
+
+7) GH-COMMIT-MohamedNamper333_swarm-agent-b90327c771 ? CWE-89/CWE-798.
+Shown excerpt validates bearer/API-key values from request headers through an auth manager; it does not demonstrate a hardcoded credential or SQL injection. PENDING_REVIEW; no vulnerable sink or secret is established in available context.
+
+8) GH-COMMIT-ajagawa_ttb-label-verify-c99d182196 ? CWE-89/CWE-798.
+Identifier is shared across catalogs, but the grouped snippets do not yet establish that the same function is responsible for both labels or that there are two distinct issues. PENDING_REVIEW; verify repository, commit, exact file and function before assigning either label.
+
+9) GH-COMMIT-HisSUS77_vulcan-backend-58867e6dd6 ? CWE-89/CWE-798.
+Same evidence gap: catalog identifier is shared, but the local grouped excerpts do not establish two distinct SQL/credential issues or their relationship. PENDING_REVIEW.
+
+CONCLUSION
+One misclassification is established locally: CWE-78 on CVE-2026-7816. The corresponding CWE-89 classification remains a candidate. One GH-COMMIT snippet (MohdAlkafaween) supports multiple flaws in a single code input, but without verified commit/fix lineage and a multi-label evaluation schema it remains pending. The remaining seven shared GH-COMMIT identifiers remain pending; none is counted as a verified independent case. Shared repository or commit keys alone do not prove either duplication or independent vulnerabilities.

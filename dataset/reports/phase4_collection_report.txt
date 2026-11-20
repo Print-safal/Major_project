@@ -1,0 +1,10 @@
+PHASE 4 EXTERNAL COLLECTION REPORT - UPDATED THROUGH CWE-22 BATCH 2
+Date: 2026-11-20
+
+The initial 9 verified CWE-79 cases were preserved. Their original records remain unchanged. Four verified CWE-22 cases have been recovered from vendor-reviewed advisories and matching upstream fixes: CVE-2024-23334 (aiohttp), CVE-2026-44243 (GitPython), CVE-2026-108258 (Shiny), and CVE-2026-41140 (Poetry). The Poetry case recovers a previously metadata-only CWE-22 lead. Three metadata catalog entries that correspond to recovered cases are marked DUPLICATE in the ledger and do not add to the case count.
+
+All four cases have vulnerable/fixed Python excerpts, source provenance, advisory and commit references, file locations, license notes, and content hashes. All eight code snippets pass Python AST parsing. Duplicate and historical exclusion checks found no collisions. The latest near-duplicate screen covered 3,752 local recovered-candidate snippets/source files with maximum length-compatible ratio 0.285.
+
+Current verified count is 13/1,200: CWE-22 4; CWE-79 9; other categories 0. Remaining gap is 1,187, including CWE-22 gap 196. Other categories have not been expanded in this update. See cwe22_collection_report.txt, source_provenance_report.txt and validation_summary.txt.
+
+The partial seed snapshot and manifest remain explicitly non-final. This report does not claim completion or integration of the benchmark.

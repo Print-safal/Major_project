@@ -1,0 +1,154 @@
+CWE-22 benchmark-format dataset provenance
+
+cases_benchmark.json now contains exactly 200 vulnerable Python records: 65 OWASP BenchmarkPython positives, 47 distinct PyVul functions, 41 Python snippets from the project advisory/NVD inventory, 44 Python-file snippets from the GitHub Advisory Database, and 3 independently sourced verified Python cases. OWASP safe controls are excluded from this CWE benchmark and remain subject to the separate SAFE-PYTHON cap.
+
+OWASP BenchmarkPython
+Repository: https://github.com/OWASP-Benchmark/BenchmarkPython
+Expected results: https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/expectedresults-0.1.csv
+Code: https://github.com/OWASP-Benchmark/BenchmarkPython/tree/main/testcode
+License: GPL-3.0 (see repository LICENSE).
+
+PyVul
+Repository: https://github.com/billquan/PyVul
+Dataset source: dataset/function_level_dataset.out; CWE mapping: dataset/commits_cwe_map.json.
+Each entry below points to the upstream fix commit and the report/advisory recorded in PyVul. Code is the code_before vulnerable function from PyVul.
+TC22_PYVUL_001: https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02 | trigger | report: https://github.com/advisories/GHSA-ggwr-4vr8-g7wv
+TC22_PYVUL_002: https://github.com/ikus060/rdiffweb/commit/323383d1db656f1b1291be529947bd943a6b0e99 | static | report: https://huntr.com/bounties/f7d2a6ab-2faf-4719-bdb6-e4e5d6065752/
+TC22_PYVUL_003: https://github.com/aio-libs/aiohttp/commit/1c335944d6a8b1298baf179b7c0b3069f10c514b | _handle | report: https://github.com/advisories/GHSA-5h86-8mv2-jq9f
+TC22_PYVUL_004: https://github.com/Pylons/pyramid/commit/347d7750da6f45c7436dd0c31468885cc9343c85 | _secure_path | report: https://github.com/advisories/GHSA-j8g2-6fc7-q8f8
+TC22_PYVUL_005: https://github.com/9001/copyparty/commit/043e3c7dd683113e2b1c15cacb9c8e68f76513ff | handle_get | report: https://github.com/advisories/GHSA-pxfv-7rr3-2qjg
+TC22_PYVUL_006: https://github.com/encode/starlette/commit/1797de464124b090f10cf570441e8292936d63e3 | lookup_path | report: https://github.com/advisories/GHSA-v5gw-mw7f-84px
+TC22_PYVUL_007: https://github.com/facelessuser/pymdown-extensions/commit/b7bb4878d6017c03c8dc97c42d8d3bb6ee81db9d | get_snippet_path | report: https://github.com/advisories/GHSA-jh85-wwv9-24hv
+TC22_PYVUL_008: https://github.com/mlflow/mlflow/commit/ac4b697bb0bb8a331944dca63f4235b4bf602ab8 | get_artifact_handler | report: https://github.com/advisories/GHSA-wc6j-5g83-xfm6
+TC22_PYVUL_009: https://github.com/pretalx/pretalx/commit/60722c43cf975f319e94102e6bff320723776890 | dump_content | report: https://github.com/advisories/GHSA-23fx-92m6-4f2g
+TC22_PYVUL_010: https://github.com/mindsdb/mindsdb/commit/4419b0f0019c000db390b54d8b9d06e1d3670039 | put | report: https://github.com/advisories/GHSA-2g5w-29q9-w6hx
+TC22_PYVUL_011: https://github.com/DataDog/guarddog/commit/37c7d0767ba28f4df46117d478f97652594c491c | download_compressed | report: https://github.com/advisories/GHSA-78m5-jpmf-ch7v
+TC22_PYVUL_012: https://github.com/streamlit/streamlit/commit/80d9979d5f4a00217743d607078a1d867fad8acf | get | report: https://github.com/advisories/GHSA-v4hr-4jpx-56gc
+TC22_PYVUL_013: https://github.com/ganga-devs/ganga/commit/730e7aba192407d35eb37dd7938d49071124be8c | job_browse | report: https://github.com/advisories/GHSA-7488-6x3r-23w5
+TC22_PYVUL_014: https://github.com/cmusatyalab/opendiamond/commit/398049c187ee644beabab44d6fece82251c1ea56 | _get_index_absolute_path | report: https://github.com/advisories/GHSA-x2pc-fqrw-hc7f
+TC22_PYVUL_015: https://github.com/gradio-app/gradio/commit/41bd3645bdb616e1248b2167ca83636a2653f781 | file | report: https://github.com/advisories/GHSA-rhq2-3vr9-6mcr
+TC22_PYVUL_016: https://github.com/django/django/commit/4cb35b384ceef52123fc66411a73c36a706825e1 | save | report: https://github.com/advisories/GHSA-jrh2-hc4r-7jwx
+TC22_PYVUL_017: https://github.com/zopefoundation/Zope/commit/1f8456bf1f908ea46012537d52bd7e752a532c91 | boboAwareZopeTraverse | report: https://github.com/advisories/GHSA-962m-m8jw-8wrr
+TC22_PYVUL_018: https://github.com/django/django/commit/053cc9534d174dc89daba36724ed2dcb36755b90 | get_context_data | report: https://github.com/advisories/GHSA-68w8-qjq3-2gfm
+TC22_PYVUL_019: https://github.com/django/django/commit/20c67a0693c4ede2b09af02574823485e82e4c8f | get_context_data | report: https://github.com/advisories/GHSA-68w8-qjq3-2gfm
+TC22_PYVUL_020: https://github.com/django/django/commit/dfaba12cda060b8b292ae1d271b44bf810b1c5b9 | get_context_data | report: https://github.com/advisories/GHSA-68w8-qjq3-2gfm
+TC22_PYVUL_021: https://github.com/corydolphin/flask-cors/commit/67c4b2cc98ae87cf1fa7df4f97fd81b40c79b895 | make_after_request_function | report: https://github.com/advisories/GHSA-xc3p-ff3m-f46v
+TC22_PYVUL_022: https://github.com/ansible/ansible/commit/b2551bb6943eec078066aa3a923e0bb3ed85abe8 | _extract_tar_file | report: https://github.com/advisories/GHSA-3c67-gc48-983w
+TC22_PYVUL_023: https://github.com/django/django/commit/05413afa8c18cdb978fcdf470e09f7a12b234a23 | extract | report: https://github.com/advisories/GHSA-fvgf-6h6h-3322
+TC22_PYVUL_024: https://github.com/django/django/commit/02e6592835b4559909aa3aaaf67988fef435f624 | extract | report: https://github.com/advisories/GHSA-fvgf-6h6h-3322
+TC22_PYVUL_025: https://github.com/django/django/commit/21e7622dec1f8612c85c2fc37fe8efbfd3311e37 | extract | report: https://github.com/advisories/GHSA-fvgf-6h6h-3322
+TC22_PYVUL_026: https://github.com/django/django/commit/52e409ed17287e9aabda847b6afe58be2fa9f86a | extract | report: https://github.com/advisories/GHSA-fvgf-6h6h-3322
+TC22_PYVUL_027: https://github.com/horazont/xmpp-http-upload/commit/82056540191e89f0cd697c81f57714c00962ed75 | get_paths | report: https://github.com/advisories/GHSA-hwv5-w8gm-fq9f
+TC22_PYVUL_028: https://github.com/triaxtec/openapi-python-client/commit/3e7dfae5d0b3685abf1ede1bc6c086a116ac4746 | _build_api | report: https://github.com/advisories/GHSA-7wgr-7666-7pwj
+TC22_PYVUL_029: https://github.com/moggers87/django-sendfile2/commit/f870c52398a55b9b5189932dd8caa24efb4bc1e1 | sendfile | report: https://github.com/advisories/GHSA-6r3c-8xf3-ggrr
+TC22_PYVUL_030: https://github.com/nltk/nltk/commit/f59d7ed8df2e0e957f7f247fe218032abdbe9a10 | _unzip_iter | report: https://github.com/advisories/GHSA-mr7p-25v2-35wr
+TC22_PYVUL_031: https://github.com/mlflow/mlflow/commit/4bd7f27c810ba7487d53ed5ef1038fca0f8dc28c | is_local_uri | report: https://huntr.com/bounties/fe53bf71-3687-4711-90df-c26172880aaf/
+TC22_PYVUL_032: https://github.com/benbusby/whoogle-search/commit/3a2e0b262e4a076a20416b45e6b6f23fd265aeda | window | report: https://security.snyk.io/vuln/SNYK-PYTHON-WHOOGLESEARCH-6186523
+
+Added 103 Python snippets to bring this benchmark to 200. Each snippet is extracted from a vulnerable pre-fix Python function/file.
+TC22_SUPP_0001 | PyVul | CVE-2022-35918 | https://github.com/streamlit/streamlit/commit/bd0a8996c4c7ec55b9c6557e7b168b0c13a25b90
+TC22_SUPP_0002 | PyVul |  | https://github.com/dfetch-org/dfetch/commit/02a4f2500821e980a1605effed219cc7952a37a6
+TC22_SUPP_0003 | PyVul |  | https://github.com/pymodbus-dev/pymodbus/commit/ba906c1c5a6b87a0d659c3a0c5fcba373ee0ed4e
+TC22_SUPP_0004 | PyVul |  | https://github.com/mlflow/mlflow/commit/2b8b6619456396df2bd51df951ce56968e125b0d
+TC22_SUPP_0005 | PyVul |  | https://github.com/ansible/ansible/commit/1e930684bc0a76ec3d094cd326738ad26416541c
+TC22_SUPP_0006 | PyVul |  | https://github.com/gradio-app/gradio/commit/1b9d4234d6c25ef250d882c7b90e1f4039ed2d76
+TC22_SUPP_0007 | PyVul |  | https://github.com/mlflow/mlflow/commit/1c6309f884798fbf56017a3cc808016869ee8de4
+TC22_SUPP_0008 | PyVul |  | https://github.com/pyload/pyload/commit/695bb70cd88608dc4fee18a6a7ecb66722ebfd8f
+TC22_SUPP_0009 | PyVul |  | https://github.com/coderedcorp/coderedcms/commit/06006cec23a723bc7d76df75ce2c2d795a447902
+TC22_SUPP_0010 | PyVul |  | https://github.com/django/django/commit/8d2f7cff76200cbd2337b2cf1707e383eb1fb54b
+TC22_SUPP_0011 | PyVul |  | https://github.com/django/django/commit/e1592e0f26302e79856cc7f2218ae848ae19b0f6
+TC22_SUPP_0012 | PyVul |  | https://github.com/mlflow/mlflow/commit/5044878da0c1851ccfdd5c0a867157ed9a502fbc
+TC22_SUPP_0013 | PyVul |  | https://github.com/gradio-app/gradio/commit/7ba8c5da45b004edd12c0460be9222f5b5f5f055
+TC22_SUPP_0014 | PyVul |  | https://github.com/miurahr/py7zr/commit/1bb43f17515c7f69673a1c88ab9cc72a7bbef406
+TC22_SUPP_0015 | PyVul |  | https://github.com/mlflow/mlflow/commit/cf83dad4df26dd4a850622fe8a51ccab1471a5e7
+TC22_SUPP_0016 | PyVul |  | https://github.com/ethyca/fides/commit/f526d9ffb176006d701493c9d0eff6b4884e811f
+TC22_SUPP_0017 | PyVul |  | https://github.com/django/django/commit/87d2750b39f6f2d54b7047225521a44dcd37e896
+TC22_SUPP_0018 | PyVul |  | https://github.com/nvbn/thefuck/commit/e343c577cd7da4d304b837d4a07ab4df1e023092
+TC22_SUPP_0019 | GitHub Security Advisory/NVD inventory | CVE-2026-12482 | https://github.com/keras-team/keras/commit/9867df45c456dd1077a6243bb56219f66e288150
+TC22_SUPP_0020 | GitHub Security Advisory/NVD inventory | CVE-2026-12482 | https://github.com/keras-team/keras/commit/9867df45c456dd1077a6243bb56219f66e288150
+TC22_SUPP_0021 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0022 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0023 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0024 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0025 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0026 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0027 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0028 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0029 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0030 | GitHub Security Advisory/NVD inventory | CVE-2021-31542 | https://github.com/django/django/commit/04ac1624bdc2fa737188401757cf95ced122d26d
+TC22_SUPP_0031 | GitHub Security Advisory/NVD inventory | CVE-2026-59924 | https://github.com/lepture/mistune/commit/1bef343ade163fc3bb95572b15be720084cdb993
+TC22_SUPP_0032 | GitHub Security Advisory/NVD inventory | CVE-2026-59924 | https://github.com/lepture/mistune/commit/1bef343ade163fc3bb95572b15be720084cdb993
+TC22_SUPP_0033 | GitHub Security Advisory/NVD inventory | CVE-2026-76222 | https://github.com/gitpython-developers/GitPython/commit/4299c990e1ca21896f9485277caf7bb0ae5b404c
+TC22_SUPP_0034 | GitHub Security Advisory/NVD inventory | CVE-2026-76222 | https://github.com/gitpython-developers/GitPython/commit/4299c990e1ca21896f9485277caf7bb0ae5b404c
+TC22_SUPP_0035 | GitHub Security Advisory/NVD inventory | CVE-2021-33203 | https://github.com/django/django/commit/053cc9534d174dc89daba36724ed2dcb36755b90
+TC22_SUPP_0036 | GitHub Security Advisory/NVD inventory | CVE-2021-33203 | https://github.com/django/django/commit/053cc9534d174dc89daba36724ed2dcb36755b90
+TC22_SUPP_0037 | GitHub Security Advisory/NVD inventory | CVE-2025-68398 | https://github.com/WeblateOrg/weblate/commit/4837a4154390f7c1d03c0e398aa6439dcfa361b4
+TC22_SUPP_0038 | GitHub Security Advisory/NVD inventory | CVE-2025-68398 | https://github.com/WeblateOrg/weblate/commit/4837a4154390f7c1d03c0e398aa6439dcfa361b4
+TC22_SUPP_0039 | GitHub Security Advisory/NVD inventory | CVE-2025-68398 | https://github.com/WeblateOrg/weblate/commit/4837a4154390f7c1d03c0e398aa6439dcfa361b4
+TC22_SUPP_0040 | GitHub Security Advisory/NVD inventory | CVE-2025-68398 | https://github.com/WeblateOrg/weblate/commit/4837a4154390f7c1d03c0e398aa6439dcfa361b4
+TC22_SUPP_0041 | GitHub Security Advisory/NVD inventory | CVE-2026-8754 | https://github.com/AstrBotDevs/AstrBot/commit/aaec41e5054569ceaa1113593a34da7568e2d211
+TC22_SUPP_0042 | GitHub Security Advisory/NVD inventory | CVE-2009-2659 | https://github.com/django/django/commit/da85d76fd6ca846f3b0ff414e042ddb5e62e2e69
+TC22_SUPP_0043 | GitHub Security Advisory/NVD inventory | CVE-2009-2659 | https://github.com/django/django/commit/da85d76fd6ca846f3b0ff414e042ddb5e62e2e69
+TC22_SUPP_0044 | GitHub Security Advisory/NVD inventory | CVE-2026-46345 | https://github.com/oscal-compass/compliance-trestle/commit/247fcce289f60103f3d8e28d8ec51a6986b94fb6
+TC22_SUPP_0045 | GitHub Security Advisory/NVD inventory | CVE-2026-46345 | https://github.com/oscal-compass/compliance-trestle/commit/247fcce289f60103f3d8e28d8ec51a6986b94fb6
+TC22_SUPP_0046 | GitHub Security Advisory/NVD inventory | CVE-2026-45774 | https://github.com/oscal-compass/compliance-trestle/commit/5c65c5926fe7ca908b9c1d281f904e7d97ba8310
+TC22_SUPP_0047 | GitHub Security Advisory/NVD inventory | CVE-2026-45774 | https://github.com/oscal-compass/compliance-trestle/commit/5c65c5926fe7ca908b9c1d281f904e7d97ba8310
+TC22_SUPP_0048 | GitHub Security Advisory/NVD inventory | CVE-2023-22887 | https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02
+TC22_SUPP_0049 | GitHub Security Advisory/NVD inventory | CVE-2023-22887 | https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02
+TC22_SUPP_0050 | GitHub Security Advisory/NVD inventory | CVE-2023-22887 | https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02
+TC22_SUPP_0051 | GitHub Security Advisory/NVD inventory | CVE-2023-22887 | https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02
+TC22_SUPP_0052 | GitHub Security Advisory/NVD inventory | CVE-2023-22887 | https://github.com/apache/airflow/commit/05bd90f563649f2e9c8f0c85cf5838315a665a02
+TC22_SUPP_0053 | GitHub Security Advisory/NVD inventory | CVE-2026-24486 | https://github.com/Kludex/python-multipart/commit/9433f4bbc9652bdde82bbe380984e32f8cfc89c4
+TC22_SUPP_0054 | GitHub Security Advisory/NVD inventory | CVE-2021-45452 | https://github.com/django/django/commit/4cb35b384ceef52123fc66411a73c36a706825e1
+TC22_SUPP_0055 | GitHub Security Advisory/NVD inventory | CVE-2021-45452 | https://github.com/django/django/commit/4cb35b384ceef52123fc66411a73c36a706825e1
+TC22_SUPP_0056 | GitHub Security Advisory/NVD inventory | CVE-2021-45452 | https://github.com/django/django/commit/4cb35b384ceef52123fc66411a73c36a706825e1
+TC22_SUPP_0057 | GitHub Security Advisory/NVD inventory | CVE-2025-48957 | https://github.com/AstrBotDevs/AstrBot/commit/cceadf222c46813c7f41115b40d371e7eb91e492
+TC22_SUPP_0058 | GitHub Security Advisory/NVD inventory | CVE-2025-48957 | https://github.com/AstrBotDevs/AstrBot/commit/cceadf222c46813c7f41115b40d371e7eb91e492
+TC22_SUPP_0059 | GitHub Security Advisory/NVD inventory | CVE-2025-48957 | https://github.com/AstrBotDevs/AstrBot/commit/cceadf222c46813c7f41115b40d371e7eb91e492
+TC22_SUPP_0060 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0061 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0062 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0063 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0064 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0065 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0066 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0067 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0068 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0069 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0070 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0071 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0072 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0073 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0074 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0075 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0076 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0077 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0078 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0079 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0080 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0081 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0082 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0083 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0084 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0085 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0086 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0087 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0088 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0089 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0090 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0091 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0092 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0093 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0094 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0095 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0096 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0097 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0098 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0099 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0100 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0101 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0102 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_SUPP_0103 | GitHub Advisory Database | CVE-2026-59988 | https://github.com/tony/django-docutils/pull/457
+TC22_VERIFIED_001 | GitHub Security Advisory verified seed | CVE-2024-23334 | https://github.com/advisories/GHSA-5h86-8mv2-jq9f ; https://github.com/aio-libs/aiohttp/pull/8079/files
+TC22_VERIFIED_002 | GitHub Security Advisory verified seed | CVE-2026-44243 | https://github.com/advisories/GHSA-7545-fcxq-7j24 ; https://github.com/gitpython-developers/GitPython/commit/25ba54dd3fb374b8fade7de4be1ac2ac84722190 ; https://github.com/gitpython-developers/GitPython/commit/4af8463cca31c2369312fcaa5309dfc30756c7b6
+TC22_VERIFIED_003 | GitHub Security Advisory verified seed | CVE-2026-108258 | https://github.com/advisories/GHSA-47c3-hpmg-7j6p ; https://github.com/posit-dev/py-shiny/commit/1d8ecb4

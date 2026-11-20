@@ -1,0 +1,46 @@
+CANDIDATE VALIDATION REPORT — PHASE 2
+Date: 2026-11-20
+Validation mode: Static/local triage. No candidate is certified as vulnerable or safe solely from pattern matching or AST parsing. A “verified usable” case must have code context, independently supported CWE label, provenance, and sufficient evidence; vulnerable examples should have corresponding fix evidence where available.
+
+RESULT
+Verified usable evaluation cases: 0.
+Verified safe cases: 0.
+Verified vulnerable/fixed pairs: 0.
+The following counts indicate records/snippets that can be reviewed, not accepted cases.
+
+CANDIDATE TRIAGE
+Category | Raw grouped rows | Nonempty source snippets / code entries | AST-parseable Python fragments | Fix evidence in same local artifact | Current status
+CWE-22 | 200 metadata rows | 0 | n/a | 0 | missing_source_code
+CWE-78 | 74 | 145 | 38 | 0 paired at record level | requires_manual_review
+CWE-79 JSONL | 176 | 356 | 88 | 0 paired in JSONL | requires_manual_review
+CWE-79 extracted dirs | 15 CVE dirs | 33 .py files | file-level verification not done | 13 dirs contain fix.patch | requires_manual_review
+CWE-89 | 200 | 1,814 | 347 | 0 paired at record level | requires_manual_review
+CWE-798 | 200 | 1,231 | 317 | 0 paired at record level | requires_manual_review
+SAFE-PYTHON | 119 | 119 code entries | not run as a safety proof | n/a | requires_manual_review
+Master inventory | 147 | no code field | n/a | patch/advisory metadata in some rows | requires_manual_review
+
+AST parses only assess whether a fragment is syntactically complete on its own. A parseable snippet may be benign or unrelated to the assigned CWE; a failing fragment may be a valid excerpt. Therefore, AST numbers are not Python-verification pass counts.
+
+CWE-78 REVIEW NOTES
+145 source snippets map to 74 CVE rows (about 1.96 snippets per CVE). Treat each CVE as one upper-bound vulnerability group until repository/function lineage proves independence. 38 snippets parse with ast.parse. No paired fixed_code field exists. Source calls involving subprocess, shell=True or command construction require traceable untrusted input and an execution sink; keyword presence alone is insufficient.
+
+CWE-79 REVIEW NOTES
+The 176-row JSONL's source fragments are grouped under CVE rows (about 2.02 fragments/CVE) and often incomplete (only 88 parse standalone). Separately, all 15 directory CVEs are absent from the 176 JSONL. There are 33 Python files and 13 patches. Keep at most one candidate per CVE unless evidence demonstrates distinct, independently testable vulnerable functions. Reconstruct pre/post code from patch context; assess HTML output, escaping, trust boundary, and whether test/support files are mislabeled as vulnerable source. The nine-case gap has 15 CVE-level local leads, but 0 accepted cases.
+
+CWE-89 AND CWE-798 REVIEW NOTES
+The 1,814 and 1,231 snippets respectively are fragments grouped into 200 CVE records each. Multiple source records commonly reflect the same project/patch or multiple contexts for one CVE; do not inflate the case count. AST complete counts are 347 and 317. For CWE-89, verify tainted data reaches dynamically constructed SQL and is not parameterized. For CWE-798, confirm a real secret is embedded (not a test placeholder, fake token or harmless constant) and source context establishes its role. No row has vulnerable_code/fixed_code paired in the category-level schema.
+
+SAFE-PYTHON VALIDATION
+119/119 rows still require manual review; source manual_status is pending for every entry. The CSV has code, original_split and review_notes but no reliable repository URL, filename or commit provenance. A valid negative needs enough context to exclude the five target CWEs and must be complete enough for a model to assess. Until then status remains Requires manual review; none is Verified safe or Rejected based solely on automation.
+
+CWE-22 RECOVERY
+All 200 CSV lines have a CVE identifier, code_length, source_count, sources and source_record_count. Source list contains Patchwork/CyberSet/Zenodo/CEVuD labels, but no source URL, repo, file or fix commit. No candidate CVE matches master_candidate_inventory.jsonl. No local source code corresponding to those references was found in FINAL_DATASETS or processed. Keep all 200 as Missing source code; do not treat code_length as proof the code is available.
+
+CANDIDATE LEDGER
+recovered_candidates.jsonl contains 4,695 source/group/candidate entries from the local categories, safe CSV, CWE-79 source trees and master inventory. Entries are assigned Requires manual review, Missing source code, or Duplicate when a repeated whitespace-normalized snippet is identified. Duplicate status denotes a repeated fragment, never a verified duplicate benchmark case. Each ledger record retains a source reference and available metadata. Inventory entries remain metadata-only. No synthetic sample was created.
+
+PER-RECORD STATUS COUNTS
+The JSONL ledger is the source of status counts. The main categories are not all at the same granularity: source snippet and grouped CVE records are both retained, so summing ledger lines does not yield a case count. Strict verified case count remains 0.
+
+LIMITATIONS
+This phase did not perform human security review of all fragments, fetch source repositories/commits, reconstruct patches into full before/after functions, run the vulnerability detector, or validate deployment-level context. Thus “0 verified” reflects unmet evidence criteria in the local artifact review, not proof that every candidate is false. The deterministic near-duplicate screen flagged 705 snippet pairs for review (37 cross-category); these are not confirmed duplicates.

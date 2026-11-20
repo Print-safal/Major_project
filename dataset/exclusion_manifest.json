@@ -1,0 +1,1721 @@
+{
+  "manifest_version": "1.0",
+  "purpose": "Historical evaluation exclusion and leakage prevention",
+  "records": [
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_01",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d906d133859e6b39dd7eb439e621c73a345db2a2984f8e0da3d68a12ce2c708a",
+      "normalized_sha256": "2d1fd8fa2a628cef0b8ec45da500687fb0d0fed162f7802f41d46d62ce52aa04"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_02",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d823a3c42f92ac2ffc8038ddf0aaa59c3ab3221a73d47dc2bb8928cc7dbfb239",
+      "normalized_sha256": "fb34307f080d08d5964aba66494eb379ee849e174d0e3ca2742018bb5758d40f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_03",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "73ce44cf9a7a5b920b90bb3f4a763ca26ff266b2654bc3ac645fdde0260b4d99",
+      "normalized_sha256": "ce1d0cf05c4fdb27d01f8bcfbfa0b53563f90d55b73fda0f78b71b4ce7e90cea"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_04",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d1527d8d5a819601b85646d6cf26d6bb333c0c446cb5d394bf2d86d5daa93aa8",
+      "normalized_sha256": "7c6120d551f97516cef0c18d6565af509f44eabbed1e39c3d0b3eced94f0c441"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_05",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "44396145c0922ef25b08f54e08bdf46e5413afb8dc794e7e2bc55c14bbc60c27",
+      "normalized_sha256": "146fc65ae86652b8b028c566c4d2383c3ecbe32f523d0f771bf78b3f925d2f72"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_06",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e73749c57f8f143449a309c7ccfa4cdc6ee5bf2126b3720a4d1b63b51e92d7bd",
+      "normalized_sha256": "931e522daa59829ddd4cac49e53ebfe0f59d070775eccde682a3e7c6f88a5805"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_07",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "213b647abd950f1a6357726209a30b4179d1df280ef7182b66ac91c498582d9a",
+      "normalized_sha256": "e88a37888f794dc748ac84caa07f272eff354133d5756098a2f341839b276f22"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_08",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f846f8f83ed6bc6869d2581e7f782bfdbaf94a4a7c44ec08c766447d0c191c01",
+      "normalized_sha256": "b03fd38d02972eaf512a940ef526f215c4521bd91923125081ca3cf0529c44ff"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_09",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "48f848b63890e37618b9b025c3cdc45c1a24a57aa4d8d2a471ec8d019dca90c1",
+      "normalized_sha256": "686ee2d560c741638d67e0e13b35494034274b0f22d6753e132fadcf9898cf46"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_10",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "60e12ab27666005c73ced10b78190c925df7d5c4efa35e969d1e156d2df2e732",
+      "normalized_sha256": "619f6598d9fb74db83382b081937ca0425efc6cdb735a1e1121821bfb81089d7"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_11",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6fd26a8febfdd602b6c42dc7f0293269c91221f7cab78f959f53728e493e2b1e",
+      "normalized_sha256": "e62fa3fd66d7d2d566dabfc6a2d6a36678eea6250c246f926afa13a38eb03e29"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_12",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e98be508902e50dc69b520a59d2d47ca62a6e6d3012dd2f36a9c2e9315e4181c",
+      "normalized_sha256": "04f20e6cb5c552d7cf0e9faeeb89508cabaddb6cef153cda5635f65760e0a54f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_13",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "9581247bfff8a2d31c8d66bae4a01b715a2e449913eeb1e2048991c0f9ec7884",
+      "normalized_sha256": "a5ae502433e19cabe4e4a139d837842131cc066e0d7abdead26bb479ef939b9e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_14",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "443be9cb46801da97f708863eefe77d280adfb32d2095fe2319efd1a778bae02",
+      "normalized_sha256": "5d9ef0211ac11f3a80bd1c0835238949d51f3a6ebb9bc740ef2388c3e19dec47"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_15",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5678f51b0967f415b0f9f8005583971d5d96f39e3dd6bd056aa470c21f200d25",
+      "normalized_sha256": "ab1d58339a3e1f74afd4e1bf9b61cec3a5e2756fe7bdea5b26d5693d40f638e8"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_16",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "644b6996cdf9c207a0e0026ecbd3dd1230b6cbbd7ea767ace58a48e2d25c0200",
+      "normalized_sha256": "3d9f59e434ae403d0f64f89ffad0962b00591e19c6676cf5ab379459767cdf41"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_17",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "803b94e9a44c3b7086613a78d2d15a55762479d923a3b327f20542a449537258",
+      "normalized_sha256": "3fc6db057070bbb56f184755a6f1f149742c3777117f6f2e0f6f2e39d772ceab"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_18",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6dadc357a457c75be52124597f221795f49e35751f2cb305f6dde69c057f6ab8",
+      "normalized_sha256": "8a644b3c3e3b18c3d82513edd81953b7d9d3197f62fa4f3cc407a859ea40ead1"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_19",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "1adf1573e30357156376e7f02dcb947c04c415a02c52640c7ff036c6aa00910a",
+      "normalized_sha256": "fc2c362cae2c856ec1598b446e79c4222c064594620014aea169282b2a69c3c2"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_20",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "845c0f71aea85705f7289b4052ca94fc5ee775461bfa83e20c4378333f5dcd88",
+      "normalized_sha256": "13d6a669e02e255088eec0d05f43636a36227ef27cd24ae6dbb3b796637324a3"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_21",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "bf53bf8d22e9b986eac77cbcf424c13a8e982eed6541b2b9487c3175583daeda",
+      "normalized_sha256": "b19b7a064c5d4cea12ef1281db9ac4e58bb2932400d1afe6064ff58b7b789061"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_22",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3a1da9cc3be373cbcd078d6409d3b2fe2c75231ba53402b1c573a19e5b31f42d",
+      "normalized_sha256": "9a0d9f46ae7740749cf9ce5da002185cffa91dd69df345da316fda3b0ed7a570"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_23",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "00ebf8c64eb798adf7048e1ebddb72ca716e77a7077d0bbdcbdd824630345274",
+      "normalized_sha256": "3499593c9d88b04312a4e0a55bb92231e9fdc251db473b8319daa1b2ca597a26"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_24",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f28684c2a098692bdad930a87a7fb7182e54826012ebd04945bc3e973616f793",
+      "normalized_sha256": "5f095d1a198d00a3a683ebb2d5dc48509e3cc8ebdd308d2bdd0c4bec72acaf02"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC89_25",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5c762344fad5e3753af01fa19805b8baee5961e7d0dd8b5e6683082322f042c5",
+      "normalized_sha256": "7512375d30f616defe53eec262d65d9225f05704852e6ddc89b6610cac064fdb"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_01",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "cecf7156ad9863734d07fdf381057f03c7790efb9b29306a92aec2749c782468",
+      "normalized_sha256": "f96945be47259d9b0dbb0d06afa52ac43d9e223729cceca246e680782a2a9a00"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_02",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "7390a74d3aadac263be3b3464940dadc44900701748a963222dedb6cd9797437",
+      "normalized_sha256": "a5bf606c105e02ecdbc7275d4f661f3d1c3ed0437e2677eeb8af2fdb8b7e07d3"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_03",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f7f8a0e3c9ff1a18d0bd8aaea20495b6bbfc47655b3afa791dbf0e43380ebd7a",
+      "normalized_sha256": "015c98ec77afefaa120fa61483cda78344b1608028459f56505feca98f4bc0ec"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_04",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a464cf0b77213700ce446a08b7693328b37aebe6234a63d51b8e7e429a0516fc",
+      "normalized_sha256": "43b48179c27b6aa8cce72631d55a84e0609706c45056c124a626d15a6cddcf83"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_05",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fb60843b7c220876ae6bb581d08653df1b4e6b93d25159b5344bbe65a0bf0150",
+      "normalized_sha256": "fd9a23158e9fae933088f8e974a75797f1c04c33a27259ca84df6efb30cb5dad"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_06",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e0fb2d15dd2663e84f34815fe55406e5d4c13d2225af0ddd9c11d324a32b70b9",
+      "normalized_sha256": "85d16c8493b5e50ccf5c936d4551cb00689f4a57d9941b70b6c99a337a68d976"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_07",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "194e1d62756b24b56ce5629a3328004afea2155caeca5a9dc4832950c340ada8",
+      "normalized_sha256": "b141107a846b1c20f068cc4dcc6cab89761ec792d0b0f35c5cefe0fa3a627f81"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_08",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3fd441de683f4c8e733b84135e7c13a7af298f5578317bd9bee88d46f8b35ef0",
+      "normalized_sha256": "f1f01d56383f34aa2e09051580ff6943e611e27f382b18de9ffbcaebb0ee36be"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_09",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0c63ecb5a76076096b602fbbfbadb1325d6f3558981f8fdd1b408fac5b70a5a0",
+      "normalized_sha256": "75ecee34256ae7f7c55a3fc69f4d28311a5706581e6839ba1010b42058677d44"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_10",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "cb02d06f197e67d80d3ef08fa6d912cd3e04f93c5a66aa6bfabaeeb06ec2ea21",
+      "normalized_sha256": "c64902019832ad134050dda88e8baf87b257e345daf450d10c50faa066128e89"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_11",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "44cd8ea2760b4e9defff57842c9e77711704e3fcdccd7d14a787f0f4f065eeff",
+      "normalized_sha256": "e4ea835cf8ce04eef28dbb8c3636d7abbfe6eaf7d1c83d46c2a1a2c81681db4a"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_12",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c4e9700fddc781cae646ceeff618ea05f8eb1c3980baa31a8cf0c1b2427bc145",
+      "normalized_sha256": "98cbd5607785b823f78a779290f3bc0c70dbaeffa014ae798594d9d7fe1fa87e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_13",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f42026437a75143b33782ec3a68762b80db97c643783955c836cce22b6279bb7",
+      "normalized_sha256": "07c63c0e54e56dbadc1e2d410acf6cb0f98eca7467be870779a9d03f5bc4aa2c"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_14",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "77402264fcffb6abeb3cbdcdbd9ab884757d61c04b7f6195d52b024dfea04c2c",
+      "normalized_sha256": "d14276e8fc604f256380c5fbe92d1957bc6fbbb295017286a278a1ca1cee74a3"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_15",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "2759852dc42fdf5abdbb60d1a2d1a82b1883bfa1442540733114e9eea380d437",
+      "normalized_sha256": "5ea7d13496370e03a9ca5cbef67fb69c9cbb1de9f46af41f40ca297bcfa4f0b6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_16",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c35b307598f53d919242bf0d289811e88769c418edd3c661b1b04e4c1ce256ba",
+      "normalized_sha256": "4d6e1e1680258570fcdced8a53d539badb4eae3f924f22422a9c923485ec34f6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_17",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3fd153bc30017544f654851a989b07dcce9d0139f1fd5f722b2e7bd6631fc57a",
+      "normalized_sha256": "40a2e28987be3a0fcd96a1d4e9ef20d815bf61c38b26b2d2fde4efabbc329005"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_18",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "b01beb1670065ff3742320f12d452d285e51a35a207044f2f44e01e4bafb8d71",
+      "normalized_sha256": "87510594a5598aa26aeef2b1c1550afe2b623345fb026d1721e7fac068a53d7b"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_19",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3f891c04218f00fdda5b4ac1fab5f73e9a97d4ef8523f6dea20e3e0aa7886b97",
+      "normalized_sha256": "33ae7f99e6e87004ccb4c1a9cf98c995965cf1e0edb775facf3b7d71b518ed74"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_20",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fe0ea9944c3f6d630647779f753d8ea34171289b8446adff81f17d0186ec46f1",
+      "normalized_sha256": "b50610644e625c38ac1dde70a27e408fa9084b9d34cdca9ece386ff467049eb9"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_21",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "b14922f05b2de17aa9a77d48723417e106dbcb9e71ffa0f81e71028634866f92",
+      "normalized_sha256": "a9c7f028df63442d27261ccc66a43103a480d01cd4fb45bf766036a48e61d483"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_22",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f9e3709f3298d43529091f4ebed3b5586beec5ef65ba337ce8213abfbb55f62b",
+      "normalized_sha256": "76f033c669726b19118f436947be4dd2424cf34e1a8781025b317536ac827c4a"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_23",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "bd49a8008d9f280e3fc44f6be9985617ae027ed7d4cbffd7d7d92f8a84993e46",
+      "normalized_sha256": "0a225c3cea0733a0b70f3ca5669d1a62091267d119f875e47a757824d08dd1e7"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_24",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d9bc4ddbce5ec9f5f2981a813174635267e7404cfb5b6f6c83075b544381e454",
+      "normalized_sha256": "3e26145c3dc9b3daeacd872a1e0bc637a6e56764ddf66d5da8d49786ebd33adc"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC78_25",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "ba6cfc001231c31cf74592a3f4767163dc83babc62071f6b34fd4b65802e15e2",
+      "normalized_sha256": "0e4c1946e5857c16e6375d23f76920cc564bc557bf9e4f4fa4a9d790c639f2be"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_01",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e6dbabaf62c7083760836d4d62dd9db291817fc0616a18928b5c90d6da056385",
+      "normalized_sha256": "aa0aa6ca883e42d6b3e1a9d5133769da744b2bef3f60a7561b8c37b633a09208"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_02",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0b86ec5c25f9ec71f0cf7d56eef55890fe0e198c7e3feb3604f7214ecebfed78",
+      "normalized_sha256": "3f908c373f5981142c036dc87f77f9401a3e2b11c16792f63f9ad38a85a4edb5"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_03",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c4230ff96ef7d088a02de5002a9c809704de8b9b49249dba71776a473376d427",
+      "normalized_sha256": "bc9cfd13618a78502f2f440b681075dcb6f3330a91d3fada84e68eb98abea5a7"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_04",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "de82bfe2939a667f33594cad9fd4c69a6e252a2326d5cf035914b08a104e4183",
+      "normalized_sha256": "04c459b135458a49cffeb603d03feb3fb790266142da369ac3b88ce8f0f715e5"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_05",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e87234ad5babc84e849b4a226b04f90245b065cc67d641ecda5fff9cc9c90766",
+      "normalized_sha256": "1c8020299924e04ca03522bb73480dff699cf047267b86625f440f27a6a4b2bf"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_06",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0c398e4b7669b2d0bc0037a6012376a0ed7ea5e6df8cf3015a0baf3c6eb9bec0",
+      "normalized_sha256": "0d10594ea23976f219b15bb58033185d1422082739eccfd2d564caeea08c824e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_07",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "eef7b8031afce7ede7710d11365a06fedb814e1bc3fd597ecdde75b945278568",
+      "normalized_sha256": "086435299ba64161187c736fabf195828cd2781c55b41b57895cdedcccd12dc0"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_08",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3c61ef35996d8cb5bac5096783bbf93a8c4ea0ab56c5109c48d24027a9eacaba",
+      "normalized_sha256": "f14adc6982ab33d768a93b89ee708bd3592ac6cc90e0ad4bd3bd5311a2513ec9"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_09",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "4e9b4fab090e810864f6d663839abdb0fb32414ce3ed33a0f29d48fea12b5851",
+      "normalized_sha256": "a1fc946bba9663cc863310070c0100122b68758b7ae7ca27f5cd5edff2833b65"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_10",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "784c5641f079067432733f9df33256e7edd3057c2626808f3ccc7186c6d29faf",
+      "normalized_sha256": "1296a5f65507aac4f37d36db1d3fe32f2a338eb15f70c59e56a66a609488bcaf"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_11",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "2215293970dfa4a832595b8516c76d752c335963a1c9d16002636edbcd64e6b8",
+      "normalized_sha256": "7dd27213d51c8660fd8761cf7c11fc1422d5055da22d9c0bb23fd702d478d8c5"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_12",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "bb2133ea2ff3b0366d24d28523f42fa448598b79a5b435c03128c765c515d21d",
+      "normalized_sha256": "ea8b4524b61755e706ae090717c60242fd6de5264d9234fc917d2ed2329c48ed"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_13",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3105258efb3fc4558c19fba2d07405f6e2237b821a56b6b37f76891e63dbd1e2",
+      "normalized_sha256": "a08235496be3314b731dde588dfdc3a6c02b1262eef60e0e2e4fba0946c54331"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_14",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f9f5a2111beb255d818a4570482bc8bc02bd7ec64fd9841843c56dfb4ed6cdb2",
+      "normalized_sha256": "f895c2e1b55a505d7945629c4afb75949c385e36c7faa145d7f531941e493987"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_15",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5bda8ea29ad2bbf610fcccd5d7b8e469f25422435f24d3322160ea600a438e7e",
+      "normalized_sha256": "291e57b25967024f330914b3a9769533994c0e2f2de0c3eaa5b07f6e8743b9e4"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_16",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3e1f912e1f80ca76135b4dac31579217d94226b228e01e47643f58f0169efc0f",
+      "normalized_sha256": "b2acb832d17e2abc9a4033859ec8c2b1ccf5d967a3b140407a09c771eef2e754"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_17",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d28965fa83574c0222892344ce90e065d574003fe111c1b6fef8d911776fe0a6",
+      "normalized_sha256": "33c39446e3ec24a02f254531880885a6c36fa4ba21a51a0ba0c4dab20f909ab0"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_18",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c27527cf212c7db018f20f8434e0551894d5a7dd84c9cc6f2a93196f4d06bae3",
+      "normalized_sha256": "001cea8adf9eaaa2829dafc015ab3dedb703f04273573c8d98dd7fb46e9fdef6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_19",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0dc3af3586af8afb3488e5882e24015b861463ece7e80f2e9744aee5b9aadb36",
+      "normalized_sha256": "c5b9a70a37effb3f79e23a4b65ade4c1740ba096df4d783f5bbd0e23cb2f74e8"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_20",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "4ac4edc78bc342c37473aebd936567d1383e9d104d5c7666b4390a80eaadddde",
+      "normalized_sha256": "64a3a2a1b8146680825d37547031afb2619f69f07349378b2b4431a75cad2f4c"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_21",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3c75f469ae23085d41a6eed9ee7837620b475780412083b23daec7945c4464d3",
+      "normalized_sha256": "68031c652cf46289b85a78d9b7b5afdd5f00062a0a28540b03f8635c17c8d1fc"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_22",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5cc07ab95b7ae6bb228017a1c325c3ef8d350b41c9ea87e87cfe30c2e7c2161c",
+      "normalized_sha256": "e9776e142c54140d66f6d850a021fdba9aafda590fd4bbcfa0fd62405dc9376a"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_23",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d695ff67f2ae718e5cf897db59ec6f76edfde520809574aa0c216b48e0044bb8",
+      "normalized_sha256": "c1ac57f62c46c321fc72819e5a2410835e8d541409d6c635a408f9a29d5d7b81"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_24",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fc9574e97a8214fe7f4e2edc1fa8ebf05cb18ddbc42e7a358dd8528060c987c9",
+      "normalized_sha256": "fc866f2b7d8959005a06f6c128576e5c10bab4b52140aa8968a5f27330de115e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC79_25",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "4dc727f48bb5fb7bc49330c54e8604292cb4a29bb93ace595e79821b2750c26e",
+      "normalized_sha256": "947ea4677ee2569478e3a7bce9d21e95d777290fe45cb211da02927f14afb812"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_01",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3858eb9318ad871e5261777541f5a811653c8b47cbcbf9ee5a49a8a172a42f0f",
+      "normalized_sha256": "b1127e56d808aadfa6edc818fba941456488957445aba1e1708e9fde316ae1a6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_02",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f53c336cd60509e70f37c4d604389233f13f7075af7b963b6a5bab0676f769d3",
+      "normalized_sha256": "b731b921c9d71b6fa72847e54a626a4f6b08b1ae3074da06f4591c32abb46c9d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_03",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5b05788e4a7e837609d95de3ddc062b9a832932a185b025fd4cdd646b0fcef12",
+      "normalized_sha256": "05c54cbf8d486bab1a9267b483cc89603a6a773a6b1771b7ac3cf0ef51f920c4"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_04",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fcd23440a5e696a2f2c620f5e436cafd944b79381985443d5f88c41b7d4e9c8d",
+      "normalized_sha256": "3d1c8bb9e9755dce3457d011d02e8892f73ecbf6a82f2baa7b7ca48f9d018162"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_05",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "43027cf7a5f91572d887956834d3d4ca9dc8bf5f98a2bdef1e8a74f182532c61",
+      "normalized_sha256": "7b9cde68947109e2152fd95b2389b9609de7c8371ca0db10818eadfb528a26d6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_06",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "371dabbe2c6763b0452c6fb93bc182467045d62b38c4457193b6f811436b920b",
+      "normalized_sha256": "01f2ce8c995b034db7d08dfee8397692c86496b208ed3d5a4aaa72eea07535a1"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_07",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5e802c9a0e6c748ef26d10198dd690e71e55d7d0d8d470a6a26abd03c35049c8",
+      "normalized_sha256": "b3898fa7cf5d60e4a308082f29a995a37c0467f08ca9077e7cb2262b063c6f77"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_08",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "1f6acf90279415901b861b225ea35f292ebda3b97523c67eea214024fb2b0a94",
+      "normalized_sha256": "f39caafb1efaad7d94367560e85bf47b89e34a68f2c7742d1974e259adc97269"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_09",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "dd198d1111b7da651e3c7219c57270150dad524226617973d0b588d66768a691",
+      "normalized_sha256": "ac8b5bdf20897f0dbffd675b1eeb038b190be575138717d55dc00d8cdffe6f80"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_10",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f6840d2d5d18e8d0ff299b4c431cabf54fffa4db74e9a382570181d033c1732b",
+      "normalized_sha256": "11880b7c9a796274be33ad88f927b8a1c2a96878948ab68d6197da8d61494d90"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_11",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6337376609628306122efd3bf876024a41d4a311fb7f708bcbfecf2eb96917ce",
+      "normalized_sha256": "a4df855a83fd8e673d7522db102557cc42519150f4d6a0e20dba22b663927694"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_12",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "7889d4eeb6a4ba811e951d49f18c6b3545c8fa4b4d0badf402cf81d6ab9ae8c8",
+      "normalized_sha256": "5708d3c6eddbdd0ad08559e165c66892b5b517085cabcee53ee340931be0c54e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_13",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "3ccb748f3da4b15a87a04c5d6c8973b89295de764aa99c3cdeb7dbfd552853ba",
+      "normalized_sha256": "3ef0c4a652a5d7b8263fbda5633851e1d5a97cd378d2062f8b89a2f983783571"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_14",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "29020ce2ed05d136c081b6e551a46299030dcd23c5c267bb233c7821c53d1f57",
+      "normalized_sha256": "4c495468637d7c9fb29aefca88b9d63a8d8e5f09e77d9693c52e30819e99dd55"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_15",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "027c78957a58c46d9bedb9cda2d45551c9c6386bf5cb7a6de0d69112c63ffb40",
+      "normalized_sha256": "daa4226e5aa000ff114447338a49d045eb45128c561c69cd82471918f8a4a892"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_16",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a4b271b558ef9b96df14b7b2463a553280e0443403d6401ea854f1aedc6e73ba",
+      "normalized_sha256": "fda5c10221b18cdea67e7892ec9b22bd0a52f5f4a78ccf5384b1ab8e98c79ca9"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_17",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "dc66e60b7a21c516d1a13f5bf8ec6ec9acc1dfbbd887ac3fee6884d082de3e43",
+      "normalized_sha256": "4b3c16376fc24a4a7f574b8dab6e060eccd8d328d8d9984ca75258435b0a037f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_18",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a0e83be0729c7fb50ecf04e51e701855b35ca8f6e701559e21d8a1dcb9118527",
+      "normalized_sha256": "2dc402acea75906a19ad216ec08037d86ae27b3ba1b207373b6f922ce70cff88"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_19",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0ff5db96d55d0ca61a154e0ebf38c62c47e00258adfc585bf12f84ff1d88fdc5",
+      "normalized_sha256": "c4cdd4504b2d5aaf1ee76f37336e42d12311e73ff00ab618001875ece87ce184"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_20",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d52954952131f7e9d05e2cacd4367cd23f2c3c84b3872f709a54ce4e293f6662",
+      "normalized_sha256": "05ef40aad2952d2bf3cf40d3489af9603932d60ec28c61c635877e9a9efa667d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_21",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c8825baf0141915354a536c0b04cade12f45e1c7c05ae5f1078205eb84a632db",
+      "normalized_sha256": "c714e5c64289a3b65a53dd7d731d8b7313aa03758921c865ec704ffe4b530335"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_22",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "e2850e0c3acfcd6cf03372e185e98464d3f836077b0d0facf152c4a688f4e54b",
+      "normalized_sha256": "a35f934a43da29af5e33960f4224558e1b6eac7c70bdebd42e0c93e3f2a7da86"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_23",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "8d10302415ae428142e7d3757595a269f15c40459e3a5398b26883c5c255b8c3",
+      "normalized_sha256": "8b1db312031656ea6e29013b17b8794070795184c6a923c19c31dcf1accf33a6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_24",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "92d7c972a9090ac226fb720de415f400c304472470b55addfced50066783e9f3",
+      "normalized_sha256": "686b4aea4212fac562fc66bfbd2b671e8595d96a0218ec87c66849fc97bf304d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC22_25",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "026e44d90ea7c231661770f437cbec00496be6a11a84271a937c6d2386a04eac",
+      "normalized_sha256": "ef73c621fac57bd207ceb35222ae27c832a4d266ee3a7c25c30013066f5986a3"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_01",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "88fa118e539f88743f42eef207c09225ac466316851d6b0e5faf3361d6f9f9e6",
+      "normalized_sha256": "88fa118e539f88743f42eef207c09225ac466316851d6b0e5faf3361d6f9f9e6"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_02",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a3a92ad6c57fc1575034c49de8829ddde54c56e0372f8fd38d781c00444c020d",
+      "normalized_sha256": "a3a92ad6c57fc1575034c49de8829ddde54c56e0372f8fd38d781c00444c020d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_03",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f6a59e4e7fb86513ff23bc10a60f3ca11c36299cf801cb9077d3f08ef9333508",
+      "normalized_sha256": "f6a59e4e7fb86513ff23bc10a60f3ca11c36299cf801cb9077d3f08ef9333508"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_04",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c471a6de5379c8b4dd02d43e2a847571e92646ec531f53b8153d7018a2e47974",
+      "normalized_sha256": "c471a6de5379c8b4dd02d43e2a847571e92646ec531f53b8153d7018a2e47974"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_05",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "70618fef2f1c4633b961659e02bdcdda4842560d4d0e451587177f4fad39612e",
+      "normalized_sha256": "70618fef2f1c4633b961659e02bdcdda4842560d4d0e451587177f4fad39612e"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_06",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "54ca27bf8ac01b51a0607b87ac84be120095822d58f56de8bdac92976ad1dc2f",
+      "normalized_sha256": "54ca27bf8ac01b51a0607b87ac84be120095822d58f56de8bdac92976ad1dc2f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_07",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "1666a725d90ac16ee036766a2673bc831d1797f5ecc777eeec904c2f1e9eb2ef",
+      "normalized_sha256": "1666a725d90ac16ee036766a2673bc831d1797f5ecc777eeec904c2f1e9eb2ef"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_08",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "183cbef32784e15d753ecf2dfcbb60c8f98478fad0aed83a01deb468acb04812",
+      "normalized_sha256": "183cbef32784e15d753ecf2dfcbb60c8f98478fad0aed83a01deb468acb04812"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_09",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "bf7faf5e851cb486421f6762e4eda7f4ae7bf52ca4495101e152369288742e02",
+      "normalized_sha256": "bf7faf5e851cb486421f6762e4eda7f4ae7bf52ca4495101e152369288742e02"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_10",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "52f51d76ec889cbf8fda2c1e2be793d11b97e96ad76ff46aae1ada9b3c3b1627",
+      "normalized_sha256": "52f51d76ec889cbf8fda2c1e2be793d11b97e96ad76ff46aae1ada9b3c3b1627"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_11",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6cb1b57f6c178a273bfc21bad075691099ed90e24077d87bdeeb23acd08f531b",
+      "normalized_sha256": "6cb1b57f6c178a273bfc21bad075691099ed90e24077d87bdeeb23acd08f531b"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_12",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "80e09e302016428966c435b9ad19e36c5111b741ae213f5c29dd7b832333b351",
+      "normalized_sha256": "80e09e302016428966c435b9ad19e36c5111b741ae213f5c29dd7b832333b351"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_13",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "82cb07412ff9a3feb120b2dbb069d61ca86c8b67a091fd7adb75682ce74fff9f",
+      "normalized_sha256": "82cb07412ff9a3feb120b2dbb069d61ca86c8b67a091fd7adb75682ce74fff9f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_14",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a72111d734ba1a9dd544df56ff1b3fb4b659bb9e5aaa6d6450cd4fc3d207d27d",
+      "normalized_sha256": "a72111d734ba1a9dd544df56ff1b3fb4b659bb9e5aaa6d6450cd4fc3d207d27d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_15",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6da0e6c49e3172ad144d7f426b95048a440f947749a896f51a60655b1774a47d",
+      "normalized_sha256": "6da0e6c49e3172ad144d7f426b95048a440f947749a896f51a60655b1774a47d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_16",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "f86168490eee0e20c79055671e73007685c0bd8be3120a7606b66aba79995236",
+      "normalized_sha256": "f86168490eee0e20c79055671e73007685c0bd8be3120a7606b66aba79995236"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_17",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "16f3affb036975004e92f57f2f3519180204e16c5a28113ab997eaedf5d5dba2",
+      "normalized_sha256": "16f3affb036975004e92f57f2f3519180204e16c5a28113ab997eaedf5d5dba2"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_18",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "d0b2e06922cedb2e1f65ce139bb3e42322428c2005d56b211b68f8cf1add88b5",
+      "normalized_sha256": "d0b2e06922cedb2e1f65ce139bb3e42322428c2005d56b211b68f8cf1add88b5"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_19",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fb4894ea92fef56561778ca8b4a63583baba24033c6e7fb9ac66ea30e7fb13c1",
+      "normalized_sha256": "fb4894ea92fef56561778ca8b4a63583baba24033c6e7fb9ac66ea30e7fb13c1"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_20",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "12ecc1c36ac8f1304a6e9efa73098e54008832498bf33e0cf7abc58ee0886119",
+      "normalized_sha256": "12ecc1c36ac8f1304a6e9efa73098e54008832498bf33e0cf7abc58ee0886119"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_21",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "21ef500fd18deec3f5f1b3381373c9ba7405951839235ab66d130a9ba6ea6a14",
+      "normalized_sha256": "21ef500fd18deec3f5f1b3381373c9ba7405951839235ab66d130a9ba6ea6a14"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_22",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "7d84f75d1f79d42739db37f3b5fd119ebe69aba0a0cba1f3fe9d33fada1c6551",
+      "normalized_sha256": "7d84f75d1f79d42739db37f3b5fd119ebe69aba0a0cba1f3fe9d33fada1c6551"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_23",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "14cad0d30176897b52d617d505ab117f0beccc128ea54177a3210fe14a50eb66",
+      "normalized_sha256": "14cad0d30176897b52d617d505ab117f0beccc128ea54177a3210fe14a50eb66"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_24",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a2cef6486cad9c0845ebb93f37527a72294883f8afd3a94b2fb01be74b1dade7",
+      "normalized_sha256": "a2cef6486cad9c0845ebb93f37527a72294883f8afd3a94b2fb01be74b1dade7"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "TC798_25",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "5da6d8a2b7bd80ca9ae9fc4ed4f7284af4435a4d200ba40819af3be9521b65a2",
+      "normalized_sha256": "5da6d8a2b7bd80ca9ae9fc4ed4f7284af4435a4d200ba40819af3be9521b65a2"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_01",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "19b7f25bdaaf1260f00918eb6f219506fc0580792cfa44ce36df4da81a1bfd4c",
+      "normalized_sha256": "f7c39c458fd2774bd02f1ae7fc06143639208a413a8718551408e9bbf25926cf"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_02",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "a6fecad7cf8cd08bfe5e68e2db11dff4954e10f6f2983a41e379ac3e511ecb88",
+      "normalized_sha256": "aa9d7585170457189413a1037a4bfe171c0e42151b4c89cae37f88b8b41bfe0f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_03",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "08def5aa1b5f6ea497e099f09221a47dbdcc5af82bda8633f00473d348439e52",
+      "normalized_sha256": "784d7ab78c52c5dfd76ded283a5e6436827050f0bf9bb34ba9112796b392edcd"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_04",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "195e76b998edd34591aba45723a5dabdf72685d7645c1f841eb87e4691fa9049",
+      "normalized_sha256": "c28968027a75d5dc0fce24a3f16d810cdcb8ba0e7264b1bea5d5973c57b4e39c"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_05",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "85808663725f7c0284a8b023ba18ddb4469820a13a9c9c4425ccef161fc18d95",
+      "normalized_sha256": "ba191144146d2e9397d49b417dbe6614c109ae8e816888f366d03d3ab2d74c3d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_06",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+      "normalized_sha256": "498c767f57c8776125776f9a1eeb1c247c2a57e22aa4a745e97c2810e8afabe5"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_07",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "ef7512b8f81a790b936a358bb0568af4f4bc7a86df9440bc0c36398a66ea657c",
+      "normalized_sha256": "db081a79dcf935578fa6758120a00a289b9a532a5cf4d282dcc426809c18e51f"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_08",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "cd87bec226e93fdb490764f9d74f7f104ff341070286cb3dc71ce43ba311e685",
+      "normalized_sha256": "06d482afd69588eb81b341b7b7af777c75bd79ac255f86fa8a8a1682c0a40989"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_09",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "0ba6d5c97353e78530b9bb96e7544099f1175427378649ebd1885e038d00ac98",
+      "normalized_sha256": "45a99ad9a1c3d437df34435acc059941bbaf9613bcbbd2f061ff03a64b0c197d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_10",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "049d4ef8de53601ab80b919c3652bb53c2736267b05625da74120b4e1af57a71",
+      "normalized_sha256": "4393a9d7ff6fc5df7a1a02031f69ad734d5de3ec191572ffdb01739525adecd1"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_11",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "bbd68ffafed8273268a02cefda21011812f5337a7178a1d2dd7298ea0ce5d609",
+      "normalized_sha256": "e85cd7c4a3823a790a1740c2bc0115997b0b3677e9e6f160c31977a0e02b85b9"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_12",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "91b755f7dfa3c81533e35fba617387aebca9608af9eea170121ff5b3770aac66",
+      "normalized_sha256": "c5156ca0f0378b924d83cdb208ec3652b455817f3c0419243114663c5716e9df"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_13",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "48f3744baa1ebabf50824f79e05d7a5c05eb0083d3025ca058274b63adc3b73e",
+      "normalized_sha256": "9b304085831473be1dd0c34922673d5c8804d88aa9baed4e53d95c9a45ec3a27"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_14",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c2cce978391bf45cdc6f052a65620b8f2ffb0a5c724c08587b367ef807d22f0b",
+      "normalized_sha256": "39839a1b0f7c92b359ba262fae9335c4dc4e22ead439b1b17b59b9dc25c3f1bc"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_15",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "c15ca2060fb137025d57d7776271c6417fe1b27b936c4a5a559947b3eea51a91",
+      "normalized_sha256": "5b4d5058a731810ddfab1d2f9cf0b04c4762e8460800c69c3bbe5cb9a84d8628"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_16",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "2835538fd1e7acb1b472f984c38f793fa589d9b43398bbd153e59bde8ea4998a",
+      "normalized_sha256": "c6f92c532e9a4b1c608be18193a4d99542c24d9fc3a3731b0ed7860809e03d69"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_17",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "833b9156763109708d38e1d648b191dcaae0dd4fa83d7d1e7dfb904eeaaac05b",
+      "normalized_sha256": "f8c2e8caab7533dc3677297d4cb3f0d7118e01b2925806c29f6b7049f35641f9"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_18",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "ba52b2f46ec71ac65be757920d0593024d7ffaa363bde750034a513b9793dd78",
+      "normalized_sha256": "147b7cee96f4b1e713164c147ddd816dc90cc4247d0825bb5eb9ea4031da190c"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_19",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "6474247361b6555ae54b94f56b44527cc0b5469c777db34635e64a908858f0b4",
+      "normalized_sha256": "b582d1a60464c32291b934352009a3816029ec37734e29af45f6c7b2183124d2"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_20",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "90f39ec1a7bcb4009416d0bf73a8f919ff0f7a81b9525c00b76a295cbc5f6bf8",
+      "normalized_sha256": "678589adf1c45ec0392ceac5e501bb8db307286c236ce4abb5cd65221050fa72"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_21",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "fe5224114609195b6fc592709dde4fc6c76140f64961cbe4c5f04482774f595b",
+      "normalized_sha256": "a496ea9e83393fce477438dcc6079535a67e003743f018f48ef5beb8ffc98133"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_22",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "15f47640554d460d43fc421b3281d265bdab7cd88e0bfd71d015f27e213dd706",
+      "normalized_sha256": "3ab22c5ee8589a17e37b794ed01f6271b81acd4a201d2c456b6c5326a324048d"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_23",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "821558be5e4fdc4bcc9bad1576155d6cfff7c36d5523fb939097bbac79d97ddc",
+      "normalized_sha256": "0cca401921eb578eedcba318907525904510a61465a42fb7bbdaca8d7efd6187"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_24",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "491759ba3e6a0f4f6d3b8231a11678199fe4eb3b475d71e1ccb9566c42e97bfa",
+      "normalized_sha256": "e41db025eefd81d3a0b6243f74b8b449222db959d0dae8b2a0a8a69dbd647f30"
+    },
+    {
+      "source_file": "llm\\final_150_cases.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE_25",
+      "cwe": null,
+      "reason": "Previously evaluated V1 dataset",
+      "exact_sha256": "4378d7086e7b86cabf0cf965ba23aae6ab646f628b15f19419e1bbe7b7f77cda",
+      "normalized_sha256": "e918d9a26df3f0ca13c782b8a195d771a910215f80b0999607c5a6130b7df170"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC01",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "61eae1e64080073e4e535a83f10b157da0c68a74cf5abdd8ed1bb5a1da8783b3",
+      "normalized_sha256": "e7c48eb92c68e68aa0698bcc8cb99a25a8279eb0439aa59b954eee2a297868ad"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC02",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "01b13e3d7bfbb2155b8e84a31b326b1d16215504bae9fcf1fd1974fc639269ec",
+      "normalized_sha256": "c06746821127a6ce5beaa7afc1b9fcf695d0b9b654f8be13fcd0fb0f68bd9217"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC03",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "a5aaa9f79ffef0364fd64193a1e9af21ca1c4e6ffe93540c3aff327a6eebbda0",
+      "normalized_sha256": "d4df71370c1bea226676ccce25bb2cc5764c2bb0a8b3e92a65491fbcadebd0d8"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC04",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "600c3b686e827357e1ba3574dfd31eff3cb91199ac4fd591f61b2afcae2d9e0e",
+      "normalized_sha256": "564ca0001be0d0857e3d50233a9817b13d17e1a11303f5ed770abb6241055b87"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC05",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "dfbb3dca06b0d5ea5a3d60f0193132c43e592d33da865a40c6ea75ec60a3fa27",
+      "normalized_sha256": "0b8b4f46982f4d0530c47d6805d9aa5dfb670712320c4605fe22dee0047cd7fa"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC06",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "dea86e706e42185ac226e678d581625caf1de4b88d0e7d31a95335db87ad2108",
+      "normalized_sha256": "4c0b617baaffceaa6c13760a06750a99b297fd0c6dd8854605d54fe1bb299dff"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC07",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "d0d54d80db4fbb17c2a4646c721457d51d0ef66948f1c0ceea59db14e3805788",
+      "normalized_sha256": "2cc7d6cefab41a914d43fc89f442758c518e88d3e4de13df6e515bd0c5254239"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC08",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "3366e0fc49d3c04d0b204d796fcf8fff524e0516b86742a5a894a6f10ee09766",
+      "normalized_sha256": "b71474cd16be5680f897549f5e88e7a2bcef1df757e808eb60e6c08a835ac14c"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC09",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "5080d9ac2f91ffbf2c2c5a5d4a4a69ba1134c01e8542cb7c3788a1d81a824adf",
+      "normalized_sha256": "0d7f8b518b0e472000d67e4c3c429e7ac3b0ba7898d3a11edf75c16e5a91416f"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC10",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "4a6bf454ca4dfc679b121029017ab915dc820b8892b9834b601ac3461da4651c",
+      "normalized_sha256": "0e3c87bf6a99555ef840c62f1ee4d151a9eafa40a2fb2589eb648e3299d81690"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC11",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "e6c3aa8d543bc03fb8f6e5809ccbd30fc2129153d495ca6244aa12f0a8a1bd60",
+      "normalized_sha256": "cbe71e09433c2f7d29be3e80915cd3393beb53257c841aeadb8a590f9d960307"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC12",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "60e05da92c222dacba4e8cbee52006e057f6e68c2961c6c5b00ad42428bba006",
+      "normalized_sha256": "40d4f80ab6ea5b0343df21d7293de4ffd9438194223586ca213831e7ae6b491b"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC13",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "7eb6819dad00777983a0120ca6647eab62b996c5b350fca5216c39727aed02b3",
+      "normalized_sha256": "f6a3e4dfba147d2b3cefbe4de551616473dd1c586c9a2bac59cbaaade9d7c4ce"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC14",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "d55b3f84a0fe8c0ee0df6f6d7c99bccfc5c3866bc89be1fa008768fe4dc00fac",
+      "normalized_sha256": "4f3a1c37820730a302ddfb67c35e0b2df2553eec99dba4b7a3918283de0ed132"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC15",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "7fe17516d2b54b84b78fda2247b36d8536cceb5c8ea9be7cefcd1c1b1c3705c3",
+      "normalized_sha256": "eebc7c7fc75be5aa0da1f3b289e4826d50886a73b54267d3587fd837a07e72f4"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC16",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "fac028f140de8efa3c2e43701657abf2372d2de888ecc4ce24836aa36a434dff",
+      "normalized_sha256": "208de7fabdf27c16593bcc732b907561974a6d96e5644bf16ae22a2758f89edd"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC17",
+      "cwe": "CWE-79",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "ed46012bb90ec82ce5633f3c810cfadabeec8a7f1e5f8d3d5e844322264412de",
+      "normalized_sha256": "7157c7365a4dc6278864d505413f5a119080f10c048dd34deb070bd49def94d9"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC18",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "04ac9f703615db0f408245c58b2cb34c4d8135b1085cf2f8323cb02d944c2daa",
+      "normalized_sha256": "3d2081b636b177268a63c204bd84e52d6b47544c05107efd1247f52fdfdf504d"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC19",
+      "cwe": "CWE-798",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "7d0cb488c8a0c66bc380d8766d8f94617c72ecddae0820999c50770de2738093",
+      "normalized_sha256": "276cb6737ac46b10dd62d82f1fb8360493bd8314b222c7bd4d6a09fea8d44bde"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC20",
+      "cwe": "CWE-78",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "b8aec70b331305d0e9eca4c13578e30586884171600107a8954869c5eb4dfeb5",
+      "normalized_sha256": "ba7e0ac960c57b5742ef439e8dd669b3bffa1ebb250863116bea15aec0c0b589"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC21",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "2a9125552cc9f5fea80456fb9c57cf369ec40f1408556277d298a1ed1610d883",
+      "normalized_sha256": "10079696c63c254f026da10f384c5d462d5a4849203c46e0995a8e48c831f162"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC22",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "81020d2cd1135d8833a8aae9d7e339badff356e3b2e703f24779c03408cc9ab3",
+      "normalized_sha256": "767d32bc072ce62019546cc5c33f65c94f8a9e484f72f4dd27aa0635478e292a"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC23",
+      "cwe": "CWE-89",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "6bee0e906ef3aaa4f67e5e3b939376dd9b04b3e7a2484ffdfeeec84474b3ca6b",
+      "normalized_sha256": "9de1bf6f019fa9dcfa928297c547d24f613a2ed6f1eaf61d93810b8f565148dc"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "TC24",
+      "cwe": "CWE-22",
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "e304302250dce6dc67a6e1d1a0d951e9d07fa933effa9f6cfb0ee08c1a850f3b",
+      "normalized_sha256": "6f29e8f174813795172960b9c259c6ddd08327c5330e2c69f612d33700816618"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE01",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "c55b47fb641cf536f4decc2574878be40627f3983b5fc2f1fdc42936c4ddf2b0",
+      "normalized_sha256": "c255ea1869490617abdcd1c348a3dd6107e043eb8edf8762c961d44433a9a496"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE02",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "9c42fac88d5487c4aef80d0237d08b3514dade68ce90a1b3d73195672c034329",
+      "normalized_sha256": "72bc1b5383b2dbe6ef0498bee6838a9045c66a5cbc5067938b01c992b702a20d"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE03",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "ef690a30d44ed794e4de915ad7e0afad1d8d657e8cd56e23d8ffa858332c4cb6",
+      "normalized_sha256": "e49b7a8ea079b102f78575421a37fdc4818947031fe7b77d980d3b18cf65ee9e"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE04",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "4fce08288841cbbe563576cf5acb611240defe36512672a7695bda8aa1707db3",
+      "normalized_sha256": "3118862457f2a33a5f1cb7d548b149d9047085006590a3165370fc0da10dd312"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE05",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "b749d672446221fca99c4dbd7ba69850e792f1941b934c7887930fa50a7ed784",
+      "normalized_sha256": "ddede5d6bedb68de4e8bd128b7c5d1955d92be034eecffaa955b52429c78dbad"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE06",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "e4489a39a839765bf5d534e54cc1707d03788fa9bf87700d7cb9a3d72c023728",
+      "normalized_sha256": "4655dc0e71b76917d24a67a2ef6e902fed2ebfc16dd45bec9297770f36c69e0f"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE07",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "5485e92e10813fb0acd9f5af065eceb4077b5aae5b631f1763bb4d40116a793a",
+      "normalized_sha256": "7da9266fd96fc5f098a9f8ad4cbea7aed17bf9243cc5daff5a337709a03b4320"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE08",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "75711bac5c6a1c8439ca3c5a00c3df2f2d8272e8de940d5e13ca5ada9f22bf50",
+      "normalized_sha256": "8932bfdce7efd8fd3a2251febba0a1fa2fa15a387afffdca348784cde3b303fd"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE09",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "8a26b0f2c29df727e49a5ff106c4650f70c73afd4e02a77ad4b16e17c6fa50d2",
+      "normalized_sha256": "243c6b2a0efdef07d744f9dba3e7ba85fd630572e25409c3312bd6cacf761e88"
+    },
+    {
+      "source_file": "llm\\llm_evaluation_set_v2.json",
+      "source_type": "evaluation",
+      "test_id": "SAFE10",
+      "cwe": null,
+      "reason": "Previously evaluated V2 dataset",
+      "exact_sha256": "2f4c3ca9f73caf15eaa1d9bc6109bf43000d717e32a0ed316e54aec6f20d9b78",
+      "normalized_sha256": "4bedd979b56a07df6606e6d2310952b809a38b4f0a0cc164a62b803b96c13c29"
+    },
+    {
+      "source_file": "rag_int/test_rag_llm.py",
+      "source_type": "rag_integration",
+      "test_id": "RAG_FIXTURE_1",
+      "cwe": "CWE-89",
+      "reason": "Previously used RAG integration fixture",
+      "exact_sha256": "c2e0a86d4fb136c48840afa9b19d08e908f8e2709aef08aa577b99501ce558e7",
+      "normalized_sha256": "271f849ce8a9d2c431e2938910a2cd2100bd35b1fd4bf2fef1e210dbc4832cb9"
+    },
+    {
+      "source_file": "rag_int/test_rag_llm.py",
+      "source_type": "rag_integration",
+      "test_id": "RAG_FIXTURE_2",
+      "cwe": "CWE-78",
+      "reason": "Previously used RAG integration fixture",
+      "exact_sha256": "6d5f571fd72ad31ba8f8b463c011269c32eeb06c37f30a843e1c72c9e2c750fc",
+      "normalized_sha256": "75e5e0910d20c8a7a1f1718b86e8f34c2d75b47716459664c9ce1f616fbac6c0"
+    },
+    {
+      "source_file": "rag_int/test_rag_llm.py",
+      "source_type": "rag_integration",
+      "test_id": "RAG_FIXTURE_3",
+      "cwe": "CWE-79",
+      "reason": "Previously used RAG integration fixture",
+      "exact_sha256": "ea8891fb6ec10b7609a15605d5bd9c3950df2e6f23b915e1d2e984983b3189e3",
+      "normalized_sha256": "4725f718f15ca673c789c056e5ec8aaed439159d35b01151cdee9fc45a056f27"
+    },
+    {
+      "source_file": "rag_int/test_rag_llm.py",
+      "source_type": "rag_integration",
+      "test_id": "RAG_FIXTURE_4",
+      "cwe": "CWE-22",
+      "reason": "Previously used RAG integration fixture",
+      "exact_sha256": "0466d0bd8ced03da7eed15fe8258c8ea18a5bb058527c6e5ada57c05a6fa7323",
+      "normalized_sha256": "59fb55de7e091261926c56517be788f9857d34ca6df034282cc9e093f81a4262"
+    },
+    {
+      "source_file": "rag_int/test_rag_llm.py",
+      "source_type": "rag_integration",
+      "test_id": "RAG_FIXTURE_5",
+      "cwe": "CWE-798",
+      "reason": "Previously used RAG integration fixture",
+      "exact_sha256": "bfab2c4413e476a9ebd721283edfb889e9a8d130857fcda6e400be50b0d97efb",
+      "normalized_sha256": "a153f4a9d2973fe2e84b05ef09b1bcff736f56e8cb056a2f137594c2accc6667"
+    }
+  ],
+  "summary": {
+    "total_records": 189,
+    "unique_exact_code_samples": 189,
+    "unique_normalized_code_samples": 189,
+    "exact_duplicate_groups": 0,
+    "normalized_duplicate_groups": 0,
+    "source_counts": {
+      "llm\\final_150_cases.json": 150,
+      "llm\\llm_evaluation_set_v2.json": 34,
+      "rag_int/test_rag_llm.py": 5
+    }
+  },
+  "exact_duplicate_groups": [],
+  "normalized_duplicate_groups": []
+}

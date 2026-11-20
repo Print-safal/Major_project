@@ -1,0 +1,27 @@
+PHASE 4 VALIDATION SUMMARY - UPDATED THROUGH CWE-22 BATCH 2
+Date: 2026-11-20
+
+VERIFIED CASES
+Initial seed preserved: 9 CWE-79 cases. New verified cases: 4 CWE-22. Current verified total: 13/1,200. Fixed code available for 13/13.
+
+CATEGORY PROGRESS
+Category | Target | Verified | Pending candidate groups | Remaining gap
+CWE-22 | 200 | 4 | 197 metadata/local leads remain without recovered source; three catalog rows link to accepted cases | 196
+CWE-78 | 200 | 0 | 74 existing grouped records; 12 inventory leads (overlap unresolved) | 200
+CWE-79 | 200 | 9 | 176 grouped local records + 4 patch-directory cases pending | 191
+CWE-89 | 200 | 0 | 200 grouped records; 9 inventory leads (overlap unresolved) | 200
+CWE-798 | 200 | 0 | 200 grouped records; 5 inventory leads (overlap unresolved) | 200
+SAFE-PYTHON | 200 | 0 | 119 safe entries pending | 200
+TOTAL | 1,200 | 13 | Pending counts are not additive and may overlap | 1,187
+
+CWE-22 VALIDATION
+- Python syntax: all 8 vulnerable/fixed snippets parse with ast.parse.
+- Advisory/source evidence: 4/4 cases supported by vendor-reviewed advisories and corresponding upstream patch/commit evidence.
+- Exact and whitespace-normalized dedup: no duplicate among accepted cases or against known verified seed/exclusion data.
+- Near duplicates: batch 2 max length-compatible SequenceMatcher similarity was 0.285 over 3,752 available local recovered-candidate snippets/source files; threshold 0.85.
+- Historical leakage: no exact or normalized content hash matches in the 189-entry exclusion manifest.
+- Case independence: four distinct CVEs, repositories and vulnerability scenarios.
+- Candidate ledger: three metadata rows linked to recovered CVEs are marked DUPLICATE, not counted separately.
+
+LIMITS
+Only CWE-22 was expanded in Phase 4 so far. Other category counts remain unchanged. The evaluation snapshot is partial and not a final benchmark; do not expose it to prompt tuning or retrieval indexing. Final integration has not occurred.
