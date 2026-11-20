@@ -245,7 +245,14 @@ def get_groq_client():
     return Groq(api_key=api_key)
 
 
-def review_code(code: str, security_context: str = "") -> SecurityReview:
+def review_code(
+    code: str,
+    security_context: str = "",
+    *,
+    client=None,
+    llm_only: bool = False,
+    return_raw: bool = False,
+):
     """
     Review Python code using Groq.
 
@@ -257,9 +264,17 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
     # Clear previous request statistics to prevent stale values.
     LAST_CALL_STATS.clear()
 
-    client = get_groq_client()
+    client = client or get_groq_client()
 
     user_prompt = (
+        "Analyze the following Python code for security vulnerabilities.\n\n"
+        "Python code:\n\n"
+        "```python\n"
+        f"{code}\n"
+        "```\n\n"
+        "Determine whether the code contains any of the five target CWE "
+        "vulnerabilities defined in the system instructions."
+    ) if llm_only else (
         "Analyze the following Python code for security vulnerabilities.\n\n"
         "Use the retrieved security knowledge below as supporting context.\n"
         "The retrieved knowledge is provided by the project's RAG security knowledge base.\n\n"
@@ -305,7 +320,7 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
     usage = response.usage
 
     # Record API usage BEFORE attempting response validation.
-    LAST_CALL_STATS.update({
+    request_stats = {
         "llm_latency_seconds": llm_latency,
         "prompt_tokens": (
             usage.prompt_tokens if usage else None
@@ -316,11 +331,18 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         "total_tokens": (
             usage.total_tokens if usage else None
         ),
-    })
+    }
+    LAST_CALL_STATS.update(request_stats)
 
     # Validation happens only after usage has been recorded.
-    parsed = SecurityReview.model_validate_json(
-        response.choices[0].message.content
-    )
+    raw_text = response.choices[0].message.content or ""
+    try:
+        parsed = SecurityReview.model_validate_json(raw_text)
+    except Exception as exc:
+        if return_raw:
+            return None, raw_text, dict(request_stats), exc
+        raise
 
+    if return_raw:
+        return parsed, raw_text, dict(request_stats), None
     return parsed

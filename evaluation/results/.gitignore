@@ -1,0 +1,3 @@
+# Evaluation runs may contain model outputs and derived reports; keep them local.
+*
+!.gitignore

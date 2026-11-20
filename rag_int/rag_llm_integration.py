@@ -159,7 +159,13 @@ def _build_api_review(review, findings, assessment) -> EnrichedSecurityReview:
     )
 
 
-def review_code_with_rag(code: str, context: CodeContext | None = None):
+def review_code_with_rag(
+    code: str,
+    context: CodeContext | None = None,
+    *,
+    client=None,
+    return_metadata: bool = False,
+):
     """Run legacy retrieval and LLM review, then attach deterministic confidence."""
     LAST_RAG_STATS.clear()
     if context is None:
@@ -186,7 +192,7 @@ def review_code_with_rag(code: str, context: CodeContext | None = None):
     shadow_order = [item.cwe_id for item in shadow_results]
     chosen_results = _sort_with_shadow_order(rag_results, shadow_results) if USE_SHADOW_RANKING else rag_results
     chosen_order = [item["cwe_id"] for item in chosen_results]
-    LAST_RAG_STATS.update({
+    retrieval_metadata = {
         "retrieval_latency_seconds": retrieval_latency,
         "legacy_candidate_order": legacy_order,
         "shadow_candidate_order": shadow_order,
@@ -195,10 +201,24 @@ def review_code_with_rag(code: str, context: CodeContext | None = None):
         "contextual_evidence_enabled": USE_CONTEXTUAL_EVIDENCE,
         "contextual_match_count": len(contextual_matches),
         "shadow_order_changed_candidates": shadow_order != legacy_order,
-    })
+    }
+    LAST_RAG_STATS.update(retrieval_metadata)
 
     security_context = format_rag_context(chosen_results, contextual_matches)
-    llm_review = review_code(code=code, security_context=security_context)
+    llm_review, raw_response, llm_stats, parse_error = review_code(
+        code=code,
+        security_context=security_context,
+        client=client,
+        return_raw=True,
+    )
+    metadata = {
+        "retrieval": retrieval_metadata,
+        "llm": llm_stats,
+    }
+    if parse_error is not None:
+        if return_metadata:
+            return None, raw_response, metadata, parse_error
+        raise parse_error
 
     evidence = tuple(item for result in shadow_results for item in result.evidence
                      if USE_CONTEXTUAL_EVIDENCE or item.kind == "semantic")
@@ -215,4 +235,7 @@ def review_code_with_rag(code: str, context: CodeContext | None = None):
     assessment = score_assessment_confidence(
         llm_review, evidence, coverage=coverage
     )
-    return _build_api_review(llm_review, finding_confidences, assessment)
+    enriched = _build_api_review(llm_review, finding_confidences, assessment)
+    if return_metadata:
+        return enriched, raw_response, metadata, None
+    return enriched
