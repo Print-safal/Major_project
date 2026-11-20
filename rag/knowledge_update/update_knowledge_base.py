@@ -21,10 +21,6 @@ from rag.vector_store.dynamic_build_index import (
     build_dynamic_index,
 )
 
-from rag.evaluation.aggregated_retrieval_eval import (
-    evaluate,
-)
-
 
 def run_enrichment():
     print("\n" + "=" * 70)
@@ -140,6 +136,13 @@ def run_merge():
 
 
 def run_evaluation():
+
+    # Import evaluation only after the FAISS index
+    # has been built in Step 4.
+    from rag.evaluation.aggregated_retrieval_eval import (
+        evaluate,
+    )
+
     print("\n" + "=" * 70)
     print("STEP 5: VALIDATING RETRIEVAL QUALITY")
     print("=" * 70)

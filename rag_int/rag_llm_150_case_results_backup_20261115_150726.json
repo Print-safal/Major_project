@@ -1,0 +1,2643 @@
+{
+  "evaluation": {
+    "dataset": "final_150_cases.json",
+    "total_cases": 150,
+    "pipeline": "RAG + LLM",
+    "target_cwes": [
+      "CWE-22",
+      "CWE-78",
+      "CWE-79",
+      "CWE-798",
+      "CWE-89"
+    ]
+  },
+  "metrics": {
+    "total_cases": 150,
+    "vulnerable_cases": 125,
+    "safe_cases": 25,
+    "vulnerable_cwe_accuracy": 0.992,
+    "strict_exact_cwe_accuracy": 0.992,
+    "safe_code_accuracy": 1.0,
+    "overall_case_accuracy": 0.9933333333333333,
+    "overall_passed": 149,
+    "per_cwe": {
+      "CWE-22": {
+        "total": 25,
+        "correct": 25,
+        "accuracy": 1.0
+      },
+      "CWE-78": {
+        "total": 25,
+        "correct": 25,
+        "accuracy": 1.0
+      },
+      "CWE-79": {
+        "total": 25,
+        "correct": 24,
+        "accuracy": 0.96
+      },
+      "CWE-798": {
+        "total": 25,
+        "correct": 25,
+        "accuracy": 1.0
+      },
+      "CWE-89": {
+        "total": 25,
+        "correct": 25,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "test_id": "TC89_01",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "search function, query construction line",
+          "explanation": "User-supplied 'username' is concatenated directly into the SQL statement, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements (e.g., cursor.execute('SELECT * FROM users WHERE name = ?', (username,))) instead of string concatenation."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_02",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "get_user function: query construction with f-string",
+          "explanation": "The function interpolates the untrusted 'user_id' directly into an SQL statement using an f-string, allowing an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements instead of string interpolation, e.g., conn.execute('SELECT * FROM users WHERE id = ?', (user_id,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_03",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "find(): query string built with % formatting using untrusted 'email' input",
+          "explanation": "User-controlled 'email' is interpolated directly into an SQL statement via string formatting, allowing an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements instead of string interpolation, e.g., conn.execute('SELECT * FROM users WHERE email = ?', (email,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_04",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "find(): query string built with .format() using untrusted 'name'",
+          "explanation": "The function concatenates the untrusted 'name' parameter into the SQL statement via str.format, allowing an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM users WHERE name = ?', (name,))"
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_05",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "lookup function: query construction with string concatenation",
+          "explanation": "The 'table' parameter, which may be supplied by an attacker, is concatenated directly into the SQL statement, allowing injection of arbitrary SQL code.",
+          "remediation": "Use parameterized queries or whitelist/validate table names; avoid building SQL via string concatenation."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_06",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "search function: query string concatenation with term",
+          "explanation": "The function builds an SQL statement by concatenating the untrusted 'term' parameter directly into the query string, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements (e.g., conn.execute('SELECT * FROM products WHERE name LIKE ?', ('%' + term + '%',))) instead of string concatenation."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_07",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "delete function, line 3",
+          "explanation": "User-supplied 'user_id' is interpolated directly into an SQL statement via an f-string, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('DELETE FROM users WHERE id=?', (user_id,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_08",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "update function, query construction",
+          "explanation": "User-supplied 'user_id' and 'name' are interpolated directly into an SQL statement via an f-string, allowing an attacker to inject malicious SQL.",
+          "remediation": "Use parameterized queries or prepared statements instead of string interpolation, e.g., conn.execute('UPDATE users SET name=? WHERE id=?', (name, user_id))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_09",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "login function: query construction using f-string",
+          "explanation": "User-supplied 'username' and 'password' are interpolated directly into the SQL statement via an f-string, allowing an attacker to inject malicious SQL code.",
+          "remediation": "Use parameterized queries or prepared statements (e.g., cursor.execute('SELECT * FROM users WHERE username=%s AND password=%s', (username, password))) instead of string formatting."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_10",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "orders function: query string concatenation",
+          "explanation": "User-controlled 'customer' value is concatenated directly into the SQL statement, enabling an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements instead of string concatenation, e.g., conn.execute('SELECT * FROM orders WHERE customer = ?', (customer,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_11",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "count(): query construction using string formatting",
+          "explanation": "The function builds an SQL statement by interpolating the untrusted 'category' parameter into the query string via the % operator, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries / prepared statements, e.g., conn.execute('SELECT COUNT(*) FROM items WHERE category = ?', (category,)) or the DB-API's parameter substitution."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_12",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "report function: query construction using f-string",
+          "explanation": "The 'year' parameter is concatenated into the SQL statement via an f-string, allowing an attacker to inject malicious SQL if they control the value.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM reports WHERE year = ?', (year,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_13",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "product function: query construction",
+          "explanation": "The function concatenates the untrusted 'product_id' argument directly into the SQL statement, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM products WHERE id = ?', (product_id,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_14",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "account() function - query string construction using format()",
+          "explanation": "User-controlled 'account' value is directly interpolated into the SQL statement via str.format, allowing an attacker to inject malicious SQL.",
+          "remediation": "Use parameterized queries/prepared statements instead of string formatting, e.g., conn.execute('SELECT balance FROM accounts WHERE account = ?', (account,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_15",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "audit function: query string concatenation with untrusted 'event' input",
+          "explanation": "User-controlled 'event' is directly concatenated into an SQL statement, allowing an attacker to inject malicious SQL code.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('INSERT INTO audit(message) VALUES (?)', (event,)) to separate code from data."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_16",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "employee function, query construction",
+          "explanation": "The 'dept' parameter is interpolated directly into the SQL statement using an f-string, allowing an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements instead of string formatting, e.g., conn.execute('SELECT * FROM employees WHERE dept=?', (dept,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_17",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "invoice function, query string concatenation",
+          "explanation": "User-supplied 'number' is directly concatenated into the SQL statement, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM invoice WHERE number = ?', (number,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_18",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "role() function: query string built with % formatting",
+          "explanation": "User-controlled 'role' parameter is concatenated into the SQL statement via string formatting, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM users WHERE role=?', (role,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_19",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "city() function, query string construction",
+          "explanation": "User-controlled 'city' parameter is interpolated directly into an SQL statement via an f-string, allowing an attacker to inject malicious SQL code.",
+          "remediation": "Use parameterized queries or prepared statements (e.g., conn.execute('SELECT * FROM locations WHERE city=?', (city,))) instead of string concatenation/f-strings."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_20",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "ticket() function, query construction line",
+          "explanation": "The function concatenates the untrusted 'ticket_id' directly into the SQL statement, creating a query that can be manipulated to execute arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements instead of string concatenation, e.g., conn.execute('SELECT * FROM tickets WHERE id = ?', (ticket_id,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_21",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "comment(): query construction using f-string",
+          "explanation": "User-controlled 'text' is directly interpolated into the SQL statement via an f-string, allowing an attacker to inject arbitrary SQL code.",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('INSERT INTO comments(text) VALUES (?)', (text,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_22",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "function item, query construction line",
+          "explanation": "The `sku` argument, potentially from an untrusted source, is interpolated into the SQL statement via `str.format`, producing a dynamic query that can be manipulated to execute arbitrary SQL.",
+          "remediation": "Replace the string formatting with a parameterized query or prepared statement, e.g., `conn.execute('SELECT * FROM items WHERE sku = ?', (sku,))`, to ensure proper escaping of user input."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_23",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "customer function: query construction",
+          "explanation": "User-supplied 'phone' is concatenated directly into the SQL statement, allowing an attacker to inject arbitrary SQL.",
+          "remediation": "Use parameterized queries or prepared statements instead of string concatenation, e.g., conn.execute('SELECT * FROM customers WHERE phone = ?', (phone,))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_24",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "filter_rows function: query construction with f-string",
+          "explanation": "User-controlled 'status' is interpolated directly into the SQL statement via an f-string, allowing an attacker to inject malicious SQL that will be executed by conn.execute().",
+          "remediation": "Use parameterized queries or prepared statements, e.g., conn.execute('SELECT * FROM jobs WHERE status = ?', (status,)) or the DB-API's placeholder syntax appropriate for the database."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC89_25",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-89",
+          "vulnerability_name": "SQL Injection",
+          "location": "page function: query string construction",
+          "explanation": "The 'limit' parameter, which may originate from untrusted input, is concatenated directly into the SQL statement, creating a dynamic query that can be manipulated for injection attacks.",
+          "remediation": "Validate and sanitize 'limit' as an integer and use a parameterized query or bound parameter syntax provided by the database driver instead of string concatenation."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_01",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "run(): os.system(cmd)",
+          "explanation": "The function 'run' receives the parameter 'cmd' (potentially untrusted) and passes it directly to os.system, which executes the string in a shell. This allows an attacker to inject arbitrary OS commands.",
+          "remediation": "Validate or sanitize the input before use, avoid os.system; use subprocess.run with a list of arguments and shell=False, or implement a whitelist of allowed commands."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_02",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "os.system call in ping(host) function",
+          "explanation": "The function concatenates the untrusted 'host' argument directly into a shell command string passed to os.system, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Validate or whitelist the 'host' input and use subprocess.run with a list of arguments (e.g., subprocess.run(['ping','-c','1',host], check=True)) to avoid invoking a shell."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_03",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "run() function: subprocess.run(command, shell=True)",
+          "explanation": "The function forwards the untrusted 'command' argument directly to subprocess.run with shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid shell=True; pass the command as a list of arguments or validate/sanitize the input before execution."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_04",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "run(name) function, subprocess.run call",
+          "explanation": "The function concatenates the untrusted 'name' argument into a command string and executes it with subprocess.run(shell=True), allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid using shell=True; pass the command and arguments as a list (e.g., subprocess.run(['cat', name], check=True)) and validate or sanitize the 'name' input to ensure it contains only safe filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_05",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "os.system(\"tar -czf backup.tar.gz \" + path)",
+          "explanation": "The function receives 'path' (potentially untrusted) and concatenates it directly into a shell command string that is executed with os.system, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Validate and sanitize the 'path' argument, restrict it to allowed directories, and invoke the tar command using subprocess.run with a list of arguments and shell=False (e.g., subprocess.run(['tar','-czf','backup.tar.gz',path], check=True))."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_06",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "convert function: subprocess.run(f\\\"convert {filename} out.png\\\", shell=True)",
+          "explanation": "The function interpolates the untrusted 'filename' argument directly into a shell command string and executes it with subprocess.run using shell=True, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid shell=True and pass arguments as a list, e.g., subprocess.run(['convert', filename, 'out.png']). Additionally, validate or whitelist the filename to ensure it contains only safe characters."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_07",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "remove function - os.system call",
+          "explanation": "The function concatenates the untrusted 'filename' argument directly into a shell command string passed to os.system, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid using os.system with string concatenation. Use subprocess.run with a list of arguments and shell=False, or validate/sanitize the filename to allow only safe characters before constructing the command."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_08",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "execute(): subprocess.call(command, shell=True)",
+          "explanation": "The function concatenates untrusted input 'arg' into a shell command string and executes it with subprocess.call using shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Do not use shell=True with untrusted input. Pass the command and arguments as a list (e.g., subprocess.call(['grep', arg, 'file.txt'])) or properly sanitize/quote the input using shlex.quote before constructing the command."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_09",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "open_file function (os.popen call)",
+          "explanation": "The function concatenates the untrusted 'name' parameter into a shell command string passed to os.popen, enabling an attacker to inject arbitrary commands or arguments.",
+          "remediation": "Do not build shell command strings with untrusted input. Use subprocess.run (or similar) with a list of arguments and shell=False, and validate/whitelist the filename before use."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_10",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "subprocess.Popen call in curl() function",
+          "explanation": "The function concatenates the untrusted 'url' parameter into a command string and executes it with shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid using shell=True; pass the command and arguments as a list to subprocess.Popen or subprocess.run, and validate or sanitize the URL before use."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_11",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "compile(src) function, line with os.system(\"gcc \" + src)",
+          "explanation": "The function concatenates the untrusted 'src' argument directly into a shell command string passed to os.system, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Validate and sanitize the 'src' input or, better, use subprocess.run with a list of arguments (e.g., subprocess.run(['gcc', src], check=True)) and avoid shell execution."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_12",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "git function, subprocess.run call (line 3)",
+          "explanation": "The function concatenates the untrusted 'repo' argument into a shell command string and executes it with subprocess.run(..., shell=True), allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid using shell=True; pass the command and arguments as a list to subprocess.run, e.g., subprocess.run(['git','clone',repo], check=True). Also validate or whitelist the repo input to ensure it is a legitimate repository URL."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_13",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "archive() function, os.system(command)",
+          "explanation": "The function concatenates the untrusted 'name' argument into a shell command string and executes it with os.system, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Validate or sanitize the 'name' input and avoid shell string concatenation. Use subprocess.run with a list of arguments (e.g., subprocess.run(['zip','out.zip',name], check=True)) or a dedicated library for archiving."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_14",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "launch function: subprocess.run(program, shell=True)",
+          "explanation": "The function passes the untrusted 'program' argument directly to subprocess.run with shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid using shell=True with untrusted input; pass the command as a list of arguments (shell=False) or strictly validate/sanitize the input before execution."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_15",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "os.system(\"grep \" + value + \" data.txt\") in query()",
+          "explanation": "The function concatenates the untrusted parameter 'value' directly into a shell command string that is executed with os.system, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid building command strings with untrusted input. Use subprocess.run with a list of arguments and shell=False, or strictly validate/whitelist the input before use."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_16",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "download function, subprocess.run call (line 3)",
+          "explanation": "The function concatenates the untrusted 'url' parameter into a command string and executes it with subprocess.run(shell=True). This allows an attacker to inject arbitrary shell commands via the URL argument.",
+          "remediation": "Avoid using shell=True and string concatenation. Pass the command and arguments as a list (e.g., subprocess.run(['wget', url], shell=False)) and validate or whitelist the URL before use. Alternatively, use a dedicated library for downloading files."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_17",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "execute(): os.system(command)",
+          "explanation": "The function receives user-controlled input (user_command) and passes it directly to os.system, allowing an attacker to execute arbitrary OS commands.",
+          "remediation": "Validate or sanitize the input, avoid using os.system with untrusted data, and prefer subprocess.run with a list of arguments and shell=False."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_18",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "find function, subprocess.run call",
+          "explanation": "The function concatenates the untrusted 'pattern' argument into a shell command string and executes it with subprocess.run(..., shell=True), allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid using shell=True and string concatenation; pass the command and arguments as a list to subprocess.run with shell=False, or strictly validate/sanitize the pattern to allow only safe characters."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_19",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "os.system(\"python \" + arg) in start() function",
+          "explanation": "The function concatenates the untrusted parameter 'arg' into a command string that is executed with os.system, which runs the command via the shell. An attacker can inject additional commands or arguments, leading to OS command injection.",
+          "remediation": "Validate and sanitize the 'arg' input or, better, avoid shell execution. Use subprocess.run(['python', arg], check=True) with shell=False, or implement strict whitelisting of allowed arguments."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_20",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "tool(option) -> subprocess.call(\"tool \" + option, shell=True)",
+          "explanation": "The function concatenates the untrusted 'option' parameter into a command string that is executed with shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Pass the command and arguments as a list to subprocess.call with shell=False, or strictly validate/whitelist the 'option' value before use."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_21",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "process() function: os.system(\"process \" + file)",
+          "explanation": "The function concatenates the untrusted 'file' argument directly into a command string that is executed with os.system(), allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Validate or sanitize the 'file' input and avoid using os.system with string concatenation. Use subprocess.run with a list of arguments and shell=False, or implement a whitelist of allowed filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_22",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "subprocess.run(f\"unzip {name}\", shell=True) in unzip() function",
+          "explanation": "The function interpolates the untrusted 'name' parameter into a shell command string and executes it with shell=True, allowing an attacker to inject arbitrary commands.",
+          "remediation": "Avoid using shell=True and construct the command as a list, e.g., subprocess.run(['unzip', name], check=True). Additionally, validate or sanitize the 'name' input to ensure it contains only expected filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_23",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "function check(host) - os.system call",
+          "explanation": "The 'host' parameter is concatenated directly into a command string passed to os.system, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Validate or whitelist the 'host' input and avoid shell string concatenation. Use subprocess.run with a list of arguments (e.g., subprocess.run(['nslookup', host], check=True)) or otherwise execute commands without invoking a shell."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_24",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "execute function: subprocess.Popen(command, shell=True)",
+          "explanation": "The function argument 'arg' is concatenated into a command string and executed with subprocess.Popen using shell=True, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid using shell=True and construct the command as a list of arguments, e.g., subprocess.Popen(['mytool', '--input', arg], shell=False). Additionally, validate or sanitize 'arg' to ensure it contains only expected safe values."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC78_25",
+      "ground_truth_cwe": "CWE-78",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-78"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-78",
+          "vulnerability_name": "OS Command Injection",
+          "location": "os.system call in script() function",
+          "explanation": "The function concatenates the untrusted 'path' argument into a command string passed to os.system, allowing an attacker to inject arbitrary shell commands.",
+          "remediation": "Avoid using os.system with string concatenation; use subprocess.run with a list of arguments and shell=False, and validate or whitelist allowed script paths."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_01",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "page() function, Response construction line",
+          "explanation": "User-controlled 'name' parameter is concatenated into HTML output without escaping, allowing injection of malicious script content.",
+          "remediation": "Escape or sanitize the 'name' value before embedding in HTML, e.g., use Flask's render_template with auto‑escaping or Markup.escape, or otherwise validate/encode the input."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_02",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "page() return statement",
+          "explanation": "User-controlled query parameter 'q' is concatenated directly into an HTML string and returned, allowing injection of malicious script content.",
+          "remediation": "Escape or HTML‑encode the user input before inserting it into the response, or use Flask's templating engine (render_template) which provides auto‑escaping."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_03",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "view function: HttpResponse string concatenation with untrusted 'name' parameter",
+          "explanation": "User-controlled input from request.GET is directly concatenated into an HTML response without any escaping, allowing an attacker to inject arbitrary HTML/JavaScript.",
+          "remediation": "Escape or sanitize the 'name' value before embedding it, e.g., use Django's template system with auto‑escaping or django.utils.html.escape(name) when constructing the response."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_04",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "render_comment function",
+          "explanation": "The function concatenates the untrusted 'comment' argument directly into an HTML string without any escaping or sanitization, allowing an attacker to inject malicious HTML/JavaScript that will be rendered in the browser.",
+          "remediation": "Escape or sanitize the comment before inserting it into HTML (e.g., use html.escape or a templating engine with auto‑escaping)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_05",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "profile() function return statement",
+          "explanation": "The function concatenates the untrusted 'username' parameter directly into an HTML string, allowing an attacker to inject malicious markup or script that will be rendered by the browser.",
+          "remediation": "Escape or sanitize the 'username' before inserting into HTML, e.g., use html.escape() or a templating engine with auto‑escaping, or MarkupSafe's escape function."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_06",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function message, line constructing html string",
+          "explanation": "User-controlled 'text' is concatenated directly into an HTML string and returned, enabling an attacker to inject malicious markup or scripts that will be rendered by a browser.",
+          "remediation": "Escape or sanitize the 'text' input before embedding it, or use a templating engine with automatic HTML escaping (e.g., Jinja2) instead of manual string concatenation."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_07",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function result(query) - lines 1-3",
+          "explanation": "The function concatenates the untrusted 'query' parameter directly into an HTML string without any escaping or sanitization, enabling an attacker to inject malicious script content that will be rendered by the browser.",
+          "remediation": "Escape or encode the user-supplied data before inserting it into HTML, e.g., use html.escape() or a templating engine with auto‑escaping such as Jinja2, and avoid raw string concatenation for HTML output."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_08",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "welcome() function return statement",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly into an HTML string without any escaping or sanitization, allowing an attacker to inject malicious HTML or JavaScript that will be rendered by the browser.",
+          "remediation": "Escape or HTML‑encode the 'name' value before inserting it into the response, or use a templating engine with automatic escaping (e.g., Jinja2, Flask's render_template)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_09",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function error (line 1)",
+          "explanation": "The function concatenates the untrusted 'message' argument directly into an HTML string without escaping, allowing an attacker to inject malicious HTML or JavaScript that will be rendered by the browser.",
+          "remediation": "Escape or sanitize the 'message' before inserting it, or use a templating engine with automatic HTML escaping (e.g., Jinja2, MarkupSafe) to ensure user input cannot break the HTML context."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_10",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "title function (line 1)",
+          "explanation": "The function concatenates the untrusted 'title' argument directly into an HTML <title> element without escaping, allowing injection of malicious HTML or script content.",
+          "remediation": "Escape or sanitize the title value before embedding it in HTML, or use a templating engine with auto‑escaping (e.g., Jinja2) or MarkupSafe to ensure safe output."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_11",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function link (lines 1-3)",
+          "explanation": "The function concatenates the 'url' and 'label' parameters directly into an HTML anchor tag without any escaping or validation, so if either argument contains malicious HTML or JavaScript it will be rendered by the browser, enabling XSS.",
+          "remediation": "Escape or sanitize 'label' and 'url' before embedding them (e.g., using html.escape or a templating engine with auto‑escaping) and validate that 'url' is a safe URL."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_12",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function table (line 1)",
+          "explanation": "The function concatenates the untrusted 'value' directly into an HTML <td> element without any escaping or sanitization, allowing an attacker to inject malicious HTML/JavaScript that will be rendered by a browser.",
+          "remediation": "Escape or sanitize 'value' before inserting it into HTML (e.g., use html.escape or a templating engine with auto‑escaping) or construct the HTML using safe APIs."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_13",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "def banner(text): line 1-2 (HTML concatenation)",
+          "explanation": "The function concatenates the untrusted 'text' argument directly into an HTML string, enabling an attacker to inject malicious markup or scripts that will be rendered by a browser.",
+          "remediation": "Escape or sanitize the 'text' before inserting into HTML, or use a templating engine with automatic escaping (e.g., Jinja2 in Flask) to ensure user input cannot break the HTML structure."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_14",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "search function (line 1)",
+          "explanation": "The function concatenates the untrusted 'term' parameter directly into an HTML string, allowing injection of malicious markup.",
+          "remediation": "Encode or escape the term before inserting into HTML, or use a templating engine with auto‑escaping."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_15",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function comment, HTML string construction",
+          "explanation": "The function concatenates the untrusted 'body' parameter directly into an HTML string without escaping, allowing injection of malicious HTML or script content that can be rendered by a browser.",
+          "remediation": "Escape or sanitize the 'body' content before embedding it in HTML, or use a templating engine with auto‑escaping (e.g., Jinja2) or MarkupSafe to ensure safe rendering."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_16",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "alert function (line 1)",
+          "explanation": "The function concatenates untrusted input 'msg' directly into a <script> tag without escaping, allowing injection of malicious JavaScript.",
+          "remediation": "Escape or sanitize 'msg' before embedding, use a templating engine with auto-escaping, or JSON-encode the value and avoid inserting raw input into script context."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_17",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function user_card, return statement",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly into an HTML attribute value without any escaping or sanitization, allowing an attacker to inject malicious HTML/JavaScript.",
+          "remediation": "Escape or encode the 'name' value before inserting it into HTML (e.g., using html.escape), or use a templating engine with automatic escaping to ensure user input cannot break the HTML structure."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_18",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function header(value) - returns HTML string with unescaped user input",
+          "explanation": "The function concatenates the caller-provided 'value' directly into an HTML <h2> element. If 'value' originates from untrusted user input and the returned string is rendered in a browser, malicious HTML or JavaScript can be injected, leading to XSS.",
+          "remediation": "Escape or sanitize the 'value' before embedding it in HTML. Use a templating engine with auto‑escaping (e.g., Jinja2) or explicitly HTML‑encode the input via utilities like html.escape() or Markup.safe() after proper sanitization."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_19",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "notification function (line 1)",
+          "explanation": "The function concatenates the untrusted 'text' parameter directly into an HTML string, allowing injection of malicious HTML or JavaScript.",
+          "remediation": "Escape or sanitize the 'text' before embedding in HTML, e.g., use html.escape, a templating engine with auto‑escaping, or Markup.safe to ensure safe output."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_20",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "output() function, line constructing html string",
+          "explanation": "The function concatenates untrusted input 'data' directly into an HTML string without any escaping or sanitization, allowing an attacker to inject malicious markup or scripts that will be rendered by the browser.",
+          "remediation": "Escape or sanitize 'data' before embedding it in HTML (e.g., use html.escape or a templating engine with auto‑escaping)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_21",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function snippet (line 1-3)",
+          "explanation": "The function concatenates untrusted input `code` directly into an HTML string without escaping, allowing injection of malicious HTML or script content when the result is rendered in a browser.",
+          "remediation": "Escape or sanitize the `code` value before embedding it in HTML, e.g., use html.escape or a templating engine with auto‑escaping such as Jinja2, or MarkupSafe's escape function."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_22",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function description",
+          "explanation": "The function concatenates the untrusted parameter 'desc' directly into an HTML string without any escaping, allowing an attacker to inject malicious HTML/JavaScript that will be rendered by the browser.",
+          "remediation": "Escape or sanitize 'desc' before embedding it in HTML (e.g., use html.escape or a templating engine with auto‑escaping) or render the content via safe templating."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_23",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "footer function",
+          "explanation": "The function concatenates untrusted input `text` directly into an HTML string without escaping, allowing injection of malicious HTML or script content when the output is rendered in a browser.",
+          "remediation": "Escape or sanitize `text` before inserting into HTML, or use a templating engine with auto‑escaping (e.g., Jinja2) to safely render the footer."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_24",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-79"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-79",
+          "vulnerability_name": "Cross-Site Scripting (XSS)",
+          "location": "function heading (line 1)",
+          "explanation": "The function concatenates the untrusted 'value' parameter directly into an HTML string without escaping or sanitization, allowing an attacker to inject malicious HTML or JavaScript that will be rendered by the browser.",
+          "remediation": "Escape or sanitize the 'value' before embedding it in HTML, e.g., use a templating engine with auto‑escaping or apply html.escape() / Markup.safe() appropriately."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC79_25",
+      "ground_truth_cwe": "CWE-79",
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": false
+    },
+    {
+      "test_id": "TC22_01",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "read_file function, open('/var/www/files/' + name)",
+          "explanation": "The function concatenates the untrusted 'name' argument directly to a fixed directory path and opens the resulting file. An attacker can supply path traversal sequences (e.g., \"../\") to access files outside the intended /var/www/files directory.",
+          "remediation": "Validate and sanitize the 'name' input; reject or normalize path components such as \"..\". Use os.path.join with a base directory and then verify the resolved path is within that directory (e.g., compare os.path.commonpath). Consider using a whitelist of allowed filenames or a dedicated file-serving library."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_02",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "read(name) -> Path('/var/data/' + name)",
+          "explanation": "The function concatenates an untrusted 'name' parameter directly into a filesystem path. An attacker can supply path traversal sequences (e.g., \"../../etc/passwd\") to read files outside the intended /var/data directory.",
+          "remediation": "Validate or sanitize the 'name' input. Use safe path joining (e.g., Path('/var/data').joinpath(name).resolve()) and verify the resolved path starts with the intended base directory, or restrict to a whitelist of allowed filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_03",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "download() function, path construction line",
+          "explanation": "The function concatenates an untrusted 'name' argument directly to a filesystem path, allowing an attacker to supply path traversal sequences (e.g., '../../etc/passwd') to read arbitrary files outside /srv/downloads.",
+          "remediation": "Validate or sanitize the 'name' input, use safe path joining (e.g., os.path.join) and enforce that the resolved absolute path starts with the intended base directory, or restrict to a whitelist of allowed filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_04",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "load function: open('/opt/app/data/' + filename)",
+          "explanation": "The function concatenates an untrusted filename directly to a fixed directory path and opens it, allowing an attacker to supply '../' sequences to traverse outside the intended directory.",
+          "remediation": "Validate and sanitize the filename, use pathlib.Path to join and resolve the path, and ensure the resolved path is within the intended directory before opening the file; reject or normalize any path traversal patterns."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_05",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "serve() function, path = \"/var/www/static/\" + name",
+          "explanation": "The function concatenates untrusted input 'name' to a fixed directory path and opens the resulting file without validating that the resolved path stays within /var/www/static/, allowing an attacker to use '../' sequences to access arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' parameter, reject path traversal characters, or use safe path joining (e.g., pathlib.Path('/var/www/static').joinpath(name).resolve() and ensure the result starts with the base directory)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_06",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "get() function, path construction (line with f\"/tmp/files/{name}\")",
+          "explanation": "The function concatenates untrusted input 'name' into a filesystem path without validation, allowing an attacker to supply '../' sequences to access files outside /tmp/files.",
+          "remediation": "Validate or sanitize the 'name' parameter, restrict to allowed filenames, and use safe path joining with pathlib.Path and resolve to ensure the final path is within the intended directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_07",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "read() function - path concatenation with untrusted 'name'",
+          "explanation": "The function concatenates a user-controlled 'name' directly to a filesystem path without validation, allowing an attacker to craft values like '../../etc/passwd' to access files outside the intended directory.",
+          "remediation": "Validate and sanitize the 'name' input, use safe path joining (e.g., pathlib.Path(base_dir) / name). Resolve the final path and ensure it is within the intended directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_08",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "function file(name) in provided code",
+          "explanation": "The 'name' parameter is taken from an external source and directly interpolated into a filesystem path via an f-string. An attacker can supply values like '../etc/passwd' to traverse outside the intended '/data/' directory and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' input. Use a whitelist of allowed filenames, or construct the path with os.path.join and then verify that the resolved absolute path starts with the intended base directory (e.g., using os.path.realpath and comparing prefixes). Reject or normalize any path components that attempt directory traversal."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_09",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "load() function, path concatenation",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly to a filesystem path and opens it, allowing an attacker to supply '../' sequences to traverse outside /var/log/app/.",
+          "remediation": "Validate or sanitize the 'name' input, enforce a whitelist of allowed filenames, or use safe path joining and then verify the resolved absolute path stays within the intended directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_10",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "export() function, path construction (path = \"/exports/\" + name)",
+          "explanation": "The function concatenates untrusted input 'name' directly to a filesystem path and opens the resulting file without validating that the resolved path stays within the intended '/exports/' directory, allowing an attacker to use '../' sequences to access arbitrary files.",
+          "remediation": "Validate or sanitize the 'name' parameter, enforce a whitelist of allowed filenames, or use safe path joining (e.g., os.path.join) followed by a check that the final resolved path is within the '/exports/' directory (e.g., using pathlib.Path.resolve() and comparing prefixes)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_11",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "image function: open('/images/' + name, 'rb')",
+          "explanation": "The function concatenates the untrusted 'name' argument directly to a filesystem path and opens it, allowing an attacker to supply '../' sequences to traverse outside the /images/ directory.",
+          "remediation": "Validate and sanitize the filename, restrict to allowed characters, use os.path.join and verify the resolved path stays within /images/, or use a safe file‑serving library."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_12",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "config(name) function",
+          "explanation": "The function concatenates the user-supplied 'name' directly to a file path and opens it, allowing an attacker to supply '../' sequences to traverse directories and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' parameter, enforce a whitelist of allowed filenames, or use safe path joining with checks (e.g., os.path.join and os.path.realpath) to ensure the final path stays within /etc/app/."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_13",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "upload() function, path construction (line: path = \"/srv/uploads/\" + name)",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly to a filesystem path without validation. An attacker can supply values like \"../etc/passwd\" to traverse directories and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' input, restrict it to allowed characters, and use safe path joining (e.g., pathlib.Path) with a check that the resolved path remains within the intended upload directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_14",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "cache function (line 1)",
+          "explanation": "The function concatenates an untrusted 'key' directly to a filesystem path, allowing an attacker to supply '../' sequences to access files outside /var/cache/app.",
+          "remediation": "Validate and sanitize the 'key', restrict it to allowed filenames, and use safe path joining (e.g., pathlib.Path) with resolve() to ensure the final path is within the intended directory."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_15",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "document(name) function: open('/documents/' + name)",
+          "explanation": "The function concatenates the untrusted parameter 'name' to a fixed directory path and opens the resulting file without validation, allowing an attacker to use '../' sequences to traverse directories and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' input, restrict it to allowed filenames, use os.path.join and verify the resolved path is within the intended directory, or employ a whitelist of permitted files."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_16",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "asset(name) function – path construction with '/assets/' + name",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly to a filesystem path without validation, allowing an attacker to supply '../' sequences and access files outside the intended /assets directory.",
+          "remediation": "Validate and sanitize the 'name' input (e.g., allow only known filenames or whitelist characters), use safe path joining (e.g., pathlib.Path('/assets').joinpath(name).resolve()) and ensure the resolved path remains within the /assets directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_17",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "report(name) -> open('/reports/' + name)",
+          "explanation": "The function concatenates the untrusted `name` parameter directly to a file path and opens it, allowing an attacker to supply path traversal sequences (e.g., '../') to read arbitrary files.",
+          "remediation": "Validate and sanitize the `name` input, restrict it to a whitelist of allowed filenames, and construct the path using os.path.join with a subsequent check that the resolved path starts with the intended base directory."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_18",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "template(name) function",
+          "explanation": "The function concatenates the untrusted 'name' argument directly to a fixed directory path and opens the resulting file, allowing an attacker to supply path traversal sequences (e.g., '../') to read arbitrary files outside /templates/.",
+          "remediation": "Validate and sanitize the 'name' parameter, enforce a whitelist of allowed template names, use os.path.join with a check that the final path resides within the intended directory, or employ a safe template loading mechanism."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_19",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "backup(name) function - open('/backups/' + name, 'rb')",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly to a fixed directory path, allowing an attacker to supply '../' sequences to traverse out of /backups and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' input, restrict to a whitelist of filenames, use os.path.join and ensure the resolved path starts with the intended backup directory, or use pathlib.Path with resolve() and compare."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_20",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "log(name) function",
+          "explanation": "The function concatenates a user-controlled 'name' parameter to a fixed directory path without validation, allowing an attacker to craft values like '../../etc/passwd' to read arbitrary files outside /logs/.",
+          "remediation": "Validate and sanitize the 'name' input to restrict it to allowed filenames, or use safe path resolution (e.g., pathlib.Path with resolve() and check that the final path is within the intended directory)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_21",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "media(name) function (line 1)",
+          "explanation": "The function concatenates the untrusted 'name' parameter directly to a fixed directory path and opens the resulting file, allowing an attacker to supply path traversal sequences (e.g., '../') to access files outside /media/.",
+          "remediation": "Validate and sanitize the 'name' input, restrict it to allowed filenames, and construct the path using os.path.join followed by a check that the resolved path starts with the intended base directory (e.g., using pathlib.Path.resolve())."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_22",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "function data(name): open('/data/files/' + name)",
+          "explanation": "The 'name' parameter is concatenated directly to a fixed directory path and passed to open(), allowing an attacker to supply '../' sequences to traverse out of /data/files/ and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' input, restrict it to a whitelist of allowed filenames, and use safe path handling such as os.path.join with a check that the resolved path starts with the intended base directory."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_23",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "attachment(name) function",
+          "explanation": "The function concatenates the untrusted `name` argument directly to a fixed directory path and opens the resulting file. An attacker can supply path traversal sequences such as \"../\" to access files outside /attachments/, leading to unauthorized file read.",
+          "remediation": "Validate and sanitize the `name` parameter, restrict it to allowed filenames, use os.path.join with a base directory and then verify the resolved path is within that directory (e.g., using os.path.realpath), or maintain a whitelist of permitted filenames."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_24",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "function text(), path construction line (path = f\"/srv/text/{name}\")",
+          "explanation": "The 'name' parameter, which may come from untrusted input, is directly interpolated into a filesystem path. An attacker can supply values like '../../etc/passwd' to traverse directories and read arbitrary files.",
+          "remediation": "Validate and sanitize the 'name' value, restrict it to allowed filenames, or use safe path joining (e.g., pathlib.Path('/srv/text').joinpath(name).resolve()) and ensure the resolved path starts with the intended base directory before opening the file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC22_25",
+      "ground_truth_cwe": "CWE-22",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-22"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-22",
+          "vulnerability_name": "Path Traversal",
+          "location": "package() function, open(\"/packages/\" + name)",
+          "explanation": "The 'name' parameter is concatenated directly to a filesystem path without validation, allowing an attacker to supply path traversal sequences (e.g., \"../\") to access files outside the intended /packages directory.",
+          "remediation": "Validate or sanitize the 'name' input, enforce a whitelist of allowed filenames, and use safe path joining (e.g., pathlib.Path) with a check that the resolved path remains within the intended base directory."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_01",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The API key is directly embedded in the source code, exposing a secret that should be retrieved securely (e.g., from environment variables, a secret manager, or configuration file).",
+          "remediation": "Remove the hard-coded API key and load it from a secure source such as environment variables, a protected configuration file, or a secret management service."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_02",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1",
+          "explanation": "The password is directly embedded in source code, exposing credentials to anyone with code access.",
+          "remediation": "Store credentials outside source code, e.g., using environment variables, configuration files with restricted access, or secret management services."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_03",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The database password is directly embedded in the source code, exposing it to anyone with code access.",
+          "remediation": "Store credentials outside the source code, e.g., in environment variables, configuration files with restricted permissions, or a secret management service."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_04",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The secret key is embedded directly in the source code, exposing credentials and allowing attackers who can read the code to obtain them.",
+          "remediation": "Store the secret key outside the source code, such as in environment variables, a configuration file with restricted permissions, or a dedicated secret management service."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_05",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: TOKEN assignment",
+          "explanation": "The code defines a secret token directly in source code, which is a hard‑coded credential.",
+          "remediation": "Store the token outside the source code, e.g., in environment variables, a secrets manager, or a protected configuration file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_06",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1",
+          "explanation": "The AWS access key is stored directly in the source code, exposing secret credentials and allowing attackers to obtain them.",
+          "remediation": "Remove the hard-coded key and load credentials securely from environment variables, configuration files with restricted access, or a secret management service."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_07",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The API token is embedded directly in source code, exposing a secret that can be extracted by attackers.",
+          "remediation": "Store the token outside the code, e.g., in environment variables, a secrets manager, or a protected configuration file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_08",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: DATABASE_PASSWORD assignment",
+          "explanation": "The database password is directly embedded in the source code, allowing anyone with code access to obtain the credential.",
+          "remediation": "Store credentials outside the source code, e.g., using environment variables, a secrets manager, or a protected configuration file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_09",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: PRIVATE_KEY assignment",
+          "explanation": "The code stores a private key directly in the source file, exposing sensitive credentials to anyone with access to the code repository.",
+          "remediation": "Remove the hard-coded key and retrieve it securely at runtime (e.g., from environment variables, a secrets manager, or a protected configuration file)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_10",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1: AUTH_SECRET assignment",
+          "explanation": "The secret authentication token is directly embedded in source code, exposing it to anyone with code access and enabling attackers to reuse the credential.",
+          "remediation": "Store the secret outside of source code, e.g., in environment variables, a secure vault, or configuration files with restricted permissions, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_11",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The client secret is embedded directly in the source code, exposing sensitive authentication material and allowing attackers who can read the code to obtain valid credentials.",
+          "remediation": "Store the secret outside of source code, e.g., in environment variables, a secure vault, or a dedicated secret-management service, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_12",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The encryption key is hard-coded in source code, allowing an attacker who can read the code to obtain the secret and decrypt data.",
+          "remediation": "Load the encryption key from a secure source such as environment variables, a secret manager, or a protected configuration file, and avoid embedding secrets directly in code."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_13",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1: PASSWORD = \"HardCodedPassword001!\"",
+          "explanation": "The password is embedded directly in source code, allowing anyone with code access to obtain the credential and potentially compromise authentication mechanisms.",
+          "remediation": "Store secrets outside the codebase, e.g., in environment variables, a dedicated secret manager, or encrypted configuration files, and retrieve them at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_14",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: JWT_SECRET assignment",
+          "explanation": "The JWT secret is directly embedded in the source code, allowing an attacker who gains read access to the code to obtain the secret and forge or tamper with JWT tokens.",
+          "remediation": "Store the JWT secret outside of source code, e.g., in environment variables, a configuration file with restricted permissions, or a secret management service, and load it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_15",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1",
+          "explanation": "The code defines SERVICE_TOKEN with a literal secret value, exposing credentials in source code.",
+          "remediation": "Store the token outside the code, e.g., in environment variables, configuration files with restricted access, or a secret management service."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_16",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: SMTP_PASSWORD assignment",
+          "explanation": "The code defines SMTP_PASSWORD with a literal password string, exposing credentials directly in source code.",
+          "remediation": "Store the password outside the source code, such as in environment variables, protected configuration files, or a secret management service, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_17",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1: REDIS_PASSWORD assignment",
+          "explanation": "The Redis password is directly embedded in source code, exposing credentials to anyone with code access.",
+          "remediation": "Store the password outside code, e.g., in environment variables, a secrets manager, or a protected configuration file, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_18",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1",
+          "explanation": "The GitHub token is embedded directly in the source code, exposing a secret credential that can be extracted from the code repository.",
+          "remediation": "Remove the hard-coded token and retrieve it securely at runtime, e.g., from environment variables, a secrets manager, or a protected configuration file."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_19",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The Stripe secret key is embedded directly in source code, exposing credentials to anyone with access to the code.",
+          "remediation": "Store the secret in environment variables, a protected configuration file, or a secret management service and load it at runtime instead of hard‑coding it."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_20",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: DATABASE_URL assignment",
+          "explanation": "The database connection string includes the username and password directly in the source code, constituting hard-coded credentials.",
+          "remediation": "Store credentials outside of source code, e.g., in environment variables, configuration files with restricted access, or a secret management service, and retrieve them at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_21",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: SECRET = \"TEST_SECRET_001\"",
+          "explanation": "The secret value is embedded directly in the source code, exposing credentials to anyone with access to the code repository.",
+          "remediation": "Store the secret outside the code, e.g., in environment variables, a configuration file with restricted permissions, or a secret management service, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_22",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1: ACCESS_TOKEN assignment",
+          "explanation": "The code embeds an access token directly in the source, which is a hard‑coded credential that can be discovered by attackers and used to gain unauthorized access.",
+          "remediation": "Remove the hard‑coded token and load it securely at runtime (e.g., from environment variables, a secrets manager, or a protected configuration file)."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_23",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line defining ENCRYPTION_SECRET",
+          "explanation": "The encryption secret is embedded directly in the source code, exposing sensitive credential material to anyone with access to the code repository.",
+          "remediation": "Store the secret outside of source code, e.g., in environment variables, a dedicated secret management service, or a configuration file with restricted permissions, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_24",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "line 1",
+          "explanation": "The OAuth client secret is embedded directly in source code, exposing it to attackers and version control.",
+          "remediation": "Store the secret in a secure location such as environment variables, a secrets manager, or a protected configuration file, and load it at runtime instead of hard‑coding."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "TC798_25",
+      "ground_truth_cwe": "CWE-798",
+      "predicted_vulnerable": true,
+      "predicted_cwes": [
+        "CWE-798"
+      ],
+      "vulnerabilities": [
+        {
+          "cwe": "CWE-798",
+          "vulnerability_name": "Use of Hard-coded Credentials",
+          "location": "Line 1: ADMIN_PASSWORD assignment",
+          "explanation": "The admin password is directly embedded in the source code, allowing anyone with code access to obtain valid credentials.",
+          "remediation": "Store the password outside the codebase, e.g., in environment variables, a secrets manager, or a protected configuration file, and retrieve it at runtime."
+        }
+      ],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_01",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_02",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_03",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_04",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_05",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_06",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_07",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_08",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_09",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_10",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_11",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_12",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_13",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_14",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_15",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_16",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_17",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_18",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_19",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_20",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_21",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_22",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_23",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_24",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    },
+    {
+      "test_id": "SAFE_25",
+      "ground_truth_cwe": null,
+      "predicted_vulnerable": false,
+      "predicted_cwes": [],
+      "vulnerabilities": [],
+      "status": "completed",
+      "pass": true
+    }
+  ]
+}

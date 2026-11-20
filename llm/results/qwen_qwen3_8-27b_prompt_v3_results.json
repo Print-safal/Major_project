@@ -1,0 +1,117 @@
+{
+  "experiment": {
+    "model": "qwen/qwen3.8-27b",
+    "prompt_version": "V3",
+    "input_file": "llm/final_150_cases.json",
+    "total_cases": 1,
+    "successful_cases": 1,
+    "failed_cases": 0,
+    "rag_used": false,
+    "temperature": 0,
+    "timestamp_utc": "2026-11-05T10:47:28.701535+00:00",
+    "average_latency_seconds": 1.1309,
+    "total_prompt_tokens": 914,
+    "total_completion_tokens": 184,
+    "token_usage_cases": 1
+  },
+  "metrics": {
+    "TP": 1,
+    "TN": 0,
+    "FP": 0,
+    "FN": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mcc": 0.0,
+    "exact_cwe_matches": 1,
+    "vulnerable_cases_evaluated": 1,
+    "exact_cwe_accuracy": 1.0,
+    "per_cwe": {
+      "CWE-89": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mcc": 0.0
+      },
+      "CWE-78": {
+        "TP": 0,
+        "TN": 1,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-79": {
+        "TP": 0,
+        "TN": 1,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-22": {
+        "TP": 0,
+        "TN": 1,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-798": {
+        "TP": 0,
+        "TN": 1,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      }
+    }
+  },
+  "results": [
+    {
+      "test_id": "TC89_01",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.1309,
+      "token_usage": {
+        "prompt_tokens": 914,
+        "completion_tokens": 184,
+        "total_tokens": 1098
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "search function, line: query = \"SELECT * FROM users WHERE name = '\" + username + \"'\"",
+            "explanation": "The 'username' parameter is directly concatenated into the SQL query string without sanitization or parameterization. An attacker can supply a malicious username (e.g., \"' OR '1'='1\") to alter the query logic and potentially access unauthorized data.",
+            "remediation": "Use parameterized queries to separate code from data. For example: query = \"SELECT * FROM users WHERE name = ?\"; return conn.execute(query, (username,))"
+          }
+        ]
+      }
+    }
+  ]
+}

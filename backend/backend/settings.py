@@ -10,10 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR.parent / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -117,6 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Cap single Python source uploads while leaving room for sizeable modules.
+# Override through the environment or project-root .env for deployments with
+# different needs.
+MAX_SOURCE_UPLOAD_SIZE_BYTES = int(
+    os.environ.get("MAX_SOURCE_UPLOAD_SIZE_BYTES", 1024 * 1024)
+)
 
 
 # Email

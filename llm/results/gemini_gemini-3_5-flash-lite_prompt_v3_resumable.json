@@ -1,0 +1,298 @@
+{
+  "experiment": {
+    "provider": "Google Gemini",
+    "model": "gemini-3.5-flash-lite",
+    "prompt_version": "V3",
+    "input_file": "llm/final_150_cases.json",
+    "total_cases": 150,
+    "successful_cases": 7,
+    "failed_cases": 1,
+    "pending_cases": 142,
+    "rag_used": false,
+    "temperature": 0,
+    "response_format": "application/json with SecurityReview schema",
+    "timestamp_utc": "2026-11-05T11:36:07.757978+00:00",
+    "average_latency_seconds": 2.9965,
+    "total_prompt_tokens": 5819,
+    "total_completion_tokens": 980,
+    "token_usage_cases": 7
+  },
+  "metrics": {
+    "TP": 7,
+    "TN": 0,
+    "FP": 0,
+    "FN": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mcc": 0.0,
+    "exact_cwe_matches": 7,
+    "vulnerable_cases_evaluated": 7,
+    "exact_cwe_accuracy": 1.0,
+    "per_cwe": {
+      "CWE-89": {
+        "TP": 7,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mcc": 0.0
+      },
+      "CWE-78": {
+        "TP": 0,
+        "TN": 7,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-79": {
+        "TP": 0,
+        "TN": 7,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-22": {
+        "TP": 0,
+        "TN": 7,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      },
+      "CWE-798": {
+        "TP": 0,
+        "TN": 7,
+        "FP": 0,
+        "FN": 0,
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      }
+    }
+  },
+  "results": [
+    {
+      "test_id": "TC89_01",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.7806,
+      "token_usage": {
+        "prompt_tokens": 831,
+        "completion_tokens": 142,
+        "total_tokens": 973
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = \"SELECT * FROM users WHERE name = '\" + username + \"'\"",
+            "explanation": "The 'username' parameter is directly concatenated into the SQL query string without parameterization, allowing an attacker to manipulate the SQL statement.",
+            "remediation": "Use parameterized queries or prepared statements, such as conn.execute('SELECT * FROM users WHERE name = ?', (username,))"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_02",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.765,
+      "token_usage": {
+        "prompt_tokens": 836,
+        "completion_tokens": 141,
+        "total_tokens": 977
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = f\"SELECT * FROM users WHERE id = {user_id}\"",
+            "explanation": "The user_id parameter is directly interpolated into the SQL query string using an f-string without parameterization, allowing an attacker to manipulate the SQL statement.",
+            "remediation": "Use parameterized queries or prepared statements, passing the user_id as a separate parameter to the execute method."
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_03",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.9144,
+      "token_usage": {
+        "prompt_tokens": 831,
+        "completion_tokens": 136,
+        "total_tokens": 967
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = \"SELECT * FROM users WHERE email = '%s'\" % email",
+            "explanation": "Untrusted input 'email' is directly concatenated into the SQL query string using string formatting (%s), allowing an attacker to manipulate the query structure.",
+            "remediation": "Use parameterized queries or prepared statements provided by the database driver, passing the email parameter separately."
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_04",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 10.3365,
+      "token_usage": {
+        "prompt_tokens": 832,
+        "completion_tokens": 135,
+        "total_tokens": 967
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = \"SELECT * FROM users WHERE name = '{}'\".format(name)",
+            "explanation": "Untrusted input 'name' is directly concatenated into the SQL query string using .format(), allowing an attacker to manipulate the query logic.",
+            "remediation": "Use parameterized queries or prepared statements by passing parameters as a separate argument to conn.execute()."
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_05",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.9842,
+      "token_usage": {
+        "prompt_tokens": 825,
+        "completion_tokens": 131,
+        "total_tokens": 956
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "lookup function",
+            "explanation": "The 'table' parameter is directly concatenated into the SQL query string without sanitization or parameterization, allowing an attacker to inject arbitrary SQL commands.",
+            "remediation": "Validate the table name against an allowlist of permitted tables before constructing the query, or use a secure query builder that properly handles identifiers."
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_06",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.735,
+      "token_usage": {
+        "prompt_tokens": 833,
+        "completion_tokens": 141,
+        "total_tokens": 974
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = \"SELECT * FROM products WHERE name LIKE '%\" + term + \"%'\"",
+            "explanation": "The untrusted input 'term' is directly concatenated into the SQL query string without parameterization, allowing an attacker to manipulate the query structure.",
+            "remediation": "Use parameterized queries or prepared statements, such as passing parameters as a tuple to conn.execute(query, params)."
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_07",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [
+        "CWE-89"
+      ],
+      "predicted_vulnerable": true,
+      "exact_cwe_match": true,
+      "latency_seconds": 1.4598,
+      "token_usage": {
+        "prompt_tokens": 831,
+        "completion_tokens": 154,
+        "total_tokens": 985
+      },
+      "raw_response": {
+        "vulnerable": true,
+        "vulnerabilities": [
+          {
+            "cwe": "CWE-89",
+            "vulnerability_name": "SQL Injection",
+            "location": "query = f\"DELETE FROM users WHERE id={user_id}\"",
+            "explanation": "The user_id parameter is directly formatted into the SQL query string using an f-string without parameterization. This allows an attacker to manipulate the SQL statement by injecting malicious input.",
+            "remediation": "Use parameterized queries or placeholders supported by the database connector, such as conn.execute('DELETE FROM users WHERE id = ?', (user_id,))"
+          }
+        ]
+      },
+      "status": "success"
+    },
+    {
+      "test_id": "TC89_08",
+      "ground_truth_cwe": "CWE-89",
+      "predicted_cwes": [],
+      "predicted_vulnerable": null,
+      "exact_cwe_match": false,
+      "status": "failed",
+      "error": "RuntimeError: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+    }
+  ]
+}

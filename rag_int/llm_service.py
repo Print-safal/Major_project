@@ -1,14 +1,21 @@
 import os
-from typing import List
+import time
+from pathlib import Path
+from typing import List, Literal, Optional
 
+from dotenv import load_dotenv
 from groq import Groq
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, model_validator
+
+
+# Load the project-root .env file.
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 
 class Vulnerability(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", strict=True)
 
-    cwe: str
+    cwe: Literal["CWE-89", "CWE-78", "CWE-79", "CWE-22", "CWE-798"]
     vulnerability_name: str
     location: str
     explanation: str
@@ -16,10 +23,141 @@ class Vulnerability(BaseModel):
 
 
 class SecurityReview(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", strict=True)
 
-    vulnerable: bool
+    vulnerable: StrictBool
     vulnerabilities: List[Vulnerability]
+
+    @model_validator(mode="after")
+    def validate_consistency(self):
+        if self.vulnerable != bool(self.vulnerabilities):
+            raise ValueError(
+                "vulnerable must be True when vulnerabilities exist "
+                "and False when the list is empty."
+            )
+        return self
+
+
+ConfidenceLevelName = Literal["High", "Medium", "Low", "Undetermined"]
+
+
+class SourceLocation(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    line_start: int = Field(ge=1)
+    column_start: int = Field(ge=0)
+    line_end: int = Field(ge=1)
+    column_end: int = Field(ge=0)
+
+
+class EvidenceReference(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe_id: Literal["CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89"]
+    kind: Literal["semantic", "vulnerable", "secure", "contextual"]
+    evidence: str
+    provenance: str
+    score: Optional[float] = Field(default=None, ge=-1, le=1)
+    location: Optional[SourceLocation] = None
+    explanation: str
+
+
+class ConfidenceComponentResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    name: str
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    weight: float = Field(ge=0)
+    explanation: str
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class FindingConfidenceResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe_id: Literal["CWE-22", "CWE-78", "CWE-79", "CWE-798", "CWE-89"]
+    location: str
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    components: List[ConfidenceComponentResponse]
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+    explanation: str
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class ReviewedVulnerability(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    cwe: Literal["CWE-89", "CWE-78", "CWE-79", "CWE-22", "CWE-798"]
+    vulnerability_name: str
+    location: str
+    explanation: str
+    remediation: str
+    confidence: FindingConfidenceResponse
+
+    @model_validator(mode="after")
+    def validate_confidence_target(self):
+        if self.confidence.cwe_id != self.cwe or self.confidence.location != self.location:
+            raise ValueError("finding confidence must match its CWE and location")
+        return self
+
+
+class AssessmentConfidenceResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    vulnerable: StrictBool
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    level: ConfidenceLevelName
+    components: List[ConfidenceComponentResponse]
+    finding_confidences: List[FindingConfidenceResponse]
+    supporting_evidence: List[EvidenceReference]
+    conflicting_evidence: List[EvidenceReference]
+    explanation: str
+
+    @model_validator(mode="after")
+    def validate_level_score(self):
+        if (self.score is None) != (self.level == "Undetermined"):
+            raise ValueError("Undetermined confidence requires a null score")
+        return self
+
+
+class EnrichedSecurityReview(BaseModel):
+    """API review response; separate from the schema requested from the LLM."""
+
+    model_config = ConfigDict(extra="forbid", strict=True)
+
+    vulnerable: StrictBool
+    vulnerabilities: List[ReviewedVulnerability]
+    assessment_confidence: AssessmentConfidenceResponse
+
+    @model_validator(mode="after")
+    def validate_consistency(self):
+        if self.vulnerable != bool(self.vulnerabilities):
+            raise ValueError("vulnerable must agree with the vulnerability list")
+        if self.assessment_confidence.vulnerable != self.vulnerable:
+            raise ValueError("assessment confidence must match review status")
+        if len(self.assessment_confidence.finding_confidences) != len(self.vulnerabilities):
+            raise ValueError("assessment finding confidence count must match findings")
+        for finding, confidence in zip(
+            self.vulnerabilities, self.assessment_confidence.finding_confidences
+        ):
+            if finding.cwe != confidence.cwe_id or finding.location != confidence.location:
+                raise ValueError("assessment finding confidence must match each finding")
+        return self
 
 
 SYSTEM_PROMPT = """
@@ -89,33 +227,35 @@ Return only the requested structured output.
 
 MODEL = "openai/gpt-oss-120b"
 
+# Statistics from the most recent API request.
+LAST_CALL_STATS = {}
+
 
 def get_groq_client():
-    """Create and return the Groq client using the environment API key."""
+    """Create the Groq client."""
 
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
         raise RuntimeError(
             "GROQ_API_KEY is not set. "
-            "Set it in PowerShell before running."
+            "Set it in the project-root .env file."
         )
 
     return Groq(api_key=api_key)
 
+
 def review_code(code: str, security_context: str = "") -> SecurityReview:
     """
-    Review Python code using the Groq LLM.
+    Review Python code using Groq.
 
-    code:
-        Python source code to analyze.
-
-    security_context:
-        Security knowledge retrieved by the RAG system.
-
-    Returns:
-        A structured SecurityReview object.
+    Token usage and API latency are recorded immediately after the API
+    response, before Pydantic validation. Therefore, usage is retained
+    even when structured response validation fails.
     """
+
+    # Clear previous request statistics to prevent stale values.
+    LAST_CALL_STATS.clear()
 
     client = get_groq_client()
 
@@ -123,6 +263,9 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         "Analyze the following Python code for security vulnerabilities.\n\n"
         "Use the retrieved security knowledge below as supporting context.\n"
         "The retrieved knowledge is provided by the project's RAG security knowledge base.\n\n"
+        "Important: Retrieved knowledge is supporting context, not proof "
+        "that the submitted code is vulnerable. Base every finding on "
+        "the actual submitted source code.\n\n"
         "Retrieved Security Knowledge:\n\n"
         f"{security_context}\n\n"
         "Python code:\n\n"
@@ -132,6 +275,8 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         "Determine whether the code contains any of the five target CWE "
         "vulnerabilities defined in the system instructions."
     )
+
+    start_time = time.perf_counter()
 
     response = client.chat.completions.create(
         model=MODEL,
@@ -156,6 +301,24 @@ def review_code(code: str, security_context: str = "") -> SecurityReview:
         },
     )
 
+    llm_latency = time.perf_counter() - start_time
+    usage = response.usage
+
+    # Record API usage BEFORE attempting response validation.
+    LAST_CALL_STATS.update({
+        "llm_latency_seconds": llm_latency,
+        "prompt_tokens": (
+            usage.prompt_tokens if usage else None
+        ),
+        "completion_tokens": (
+            usage.completion_tokens if usage else None
+        ),
+        "total_tokens": (
+            usage.total_tokens if usage else None
+        ),
+    })
+
+    # Validation happens only after usage has been recorded.
     parsed = SecurityReview.model_validate_json(
         response.choices[0].message.content
     )

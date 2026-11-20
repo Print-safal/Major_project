@@ -1,15 +1,80 @@
+import ast
+import logging
+
+import httpx
+from django.conf import settings
+from django.core.files.uploadhandler import FileUploadHandler, StopUpload
+from groq import GroqError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from rag.retrieval.rag_retriever import retrieve_security_context
-from rag_int.llm_service import review_code
+from rag.analysis.ast_context import extract_code_context
+
+
+logger = logging.getLogger(__name__)
+
+
+def review_code_with_rag(code, context=None):
+    """Load and call the existing RAG integration only when a review runs."""
+    from rag_int.rag_llm_integration import review_code_with_rag as rag_review
+
+    return rag_review(code, context=context)
+
+
+class SourceSizeLimitUploadHandler(FileUploadHandler):
+    """Stop parsing a multipart file as soon as it exceeds the configured cap."""
+
+    def __init__(self, request=None):
+        super().__init__(request)
+        self.max_size = settings.MAX_SOURCE_UPLOAD_SIZE_BYTES
+        self.uploaded_bytes = 0
+
+    def new_file(
+        self, field_name, file_name, content_type, content_length,
+        charset=None, content_type_extra=None,
+    ):
+        super().new_file(
+            field_name, file_name, content_type, content_length,
+            charset, content_type_extra,
+        )
+        self.uploaded_bytes = 0
+
+    def receive_data_chunk(self, raw_data, start):
+        self.uploaded_bytes += len(raw_data)
+        if self.uploaded_bytes > self.max_size:
+            self.request.source_upload_too_large = True
+            raise StopUpload(connection_reset=False)
+        return raw_data
+
+    def file_complete(self, file_size):
+        # Let Django's configured memory or temporary-file handler create it.
+        return None
 
 
 class CodeUploadView(APIView):
 
     def post(self, request):
+        # Add a streaming guard before DRF parses the multipart request.
+        django_request = request._request
+        django_request.source_upload_too_large = False
+        django_request.upload_handlers.insert(
+            0, SourceSizeLimitUploadHandler(django_request)
+        )
+        uploaded_files = request.FILES
+
+        if django_request.source_upload_too_large:
+            return Response(
+                {
+                    "error": (
+                        "File exceeds the maximum allowed size of "
+                        f"{settings.MAX_SOURCE_UPLOAD_SIZE_BYTES} bytes."
+                    )
+                },
+                status=413,
+            )
+
         # 1. Get uploaded file
-        uploaded_file = request.FILES.get("file")
+        uploaded_file = uploaded_files.get("file")
 
         if not uploaded_file:
             return Response(
@@ -33,17 +98,38 @@ class CodeUploadView(APIView):
                 status=400
             )
 
-        # 4. Retrieve relevant security knowledge using RAG
-        retrieved = retrieve_security_context(
-            code,
-            top_k=5
-        )
+        try:
+            ast.parse(code)
+        except SyntaxError as exc:
+            error = {"error": "Uploaded file contains invalid Python syntax."}
+            if exc.lineno is not None:
+                error["line"] = exc.lineno
+            if exc.offset is not None:
+                error["column"] = exc.offset
+            return Response(error, status=400)
 
-        # 5. Analyze code using LLM + retrieved security context
-        review = review_code(
-            code=code,
-            security_context=retrieved["context"]
-        )
+        try:
+            code_context = extract_code_context(code)
+            if code_context.parse_error is not None:
+                # ast.parse above already checked syntax; keep this guard so an
+                # extractor diagnostic can never be interpreted as reviewed code.
+                return Response(
+                    {"error": "Uploaded file contains invalid Python syntax."},
+                    status=400,
+                )
+            review = review_code_with_rag(code, context=code_context)
+        except (GroqError, httpx.HTTPError, TimeoutError, ConnectionError):
+            logger.exception("Upstream provider failed during security review.")
+            return Response(
+                {"error": "The upstream security review provider failed."},
+                status=502,
+            )
+        except Exception:
+            logger.exception("Unexpected error during security review.")
+            return Response(
+                {"error": "An internal error occurred while processing the file."},
+                status=500,
+            )
 
         # 6. Return structured response
         return Response({

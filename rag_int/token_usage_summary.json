@@ -1,0 +1,23 @@
+{
+  "GPT-OSS-20B LLM-only": {
+    "cases": 150,
+    "prompt_tokens": 131300,
+    "completion_tokens": 73174,
+    "total_tokens": 204474,
+    "status": "complete"
+  },
+  "GPT-OSS-120B LLM-only": {
+    "cases": 150,
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "total_tokens": null,
+    "status": "not_recorded"
+  },
+  "GPT-OSS-120B RAG+LLM": {
+    "cases": 45,
+    "prompt_tokens": 49793,
+    "completion_tokens": 19676,
+    "total_tokens": 69469,
+    "status": "partial"
+  }
+}
