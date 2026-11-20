@@ -1,0 +1,21 @@
+PHASE 3 VERIFIED DATASET PROGRESS
+Date: 2026-11-20
+Counts include only cases in verified_recovered_cases.jsonl that pass case-level criteria.
+
+| Category | Target | Verified cases | Pending candidates | Remaining gap |
+|---|---:|---:|---:|---:|
+| CWE-22 | 200 | 0 | 200 metadata-only rows (insufficient context) | 200 |
+| CWE-78 | 200 | 0 | 74 grouped CVE candidates; 12 inventory leads (overlap unresolved) | 200 |
+| CWE-79 | 200 | 9 | 176 grouped records + 4 patch/source-directory cases | 191 |
+| CWE-89 | 200 | 0 | 200 grouped CVE candidates; 9 inventory leads (overlap unresolved) | 200 |
+| CWE-798 | 200 | 0 | 200 grouped CVE candidates; 5 inventory leads (overlap unresolved) | 200 |
+| SAFE-PYTHON | 200 | 0 | 119 pending code entries | 200 |
+| TOTAL | 1,200 | 9 | Candidate counts overlap and are not additive | 1,191 |
+
+Cases with corresponding fixed code: 9/9 verified CWE-79 cases. No CWE-22/78/89/798 or SAFE case has a validated pair in this phase.
+
+The 176 CWE-79 catalog groups and directory leads are not the same granularity. The 4 pending directory cases are CVE-2015-2241, CVE-2016-4428, CVE-2017-12794 and CVE-2019-12308. CVE-2014-3474 is duplicate of a verified case; CVE-2024-45399 is incorrectly classified. The table?s pending metadata rows are not recoverable evaluation cases and do not reduce the gap.
+
+Audit-count correction: The Phase 2 validation/reconciliation reports contain preliminary AST parse counts (CWE-78 38; CWE-79 88; CWE-89 347; CWE-798 317) that were inconsistent with a direct per-snippet rerun. The reproducible direct counts for these same checked-in files are CWE-78 15/145, CWE-79 51/356, CWE-89 332/1,814 and CWE-798 316/1,231. AST parseability is only syntactic screening and no case was accepted based on it. Earlier reports are preserved as requested; use the corrected counts in the Phase 3 reports.
+
+No external samples were collected. Next priority is human review of pending local code and safe candidates, then approval before any external recovery/collection.

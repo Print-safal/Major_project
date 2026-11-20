@@ -1,0 +1,51 @@
+﻿DATASET AUDIT REPORT — AI Code Review Project
+Audit date: 2026-11-20
+Scope: Read-only audit of checked-in dataset artifacts, collection scripts, inventory metadata, exclusion manifest, and current LLM evaluation input contract. No collection or benchmark generation was performed in this phase.
+
+EXECUTIVE FINDING
+The repository does not currently contain a validated, standardized 1,200-case evaluation dataset. COUNT_REPORT.txt totals 984, but its category counts do not correspond uniformly to actual standalone code samples. The files mix CVE catalogs, grouped source snippets, manually assembled code trees, and safe-code review candidates. Counts below are verified file-row/candidate counts, not verified vulnerability cases.
+
+ACTUAL ARTIFACT COUNTS
+Category | Artifact(s) | Verified rows/items | What that count means
+CWE-22 | FINAL_DATASETS/CWE-22/cases.csv | 200 CSV rows; 200 unique CVE strings | Metadata index only (cve, code_length, source_count, sources, source_record_count); no vulnerable_code or fixed_code. Not 200 evaluation examples.
+CWE-78 | FINAL_DATASETS/CWE-78/cases.jsonl | 74 parseable JSONL rows; 74 unique CVEs; 145 embedded source records/snippets | Grouped source snippets, not standardized examples. The 126 numerical gap is only valid if all 74 rows pass case-level validation and deduplication.
+CWE-79 | cwe79_original_with_code.jsonl | 176 parseable rows; 176 unique CVEs; 356 embedded source records/snippets | Separate original catalog. Additionally, 15 CVE-named directories contain 33 Python files and 13 patches, but are source trees, not 15 individually validated records. COUNT_REPORT's 191 is exactly 176 + 15 and appears to combine rows with directories. Overlap between those sets has not been resolved.
+CWE-798 | cases.jsonl | 200 parseable rows; 200 unique CVEs; 1,231 embedded source records/snippets | Grouped source snippets, not standardized vulnerable/fixed pairs.
+CWE-89 | cases.jsonl | 200 parseable rows; 200 unique CVEs; 1,814 embedded source records/snippets | Grouped source snippets, not standardized vulnerable/fixed pairs.
+SAFE-PYTHON | cases.csv | 119 CSV rows | 119 code fields; every manual_status is “pending”. None is established as safe by this field. Splits: train 94, validation 18, test 7.
+
+The reported 984 total is arithmetically correct for the entries printed in COUNT_REPORT.txt (200+74+191+200+200+119), but is not a verified total of independent, valid benchmark cases. In particular, CWE-22 has zero code examples in its listed CSV, CWE-79 mixes two artifact types, and safe examples are pending review.
+
+STRUCTURE AND FORMAT
+- CWE-78, CWE-79 original, CWE-89, and CWE-798 catalogs are JSONL and all lines parsed as JSON. Their top-level shape is {cve, cwe, source_records}; source_records carry code and source metadata. This is not the suggested case-level schema.
+- CWE-22 and SAFE-PYTHON are CSV. CWE-22 is metadata-only. SAFE-PYTHON has review_id, original_split, code, manual_status, review_notes.
+- CWE-79 also includes extracted source files and fix.patch files in CVE directories; these require patch-to-code reconstruction and do not define row boundaries.
+- Candidate inventory: 147 parseable JSONL records, all marked candidate_pending_validation; cwe_final counts CWE-22 44, CWE-78 12, CWE-79 77, CWE-89 9, CWE-798 5. It has 147 unique CVEs and 80 populated owner/repository pairs. master_inventory_report.json explicitly says this inventory is only 147 new Patchwork additions and is not a complete baseline. Its computed combined candidates are provisional, not validated records.
+- exclusion_manifest.json contains historical evaluation exclusions (including llm/final_150_cases.json). It is useful for leakage screening but is not a full code-bearing inventory.
+- Existing dataset reports found: FINAL_DATASETS/COUNT_REPORT.txt and master_inventory_report.json. No completed validation/source report exists in dataset/reports before this audit.
+
+EVALUATION INPUT CONTRACT
+llm/run_llm_evaluation_v3_150.py loads a JSON array. Every item must include test_id, code, and ground_truth_cwe; ground_truth_cwe must be null or one of CWE-89, CWE-78, CWE-79, CWE-22, CWE-798. It evaluates safe cases as null. Existing llm/final_150_cases.json is an example of this contract. The dataset's JSONL/CSV collection artifacts cannot be passed directly to this runner. vulnerable_code/fixed_code would need a conversion layer or an agreed runner-compatible schema; no backend/RAG code was changed.
+
+QUALITY FINDINGS AND LIMITS
+- Unique CVEs: 74 in CWE-78; 176 in the CWE-79 original JSONL; 200 each in CWE-89 and CWE-798. CWE-22 has 200 CVE strings in a metadata CSV. These are within-file uniqueness counts only; cross-file overlap and repeated CVEs across source directories/inventory have not yet been reconciled.
+- Repository/file uniqueness cannot be established consistently. CWE-78 has 20 populated repo/project values in embedded metadata; CWE-79 original has 43; CWE-89 has 131; CWE-798 has 197. These are counts of non-null repository/project strings, not normalized canonical repository identities. CWE-22 has no repository URL field. 33 .py files exist under CWE-79 extracted directories, but filenames are paths within source trees, not necessarily unique source files across all catalogs.
+- Exact and whitespace-normalized duplicate counts across all code snippets have not yet been run. Existing detect_near_duplicates.py only reads code fields in the exclusion manifest, while this manifest's records are historical evaluation metadata; it does not audit the current dataset collections. Existing top-up scripts use hash and similarity filters during candidate acceptance, but this does not constitute a full cross-category deduplication audit.
+- Vulnerable/fixed pairs are absent from the top-level case records. CWE-79 has patches and source trees that may support reconstruction. CWE-78/89/798 embed source snippets, but there is no paired fixed_code field in the case records. A patch or commit may exist in provenance, but pair correspondence needs per-sample review.
+- All safe rows are pending. No safe example can be counted as verified based on the current manual_status. Their code is not demonstrated benign by the present metadata.
+- Python language is explicit only indirectly: CWE-79 source trees have .py files and some snippets/source labels reference Python datasets; the catalogs themselves have no language field. CWE-22's code_length metadata does not permit language verification. A syntax parse alone would not prove Python provenance or case relevance.
+- CWE labels are recorded as a category-level CWE on each CVE group, but advisory/patch evidence and code-level data flow were not independently checked for every record. Embedded snippets include excerpts, and some may be too small or unrelated to the claimed issue. The grouped snippet count must not be mistaken for independent vulnerability evidence.
+- The inventory includes adjudication-related fields (cwe_final, cwe_adjudicated, relation, review_status), but all records are pending and do not supply case code directly.
+- Real-world versus synthetic: the collections are presented as CVE/source-derived, while llm/final_150_cases.json is plainly hand-authored benchmark code. There is no reliable per-case sample_source field to calculate a real/synthetic breakdown for the requested 1,200 cases.
+- Existing methodology correctly distinguishes evaluation from model training in the request, but a newly generated benchmark must be held out from prompt and retrieval tuning, and both experimental arms must use identical cases.
+
+REMEDIATION PLAN FOR THE NEXT PHASE
+1. Reconstruct a record-level ledger without modifying original collection files. Link each candidate to source, CVE/advisory/commit, repository, file path, patch/fix evidence, and exclusion-manifest hashes.
+2. Recover and assess existing candidates first. Begin with CWE-78's 12 inventory candidates and CWE-79's 77; inspect other available sources and the CWE-79 source trees. Do not treat inventory totals as validated additions.
+3. Reconstruct code-level samples from source and verified fixes. Resolve the CWE-22 CSV's referenced code source and investigate the missing 126 CWE-78, 9 CWE-79, and 81 safe candidates; confirm all apparent gaps after deduplication rather than assuming the preliminary gaps.
+4. Review each vulnerable sample for Python language, label correctness, vulnerability evidence, source provenance, vulnerable/fixed correspondence, and sufficient context. Review all safe cases in context or replace unsubstantiated cases with independently sourced benign examples. Keep synthetic examples clearly marked and separate from real-world CVEs.
+5. Run exact, normalized, pair-level, and near-duplicate checks across categories and against historical evaluation exclusions. Group related cases by CVE, repository, source, or code lineage for any later splits.
+6. Only after those reviews, write separate standardized outputs and a manifest in evaluation/, validate the runner-compatible schema, and produce validation/source reports. Do not tune prompts or retrieval settings on the held-out test cases.
+
+AUDIT STATUS
+This is a repository-artifact audit, not a manual line-by-line security adjudication of hundreds of candidate samples. Verified figures above describe files and parseability. Vulnerability truth, fixed-code validity, safe labels, full cross-file deduplication, and the final sample count remain unverified. No collection, standardization, or source dataset modification was performed.

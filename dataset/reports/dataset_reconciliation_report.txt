@@ -1,0 +1,53 @@
+DATASET RECONCILIATION REPORT — PHASE 2
+Date: 2026-11-20
+Scope: Local-only reconciliation. No external source collection, fetching, or modification of original collection files was performed. “Verified usable” means an independent, Python evaluation case with sufficient source evidence, a defensible label, provenance, and code context. Source syntax checks and keyword matches are triage only.
+
+SUMMARY
+Verified independently usable cases recovered: 0 of 1,200. None of the current source records has completed case-level security adjudication and the necessary sample-level provenance/evidence checks. This is an evidence-qualified count, not a claim that all candidates are invalid. The source artifacts contain substantial recoverable material, but must be reviewed before inclusion.
+
+RECONCILIATION BY CATEGORY
+CWE-22 — 200 CSV rows; 200 unique CVE strings. Columns are cve, code_length, source_count, sources, source_record_count. Source names occur as Patchwork 125 rows, CyberSet 56, Zenodo 25, CEVuD 22 (source memberships overlap). No repository URL, commit, source code or fixed code is present in the CSV. No CWE-22 CVE matched the 147-row master candidate inventory. Local processed/ contains selection audit CSVs but no code corpus corresponding to these 200 rows. Result: 0 verified usable; 0 locally recoverable code candidates; 200 missing-source-code records. The source names and CVE identifiers are leads for a later permitted recovery phase, not evaluation cases.
+
+CWE-78 — 74 JSONL rows, 74 unique CVEs, 145 nonempty snippets. All rows have grouped source_records, so the maximum raw independent-vulnerability count is 74, never 145. A local AST parse accepts 38/145 fragments as complete Python modules; 107 are incomplete excerpts or otherwise fail parsing. AST validity does not verify Python provenance, data flow, or command injection. Repeated fragments, shell=True references and subprocess calls need function-level/context validation. The cases.jsonl records do not contain fixed_code, fix commit or paired patch evidence. Candidate inventory contributes 12 more CWE-78 candidate CVE records, all candidate_pending_validation and without source code in the inventory. Result: 0 verified; 74 grouped code-bearing cases and 12 metadata-only inventory candidates require review; no verified fixes identified.
+
+CWE-79 — 176 JSONL rows and 176 unique CVEs with 356 nonempty grouped snippets. AST parses 88/356 snippets; remaining snippets are excerpts or non-code content. Fifteen additional CVE-named directories have no CVE overlap with the 176 JSONL rows, so they are additional source collections rather than duplicate CVE rows: 33 .py files under those directories; 13 of 15 CVE directories contain a fix.patch. This yields at most 15 additional CVE-level candidates, not 33 cases. The source trees and patches give code/fix recovery paths, but there has been no changed-hunk reconstruction or code-level XSS review. Nine-case numerical gap could be filled from these candidates only after full verification; no candidate is counted yet. Result: 0 verified; 191 unique-CVE candidate groups available in local artifacts (176 grouped records + 15 additional source directories), all requiring review.
+
+CWE-89 — 200 JSONL rows and 200 unique CVEs, with 1,814 nonempty grouped snippets. AST parses 347/1,814. The snippets are grouped excerpts and cannot be counted independently. Top-level rows have no fixed code; many embedded items originate from GHSA-GitHub or commit search, but source references alone do not prove exact vulnerable/fixed function correspondence. Result: 0 verified; 200 CVE groups require review.
+
+CWE-798 — 200 JSONL rows and 200 unique CVEs, with 1,231 nonempty grouped snippets. AST parses 317/1,231. Many are GitHub commit/advisory-derived but are often code excerpts; secrets must be distinguished from placeholders, tests, and non-credential constants. Top-level rows have no fixed code. Result: 0 verified; 200 CVE groups require review.
+
+SAFE-PYTHON — 119 CSV rows with code. All 119 have manual_status=pending; splits: train 94, validation 18, test 7. Provenance fields are not sufficient to tie each sample to a repository/file or demonstrate surrounding context. No safe sample was auto-approved. Result: 0 verified; 119 require manual review for all five target CWE classes, completeness, benignity and source.
+
+OTHER INVENTORY MATERIAL
+master_candidate_inventory.jsonl has 147 unique CVEs, all candidate_pending_validation, split by cwe_final: CWE-79 77, CWE-22 44, CWE-78 12, CWE-89 9, CWE-798 5. It carries repo and patch/advisory metadata for some records, but not vulnerable/fixed case code. It describes 147 new additions, not a complete reconstructed baseline. None is marked verified. It may overlap the category catalogs by CVE or repository; do not add these counts to category totals before ledger-level reconciliation. For CWE-22, direct overlap with its 200 CSV CVEs is 0.
+
+UNIQUE AND INDEPENDENCE COUNTS
+- Category catalog unique CVE counts are 74 (CWE-78), 176 (CWE-79 JSONL), 200 (CWE-89), 200 (CWE-798); CWE-22 CSV lists 200, but code is absent. The 15 CWE-79 directories have 15 additional unique CVE strings relative to that JSONL.
+- 9 identifiers appear in more than one CWE-89/CWE-798/CWE-78 catalog grouping: CVE-2026-7816 is in CWE-78 and CWE-89; 8 GH-COMMIT identifiers are shared between CWE-89 and CWE-798. These are cross-category leakage/label-conflict review items, not independently valid labels.
+- Across 3,546 snippets in the four JSONL catalogs, exact code hashing found 226 excess snippet copies in 149 duplicate groups; whitespace normalization found the same counts. This is snippet-level duplication, not case-level duplication. It includes repeated snippets associated with same-CVE source aggregation and must not simply be subtracted from case rows.
+- A deterministic SimHash screen over 3,529 snippets at least 100 characters long flagged 705 candidate near-duplicate pairs (69 cross-CVE; 37 cross-category). These are unadjudicated leads, not confirmed duplicates; short snippets were excluded. Existing detect_near_duplicates.py operates on exclusion-manifest records, not these current collections.
+- Populated repository/project string counts from embedded source metadata are CWE-78 20, CWE-79 43, CWE-89 131, CWE-798 197. These are raw non-null strings, not normalized repository identities. Repeated repositories/functions and cross-CWE function reuse have not been resolved.
+- The exclusion manifest contains 189 historical evaluation entries, including 150 cases from final_150_cases.json and entries from llm_evaluation_set_v2.json. It prevents known benchmark leakage only where code hashes match; candidate inventories were not fully checked against those hashes.
+
+COUNT TABLE (STRICT VERIFIED STANDARD)
+Category | Target | Verified usable | Recoverable local candidates | Remaining gap
+CWE-22 | 200 | 0 | 0 with code locally (200 metadata leads) | 200
+CWE-78 | 200 | 0 | 74 grouped source records (+12 metadata candidates; not additive until overlap check) | 200
+CWE-79 | 200 | 0 | 191 unique-CVE code/source groups (176 JSONL + 15 directories) | 200
+CWE-89 | 200 | 0 | 200 grouped source records | 200
+CWE-798 | 200 | 0 | 200 grouped source records | 200
+SAFE-PYTHON | 200 | 0 | 119 code entries pending review | 200
+TOTAL | 1,200 | 0 | Category candidate counts are non-independent and may overlap | 1,200
+
+The 1,200 remaining gap is the strict gap after counting only verified cases. The local material offers candidates for all but CWE-22 code recovery; it is not sound to subtract those unreviewed candidates from the gap. No candidate was declared verified by automation.
+
+NEXT STEPS (PRIORITY)
+1. Manually reconstruct CWE-79 vulnerable and fixed hunks for the 15 local trees, beginning with the 13 directories containing patches. Check advisory/CVE scope and whether each changed hunk is Python XSS-relevant. Nine may cover the numeric gap if all nine pass.
+2. Resolve the 9 repeated cross-category identifiers, beginning with CVE-2026-7816 and the 8 shared GH-COMMIT entries. Confirm the correct CWE and deduplicate function/code lineage.
+3. Review CWE-78 by CVE, extracting at most one independent case per vulnerability/repository lineage; map each code fragment to a relevant fix. The 38 AST-valid fragments are starting points, not a validated subset.
+4. Review CWE-89/CWE-798 grouped records by unique CVE; consolidate fragments from the same function and reconstruct before/after code using local evidence. Treat all commit-search samples as pending until source and patch correspond.
+5. Review all 119 safe samples manually with adequate context and provenance, then reject, repair provenance or retain as verified benign. Do not use absence of a detector finding as the safety criterion.
+6. Recover CWE-22 source code from the named source collections only after approval for the next phase. Preserve each CVE/source/fix pointer and validate against the relevant fixing change.
+7. Run repository canonicalization, full code and pair deduplication, near-duplicate review, and exclusion-hash matching on the reconstructed case ledger. Only then standardize a held-out evaluation benchmark.
+
+No originals, backend, LLM or RAG code were modified. No external samples were collected. See candidate_validation_report.txt, duplicate_analysis_report.txt, and recovered_candidates.jsonl for the record-level triage ledger.

@@ -1,0 +1,20 @@
+CWE-89 / CWE-798 CANDIDATE RECOVERY REPORT ? PHASE 3
+Date: 2026-11-20
+Scope: Local 200-row grouped JSONL for each CWE plus available per-snippet metadata, master inventory and historical exclusions. No external source retrieval was performed.
+
+RESULT
+Verified independent CWE-89 cases: 0. Verified independent CWE-798 cases: 0. Matched vulnerable/fixed pairs recovered from these grouped catalogs: 0. The records are CVE-level groupings with multiple fragments and no top-level vulnerable_code/fixed_code pair. Do not count each fragment as a test case.
+
+CWE-89
+200 grouped CVE rows contain 1,814 nonempty source snippets; 332 fragments parse as standalone Python modules. A local token screen finds SQL/query/execute markers in 84 CVE groups. This is a triage signal, not evidence that untrusted input reaches a dynamically built query. Grouped sources include GHSA-GitHub 1,182, GitHub-CommitSearch 404, Patchwork 90, NVD-GitHub 58, Zenodo 43, CyberSet 25 and CEVuD 12 snippet records. Categories overlap by source provenance. All 200 groups remain PENDING_REVIEW.
+
+CWE-798
+200 grouped CVE rows contain 1,231 nonempty snippets; 316 parse as standalone Python modules. A simple credential-assignment token screen fires in 39 CVE groups. This does not distinguish actual deployed secrets from placeholders, tests, examples, or unrelated constants. Sources include GitHub-CommitSearch 1,118 snippets and GHSA-GitHub 92, plus smaller sources. All 200 groups remain PENDING_REVIEW.
+
+CROSS-CATEGORY ITEMS
+Eight GH-COMMIT identifiers occur in both CWE-89 and CWE-798. The available excerpts generally do not establish the assigned SQL or credential flaw. MohdAlkafaween?s shared fragment visibly contains both a hardcoded token and concatenated SQL from request input, plus other flaws; it remains pending because exact commit/fix lineage is not established and it is one multi-flaw input, not two independent cases. See cross_category_classification_report.txt. CVE-2026-7816 has an unsupported CWE-78 label and a CWE-89 candidate requiring full-flow review.
+
+MASTER INVENTORY
+The master candidate inventory has 9 CWE-89 and 5 CWE-798 records (among 147 total), all candidate_pending_validation. It includes some repository/fix metadata but no vulnerable code. These leads are not added to the 200 grouped rows until CVE/repository overlap and code lineage are reconciled.
+
+No repository snippet was accepted based solely on its CVE/CWE group label, query or credential keyword, or AST parse. For each record, reviewers must recover the relevant Python function, validate the sink/secret role and trust boundary, match the patch or other evidence, and collapse fragments from the same vulnerability before counting.

@@ -1,0 +1,21 @@
+Third-party source excerpts in cases.jsonl
+
+1) aio-libs/aiohttp ? Apache License 2.0
+Copyright aio-libs contributors. Preserve the Apache-2.0 license and applicable attribution/NOTICE material when redistributing.
+License: https://github.com/aio-libs/aiohttp/blob/master/LICENSE.txt
+
+2) gitpython-developers/GitPython ? BSD 3-Clause License
+Copyright (C) 2008, 2009 Michael Trier and contributors. Redistribution requires retaining the copyright notice, conditions, and disclaimer; the license prohibits using contributor names for endorsement without permission.
+License: https://github.com/gitpython-developers/GitPython/blob/main/LICENSE
+
+3) posit-dev/py-shiny ? MIT License
+Copyright (c) 2023 Posit Software, PBC. Include the copyright and permission notice in copies or substantial portions.
+License: https://github.com/posit-dev/py-shiny/blob/main/LICENSE
+
+The records contain short excerpts with source attribution. Confirm the full license terms at the linked upstream license before any public redistribution of the final benchmark.
+
+4) python-poetry/poetry ? MIT License
+Copyright (c) 2018-present S?bastien Eustace. Include the copyright and permission notice in copies or substantial portions.
+License: https://github.com/python-poetry/poetry/blob/main/LICENSE
+
+The Poetry record is a short source excerpt. Confirm the full license terms at the linked upstream license before public redistribution.

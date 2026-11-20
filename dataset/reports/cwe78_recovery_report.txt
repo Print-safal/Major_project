@@ -1,0 +1,20 @@
+CWE-78 CANDIDATE RECOVERY REPORT ? PHASE 3
+Date: 2026-11-20
+Scope: Local CWE-78 JSONL (74 rows), its 145 grouped source snippets, matching master inventory candidates and source references. No external recovery was attempted.
+
+RESULT
+Verified independently usable CWE-78 cases: 0. The JSONL provides 74 CVE-level groups and 145 snippets; snippets were not counted as independent examples. There is no case-level fixed_code or patch paired in this artifact. The master inventory adds 12 CWE-78 candidate metadata rows, all candidate_pending_validation and without source code in that inventory. These are leads, not extra usable cases.
+
+STATIC TRIAGE (NOT LABEL VALIDATION)
+- 145/145 snippets are nonempty.
+- Python ast.parse accepts 15/145 snippets as complete standalone modules. The remaining 130 are excerpts/non-code/incomplete as standalone files; this does not prove they are not Python source.
+- 25/74 CVE groups contain a command-related token matching os.system/subprocess/commands patterns.
+- 15/74 groups contain a shell=True marker.
+These signal counts are keyword triage only. They do not establish untrusted input reaching an OS command sink. A shell=True call with a constant, safe argument, or unrelated snippet is not sufficient CWE-78 evidence.
+
+RECORD REVIEW STATUS
+Every one of the 74 CVE groups is PENDING_REVIEW. Candidate ledger entries preserve the CVE, snippet count, source-kind labels and source JSONL path. Group-level source counts are Patchwork 91 snippets, Zenodo 23, CyberSet 23, CEVuD 8. These are source memberships and may overlap at the CVE level.
+
+No matched fixed code was recorded for any of the 74 grouped cases. Some source provenance points to dataset/patchwork_python_enriched.jsonl or other source names not present as complete repositories in the local dataset directory. Repository/file/commit mapping remains incomplete. The nine cross-category review includes CVE-2026-7816: its CWE-78 snippet changes SQL query whitespace and shows no OS command sink; this CWE-78 assignment is marked INCORRECT_CLASSIFICATION.
+
+No candidate has been promoted because of regex, shell=True or AST results. For each pending CVE, next validation requires full Python function context, input source, execution sink, repository/patch reference and deduplication against other source fragments.

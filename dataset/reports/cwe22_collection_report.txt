@@ -1,0 +1,25 @@
+CWE-22 EXTERNAL COLLECTION REPORT - PHASE 4, UPDATED THROUGH BATCH 2
+Collection date: 2026-11-20
+Status: Category target not complete. Original dataset files and initial nine CWE-79 cases remain preserved.
+
+CUMULATIVE COUNTS
+- External verified case candidates collected: 4
+- Verified independent cases: 4
+- Rejected collected candidates: 0
+- Duplicate removals: 0 (three old metadata-only catalog rows now point to recovered cases and are not counted separately)
+- Pending among collected: 0
+- Corresponding fixed code available: 4/4
+- CWE-22 target gap: 196 (target 200; verified 4)
+
+BATCH 1 (3 VERIFIED)
+1. EXT-CWE22-CVE-2024-23334 - aiohttp static resource path handling. CWE-22 path escape when follow_symlinks=True; the patch enforces containment for both symlink branches. File aiohttp/web_urldispatcher.py. Source: GHSA-5h86-8mv2-jq9f; upstream PR #8079; references 1c33594 and 7a8cac9. Repository https://github.com/aio-libs/aiohttp. Apache-2.0.
+2. EXT-CWE22-CVE-2026-44243 - GitPython symbolic reference write path. Attacker-influenced reference paths reached filesystem writes without repository containment. File git/refs/symbolic.py. Source: GHSA-7545-fcxq-7j24; fixes 25ba54dd3fb374b8fade7de4be1ac2ac84722190 and 4af8463cca31c2369312fcaa5309dfc30756c7b6. Repository https://github.com/gitpython-developers/GitPython. BSD-3-Clause.
+3. EXT-CWE22-CVE-2026-108258 - Shiny bookmark restore path. Client-supplied state ID was joined into the bookmark directory without path-segment validation. File shiny/bookmark/_bookmark_state.py. Source GHSA-47c3-hpmg-7j6p; merge 1d8ecb4 / fix 423aae3e. Repository https://github.com/posit-dev/py-shiny. MIT.
+
+BATCH 2 (1 VERIFIED)
+4. EXT-CWE22-CVE-2026-41140 - Poetry source-distribution tar extraction. On specified older Python 3.10/3.11 runtimes the fallback called tarfile.extractall without path or link-target containment, allowing archive paths to escape the extraction directory. The upstream patch validates regular member paths and symlink/hardlink targets before extraction. File src/poetry/utils/helpers.py:410-469. Source GHSA-73h3-mf4w-8647 and commit 47e97340cae50d3698aac858732788861ba8dd1f. Repository https://github.com/python-poetry/poetry. MIT.
+
+VALIDATION
+All four cases have source-backed vulnerable/fixed Python excerpts, advisory and upstream patch evidence, file/commit/repository/license provenance, and SHA-256 hashes. All eight snippets parse with ast.parse. Exact/whitespace-normalized checks found no collision with the existing verified seed, historical exclusion hashes, or prior accepted snippets. The batch 2 near-duplicate screen compared against 3,752 available local recovered-candidate snippets/source files; maximum length-compatible SequenceMatcher ratio was 0.285, below the 0.85 review threshold. Cases span four repositories and distinct vulnerability scenarios.
+
+The prior metadata-only CWE-22 entries for CVE-2024-23334 and CVE-2026-44243, plus the metadata row for CVE-2026-41140, now link to their recovered records and are excluded from independent case counts. A Conda advisory lead was not collected: its examined write-up explicitly described static analysis and did not provide an independently reviewed fixing commit and corresponding patch evidence for this batch.

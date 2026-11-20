@@ -1,0 +1,112 @@
+{
+  "manifest_version": "1.0",
+  "created_date": "2026-11-20",
+  "purpose": "Partial verified evaluation snapshot; not final 1,200-case test set. Keep isolated from prompt tuning and retrieval indexing.",
+  "case_count": 13,
+  "cases": [
+    {
+      "sample_id": "REC-CWE79-CVE-2012-6131",
+      "cve_id": "CVE-2012-6131",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "064e5d2b0c34a12b1d2f791874e6d1a988a16f76e53fba87e53a7acf210a5c56",
+      "fixed_code_sha256": "0dadf8e7a664fc74a6ef1e772789818e692c27b7970eee0038888768f2434f63",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2012-6131/fix.patch (commit 38193cc7d93567e04dae71cf526427473685d35e); dataset/FINAL_DATASETS/CWE-79/CVE-2012-6131/roundup/cgi/templating.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2014-3473",
+      "cve_id": "CVE-2014-3473",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "dcdd624fcb346439d516cc4eb307a72c994e10b13ecfc6d7fb3bd7a8fa39a1d0",
+      "fixed_code_sha256": "5b7bb8e48af59c7e22d6e9ad4696f4e60ef8dce6b820fdce4b0b7e9b63c9da2d",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2014-3473/fix.patch (commit c844bd692894353c60b320005b804970605e910f); dataset/FINAL_DATASETS/CWE-79/CVE-2014-3473/openstack_dashboard/dashboards/admin/users/tables.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2014-3594",
+      "cve_id": "CVE-2014-3594",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "ccf96d2ee7b7394620cee2c20b20ff05361c32d5b0189562adb44ccd6de776b0",
+      "fixed_code_sha256": "c38b3d38a0c2f1c2302ec49ca30adfef5bf2d8f0a0d7f2ab11b1e48a1f57964b",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2014-3594/fix.patch (commit ba2c98aea0db0d03200c811b86b3efe8367f3905); dataset/FINAL_DATASETS/CWE-79/CVE-2014-3594/openstack_dashboard/dashboards/admin/aggregates/tables.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2018-20244",
+      "cve_id": "CVE-2018-20244",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "ed25fd9a00108b7bdc7ff29c5e69222783ac8303eb432c5a8eec01701da96c9f",
+      "fixed_code_sha256": "82a631abf6d33beac2b158eb51396f800d32428ca9a6b1c4b535d61bdc277887",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2018-20244/fix.patch (commit 27a4a888e946728d9bb33b78ec604e08d4a93f89); dataset/FINAL_DATASETS/CWE-79/CVE-2018-20244/airflow/www/views.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2020-13596",
+      "cve_id": "CVE-2020-13596",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "943b5c8344f4803e4faf4adf473906642ae966731d03c8bc2a3e680d3227854c",
+      "fixed_code_sha256": "7f9d7cba6021c9814784cc81124f5a9a0c9e5fb82a141affe07fce355fa7edb7",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2020-13596/fix.patch (commit 1f2dd37f6fcefdd10ed44cb233b2e62b520afb38); dataset/FINAL_DATASETS/CWE-79/CVE-2020-13596/django/contrib/admin/widgets.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2022-22818",
+      "cve_id": "CVE-2022-22818",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "5dd4a17ffea084894f135b5977b94cea6ecbd4fbd668fa9cc02a6f0d76890c0d",
+      "fixed_code_sha256": "8d76d1dc5e7e69c82f31ad7d9161908cadd1501414ccca7c90e069cb53757329",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2022-22818/fix.patch (commit 01422046065d2b51f8f613409cad2c81b39487e5); dataset/FINAL_DATASETS/CWE-79/CVE-2022-22818/django/template/defaulttags.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2023-36809",
+      "cve_id": "CVE-2023-36809",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "f5388ae064cb524b62dfccd9c252d8f8ff417932168cefc2573dc403dabd27a1",
+      "fixed_code_sha256": "17835d3d4cb53674700de02fe261d12881958d5c67ddc2a2aaead2e8a84e747a",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2023-36809/fix.patch (commit 195ea53eaaf360c19227c864cc0fe58910032c3c); dataset/FINAL_DATASETS/CWE-79/CVE-2023-36809/tcms/testplans/models.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2026-44896",
+      "cve_id": "CVE-2026-44896",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "b72bdd173c41ca5aeff01a4dc37797c3be5bb3de811dad7727b196017e228e6a",
+      "fixed_code_sha256": "c8b8a377e4aed0fc6d25d283b02b49d34cbc3d32125e8c0d9e1d1fa0537bcea2",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2026-44896/fix.patch (commit a3cb6e5655308797e8be021d6c7b5bab13cbace2); dataset/FINAL_DATASETS/CWE-79/CVE-2026-44896/src/mistune/renderers/html.py"
+    },
+    {
+      "sample_id": "REC-CWE79-CVE-2026-59923",
+      "cve_id": "CVE-2026-59923",
+      "ground_truth_cwe": "CWE-79",
+      "vulnerable_code_sha256": "6b8c310e974987d62ee4e1502bd62ef0604eff8f8213cb2eede92e20b78a9fe4",
+      "fixed_code_sha256": "505340dc5e7d9f1a8d189c5f5d95f742748c704c5f9eb0ab363fa1217f3a6ae8",
+      "source_reference": "dataset/FINAL_DATASETS/CWE-79/CVE-2026-59923/fix.patch (commit c7101fcbb6e8790e8e39157c5ca2238fc6dd6cbc); dataset/FINAL_DATASETS/CWE-79/CVE-2026-59923/src/mistune/renderers/html.py"
+    },
+    {
+      "sample_id": "EXT-CWE22-CVE-2024-23334",
+      "cve_id": "CVE-2024-23334",
+      "ground_truth_cwe": "CWE-22",
+      "vulnerable_code_sha256": "773658dd7c3d0b79bb37c11623288471317f42d0adb4eba921c93f7efc62cdee",
+      "fixed_code_sha256": "9f2ad969cae749242417e66088359e0f97c755bd53d779ebe391117cbcde41f4",
+      "source_reference": "https://github.com/advisories/GHSA-5h86-8mv2-jq9f ; https://github.com/aio-libs/aiohttp/pull/8079/files"
+    },
+    {
+      "sample_id": "EXT-CWE22-CVE-2026-44243",
+      "cve_id": "CVE-2026-44243",
+      "ground_truth_cwe": "CWE-22",
+      "vulnerable_code_sha256": "bedfc014fab92d59d54f1abea0a4100dd5eb64a37bd427417713fbd2b66739cf",
+      "fixed_code_sha256": "6852013020f7632a713304bd2cb1e26ea201a7dd52fcf5f35cfc508a586bb2ca",
+      "source_reference": "https://github.com/advisories/GHSA-7545-fcxq-7j24 ; https://github.com/gitpython-developers/GitPython/commit/25ba54dd3fb374b8fade7de4be1ac2ac84722190 ; https://github.com/gitpython-developers/GitPython/commit/4af8463cca31c2369312fcaa5309dfc30756c7b6"
+    },
+    {
+      "sample_id": "EXT-CWE22-CVE-2026-108258",
+      "cve_id": "CVE-2026-108258",
+      "ground_truth_cwe": "CWE-22",
+      "vulnerable_code_sha256": "a260aa80b067562d9623364cfe2b7754bbefa6090e5a28906f2ef7357703e2ca",
+      "fixed_code_sha256": "4ad3fab64ed2946b90ac3dc56e47f3ad3c7f1ed8d31f33aeaf78fdd437edb63b",
+      "source_reference": "https://github.com/advisories/GHSA-47c3-hpmg-7j6p ; https://github.com/posit-dev/py-shiny/commit/1d8ecb4"
+    },
+    {
+      "sample_id": "EXT-CWE22-CVE-2026-41140",
+      "cve_id": "CVE-2026-41140",
+      "ground_truth_cwe": "CWE-22",
+      "vulnerable_code_sha256": "13b98ef53827baba65d0c29184abb162d164732da3a67a5f69cd1974ad2eeaea",
+      "fixed_code_sha256": "50cf7073d2c8e8b966c6f84e8b64899aa4be60250dd71f9a0879531a73952dbd",
+      "source_reference": "https://github.com/advisories/GHSA-73h3-mf4w-8647 ; https://github.com/python-poetry/poetry/commit/47e97340cae50d3698aac858732788861ba8dd1f"
+    }
+  ]
+}

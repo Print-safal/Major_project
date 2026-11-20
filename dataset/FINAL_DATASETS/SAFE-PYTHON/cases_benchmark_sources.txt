@@ -1,0 +1,4 @@
+SAFE-PYTHON benchmark provenance
+
+Transferred controls
+81 safe controls from OWASP BenchmarkPython (BenchmarkTest00004 through selected pathtraver/CWE-22 false-result cases) were appended with IDs TC_SAFE_OWASP_001 through TC_SAFE_OWASP_081. Source repository: https://github.com/OWASP-Benchmark/BenchmarkPython; expected labels: https://github.com/OWASP-Benchmark/BenchmarkPython/blob/main/expectedresults-0.1.csv; source code: https://github.com/OWASP-Benchmark/BenchmarkPython/tree/main/testcode. The other 22 OWASP safe controls were omitted to keep this file at 200 records.

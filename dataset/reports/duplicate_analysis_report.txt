@@ -1,0 +1,38 @@
+DUPLICATE ANALYSIS REPORT — PHASE 2
+Date: 2026-11-20
+Scope: Current CWE JSONL source snippets, CWE-79 source-tree CVE identifiers, category CVE labels, and existing historical evaluation exclusion manifest. Exact snippet statistics are source-fragment counts, not deduplicated case counts.
+
+EXACT AND WHITESPACE-NORMALIZED SNIPPET CHECK
+Across 3,546 nonempty snippets from CWE-78 (145), CWE-79 original JSONL (356), CWE-89 (1,814) and CWE-798 (1,231):
+- Exact raw-code hash: 226 excess copies in 149 duplicate groups.
+- Whitespace-normalized hash (line-ending and whitespace collapse): 226 excess copies in 149 groups.
+- 32 exact/normalized duplicate groups span more than one CWE catalog. These must be reviewed for category leakage; they are not counted as independent examples.
+- A duplicate snippet can occur within one CVE or across different source entries. Deduplicate at function/case level only after provenance mapping; simple string equality does not establish that two full vulnerabilities are the same.
+
+CROSS-CATEGORY CVE IDENTIFIERS
+Nine catalog identifiers occur in more than one target CWE grouping:
+- CVE-2026-7816: CWE-78 and CWE-89.
+- GH-COMMIT-MohdAlkafaween_devsecops-lab-d16c9aaa9f
+- GH-COMMIT-syahnetwork_aegis-forge-devsecops-500692e069
+- GH-COMMIT-DelRoos_vulnchain-55549b2ad7
+- GH-COMMIT-wonjangcloud9_open-guardrail-82a8ecc051
+- GH-COMMIT-ahmed-145_ACR-QA-8729b6d43f
+- GH-COMMIT-MohamedNamper333_swarm-agent-b90327c771
+- GH-COMMIT-ajagawa_ttb-label-verify-c99d182196
+- GH-COMMIT-HisSUS77_vulcan-backend-58867e6dd6
+The eight GH-COMMIT identifiers are shared by CWE-89 and CWE-798. A single source commit may contain multiple distinct issues, but that must be demonstrated; until then, hold these as label/case-conflict review items.
+
+CWE-79 DIRECTORY RECONCILIATION
+The 15 extracted directory CVE IDs have 0 overlap with the 176 CVEs in cwe79_original_with_code.jsonl. They are additional CVE-level source collections. They contain 33 .py files and 13 fix.patch files across 15 directories. This establishes separate source availability, not 15 validated independent cases. File-to-CVE changed-hunk relationships still need review.
+
+REPOSITORY AND FUNCTION REUSE
+Raw populated repository/project metadata string counts are CWE-78 20, CWE-79 43, CWE-89 131, CWE-798 197. Canonical repository identities were not established because metadata uses different fields, sometimes null, and varying owner/name/url conventions. Repeated repositories and vulnerable functions therefore remain unresolved. Source records sharing a CVE should be treated as one vulnerability group unless independent functions are proven.
+
+NEAR DUPLICATES
+A deterministic SimHash screen was run over 3,529 snippets of at least 100 characters (4-token shingles; Hamming distance <=3). It flagged 705 candidate pairs: 69 cross-CVE pairs and 37 cross-category pairs. These are only review leads, not confirmed near-duplicates; no human adjudication was performed and short snippets were excluded. Common boilerplate can create false positives, while function changes can create false negatives. Existing detect_near_duplicates.py loads code from exclusion_manifest.json (historical evaluation metadata), not the current category snippets. Follow up with function-level comparison and manual review after repository/CVE lineage is joined.
+
+HISTORICAL SPLIT LEAKAGE
+exclusion_manifest.json contains 189 records covering prior final_150_cases.json and llm_evaluation_set_v2.json evaluations. Its hashes are useful for direct overlap checks. The current grouped collections and candidate inventory have not been fully mapped to those test-code hashes, so absence of a detected match must not be claimed. Use both exact and normalized hashes after extracting the same code unit and preserve source/repository grouping across any future development splits.
+
+DUPLICATE STATUS IN LEDGER
+recovered_candidates.jsonl marks repeated whitespace-normalized source fragments as Duplicate and points to the first candidate_id. This is a fragment-level duplicate designation only. Related CVE/repository/function cases and approximate near-duplicates remain Requires manual review.
