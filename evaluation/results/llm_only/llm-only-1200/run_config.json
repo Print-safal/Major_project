@@ -1,0 +1,143 @@
+{
+  "average_latency_seconds": 12.66561136291665,
+  "case_limit": null,
+  "cases_planned": 1200,
+  "completed_cases": 1198,
+  "created_at": "2026-11-20T14:15:12.987326+00:00",
+  "dataset_files": {
+    "CWE-22": "0d905f1e1b7e85058ef34a16d4a0fc2740ca2f3dcc0576f4b3adf19c748f2b3e",
+    "CWE-78": "7d835d43a64dea019ddb819ae8a9eda1a45f2ddb1226a963d25afab4e40d5ddb",
+    "CWE-79": "0d0fd1c3d320f13d24ed52b642e1b00bd8cd2c6e3f6bceb14ddb84e69bd8acf8",
+    "CWE-798": "478f1004cf60025ccde6a34fee08d484c2e22536feaa1be10b9868db9e3da70e",
+    "CWE-89": "756a651d63a478ef8696f18377d7d7b1aeb7929cc1fb9595932b49e990746716",
+    "SAFE-PYTHON": "6b22d6c2cde2c4b3f67dda98920b3df54c0faf484a65739c0c50742d9cf1c175"
+  },
+  "dataset_sha256": "51041581c0573fe08213833b16df2afd10ab8edcaaf8dd0b49728518c37c7e31",
+  "elapsed_seconds": 16711.599726700006,
+  "execution_sessions": [
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_1",
+        "KEY_2",
+        "KEY_3",
+        "KEY_4",
+        "KEY_5"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T14:15:12.990329+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_5"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T15:28:37.445870+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_5"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T15:31:28.909107+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_4"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T15:32:40.476542+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_4"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T15:35:01.594637+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_3"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T16:26:55.958963+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_2"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T17:14:24.766190+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_1"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T18:05:07.198096+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_6"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T18:11:53.237330+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_7"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T19:07:30.479448+00:00"
+    },
+    {
+      "concurrency": 1,
+      "key_aliases_configured": [
+        "KEY_7"
+      ],
+      "max_retries": 5,
+      "max_rpm": 5,
+      "started_at": "2026-11-20T19:14:02.590715+00:00"
+    }
+  ],
+  "failed_cases": 2,
+  "last_checkpoint_at": "2026-11-20T19:14:03.375824+00:00",
+  "mode": "llm-only",
+  "model": "openai/gpt-oss-120b",
+  "prompt_sha256": "84e65a54250cea61ca9524af2acf718ab49326fce77c7700ba9f673d0bf3195a",
+  "prompt_version": "rag_int.llm_service.SYSTEM_PROMPT",
+  "provider": "Groq",
+  "request_settings": {
+    "concurrency": 1,
+    "effective_concurrency": 1,
+    "key_aliases_configured": [
+      "KEY_7"
+    ],
+    "max_retries": 5,
+    "max_rpm": 5
+  },
+  "response_schema": "SecurityReview (strict Pydantic JSON schema)",
+  "retrieval": null,
+  "run_id": "llm-only-1200",
+  "temperature": 0,
+  "total_retry_count": 0
+}
